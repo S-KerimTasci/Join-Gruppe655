@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <h1>Add Task</h1>
+    <div>
+        <span>Title</span>
+        <form action="">
+            <input id="inputTitle" type="text" placeholder="Enter a title">
+        </form>
+    </div>
+
+    <div>
+        <span>Description</span>
+        <form action="">
+            <input id="inputDescription" type="text" placeholder="Enter a Description">
+        </form>
+    </div>
+
+    <div>
+        <span>Prio</span>
+        <div class="prioDiv">
+            <div class="prioOption"><span>Urgent</span><img src="../assets/img/prio_urgent.svg" class="prioImg"></div>
+            <div class="prioOption"><span>Medium</span><img src="../assets/img/prio_medium.svg" class="prioImg"></div>
+            <div class="prioOption"><span>Low</span><img src="../assets/img/prio_low.svg" class="prioImg"></div>
+        </div>
+    </div>
+
+    <div>
+        <span>Due Date</span>
+        <form action="">
+            <input id="inputDueDate" type="date">
+        </form>
+    </div>
+
+    <div>
+        <span>Category</span>
+        <form action="">
+            <label for="cars">Choose a car:</label>
+            <select name="cars" id="cars">
+                <option value="" disabled selected hidden>Select task category</option>
+                <option value="technicalTask">Technical Task</option>
+                <option value="userStory">User Story</option>
+            </select>
+        </form>
+    </div>
+
+    <div>
+        <span>Assigned To</span>
+    </div>
+
+    <button class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
+
+
+
+
+</body>
+
+</html>
