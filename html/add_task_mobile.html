@@ -7,9 +7,11 @@
     <title>Add Task</title>
 
     <link rel="stylesheet" href="../css/style.css">
+
+    <script src="../js/script.js"></script>
 </head>
 
-<body>
+<body onload="includeHTML()">
     <h1>Add Task</h1>
     <div>
         <span>Title</span>
@@ -44,7 +46,6 @@
     <div>
         <span>Category</span>
         <form action="">
-            <label for="cars">Choose a car:</label>
             <select name="cars" id="cars">
                 <option value="" disabled selected hidden>Select task category</option>
                 <option value="technicalTask">Technical Task</option>
@@ -58,6 +59,10 @@
     </div>
 
     <button class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
+
+
+    
+    <div w3-include-html ="../assets/templates/footer.html"></div>
 
 
 
