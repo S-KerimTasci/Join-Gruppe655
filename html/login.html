@@ -31,22 +31,24 @@
     <script src="/js/summary.js"></script>
 
 
-    <title>Join-Gruppe655</title>
+    <title>Login</title>
 </head>
 
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <img class="join-icon" src="/assets/img/join-icon.png">
-            <div class="header-right">
-                <div>Not a Join user?</div>
-                <button class="sign-up">Sign up</button>
-            </div>
-        </div>
 
-        
-        <div class="login-responsiv" >
-            <div class="login-content" >
+         <!-- Login -->
+         
+         <div class="login-container">
+            <div class="login-header">
+                <img class="logo-black" src="/assets/img/logo-black.svg">
+                <div id="header-right" class="header-right">
+                    <div>Not a Join user?</div>
+                    <button onclick="" class="sign-up">Sign up</button>
+                </div>
+            </div>
+
+         <div class="login-inclusive-responsiv" id="login-inclusive-responsiv">
+            <div class="login-content" id="loginContent">
                 <div class="login-title">
                     <div>Log in</div>
                 </div>
@@ -56,36 +58,34 @@
                     <div class="login-input">
                         <div class="mail">
                             <input id="email" type="email" name="email" placeholder="Email" required autocomplete="on">
-                            <img src="/assets/img/mail-icon.png">
+                            <img src="/assets/img/login-email.svg">
                         </div>
                         <div class="mail">
                             <input id="password" type="password" name="password" placeholder="Password" required autocomplete="on">
-                            <img src="/assets/img/passwort-icon.png">
+                            <img src="/assets/img/login-password.svg">
                         </div>
                     </div>
                     <div class="password-check">
                         <div class="remember-passwort">
-                            <input type="checkbox">
+                            <input type="checkbox" id="checkbox">
                             <label class="not-markable" for="checkbox">Remember Me</label>
                         </div>
-                        <div class="forgot-passwort">Forgot my password</div>
+                        <div onclick="" class="forgot-passwort">Forgot my password</div>
                     </div>
                     <div class="login-btn">
                         <button class="login">Log in</button>
-                    <button class="guest-login">Guest Log in</button>
-                    </div> 
+                    <button onclick="" class="guest-login">Guest Log in</button>
+                    </div>
+                    <div class="msg-box" style="display:none"></div> 
                 </form>
             </div>
             <div class="header-right-responsiv">
                 <div>Not a Join user?</div>
-                <button class="sign-up-btn-responsiv">Sign up</button>
+                <button onclick="" class="sign-up-btn-responsiv">Sign up</button>
             </div>
-            <div class="confirm-text-responsiv-login" style="display: none;"></div>
-            <div class="legal-notice">
-                <img src="/assets/img/legal-notice.png">
-            </div>
+            <div class="confirm-text-responsiv-login"  style="display: none;"></div>
+            <a href="#" class="legal-notice">
+                <img src="/assets/img/legal-notice.svg" alt="Legal Notice">
+            </a>
         </div>
-
     </body>
-
-    </html>
