@@ -1,0 +1,156 @@
+@media (max-width: 1100px) {
+    .login-header {
+            margin-bottom: 72px;
+            position: absolute;
+            top: 12px;
+            left: 14px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .logo-black {
+            width: 50px;
+            height: 70px;
+        }
+        form {
+            font-size: 16px;
+            width: 100%;
+        }
+        .header-right-responsiv {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            color: black;
+        }
+        .header-right-responsiv div {
+            font-size: 21px;
+        }
+        .header-right-responsiv img:hover {
+            background-color:  #29abe2;
+            border: none;
+            filter: saturate(105%);
+            transform: scale(1.01);
+            box-shadow: 0px 4px 4px rgb(0 0 0 / 30%);
+            transition: 255ms;
+        }
+        .header-right {
+            display: none!important;
+        }
+        .login-content, .reset-content {
+            width: 372px;
+            height: 573px;
+            padding: 35px 0px 19px 0;
+        }
+        .login-input {
+            width: 78%;
+        }
+        .login-input input {
+            height: 38px;
+            width: 100%;
+        }
+        .mail {
+            width: 87%;
+            height: 41px;
+            margin-bottom: 21px;
+            margin-top: 36px;
+        }
+        .login-title {
+            font-size: 47px;
+        }
+        .password-check {
+            flex-direction: column-reverse;
+            height: 57px;
+        }
+        .login-btn {
+            flex-direction: column;
+            height: 148px;
+            align-items: center;
+            font-size: 16px;
+        }
+        .login-btn button {
+            width: 180px;
+            height: 51px;
+        }
+        .login-input input::placeholder {
+            font-size: 16px;
+        }
+        .name-login input::placeholder {
+            font-size: 16px;
+        }
+        .sign-up-btn {
+            font-size: 16px;
+        }
+        .login-container {
+            background: transparent;
+        }
+        .sign-up-btn-responsiv {
+            display: block;
+            width: 140px;
+            height: 48px;
+            background: #2A3647;
+            border-radius: 8px;
+            font-size: 21px;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .login-header {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .login-container {
+            padding: 0 10px 0 10px;
+        }
+        .login-header {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+        }
+        .logo-black {
+            width: 45px;
+            height: 58px;
+        }
+        .sign-up-btn-responsiv {
+            display: block;
+            width: 114px;
+            height: 45px;
+        }
+        .login-btn {
+            height: 111px;
+        }
+        .login-btn button {
+            height: 45px;
+        }
+        .login-content {
+            margin-top: 16px;
+            height: 64vh;
+            width: 100%;
+        }
+        .login-title {
+            font-size: 30px;
+        }
+        .login-title img {
+            width: 15px;
+            height: 15px
+        }
+        .sign-up {
+            width: 97px;
+        }
+        .header-right-responsiv div {
+            width: 161px;
+        }        
+        .mail {
+            margin-top: 20px;
+        }
+        .sign-up-btn {
+            margin: 0;
+            height: 40px;
+        }
+
+
+    }
+    
