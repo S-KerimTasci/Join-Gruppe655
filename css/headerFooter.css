@@ -1,0 +1,17 @@
+.headCircle{
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgb(42, 54, 71);
+    border-radius: 100%;
+}
+
+.initials{
+    text-decoration: none;
+    color: rgb(41,171,226);
+}
+
+.headImg{
+    height: 39px;
+    width: 32px;
+
+}
