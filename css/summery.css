@@ -1,8 +1,6 @@
 .taskOverviewContainer{
     height: 116px;
     width: 116px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.473);
-    border-radius: 32px;
 }
 .summeryLine{
     background-color: rgb(41,171,226);
@@ -14,6 +12,31 @@
 .taskUrgentContainer{
     height: 110px;
     width: 100%;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.473);
+}
+
+.taskNotStartetContainer{
+    height: 110px;
+    flex: 1;
+}
+
+.taskDoneContainer{
+    height: 110px;
+    flex: 1;
+}
+.containerShadow{
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.473);
     border-radius: 32px;
+}
+.summaryUrgentCircle{
+    width: 40px;
+    height: 40px;
+    background-color: #FF3D00;
+    border-radius: 100%;
+}
+
+#taskOverviewMiddleMid{
+    height: 80%;
+    width: 2px;
+    background-color:rgb(209, 209, 209);
+    border-radius: 8px;
 }
