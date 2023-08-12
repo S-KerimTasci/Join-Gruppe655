@@ -18,6 +18,7 @@
     <!-- CSS -->
     <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <!-- <link rel="stylesheet" href="/css/fonts.css"> -->
+    <link rel="stylesheet" href="../css/summery.css">
 
     <!-- JS -->
     <!-- <script src="/js/script.js"></script> -->
@@ -27,16 +28,53 @@
     <!-- <script src="/js/summary.js"></script> -->
     <script src="../js/headFootTemplate.js"></script>
 
+
 </head>
 
 <body onload="init()">
-    <div w3-include-html="./headerTemplate.html"></div>
+    <header w3-include-html="./headerTemplate.html"></header>
+    <section>
+        <div class="my-4 mx-2">
+            <h1>Summery</h1>
+            <p>Everything in a nutshell!</p>
+            <div class="summeryLine"></div>
+        </div>
+        <div id="taskOverview">
+            <div id="taskOverviewTop" class="d-flex justify-content-around">
+                <div id="allTasks" class="taskOverviewContainer">
+                    <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
+                        <h2 id="countAllTasks">5</h2>
+                        <p>Tasks in Board</p>
+                    </div>
+                </div>
+                <div id="tasksInProgess" class="taskOverviewContainer">
+                    <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
+                        <h2 id="countTasksInProgress">2</h2>
+                        <p>Tasks in Progress</p>
+                    </div>
+                </div>
+                <div id="taskAwaitingFeedback" class="taskOverviewContainer">
+                    <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
+                        <h2 id="counttaskAwaitingFeedback">2</h2>
+                        <p>Awaiting Feedback</p>
+                    </div>
+                </div>
+            </div>
+            <div id="taskOverviewMiddle" class=" my-3 taskUrgentContainer">
+
+            </div>
+            <div id="taskOverviewBottom">
+
+            </div>
+        </div>
+
+    </section>
 
 
 
 
 
-    <!-- <div w3-include-html="./FooterTemplate.html"></div> -->
+    <footer w3-include-html="./FooterTemplate.html"></footer>
 </body>
 
 </html>
