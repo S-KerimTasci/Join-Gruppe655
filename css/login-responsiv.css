@@ -1,156 +1,333 @@
 @media (max-width: 1100px) {
     .login-header {
-            margin-bottom: 72px;
-            position: absolute;
-            top: 12px;
-            left: 14px;
+        margin-bottom: 72px;
+        position: absolute;
+        top: 12px;
+        left: 14px;
+    }
+}
+
+@media (max-width: 840px) {
+    .logo-black {
+        width: 50px;
+        height: 70px;
+    }
+
+    form {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .header-right-responsiv {
+        display: flex;
+        align-items: center;
+        margin-top: 50px;
+        color: black;
+    }
+
+    .header-right-responsiv div {
+        font-size: 21px;
+    }
+
+    .header-right-responsiv img:hover {
+        background-color: #29abe2;
+        border: none;
+        filter: saturate(105%);
+        transform: scale(1.01);
+        box-shadow: 0px 4px 4px rgb(0 0 0 / 30%);
+        transition: 255ms;
+    }
+
+    .header-right {
+        display: none !important;
+    }
+
+    .login-content,
+    .reset-content {
+        width: 372px;
+        height: 573px;
+        padding: 35px 0px 19px 0;
+    }
+
+    .login-input {
+        width: 78%;
+    }
+
+    .login-input input {
+        height: 38px;
+        width: 100%;
+    }
+
+    .mail {
+        height: 41px;
+        margin-bottom: 21px;
+        margin-top: 36px;
+    }
+
+    .login-title {
+        font-size: 47px;
+    }
+
+    .password-check {
+        flex-direction: column-reverse;
+        height: 57px;
+    }
+
+    .login-btn {
+        flex-direction: column;
+        height: 148px;
+        align-items: center;
+        font-size: 16px;
+    }
+
+    .login-btn button {
+        width: 180px;
+        height: 51px;
+    }
+
+    .login-input input::placeholder {
+        font-size: 16px;
+    }
+
+    .name-login input::placeholder {
+        font-size: 16px;
+    }
+
+    .sign-up-btn {
+        font-size: 16px;
+    }
+
+    .login-container {
+        background: transparent;
+    }
+
+    .sign-up-btn-responsiv {
+        display: block;
+        width: 140px;
+        height: 48px;
+        background: #2A3647;
+        border-radius: 8px;
+        font-size: 21px;
+        color: white;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .login-header {
+        position: absolute;
+        top: 12px;
+        left: 14px;
+    }
+
+    .init-animation {
+        display: none;
+    }
+
+    .init-animation img {
+        display: none;
+    }
+
+    .init-animation-responsiv {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2A3647;
+        z-index: 1;
+        animation: bgOpacityResponsiv 1.5s ease-in;
+        animation-direction: normal;
+        animation-delay: 1s;
+    }
+
+    .init-animation-responsiv img {
+        position: absolute;
+        width: 100px;
+        height: 122px;
+        object-fit: contain;
+        animation: slideLogoResponsiv 1.5s ease-in-out;
+        animation-direction: normal;
+        animation-delay: 1s;
+    }
+
+    .forgot-content {
+        width: 372px;
+        height: 573px;
+        padding: 35px 0px 19px 0;
+        animation: slide-top .3s ease-out forwards;
+    }
+
+    @keyframes slide-top {
+        0% {
+            transform: translateY(0);
+            bottom: -600px;
+        }
+
+        100% {
+            transform: translateY(-100px);
+            bottom: -98px;
         }
     }
 
-    @media (max-width: 768px) {
-        .logo-black {
-            width: 50px;
-            height: 70px;
-        }
-        form {
-            font-size: 16px;
-            width: 100%;
-        }
-        .header-right-responsiv {
-            display: flex;
-            align-items: center;
-            margin-top: 50px;
-            color: black;
-        }
-        .header-right-responsiv div {
-            font-size: 21px;
-        }
-        .header-right-responsiv img:hover {
-            background-color:  #29abe2;
-            border: none;
-            filter: saturate(105%);
-            transform: scale(1.01);
-            box-shadow: 0px 4px 4px rgb(0 0 0 / 30%);
-            transition: 255ms;
-        }
-        .header-right {
-            display: none!important;
-        }
-        .login-content, .reset-content {
-            width: 372px;
-            height: 573px;
-            padding: 35px 0px 19px 0;
-        }
-        .login-input {
-            width: 78%;
-        }
-        .login-input input {
-            height: 38px;
-            width: 100%;
-        }
-        .mail {
-            width: 87%;
-            height: 41px;
-            margin-bottom: 21px;
-            margin-top: 36px;
-        }
-        .login-title {
-            font-size: 47px;
-        }
-        .password-check {
-            flex-direction: column-reverse;
-            height: 57px;
-        }
-        .login-btn {
-            flex-direction: column;
-            height: 148px;
-            align-items: center;
-            font-size: 16px;
-        }
-        .login-btn button {
-            width: 180px;
-            height: 51px;
-        }
-        .login-input input::placeholder {
-            font-size: 16px;
-        }
-        .name-login input::placeholder {
-            font-size: 16px;
-        }
-        .sign-up-btn {
-            font-size: 16px;
-        }
-        .login-container {
-            background: transparent;
-        }
-        .sign-up-btn-responsiv {
-            display: block;
-            width: 140px;
-            height: 48px;
-            background: #2A3647;
-            border-radius: 8px;
-            font-size: 21px;
-            color: white;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .login-header {
-            position: absolute;
-            top: 12px;
-            left: 14px;
-        }
+    .forgot-title {
+        font-size: 38px;
+        text-align: center;
     }
 
-    @media (max-width: 425px) {
-        .login-container {
-            padding: 0 10px 0 10px;
-        }
-        .login-header {
-            position: absolute;
-            top: 12px;
-            left: 14px;
-        }
-        .logo-black {
-            width: 45px;
-            height: 58px;
-        }
-        .sign-up-btn-responsiv {
-            display: block;
-            width: 114px;
-            height: 45px;
-        }
-        .login-btn {
-            height: 111px;
-        }
-        .login-btn button {
-            height: 45px;
-        }
-        .login-content {
-            margin-top: 16px;
-            height: 64vh;
-            width: 100%;
-        }
-        .login-title {
-            font-size: 30px;
-        }
-        .login-title img {
-            width: 15px;
-            height: 15px
-        }
-        .sign-up {
-            width: 97px;
-        }
-        .header-right-responsiv div {
-            width: 161px;
-        }        
-        .mail {
-            margin-top: 20px;
-        }
-        .sign-up-btn {
-            margin: 0;
-            height: 40px;
-        }
-
-
+    .forgot-text {
+        width: 80%;
     }
-    
+
+    .confirm-send-mail {
+        display: none !important;
+    }
+
+    .confirm-text-responsiv {
+        display: flex;
+        width: 300px;
+        height: 51px;
+        padding: 5px 15px;
+        border-radius: 8px;
+        background-color: #2A3647;
+        color: white;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .confirm-text-responsiv-login {
+        display: inline;
+        text-align: center;
+        width: 300px;
+        height: 51px;
+        padding: 5px 15px;
+        border-radius: 8px;
+        background-color: #2A3647;
+        color: white;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .confirm-send-mail-responsiv {
+        display: flex;
+        width: 200px;
+        height: 51px;
+        padding: 5px 15px;
+        border-radius: 8px;
+        background-color: #2A3647;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .confirm-text-responsiv-sign-up {
+        display: inline;
+        width: 210px;
+        height: 51px;
+        padding: 5px 15px;
+        border-radius: 8px;
+        background-color: #2A3647;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .login-container {
+        padding: 0 10px 0 10px;
+    }
+
+    .login-header {
+        position: absolute;
+        top: 12px;
+        left: 14px;
+    }
+
+    .logo-black {
+        width: 45px;
+        height: 58px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .sign-up-btn-responsiv {
+        display: block;
+        width: 114px;
+        height: 45px;
+    }
+
+    .login-btn {
+        height: 111px;
+    }
+
+    .login-btn button {
+        height: 45px;
+    }
+
+    .login-content {
+        margin-top: 16px;
+        height: 64vh;
+        width: 100%;
+    }
+
+    .login-title {
+        font-size: 30px;
+    }
+
+    .login-title img {
+        width: 15px;
+        height: 15px
+    }
+
+    .sign-up {
+        width: 97px;
+    }
+
+    .header-right-responsiv div {
+        width: 161px;
+    }
+
+    .mail {
+        margin-top: 20px;
+    }
+
+    .sign-up-btn {
+        margin: 0;
+        height: 40px;
+    }
+
+    .forgot-content {
+        height: 62vh;
+    }
+
+    .forgot-title {
+        font-size: 40px;
+        width: 100%;
+    }
+
+    .forgot-text {
+        width: 80%;
+        font-size: 20px;
+    }
+
+    .forgot-btn {
+        width: 198px;
+        font-size: 20px;
+    }
+}
