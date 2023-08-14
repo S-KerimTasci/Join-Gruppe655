@@ -1,6 +1,13 @@
 async function init(){
     await includeHTML();
-    document.getElementById('userIntials').innerText = "G";
+    document.getElementById('userIntials').innerText = initials(); //add global var for login
+}
+
+function initials(login) {
+    if (login) {
+        return 'AS' // here add function for getting initials
+    } else { return 'G'}
+    
 }
 
 

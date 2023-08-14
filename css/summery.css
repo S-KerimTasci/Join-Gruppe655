@@ -1,31 +1,26 @@
-.taskOverviewContainer{
-    height: 116px;
-    width: 116px;
+.flex_1{
+    flex: 1;
 }
 .summeryLine{
-    background-color: rgb(41,171,226);
-    height: 2px;
-    width: 15%;
+    background-color: #29ABE2;
+ /*    height: 90px;
+    rotate: -90deg;
+    width: 3px; */
+    height: 3px;
+    width: 90px;
     border-radius: 8px;
 }
 
-.taskUrgentContainer{
+.taskOvContainer{
     height: 110px;
     width: 100%;
 }
 
-.taskNotStartetContainer{
-    height: 110px;
-    flex: 1;
-}
 
-.taskDoneContainer{
-    height: 110px;
-    flex: 1;
-}
 .containerShadow{
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.473);
-    border-radius: 32px;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 30px; 
+    background-color: white;
 }
 .summaryUrgentCircle{
     width: 40px;
@@ -42,8 +37,9 @@
 }
 
 .welcome {
-     position: absolute;
+    position: absolute;
     top: 80px; 
+    left: 0;
     width: 100%;
     height: calc(100vh - 160px);
     background-color: #ffffff;
@@ -51,9 +47,34 @@
     padding: 10px;
 }
 
-@media (max-width: 555px) {
+@media (min-width: 555px) {
     .showWelcome{
-        display: none !important;
+        display: flex !important;
+    }
+    .summerHeader{
+        display: flex;
+        gap: 30px;
+    }
+    .summerHeaderFlip{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 30px;
+    }
+    .summeryLine{
+        height: 59px;
+        width: 3px;
+        border-radius: 8px;
     }
 }
+@media (min-width: 1440px) {
+    .taskOverviewSize{
+        width: 560px;
+        height: 561px;
+    }
 
+    .taskOvContainer{
+        height: 170px;
+    }
+    
+}

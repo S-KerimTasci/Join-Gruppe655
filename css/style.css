@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #D1D1D1;
+    background-color: #F6F7F8;
 }
 
 /*Add Task*/
@@ -34,21 +34,3 @@ body {
     align-items: center;
 }
 
-/*Footer*/
-.footer{
-    display: flex;
-    background-color: #2A3647;
-    color: white;
-    padding: 20px;
-    gap: 23px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
-}
-
-.footerElement{
-    display: flex;
-    flex-direction: column;
-}

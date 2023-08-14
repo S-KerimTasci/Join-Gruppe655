@@ -16,8 +16,8 @@
         crossorigin="anonymous"></script>
 
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="/css/style.css"> -->
-    <!-- <link rel="stylesheet" href="/css/fonts.css"> -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/summery.css">
 
     <!-- JS -->
@@ -33,86 +33,90 @@
     <header w3-include-html="../assets/templates/headerTemplate.html"></header>
     <div id="completeSummery" class="d-flex justify-content-center gap-5">
         <section class="mx-3">
-            <div class="my-4">
+            <div class="summerHeader my-4">
                 <h1>Summery</h1>
-                <p>Everything in a nutshell!</p>
-                <div class="summeryLine"></div>
-            </div>
-            <div id="taskOverview" class="">
-                <div id="taskOverviewTop" class="d-flex justify-content-between gap-2">
-                    <div id="allTasks" class="taskOverviewContainer containerShadow">
-                        <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
-                            <h2 id="countAllTasks">5</h2>
-                            <p>Tasks in Board</p>
-                        </div>
-                    </div>
-                    <div id="tasksInProgess" class="taskOverviewContainer containerShadow">
-                        <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
-                            <h2 id="countTasksInProgress">2</h2>
-                            <p>Tasks in Progress</p>
-                        </div>
-                    </div>
-                    <div id="taskAwaitingFeedback" class="taskOverviewContainer containerShadow">
-                        <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
-                            <h2 id="counttaskAwaitingFeedback">2</h2>
-                            <p>Awaiting Feedback</p>
-                        </div>
-                    </div>
+                <div class="summerHeaderFlip">
+                    <p>Everything in a nutshell!</p>
+                    <div class="summeryLine"></div>
                 </div>
-                <div id="taskOverviewMiddle"
-                    class=" my-3 taskUrgentContainer containerShadow d-flex gap-2 justify-content-center  align-items-center">
-                    <div id="taskOverviewMiddleLeft" class="d-flex align-items-center gap-2 ">
-                        <div class="d-flex align-items-center">
-                            <div class="summaryUrgentCircle  d-flex justify-content-center align-items-center">
-                                <img src="../assets/img/summeryUrgent.svg" alt="Urgent">
+            </div>
+            <div class="d-flex align-items-center gap-5">
+                <div id="taskOverview" class="taskOverviewSize">
+                    <div id="taskOverviewTop" class="taskOvContainer d-flex justify-content-between gap-4">
+                        <div id="allTasks" class="flex_1 containerShadow">
+                            <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
+                                <h2 id="countAllTasks">5</h2>
+                                <p>Tasks in Board</p>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <h2 id="taskUrgent">1</h2>
-                            <p>Urgent</p>
+                        <div id="tasksInProgess" class="flex_1 containerShadow">
+                            <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
+                                <h2 id="countTasksInProgress">2</h2>
+                                <p>Tasks in Progress</p>
+                            </div>
+                        </div>
+                        <div id="taskAwaitingFeedback" class="flex_1 containerShadow">
+                            <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
+                                <h2 id="counttaskAwaitingFeedback">2</h2>
+                                <p>Awaiting Feedback</p>
+                            </div>
                         </div>
                     </div>
-                    <div id="taskOverviewMiddleMid">
+                    <div id="taskOverviewMiddle"
+                        class=" my-3 taskOvContainer  containerShadow d-flex gap-2 justify-content-center  align-items-center">
+                        <div id="taskOverviewMiddleLeft" class="d-flex align-items-center gap-2 ">
+                            <div class="d-flex align-items-center">
+                                <div class="summaryUrgentCircle  d-flex justify-content-center align-items-center">
+                                    <img src="../assets/img/summeryUrgent.svg" alt="Urgent">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <h2 id="taskUrgent">1</h2>
+                                <p>Urgent</p>
+                            </div>
+                        </div>
+                        <div id="taskOverviewMiddleMid">
 
+                        </div>
+                        <div id="taskOverviewMiddleRight">
+                            <p id="taksUrgentDate">October 16, 2022</p>
+                            <p>Upcoming Deadline</p>
+                        </div>
                     </div>
-                    <div id="taskOverviewMiddleRight">
-                        <p id="taksUrgentDate">October 16, 2022</p>
-                        <p>Upcoming Deadline</p>
+                    <div id="taskOverviewBottom" class="taskOvContainer d-flex justify-content-between gap-4">
+                        <div
+                            class="flex_1 containerShadow d-flex justify-content-center align-items-center gap-2">
+                            <div>
+                                <img src="../assets/img/summeryPencil.svg" alt="Pencil">
+                            </div>
+                            <div class="text-center">
+                                <h2 id="taskToDd">1</h2>
+                                <p>To-Do</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex_1 containerShadow d-flex justify-content-center align-items-center gap-2">
+                            <div>
+                                <img src="../assets/img/summeryDone.svg" alt="Pencil">
+                            </div>
+                            <div class="text-center">
+                                <h2 id="taskDone">1</h2>
+                                <p>Done</p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-                <div id="taskOverviewBottom" class="d-flex justify-content-between gap-4">
-                    <div
-                        class="taskNotStartetContainer containerShadow d-flex justify-content-center align-items-center gap-2">
-                        <div>
-                            <img src="../assets/img/summeryPencil.svg" alt="Pencil">
-                        </div>
-                        <div class="text-center">
-                            <h2 id="taskToDd">1</h2>
-                            <p>To-Do</p>
-                        </div>
-                    </div>
-                    <div
-                        class="taskDoneContainer containerShadow d-flex justify-content-center align-items-center gap-2">
-                        <div>
-                            <img src="../assets/img/summeryDone.svg" alt="Pencil">
-                        </div>
-                        <div class="text-center">
-                            <h2 id="taskDone">1</h2>
-                            <p>Done</p>
-                        </div>
-
-                    </div>
+                <div id="welcome" class="showWelcome d-none d-flex align-items-center justify-content-center">
+                    <h2 id="welcomeMessage">Good Morning!</h2>
+                    <h1 id="welcomeUserName"></h1>
                 </div>
             </div>
-
         </section>
-        <div id="welcome" class="showWelcome d-flex align-items-center justify-content-center">
-            <h2 id="welcomeMessage">Good Morning!</h2>
-            <h1 id="welcomeUserName"></h1>
-        </div>
+
     </div>
 
-    <!-- <footer w3-include-html="./FooterTemplate.html"></footer> -->
+    <footer w3-include-html="../assets/templates/footer.html"></footer>
 </body>
 
 </html>

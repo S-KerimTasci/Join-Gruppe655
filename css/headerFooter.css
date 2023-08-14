@@ -1,17 +1,71 @@
-.headCircle{
+/* Header start*/
+header{
+    box-shadow: 0px 4px 4px 0px #0000001A;
+}
+
+.headCircle {
     width: 40px;
     height: 40px;
     border: 2px solid rgb(42, 54, 71);
     border-radius: 100%;
 }
 
-.initials{
+.initials {
+    color: rgb(41, 171, 226);
     text-decoration: none;
-    color: rgb(41,171,226);
 }
 
-.headImg{
+.headImg {
     height: 39px;
     width: 32px;
-
 }
+
+.toolName {
+    display: none;
+}
+
+.iconHelp{
+    display: none;
+}
+
+@media (min-width: 555px) {
+    .toolName {
+        display: block;
+    }
+    .headImg {
+        display: none;
+    }
+    .iconHelp{
+    display: block;
+}
+
+    .headerleftContainer{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 104px;
+        height: 56px;
+    }
+}
+
+/* Header end*/
+
+/*Footer start*/
+.footer{
+    display: flex;
+    background-color: #2A3647;
+    color: white;
+    padding: 20px;
+    gap: 23px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+}
+
+.footerElement{
+    display: flex;
+    flex-direction: column;
+}
+/*Footer end*/
