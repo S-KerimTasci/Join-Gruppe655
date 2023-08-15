@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*Footer*/
 .footer{
     display: flex;
@@ -13,3 +14,41 @@
     display: flex;
     flex-direction: column;
 }
+=======
+body {
+    margin: 0;
+    background-color: #F6F7F8;
+}
+
+/*Add Task*/
+.prioDiv {
+    display: flex;
+    gap: 16px;
+}
+
+.prioOption {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    gap: 8px;
+    padding: 18px 10px 18px 10px;
+    /*height: 41px;
+    width: 121.33px;*/
+}
+
+.prioImg {
+    object-fit: none;
+}
+
+.taskButton {
+    background-color: #2A3647;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+    display: flex;
+    align-items: center;
+}
+
+>>>>>>> f474ff87cf6b9844309e013ee641a396aa6ca564
