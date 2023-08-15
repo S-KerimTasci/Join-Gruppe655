@@ -7,6 +7,7 @@
     <title>Add Task</title>
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/headerFooter.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="..\css\headerFooter.css">
@@ -15,7 +16,7 @@
     <script src="../js/add_task.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), loadContacts()">
 
     <div w3-include-html="../assets/templates/headerTemplate.html"></div>
 
@@ -23,50 +24,45 @@
     <form onsubmit="createTask();return false">
         <div class="gap8px_flexDirCol">
             <span>Title</span>
-
             <input class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title" required>
-
         </div>
 
         <div class="gap8px_flexDirCol">
             <span>Description</span>
-
             <textarea class="inputDescription" name="inputDescription" id="inputDescription" cols="30" rows="4"
                 placeholder="Enter a Description" required></textarea>
-
         </div>
 
         <div class="gap8px_flexDirCol">
             <span>Prio</span>
             <div class="prioDiv">
-                <div id="urgent" onclick="setPrio('urgent');highlight('urgent')" class="prioOption"><span>Urgent</span><img id="urgentIMG" src="../assets/img/prio_urgent.svg" class="prioImg">
+                <div id="urgent" onclick="highlight('urgent')" class="prioOption"><span>Urgent</span><img id="urgentIMG" src="../assets/img/prio_urgent.svg" class="prioImg">
                 </div>
-                <div id="medium" onclick="setPrio('medium');highlight('medium')" class="prioOption"><span>Medium</span><img id="mediumIMG" src="../assets/img/prio_medium.svg" class="prioImg">
+                <div id="medium" onclick="highlight('medium')" class="prioOption"><span>Medium</span><img id="mediumIMG" src="../assets/img/prio_medium.svg" class="prioImg">
                 </div>
-                <div id="low" onclick="setPrio('low');highlight('low')" class="prioOption"><span>Low</span><img id="lowIMG" src="../assets/img/prio_low.svg" class="prioImg"></div>
+                <div id="low" onclick="highlight('low')" class="prioOption"><span>Low</span><img id="lowIMG" src="../assets/img/prio_low.svg" class="prioImg"></div>
             </div>
         </div>
 
         <div class="gap8px_flexDirCol">
             <span>Due Date</span>
-
             <input class="inputdefault" id="inputDueDate" type="date" required>
-
         </div>
 
         <div class="gap8px_flexDirCol">
             <span>Category</span>
-
-            <select class="inputdefault" name="cars" id="inputCategory" required>
+            <select class="inputdefault" name="category" id="inputCategory" required>
                 <option value="" disabled selected hidden>Select task category</option>
                 <option value="technicalTask">Technical Task</option>
                 <option value="userStory">User Story</option>
             </select>
-
         </div>
 
         <div class="gap8px_flexDirCol">
             <span>Assigned To</span>
+            <select class="inputdefault" name="assigned" id="inputAssignedTo" required>
+                <option value="" disabled selected hidden>Select conntacts to assign</option>
+            </select>
         </div>
 
         <div class="buttonDiv">
@@ -74,21 +70,11 @@
         </div>
     </form>
 
-
-    <div>
-        <span id="overlayCategory"></span>
-        <h1 id="overlayTitle"></h1>
-        <p id="overlayDescription"></p>
-        <p>Due Date: <span id="overlayDueDate"></span></p> 
-        <p>Priority: <span id="overlayPrio"></span> <img id="overlayPrioIMG" src=""></p>
-        <p>Assigned To</p>
-        <p>Subtask</p>
+    <div class="task_added_overlay">
+        <span>Task added to board</span> <img src="../assets/img/task_added_to_board.svg">
     </div>
 
     <div w3-include-html="../assets/templates/footer.html"></div>
-
-
-
 
 </body>
 
