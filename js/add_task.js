@@ -1,4 +1,5 @@
 let allTasks =[];
+let allContacts =['Emmanuel Mauer', 'Marcel Bauer']
 let currentPrio;
 
 function createTask(){
@@ -37,24 +38,42 @@ function loadAllTasks(){
     document.getElementById('overlayDescription').innerHTML= allTasks[i].description;
     document.getElementById('overlayDueDate').innerHTML= allTasks[i].dueDate;
     document.getElementById('overlayPrio').innerHTML= allTasks[i].priority;
-    document.getElementById('overlayPrioIMG').src = allTasks[i].priorityIMG;
-        
+    document.getElementById('overlayPrioIMG').src = allTasks[i].priorityIMG;    
     }
 }
 
-function setPrio(x){
-    currentPrio = '';
-    currentPrio = x;
-    console.log(currentPrio)
+function loadContacts(){
+    for (let i = 0; i < allContacts.length; i++) {
+        const contact = allContacts[i];
+
+        document.getElementById('inputAssignedTo').innerHTML += `<option>${contact}</option>`
+    }
+    
 }
 
 
 function highlight(x){
+    removeHighlight()
+    setPrio(x)
+
     document.getElementById(x).classList.add(x)
     document.getElementById(x+'IMG').src = `../assets/img/prio_${x}_white.svg`
 }
 
-function removeHighlight(x){
-    document.getElementById(x).classList.remove(x)
-    document.getElementById(x+'IMG').src = `../assets/img/prio_${x}.svg`
+function setPrio(x){
+    currentPrio = x;
+    console.log(currentPrio)
+}
+
+function removeHighlight(){
+    currentPrio = '';
+
+    document.getElementById('urgent').classList.remove('urgent')
+    document.getElementById('urgentIMG').src = `../assets/img/prio_urgent.svg`
+
+    document.getElementById('medium').classList.remove('medium')
+    document.getElementById('mediumIMG').src = `../assets/img/prio_medium.svg`
+
+    document.getElementById('low').classList.remove('low')
+    document.getElementById('lowIMG').src = `../assets/img/prio_low.svg`
 }
