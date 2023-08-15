@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-/*Footer*/
-.footer{
-    display: flex;
-    background-color: #2A3647;
-    color: white;
-    position: absolute;
-    left: 0;
-    right: 0;
-    justify-content: space-around;
-}
-
-.footerElement{
-    display: flex;
-    flex-direction: column;
-}
-=======
 body {
     margin: 0;
     background-color: #F6F7F8;
@@ -51,4 +34,3 @@ body {
     align-items: center;
 }
 
->>>>>>> f474ff87cf6b9844309e013ee641a396aa6ca564
