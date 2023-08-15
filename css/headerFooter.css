@@ -1,5 +1,5 @@
 /* Header start*/
-header{
+header {
     box-shadow: 0px 4px 4px 0px #0000001A;
 }
 
@@ -24,7 +24,7 @@ header{
     display: none;
 }
 
-.iconHelp{
+.iconHelp {
     display: none;
 }
 
@@ -32,14 +32,16 @@ header{
     .toolName {
         display: block;
     }
+
     .headImg {
         display: none;
     }
-    .iconHelp{
-    display: block;
-}
 
-    .headerleftContainer{
+    .iconHelp {
+        display: block;
+    }
+
+    .headerleftContainer {
         display: flex;
         align-items: center;
         gap: 16px;
@@ -51,7 +53,7 @@ header{
 /* Header end*/
 
 /*Footer start*/
-.footer{
+.footer {
     display: flex;
     background-color: #2A3647;
     color: white;
@@ -61,8 +63,37 @@ header{
     justify-content: space-around;
 }
 
-.footerElement{
+.footerElement {
     display: flex;
     flex-direction: column;
 }
+
+.footerElementDesktop{
+    display: none;
+}
+
+
+@media (min-width: 750px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+        background-color: #2A3647;
+        color: white;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 131px;
+        justify-content: space-around;
+        z-index: 30;
+    }
+
+    .footerElement {
+        display: flex;
+        flex-direction: column;
+        display: none;
+    }
+
+}
+
 /*Footer end*/
