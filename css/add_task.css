@@ -115,3 +115,15 @@ textarea{
 .colorBlack{
     color:black
 }
+
+.task_added_overlay{
+    background-color: #2A3647;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    gap: 16px;
+}
