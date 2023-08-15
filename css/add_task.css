@@ -27,6 +27,10 @@ textarea{
 }
 
 /*Add Task*/
+.content{
+    margin-left: 220px;
+}
+
 .gap8px_flexDirCol{
     display: flex;
     flex-direction: column;
@@ -36,13 +40,13 @@ textarea{
 
 .inputdefault{
     height: 40px;
-    width: 90vw;
+    width: 80vw;
     font-family: "Inter"
 }
 
 .inputDescription{
     height: 88px;
-    width: 90vw;
+    width: 80vw;
     resize: none;
     font-family: "Inter"
 }
@@ -50,7 +54,7 @@ textarea{
 .prioDiv {
     display: flex;
     justify-content: space-between;
-    width: 90vw;
+    width: 80vw;
 }
 
 .prioOption {
@@ -68,7 +72,7 @@ textarea{
 }
 
 .buttonDiv{
-    width: 90vw;
+    width: 80vw;
     display: flex;
     justify-content: end;
     padding: 16px;
