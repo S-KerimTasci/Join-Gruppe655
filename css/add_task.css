@@ -7,7 +7,7 @@ font-face {
 
 
 body {
-    background-color: #D1D1D1;
+    background-color: #F6F7F8;
     font-family: 'Inter';
 }
 
@@ -26,10 +26,12 @@ textarea{
     border-radius: 10px;
 }
 
+
 /*Add Task*/
-.content{
+
+/*.content{
     margin-left: 220px;
-}
+}*/
 
 .gap8px_flexDirCol{
     display: flex;
@@ -59,6 +61,7 @@ textarea{
 
 .prioOption {
     background-color: white;
+    border: 1px solid #D1D1D1;
     border-radius: 10px;
     display: flex;
     justify-content: center;
