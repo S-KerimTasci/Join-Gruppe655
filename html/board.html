@@ -36,49 +36,49 @@
     <div id="backgroundContainer">
         <div id="headerBody">
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
-            <div id="completeBoard" class="d-flex justify-content-center gap-5">
-                <section class="my-4">
-                    <div id="boardHead">
-                        <div id="boardHead1" class="d-flex justify-content-between flex_1">
-                            <h1>Board</h1>
-                            <img role="button" src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
+            <div id="completeBoard" class="d-flex justify-content-center gap-5 scrollContent">
+                <section class="boardGeneralSettings ">
+                    <div id="boardHead" class="headBoard">
+                        <div id="boardHead1" class=" d-flex justify-content-between align-items-center">
+                            <h1 class="boardHeading">Board</h1>
+                            <img class="boardHeadingAddTaskSmall" role="button" src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
                         </div>
-                        <div id="boardHead2" class="d-flex">
-                            <div id="searchContainer" class="d-flex">
-                                <input id="boardSearch" type="search" placeholder="Find Task">
+                        <div id="boardHead2" class="headBoard2">
+                            <div id="searchContainer" class="myBoardHead2 d-flex justify-content-between">
+                                <input id="boardSearch" type="search" placeholder="Find Task" class="">
                                 <div class="searchDivider"></div>
                                 <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="search()">
                             </div>
-                            <button onclick="addTask()">add task +</button>
+                            <button class="headAddTaskBtn" onclick="addTask()">add task +</button>
                         </div>
                     </div>
                     <div id="firstContentContainer" class="">
-                        <div id="firstContentHead" class="d-flex justify-content-between">
+                        <div id="firstContentHead" class="d-flex justify-content-between contentHead">
                             <h3>To do</h3>
                             <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                         </div>
-                        <div><span>No Tasks To do</span></div>
+                        <div class="defaultTaskContainer"><span>No Tasks To do</span></div>
                     </div>
                     <div id="secondContentContainer" class="">
-                        <div id="secondContentHead" class="d-flex justify-content-between">
+                        <div id="secondContentHead" class="d-flex justify-content-between contentHead">
                             <h3>In progress</h3>
                             <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                         </div>
-                        <div><span>No Tasks In progress</span></div>
+                        <div class="defaultTaskContainer"><span>No Tasks In progress</span></div>
                     </div>
                     <div id="thirdContentContainer" class="">
-                        <div id="thirdContentHead" class="d-flex justify-content-between">
+                        <div id="thirdContentHead" class="d-flex justify-content-between contentHead">
                             <h3>Await feedback</h3>
                             <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                         </div>
-                        <div><span>No Tasks Await feedback</span></div>
+                        <div class="defaultTaskContainer"><span>No Tasks Await feedback</span></div>
                     </div>
                     <div id="fourthContentContainer" class="">
-                        <div id="fourthContentHead" class="d-flex">
+                        <div id="fourthContentHead" class="d-flex contentHead">
                             <h3>Done</h3>
                            
                         </div>
-                        <div><span>No Tasks Done</span></div>
+                        <div class="defaultTaskContainer"><span>No Tasks Done</span></div>
                     </div>
                 </section>
 
