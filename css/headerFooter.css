@@ -100,6 +100,11 @@ header {
     #backgroundContainer{/* neu */
         display: flex;/* neu */
         flex-direction: row-reverse;/* neu */
+        justify-content: flex-end;
+        max-width: 1440px;
+     }
+     #headerBody{
+        flex: 1;
      }
 
     .footer {
