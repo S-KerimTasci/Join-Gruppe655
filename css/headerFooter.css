@@ -28,7 +28,7 @@ header {
     display: none;
 }
 
-@media (min-width: 555px) {
+@media (min-width: 750px) {
     .toolName {
         display: block;
     }
@@ -69,7 +69,7 @@ header {
     flex-direction: column;
 }
 
-.footerDesktop{
+.footerDesktop {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -78,34 +78,42 @@ header {
     padding-bottom: 20px;
 }
 
-.footerElementDesktop{
+.footerElementDesktop {
     /*display: none;*/
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.footerDesktopMiddle{
+.footerDesktopMiddle {
     gap: 15px;
     display: flex;
     flex-direction: column;
 }
 
-.colorGrey{
+.colorGrey {
     color: #A8A8A8;
 }
 
 
 @media (min-width: 750px) {
+    #backgroundContainer{/* neu */
+        display: flex;/* neu */
+        flex-direction: row-reverse;/* neu */
+     }
+
     .footer {
         display: flex;
         flex-direction: column;
         background-color: #2A3647;
         color: white;
-        position: fixed;
+
+        position: inherit; /* neu */
+        height: 100vh; /* neu */
+       /*  position: fixed; 
         left: 0;
         top: 0;
-        bottom: 0;
+        bottom: 0; */
         width: 200px;
         justify-content: space-around;
         align-items: center;
@@ -120,8 +128,8 @@ header {
 
 }
 
-@media (max-width: 750px){
-    .footerDesktop{
+@media (max-width: 750px) {
+    .footerDesktop {
         display: none;
     }
 }
