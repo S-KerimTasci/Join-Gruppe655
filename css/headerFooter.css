@@ -1,5 +1,5 @@
 /*global*/
-a{
+a {
     text-decoration: none;
     color: white;
 }
@@ -7,7 +7,6 @@ a{
 /* Header start*/
 header {
     box-shadow: 0px 4px 4px 0px #0000001A;
-   
 }
 
 .headCircle {
@@ -38,6 +37,7 @@ header {
 @media (min-width: 750px) {
     .toolName {
         display: block;
+        font-size: 20px;
     }
 
     .headImg {
@@ -48,11 +48,16 @@ header {
         display: block;
     }
 
-    .headerleftContainer {
+    .headerContainer {
+        height: 96px;
+        padding: 20px 40px 20px 116px
+    }
+
+    .headerRightContainer {
         display: flex;
         align-items: center;
         gap: 16px;
-        width: 104px;
+        /* width: 104px; */
         height: 56px;
     }
 }
@@ -104,15 +109,19 @@ header {
 
 
 @media (min-width: 750px) {
-    #backgroundContainer{/* neu */
-        display: flex;/* neu */
-        flex-direction: row-reverse;/* neu */
+    #backgroundContainer {
+        /* neu */
+        display: flex;
+        /* neu */
+        flex-direction: row-reverse;
+        /* neu */
         justify-content: flex-end;
         max-width: 1440px;
-     }
-     #headerBody{
+    }
+
+    #headerBody {
         flex: 1;
-     }
+    }
 
     .footer {
         display: flex;
@@ -120,9 +129,11 @@ header {
         background-color: #2A3647;
         color: white;
 
-        position: inherit; /* neu */
-        height: 100vh; /* neu */
-       /*  position: fixed; 
+        position: inherit;
+        /* neu */
+        height: 100vh;
+        /* neu */
+        /*  position: fixed; 
         left: 0;
         top: 0;
         bottom: 0; */
