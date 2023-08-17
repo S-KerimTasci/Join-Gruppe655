@@ -21,8 +21,8 @@
 
      <!-- JS -->
      <script src="../js/summary.js" defer></script>
-    <script src="../js/script.js"></script>
-    <script src="../js/add_task.js"></script>
+    <script src="../js/script.js" defer></script>
+    <script src="../js/add_task.js" defer></script>
     <script src="../js/headFootTemplate.js" defer></script>
 </head>
 
@@ -32,7 +32,7 @@
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
 
 
-            <div class="content">
+            <div id="content" class="content">
                 <h1><b>Add Task</b></h1>
                 <form onsubmit="createTask();return false">
                     <div class="gap8px_flexDirCol">
