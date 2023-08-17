@@ -36,37 +36,37 @@
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
             <div id="completeSummary" class="d-flex justify-content-center gap-5">
                 <section class="mx-3">
-                    <div class="summarHeader my-4">
+                    <div class="summarHeader">
                         <h1>Summery</h1>
                         <div class="summarHeaderFlip">
                             <p>Everything in a nutshell!</p>
-                            <div class="summeryLine"></div>
+                            <div class="summaryLine"></div>
                         </div>
                     </div>
                     <div class="d-flex align-items-center gap-5">
                         <div id="taskOverview" class="taskOverviewSize">
-                            <div id="taskOverviewTop" class="taskOvContainer d-flex justify-content-between gap-4">
-                                <div id="allTasks" class="flex_1 containerShadow">
+                            <div id="taskOverviewTop" class="taskOvContainer d-flex justify-content-between gap24">
+                                <div id="allTasks" class="task3Container containerShadow">
                                     <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
-                                        <h2 id="countAllTasks">5</h2>
-                                        <p>Tasks in Board</p>
+                                        <h2 id="countAllTasks" class="taskNumbers">5</h2>
+                                        <p class="taskTxt">Tasks in Board</p>
                                     </div>
                                 </div>
-                                <div id="tasksInProgess" class="flex_1 containerShadow">
+                                <div id="tasksInProgess" class="task3Container containerShadow">
                                     <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
-                                        <h2 id="countTasksInProgress">2</h2>
-                                        <p>Tasks in Progress</p>
+                                        <h2 id="countTasksInProgress" class="taskNumbers">2</h2>
+                                        <p class="taskTxt">Tasks in Progress</p>
                                     </div>
                                 </div>
-                                <div id="taskAwaitingFeedback" class="flex_1 containerShadow">
+                                <div id="taskAwaitingFeedback" class="task3Container containerShadow">
                                     <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
-                                        <h2 id="counttaskAwaitingFeedback">2</h2>
-                                        <p>Awaiting Feedback</p>
+                                        <h2 id="counttaskAwaitingFeedback" class="taskNumbers">2</h2>
+                                        <p class="taskTxt">Awaiting Feedback</p>
                                     </div>
                                 </div>
                             </div>
                             <div id="taskOverviewMiddle"
-                                class=" my-3 taskOvContainer  containerShadow d-flex gap-2 justify-content-center  align-items-center">
+                                class="taskUrgentContainer containerShadow d-flex gap-2 justify-content-center align-items-center">
                                 <div id="taskOverviewMiddleLeft" class="d-flex align-items-center gap-2 ">
                                     <div class="d-flex align-items-center">
                                         <div
@@ -75,8 +75,8 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <h2 id="taskUrgent">1</h2>
-                                        <p>Urgent</p>
+                                        <h2 id="taskUrgent" class="taskNumbers">1</h2>
+                                        <p class="taskTxt">Urgent</p>
                                     </div>
                                 </div>
                                 <div id="taskOverviewMiddleMid">
@@ -84,28 +84,28 @@
                                 </div>
                                 <div id="taskOverviewMiddleRight">
                                     <p id="taksUrgentDate">October 16, 2022</p>
-                                    <p>Upcoming Deadline</p>
+                                    <p class="taskTxt">Upcoming Deadline</p>
                                 </div>
                             </div>
-                            <div id="taskOverviewBottom" class="taskOvContainer d-flex justify-content-between gap-4">
+                            <div id="taskOverviewBottom" class="taskRestOvContainer d-flex justify-content-between gap-4">
                                 <div
-                                    class="flex_1 containerShadow d-flex justify-content-center align-items-center gap-2">
+                                    class="taskRestOvWidth containerShadow d-flex justify-content-center align-items-center gap-2">
                                     <div>
                                         <img src="../assets/img/summeryPencil.svg" alt="Pencil">
                                     </div>
                                     <div class="text-center">
-                                        <h2 id="taskToDd">1</h2>
-                                        <p>To-Do</p>
+                                        <h2 id="taskToDd" class="taskNumbers">1</h2>
+                                        <p class="taskTxt">To-Do</p>
                                     </div>
                                 </div>
                                 <div
-                                    class="flex_1 containerShadow d-flex justify-content-center align-items-center gap-2">
+                                    class="taskRestOvWidth containerShadow d-flex justify-content-center align-items-center gap-2">
                                     <div>
                                         <img src="../assets/img/summeryDone.svg" alt="Pencil">
                                     </div>
                                     <div class="text-center">
-                                        <h2 id="taskDone">1</h2>
-                                        <p>Done</p>
+                                        <h2 id="taskDone" class="taskNumbers">1</h2>
+                                        <p class="taskTxt">Done</p>
                                     </div>
 
                                 </div>
