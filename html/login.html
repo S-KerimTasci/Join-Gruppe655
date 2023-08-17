@@ -30,8 +30,6 @@
     <script src="../js/add_contact.js"></script>
     <script src="../js/add_task.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/summary.js"></script>
-
 
     <title>Login</title>
 </head>
@@ -39,7 +37,7 @@
 <body onload="initAnimation(); initAnimationResponsiv()">
 
     <div id="initAnimation" class="init-animation" style="display:flex">
-        <img id="initAnimationImg" src="../assets/img/logo-white.svg">
+        <img id="initAnimationImg" src="../assets/img/logo-black.svg">
     </div>
 
     <div id="initAnimationResponsiv" class="init-animation-responsiv" style="display: flex">
@@ -52,7 +50,7 @@
             <img class="logo-black" src="../assets/img/logo-black.svg">
             <div id="headerRight" class="header-right">
                 <div>Not a Join user?</div>
-                <button onclick="" class="sign-up">Sign up</button>
+                <button onclick="openSignUp(this)" class="sign-up">Sign up</button>
             </div>
         </div>
 
@@ -93,12 +91,13 @@
             </div>
             <div id="headerRightResponsiv" class="header-right-responsiv">
                 <div>Not a Join user?</div>
-                <button onclick="" class="sign-up-btn-responsiv">Sign up</button>
+                <button onclick="openSignUp(this)" class="sign-up-btn-responsiv">Sign up</button>
             </div>
             <div class="confirm-text-responsiv-login" style="display: none;"></div>
-            <a href="#" class="legal-notice">
-                <img src="../assets/img/legal-notice.svg" alt="Legal Notice">
-            </a>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Legal Notice</a>
+            </div>
         </div>
 
         <!-- Forgot Password -->
