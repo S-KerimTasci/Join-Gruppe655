@@ -25,10 +25,12 @@
     font-weight: 400;
     margin: 3px;
 }
-.taskOverviewSize{
+
+.taskOverviewSize {
     height: calc(100vh - 340px);
     overflow-y: auto;
 }
+
 .taskOvContainer {
     width: 100%;
 }
@@ -41,28 +43,21 @@
 .taskUrgentContainer {
     height: 116px;
     margin: 20px 0;
+    padding: 28px 0;
+    gap: 20px;
 }
 
-.taskRestOvContainer{
-    height: 116px;
-}
-.taskRestOvWidth{
-    width: 162px;
+.taskUrgentLeft {
+    gap: 18px;
 }
 
-.taskNumbers{
-     font-size: 47px;
-    font-weight: 600; 
+.taskUrgentRight p {
+    margin: 0;
 }
 
-.taskTxt{
-     font-size: 14px;
-    font-weight: 400; 
-}
-.containerShadow {
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    border-radius: 30px;
-    background-color: white;
+#taksUrgentDate {
+    font-weight: 700;
+    font-size: 16px;
 }
 
 .summaryUrgentCircle {
@@ -73,10 +68,49 @@
 }
 
 #taskOverviewMiddleMid {
-    height: 80%;
+    height: 68px;
     width: 2px;
     background-color: rgb(209, 209, 209);
     border-radius: 8px;
+}
+
+.taskRestOvContainer {
+    height: 116px;
+}
+
+.taskRestOvWidth {
+    width: 175px;
+    background-color: #29ABE2 !important;
+}
+
+.taskNumbers {
+    font-size: 47px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.taskTxt {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.containerShadow {
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 20px;
+    background-color: white;
+    background-color: #29ABE2 !important;
+}
+
+
+.showWelcome h2 {
+    font-size: 36px;
+    font-weight: 400;
+}
+.showWelcome h1 {
+    font-size: 47px;
+    font-weight: 700;
+    color: #29ABE2;
 }
 
 .welcome {
@@ -94,11 +128,36 @@
     .gap24 {
         gap: 24px;
     }
+
+    .taskRestOvWidth {
+        width: 186px;
+
+    }
 }
 
 @media (min-width: 750px) {
     .showWelcome {
+        width: calc(100% - 200px);
+        position: absolute;
+        top: 100px;
+        left: 200px;
+    }
+}
+
+@media (min-width: 960px) {
+    .showWelcome {
         display: flex !important;
+        width: auto;
+        position: static;
+    }
+
+    .showWelcome h2 {
+        font-size: 47px;
+        font-weight: 500;
+    }
+
+    .showWelcome h1 {
+        font-size: 64px;
     }
 
     .summarHeader {
@@ -122,13 +181,91 @@
 }
 
 @media (min-width: 1440px) {
+    #completeSummary {
+        display: block !important;
+        padding-top: 110px;
+        padding-left: 128px;
+    }
+
+    .summarHeader {
+        height: 73px;
+        width: 651px;
+        align-items: center;
+    }
+
+    .summarHeader h1 {
+        font-size: 61px;
+    }
+
+    .summarHeader p {
+        font-size: 27px;
+    }
+
     .taskOverviewSize {
         width: 560px;
         height: 561px;
+        margin-top: 37px;
+        overflow: hidden;
+    }
+
+    .taskNumbers {
+        font-size: 64px;
+    }
+
+    .taskTxt {
+        font-size: 20px;
     }
 
     .taskOvContainer {
         height: 170px;
+        width: 560px;
     }
+
+    .task3Container {
+        width: 168px;
+        height: 168px;
+    }
+
+    .taskUrgentContainer {
+        height: 168px;
+        margin: 28px 0;
+        padding: 28px 0;
+        gap: 61px;
+    }
+
+    .summaryUrgentCircle {
+        width: 60px;
+        height: 60px;
+    }
+
+    #taskOverviewMiddleMid {
+        height: 102px;
+    }
+
+    #taksUrgentDate {
+        font-size: 21px;
+    }
+
+    .taskRestOvContainer {
+        height: 168px;
+    }
+
+    .taskRestOvWidth {
+        width: 264px;
+    }
+
+    .taskRestOvWidth img {
+        height: 69px;
+
+    }
+
+
+
+
+
+
+
+
+
 
 }

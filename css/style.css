@@ -1,6 +1,8 @@
 body {
     margin: 0;
     background-color: #F6F7F8;
+    font-family: 'Inter';
+    font-weight: 400;
 }
 
 /*Add Task*/
@@ -33,4 +35,3 @@ body {
     display: flex;
     align-items: center;
 }
-
