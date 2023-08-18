@@ -7,6 +7,7 @@ const mql = window.matchMedia("(max-width: 750px)");
 
 checkScreen()
 
+
 mql.onchange = (e) => {
     if (e.matches) {
       /* the viewport is 750 pixels wide or less */
@@ -103,13 +104,8 @@ function checkScreen(){
     } else if(small) {
         content.innerHTML = addTaskMobileTemplate()
     }
-
 }
 
-
-
-
-//window.onresize = switchDektopMobileAddTask;
 
 function addTaskMobileTemplate(){
     return `<h1><b>Add Task</b></h1>
