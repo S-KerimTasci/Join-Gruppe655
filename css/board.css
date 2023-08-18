@@ -1,7 +1,8 @@
 .boardGeneralSettings {
-    max-width: 396px;
+    /* max-width: 396px; */
+
     margin-top: 48px;
-    padding: 0, 3px;
+    padding: 0 3px;
 }
 
 .scrollContent {
@@ -10,9 +11,10 @@
 }
 
 .boardHeading {
-    height: 56px;
+    /* height: 56px; */
     font-size: 47px;
-    padding: 0, 3px;
+    font-weight: 700;
+     
 }
 
 .myBoardHead2 {
@@ -38,6 +40,7 @@
 input[type=search] {
     border: 0;
     outline: none;
+    width: 260px;
 }
 
 input[type=search]::placeholder {
@@ -66,6 +69,7 @@ input[type=search]:focus {
 
 .contentBoard h3 {
     font-size: 27px;
+    font-weight: 700;
 }
 
 .contentBoard img {
@@ -102,11 +106,12 @@ input[type=search]:focus {
     .headBoard {
         display: flex;
         align-items: center;
-        max-width: 1056px;
+        max-width: 1240px;
         height: 73px;
         justify-content: space-between;
-        padding-left: 64px;
+        padding: 0 64px;
         margin-bottom: 48px;
+        gap: 32px;
     }
 
     .boardHeadingAddTaskSmall {
@@ -145,7 +150,20 @@ input[type=search]:focus {
     input[type=search] {
         width: 227px;
     }
+    .boardContent{
+        padding: 0 64px;
+    }
 
+}
+@media (min-width: 1000px) {
+    .boardHeading{
+        font-size: 61px;
+    }
+}
+
+
+
+@media (min-width: 1440px) {
     .contentBoard {
         width: 244px;
         height: 24px;
