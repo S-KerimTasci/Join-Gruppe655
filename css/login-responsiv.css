@@ -255,6 +255,16 @@
         gap: 8px; 
         font-size: 12px; 
     }
+    .here-responsiv {
+        display: inline;
+        color:  #29abe2;
+        font-weight: bold; 
+        cursor: pointer;
+        font-size: 21px;
+    }
+    .here-responsiv:hover { 
+        text-decoration: underline;
+    }
 }
 
 @media (max-width: 425px) {
