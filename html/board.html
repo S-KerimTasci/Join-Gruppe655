@@ -21,6 +21,7 @@
     <!-- <link rel="stylesheet" href="../css/summary.css"> -->
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/headerFooter.css">
+    <link rel="stylesheet" href="../css/singleTask.css">
 
 
     <!-- JS -->
@@ -83,9 +84,40 @@
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
                             <div class="boardTaskContainer">
-                                <div class="defaultTaskContainer"><span>No Tasks To do</span></div>
-                                <div>
+                                <div id="idPlaceholderTaskToDo" class="defaultTaskContainer"><span>No Tasks To do</span>
+                                </div>
+                                <div id="idTaskToDo">
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
+                                    <div id="idTaskId" class="singleTaskContainer">
+                                        <div id="idTaskType" class="singlTaskType">User Story</div>
+                                        <div id="idTaskTxts" class="singelTaskTexts">
+                                            <div id="idTaskHeadline" class="singleTaskHeadline">Contact Form & Imprint
+                                            </div>
+                                            <div id="idTaskShortTxt" class="singleTaskTxt">Create a contact form and
+                                                imprint page...</div>
+                                        </div>
+                                        <div id="idTaskSubTask" class="TaskSubTask">
+                                            <div id="idSingleTaskSubProgress" class="SingleTaskSubProgress"></div>
+                                            <div id="idSingleTaksCount" class="SingleTaksCount">
+                                                <span id="idSingleTaksCountPart">0</span>
+                                                <span>/</span>
+                                                <span id="idSingleTaksCountTotal">2</span>
+                                                <span> Subtasks</span>
+                                            </div>
+                                        </div>
+                                        <div id="idSingleTaskMemberPrio" class="SingleTaskMemberPrio">
+                                            <div id="idSingleTaskMember" class="SingleTaskMember">
+                                                <!-- hier müssen dann über eine Funktion die Memberplaketten eingefüt werden -->
+                                                <div id="idmenberPlaceholder1" class="memberPlaceholder">AS</div>
+                                                <div id="idmenberPlaceholder2" class="memberPlaceholder">FM</div>
+                                                <div id="idmenberPlaceholder3" class="memberPlaceholder">GR</div>
+                                            </div>
+                                            <div id="idSingleTaskPrio" class="SingleTaskPrio">
+                                                <img src="../assets/img/prio_urgent.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Ende des Codes >> Platzhalter für Testzwecke-->
                                 </div>
                             </div>
                         </div>
@@ -96,7 +128,11 @@
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
                             <div class="boardTaskContainer">
-                                <div class="defaultTaskContainer"><span>No Tasks In progress</span></div>
+                                <div id="idPlaceholderTaskInProgr" class="defaultTaskContainer"><span>No Tasks In
+                                        progress</span></div>
+                                <div id="idTaskInProgress">
+                                    <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
+                                </div>
                             </div>
                         </div>
                         <div id="thirdContentContainer" class="">
@@ -105,7 +141,11 @@
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
                             <div class="boardTaskContainer">
-                                <div class="defaultTaskContainer"><span>No Tasks Await feedback</span></div>
+                                <div id="idPlaceholderTaskAwaitFeedb" class="defaultTaskContainer"><span>No Tasks Await
+                                        feedback</span></div>
+                                <div id="idTaskAwaitFeedback">
+                                    <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
+                                </div>
                             </div>
                         </div>
                         <div id="fourthContentContainer" class="">
@@ -114,7 +154,11 @@
 
                             </div>
                             <div class="boardTaskContainer">
-                                <div class="defaultTaskContainer"><span>No Tasks Done</span></div>
+                                <div id="idPlaceholderTaskDone" class="defaultTaskContainer"><span>No Tasks Done</span>
+                                </div>
+                                <div id="idTaskDone">
+                                    <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
+                                </div>
                             </div>
                         </div>
                     </div>
