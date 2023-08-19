@@ -12,6 +12,7 @@ mql.onchange = (e) => {
       /* the viewport is more than 750 pixels wide */
       content.innerHTML= addTaskDektopTemplate();
     }
+    loadContacts()
   }
 
   function checkScreen(){
@@ -23,6 +24,8 @@ mql.onchange = (e) => {
     } else if(small) {
         content.innerHTML = addTaskMobileTemplate()
     }
+
+    loadContacts()
 }
 
 

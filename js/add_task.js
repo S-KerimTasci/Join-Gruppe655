@@ -43,12 +43,13 @@ function loadAllTasks(){
 }
 
 function loadContacts(){
+    document.getElementById('inputAssignedTo').innerHTML = `<option value="" disabled selected hidden>Select conntacts to assign</option>`
+
     for (let i = 0; i < allContacts.length; i++) {
         const contact = allContacts[i];
 
         document.getElementById('inputAssignedTo').innerHTML += `<option>${contact}</option>`
     }
-    
 }
 
 
