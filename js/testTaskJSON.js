@@ -1,5 +1,7 @@
-let taskJson = {
-    "task001": {
+let taskJson = [{
+
+
+    "task1": {
         "taskType": "User Story",
         "status": "inProgress",
         "headline": "Test 1",
@@ -12,8 +14,9 @@ let taskJson = {
             "Gerid Raht"
         ],
         "urgency": "urgent"
-    },
-    "task002": {
+    }},
+    {
+    "task2": {
         "taskType": "User Story",
         "status": "toDo",
         "headline": "Test 2",
@@ -26,8 +29,9 @@ let taskJson = {
             "Quenin Tarantino"
         ],
         "urgency": "medium"
-    },
-    "task003": {
+    }},
+    {
+    "task3": {
         "taskType": "Technical Task",
         "status": "toDo",
         "headline": "Test 3",
@@ -39,10 +43,11 @@ let taskJson = {
             "Nico Liebig"
         ],
         "urgency": "medium"
-    },
-    "task004": {
+    }},
+    {
+    "task4": {
         "taskType": "Technical Task",
-        "status": "toDo",
+        "status": "awaitFeedback",
         "headline": "Test 4",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
@@ -52,8 +57,9 @@ let taskJson = {
             "Anne Xi"
         ],
         "urgency": "low"
-    },
-    "task005": {
+    }},
+    {
+    "task5": {
         "taskType": "Technical Task",
         "status": "toDo",
         "headline": "Test 5 mit ein wenig mehr Text, weil auch geschaut werden muss dass 2 Zeilen nicht überschritten werden.",
@@ -66,8 +72,9 @@ let taskJson = {
             "Frank Loh"
         ],
         "urgency": "low"
-    },
-    "task006": {
+    }},
+    {
+    "task6": {
         "taskType": "Technical Task",
         "status": "done",
         "headline": "Test 6 mit ein wenig mehr Text.",
@@ -79,5 +86,5 @@ let taskJson = {
             "Olli Hopfen"
         ],
         "urgency": "urgent"
-    }
-}
+    }}
+]
