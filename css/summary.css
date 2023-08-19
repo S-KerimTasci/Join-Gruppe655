@@ -67,7 +67,7 @@
     border-radius: 100%;
 }
 
-#taskOverviewMiddleMid {
+#idTaskOverviewMiddleMid {
     height: 68px;
     width: 2px;
     background-color: rgb(209, 209, 209);
@@ -181,7 +181,7 @@
 }
 
 @media (min-width: 1440px) {
-    #completeSummary {
+    #idCompleteSummary {
         display: block !important;
         padding-top: 110px;
         padding-left: 128px;
@@ -238,11 +238,11 @@
         height: 60px;
     }
 
-    #taskOverviewMiddleMid {
+    #idTaskOverviewMiddleMid {
         height: 102px;
     }
 
-    #taksUrgentDate {
+    #idTaksUrgentDate {
         font-size: 21px;
     }
 

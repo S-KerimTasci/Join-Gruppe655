@@ -1,5 +1,6 @@
 const STORAGE_TOKEN = 'JCBM19KHMDXFWN16VAJWOY8L41ZV33EX7L3HYKWY';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
+const KEY_for_JSON = 'Join-Group655';
 
 /**
  * This function saves Data into the backend.

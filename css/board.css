@@ -37,7 +37,7 @@
     display: none;
 }
 
-input[type=search] {
+input[type=search] { /* das input benötigt eventuell eine Klasse */
     border: 0;
     outline: none;
     width: 260px;

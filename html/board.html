@@ -34,21 +34,21 @@
 </head>
 
 <body onload="init()">
-    <div id="backgroundContainer">
-        <div id="headerBody">
+    <div id="idBackgroundContainer">
+        <div id="idHeaderBody">
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
-            <div id="completeBoard" class="d-flex justify-content-center gap-5 scrollContent">
+            <div id="idCompleteBoard" class="d-flex justify-content-center gap-5 scrollContent">
                 <section class="boardGeneralSettings ">
-                    <div id="boardHead" class="boardHeadBgCont">
+                    <div id="idBoardHead" class="boardHeadBgCont">
                         <div class="headBoard">
-                            <div id="boardHead1" class=" d-flex justify-content-between align-items-center">
+                            <div id="idBoardHead1" class=" d-flex justify-content-between align-items-center">
                                 <h1 class="boardHeading">Board</h1>
                                 <img class="boardHeadingAddTaskSmall" role="button"
                                     src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
                             </div>
-                            <div id="boardHead2" class="headBoard2">
-                                <div id="searchContainer" class="myBoardHead2 d-flex justify-content-between">
-                                    <input id="boardSearch" type="search" placeholder="Find Task" class="">
+                            <div id="idBoardHead2" class="headBoard2">
+                                <div id="idSearchContainer" class="myBoardHead2 d-flex justify-content-between">
+                                    <input id="idBoardSearch" type="search" placeholder="Find Task" class="">
                                     <div class="searchDivider"></div>
                                     <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="search()">
                                 </div>
@@ -58,28 +58,28 @@
                                 </button>
                             </div>
                         </div>
-                        <div id="boardHead3" class="headBoard3">
-                            <div id="firstContentBoardDesk" class="d-flex justify-content-between contentBoard">
+                        <div id="idBoardHead3" class="headBoard3">
+                            <div id="idFirstContentBoardDesk" class="d-flex justify-content-between contentBoard">
                                 <h3>To do</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
-                            <div id="secondContentBoardDesk" class="d-flex justify-content-between contentBoard">
+                            <div id="idSecondContentBoardDesk" class="d-flex justify-content-between contentBoard">
                                 <h3>In progress</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
-                            <div id="thirdContentBoardDesk" class="d-flex justify-content-between contentBoard">
+                            <div id="idThirdContentBoardDesk" class="d-flex justify-content-between contentBoard">
                                 <h3>Await feedback</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
-                            <div id="fourthContentBoardDesk" class="d-flex contentBoard">
+                            <div id="idFourthContentBoardDesk" class="d-flex contentBoard">
                                 <h3>Done</h3>
 
                             </div>
                         </div>
                     </div>
-                    <div id="contentBoard" class="boardContent">
-                        <div id="firstContentContainer" class="">
-                            <div id="firstContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
+                    <div id="idContentBoard" class="boardContent">
+                        <div id="idFirstContentContainer" class="">
+                            <div id="idFirstContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>To do</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
@@ -108,9 +108,9 @@
                                         <div id="idSingleTaskMemberPrio" class="SingleTaskMemberPrio">
                                             <div id="idSingleTaskMember" class="SingleTaskMember">
                                                 <!-- hier müssen dann über eine Funktion die Memberplaketten eingefüt werden -->
-                                                <div id="idmenberPlaceholder1" class="memberPlaceholder">AS</div>
-                                                <div id="idmenberPlaceholder2" class="memberPlaceholder">FM</div>
-                                                <div id="idmenberPlaceholder3" class="memberPlaceholder">GR</div>
+                                                <div id="idMenberPlaceholder1" class="memberPlaceholder">AS</div>
+                                                <div id="idMenberPlaceholder2" class="memberPlaceholder">FM</div>
+                                                <div id="idMenberPlaceholder3" class="memberPlaceholder">GR</div>
                                             </div>
                                             <div id="idSingleTaskPrio" class="SingleTaskPrio">
                                                 <img src="../assets/img/prio_urgent.svg" alt="">
@@ -121,8 +121,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="secondContentContainer" class="">
-                            <div id="secondContentBoardMob"
+                        <div id="idSecondContentContainer" class="">
+                            <div id="idSecondContentBoardMob"
                                 class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>In progress</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
@@ -135,8 +135,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="thirdContentContainer" class="">
-                            <div id="thirdContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
+                        <div id="idThirdContentContainer" class="">
+                            <div id="idThirdContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>Await feedback</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
@@ -148,8 +148,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="fourthContentContainer" class="">
-                            <div id="fourthContentBoardMob" class="d-flex contentBoard conBoMob">
+                        <div id="idFourthContentContainer" class="">
+                            <div id="idFourthContentBoardMob" class="d-flex contentBoard conBoMob">
                                 <h3>Done</h3>
 
                             </div>
