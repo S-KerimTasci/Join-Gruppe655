@@ -14,13 +14,18 @@ function renderStatusContainer(status, taskContainerId) {
         console.log(i, activeTask);
         if (status == activeTask.status) {
             document.getElementById(taskContainerId).innerHTML += taskTemplate(activeTask, taskNumber);
-            colorTaskType(activeTask.taskType, taskNumber);
-            taskMember(activeTask.member, taskNumber);
+            callFunctionForSingleTask(activeTask, taskNumber);
         }
     }
 }
 
+function callFunctionForSingleTask(activeTask, taskNumber) {
+    colorTaskType(activeTask.taskType, taskNumber);
+    // hier muss eine Funktion rein, die den Text geürzt auf 2 Zeilen herausgibt
+    taskMember(activeTask.member, taskNumber);
+    // hier muss eine Funktion rein, die die subtask bar berechnet
 
+}
 
 
 function taskTemplate(task, taskNr) {
@@ -28,7 +33,7 @@ function taskTemplate(task, taskNr) {
     <div id="idTaskId${taskNr}" class="singleTaskContainer">
         <div id="idTaskType${taskNr}" class="singlTaskType">User Story </div>
         <div id="idTaskTxts${taskNr}" class="singelTaskTexts">
-            <div id="idTaskHeadline${taskNr}" class="singleTaskHeadline">Contact Form & Imprint${task.headline}
+            <div id="idTaskHeadline${taskNr}" class="singleTaskHeadline">${task.headline}
             </div>
             <div id="idTaskShortTxt${taskNr}" class="singleTaskTxt">Create a contact form and
                 imprint page...</div>
@@ -36,19 +41,15 @@ function taskTemplate(task, taskNr) {
         <div id="idTaskSubTask${taskNr}" class="TaskSubTask">
             <div id="idSingleTaskSubProgress${taskNr}" class="SingleTaskSubProgress"></div>
             <div id="idSingleTaksCount${taskNr}" class="SingleTaksCount">
-                <span id="idSingleTaksCountPart${taskNr}">0</span>
+                <span id="idSingleTaksCountPart${taskNr}">${task.doneSubTasks}</span>
                 <span>/</span>
-                <span id="idSingleTaksCountTotal${taskNr}">2</span>
+                <span id="idSingleTaksCountTotal${taskNr}">${task.sbuTaskTotal}</span>
                 <span> Subtasks</span>
             </div>
         </div>
         <div id="idSingleTaskMemberPrio${taskNr}" class="SingleTaskMemberPrio">
             <div id="idSingleTaskMember${taskNr}" class="SingleTaskMember">
-                <!-- hier müssen dann über eine Funktion die Memberplaketten eingefüt werden 
-            Die Funktion muss eine Schleife beinhalten-->
-               <!--  <div id="idMemberPlaceholder1${taskNr}" class="memberPlaceholder">AS</div>
-                <div id="idMemberPlaceholder2${taskNr}" class="memberPlaceholder">FM</div>
-                <div id="idMemberPlaceholder3${taskNr}" class="memberPlaceholder">GR</div> -->
+                <!-- hier müssen dann über eine Funktion die Memberplaketten eingefügt werden -->
             </div>
             <div id="idSingleTaskPrio${taskNr}" class="SingleTaskPrio">
                 <img src="../assets/img/prio_urgent.svg" alt="">
@@ -87,7 +88,8 @@ function colorTaskType(taskType, taskNr) {
 function taskMember(arrMember, taskNr) {
     for (let i = 0; i < arrMember.length; i++) {
         let membinitials = memberInitials(arrMember[i]);
-        document.getElementById('idSingleTaskMember').innerHTML = `<div id="idMemberPlaceholder${taskNr}_${i}" class="memberPlaceholder">${membinitials}</div>`
+        document.getElementById('idSingleTaskMember' + taskNr).innerHTML += `<div id="idMemberPlaceholder${taskNr}_${i}" class="memberPlaceholder">${membinitials}</div>`
+        // um die Hintergrundfarbe einzufügen muss hier noch Code rein. 
     }
 }
 
