@@ -89,13 +89,14 @@ input[type=search]:focus {
     border: 1px dashed #A8A8A8;
 }
 
-/* .taskContainer{
+.taskContainer{
     
     display: flex;
     gap: 5px;
-    width: 350px;
+    width: calc(100vw - 238px);
+    padding: 0 5px;
     overflow-x: scroll;
-} */
+} 
 
 @media (min-width: 750px) {
     .boardGeneralSettings {
@@ -193,6 +194,12 @@ input[type=search]:focus {
         box-shadow: 0px 0px 4px 0px #00000029;
         border-radius: 10px;
         border: 1px dashed #A8A8A8;
+    }
+
+    .taskContainer{
+        flex-direction: column;
+        width: auto;
+        padding: 0;
     }
     
     .conBoMob {
