@@ -89,6 +89,14 @@ input[type=search]:focus {
     border: 1px dashed #A8A8A8;
 }
 
+/* .taskContainer{
+    
+    display: flex;
+    gap: 5px;
+    width: 350px;
+    overflow-x: scroll;
+} */
+
 @media (min-width: 750px) {
     .boardGeneralSettings {
         max-width: 1440px;

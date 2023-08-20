@@ -75,14 +75,14 @@
     height: 30px;
     width: 30px;
 }
-#idmenberPlaceholder1{
+#idMemberPlaceholder1{
     background-color: aquamarine;
 }
-#idmenberPlaceholder2{
+#idMemberPlaceholder2{
     background-color: teal;
     margin-left: -6px;
 }
-#idmenberPlaceholder3{
+#idMemberPlaceholder3{
     background-color: blueviolet;
     margin-left: -6px;
 }
