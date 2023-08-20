@@ -156,7 +156,7 @@
     }
     .mail-reset {
         height: 38px;
-        width: 87%;
+        width: 100%;
     }
     .mail-reset input {
         height: 36px;
@@ -297,13 +297,18 @@
         height: 44px;
     }
     .forgot-content {
-        height: 62vh;
+        height: 70vh;
     }
-    .login-content, .reset-content {
+    .login-content {
        margin-top: 24px;
-        height: 68vh;
+        height: 69vh;
         width: 100%;
     }
+    .reset-content {
+        margin-top: 24px;
+         height: 80vh;
+         width: 100%;
+     }
     .sign-up-content-responsiv {
         width: 100%;
         height: 574px;
@@ -328,9 +333,14 @@
         width: 16px;
         height: 16px
     }
-    .forgot-btn, .reset-btn {
+    .forgot-btn {
         width: 198px;
         font-size: 20px;
+    }
+    .reset-btn {
+        width: 198px;
+        font-size: 20px;
+        margin-top: 48px;
     }
     .sign-up {
         width: 96px;

@@ -20,7 +20,6 @@
         crossorigin="anonymous"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/login-responsiv.css">
     <link rel="stylesheet" href="../css/fonts.css">
@@ -34,7 +33,7 @@
 </head>
 
 <body onload=" initAnimation(); initAnimationResponsiv()">
-   
+
     <div id="initAnimation" class="init-animation" style="display:flex">
         <img id="initAnimationImg" src="../assets/img/logo-black.svg">
     </div>
@@ -48,20 +47,18 @@
             <img class="logo-black" src="../assets/img/logo-black.svg">
             <div id="headerRight" class="header-right">
                 <div>Not a Join user?</div>
-                <button onclick="openSignUp(this)" class="sign-up">Sign up</button>
+                <button onclick="openSignUp()" class="sign-up">Sign up</button>
             </div>
         </div>
-        
-         <!-- Login -->
 
-         <div class="login-inclusive-responsiv" id="loginInclusiveResponsiv">
+        <div class="login-inclusive-responsiv" id="loginInclusiveResponsiv">
             <div class="login-content" id="loginContent">
                 <div class="login-title">
                     <div>Log in</div>
                 </div>
                 <img class="underline" src="../assets/img/login-underline.png">
 
-                <form onsubmit="login(); return false";>
+                <form onsubmit="login(); return false" ;>
                     <div class="login-input">
                         <div class="mail">
                             <input id="email" type="email" name="email" placeholder="Email" required autocomplete="on">
@@ -78,18 +75,18 @@
                             <input type="checkbox" id="checkbox">
                             <label class="not-markable" for="checkbox">Remember Me</label>
                         </div>
-                        <div onclick="openForgotPassword(this)" class="forgot-password">Forgot my password</div>
+                        <div onclick="openForgotPassword()" class="forgot-password">Forgot my password</div>
                     </div>
                     <div class="login-btn">
                         <button class="login">Log in</button>
-                    <button onclick="window.location.href='summary.html'" class="guest-login">Guest Log in</button>
+                        <button onclick="window.location.href='summary.html'" class="guest-login">Guest Log in</button>
                     </div>
-                    <div class="msg-box" id="message" style="display:none"></div> 
+                    <div class="msg-box" id="message" style="display:none"></div>
                 </form>
             </div>
             <div id="headerRightResponsiv" class="header-right-responsiv">
                 <div>Not a Join user?</div>
-                <button onclick="openSignUp(this)" class="sign-up-btn-responsiv">Sign up</button>
+                <button onclick="openSignUp()" class="sign-up-btn-responsiv">Sign up</button>
             </div>
             <div class="confirm-text-responsiv-login" id="confirmTextResponsivLogin" style="display: none;"></div>
             <div class="footer-links">
@@ -97,125 +94,8 @@
                 <a href="legal_notice.html" class="footer-link">Legal Notice</a>
             </div>
         </div>
-
-        <!-- Forgot Password -->
-
-        <div class="forgot-inklusive-responsiv" style="display: none;">
-            <div class="forgot-content">
-                <div class="login-title">
-                    <img onclick="closeForgotPassword(this)" src="../assets/img/sign-up-arrow-left.svg">
-                    <div class="forgot-title">I forgot my password</div>
-                </div>
-                <img src="../assets/img/login-underline.png">
-                <div class="forgot-text">Don't worry! We will send you an email with the instructions to reset your password.</div>
-                <form onsubmit="confirmSendMail(this); return false;">
-                    <div class="login-input" style="height:70px">
-                        <div class="mail">
-                            <input id="forgotMail" type="email" placeholder="Email" required autocomplete="on">
-                            <img src="../assets/img/login-email.svg">
-                        </div>
-                    </div>
-                    <button class="forgot-btn">Send me the email</button>
-                </form>
-
-                <div id="confirmSendMail" class="confirm-send-mail" style="display: none;">
-                    <div class="confirm-box">
-                        <div class="confirm-text">
-                            <img src="../assets/img/email-send.svg">
-                            An E-Mail has been sent to you
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="confirm-text-responsiv" id="confirmTextResponsiv" style="display: none;"></div>
-        </div>
-
-        <!-- Reset Password -->
-
-        <div  id="resetContent" class="reset-inklusive-responsiv" style="display: none;">
-            <div class="reset-content">
-                <div class="login-title">
-                    <img onclick="closeResetPasswort(this)" src="../assets/img/sign-up-arrow-left.svg">
-                    <div class="forgot-title">Reset your password</div>
-                </div>
-                <img src="../assets/img/login-underline.png">
-                <div class="forgot-text">Change your account password</div>
-                <form onsubmit="return false">
-                    <div class="login-input" style="height:72px">
-                        <div class="mail-reset">
-                            <input id="firstPassword" type="password" placeholder="New password" required autocomplete="on">
-                            <img src="../assets/img/login-email.svg">
-                        </div>
-                        <div class="mail-reset">
-                            <input id="secondPassword" type="password" placeholder="Confirm password" required autocomplete="on">
-                            <img src="../assets/img/login-email.svg">
-                        </div>
-                    </div>
-                    <button onclick="resetPassword(this)" class="reset-btn">Continue</button>
-                </form>
-                <div id="resetYourPassword" class="confirm-send-mail" style="display: none;">
-                    <div class="confirm-box">
-                        <div class="confirm-text">
-                            <img src="../assets/img/email-send.svg">
-                            You reset your password
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="confirm-send-mail-responsiv" id="confirm-send-mail-responsiv" style="display: none;"></div>
-        </div>
-
-        <!-- Sign Up -->
-
-        <div class="sign-up-content-responsiv" id="signUpContentResponsiv" style="display:none">
-            <div class="sign-up-content" >
-                <div class="login-content">
-                    <div class="login-title">
-                        <img onclick="closeSignUp(this)" src="../assets/img/sign-up-arrow-left.svg">
-                        <div>Sign up</div>
-                    </div>
-                    <img class="underline" src="../assets/img/login-underline.png">
-        
-                    <form onsubmit="addUser(); return false">
-                        <div class="login-input">
-                            <div class="mail">
-                                <input id="newname" type="name" name="name" placeholder="Name" required autocomplete="on">
-                                <img src="../assets/img/sign-up-name.svg">
-                            </div>
-                            <div class="mail">
-                                <input id="signUpEmail" type="email" name="email" placeholder="Email" required autocomplete="on">
-                                <img src="../assets/img/login-email.svg">
-                            </div>
-                            <div class="mail">
-                                <input id="newpassword" type="password" name="password" placeholder="Password" required
-                                    autocomplete="on">
-                                <img src="../assets/img/login-password.svg">
-                            </div>
-                            <div class="mail">
-                                <input id="confirmpassword" type="password" name="password" placeholder="Confirm Password" required
-                                    autocomplete="on">
-                                <img src="../assets/img/login-password.svg">
-                            </div>
-                        </div>
-                        <div class="sign-up-check">
-                            <div class="remember-password">
-                                <input type="checkbox" id="signUpCheckbox" onchange="toggleSignUpButton(this)">
-                                <label class="not-markable" for="checkbox">I accept the</label>
-                            </div>
-                            <div onclick="openForgotPassword(this)" class="forgot-password">&nbsp;Privacy policy</div>
-                        </div>
-                        <button class="sign-up-btn" id="signUpButton" disabled>Sign up</button>
-                        <div class="msg-box" id="messageNewUser" style="display:none"></div>
-                    </form>
-                </div>
-            </div>
-            <div class="confirm-text-responsiv-sign-up" id="confirmTextResponsivSignUp" style="display: none;"></div>
-            <div class="footer-links">
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Legal Notice</a>
-            </div>
-        </div>
     </div>
 
 </body>
+
 </html>
