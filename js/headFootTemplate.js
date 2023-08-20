@@ -9,12 +9,13 @@ async function init(){
 /**
  * This function returns the initals of the loged in user
  * 
- * @param {string} login - this is the login ofe the user
+ * @param {string} login - this is the login of the user
  * @returns initials of user
  */
 function initials(login) {
     if (login) {
-        return 'AS' // here add function for getting initials
+        let member = login.fullName; // noch abzusprechen wie der Name des User abgespeichert wird
+        return memberInitials(member); // here add function for getting initials
     } else { return 'G'}
     
 }

@@ -25,3 +25,15 @@ async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return fetch(url).then(res => res.json());
 }
+
+/**
+ * This function returns the first letters of member name i.e. "John Doe"
+ * used in headFootTemplate.js and board.js
+ * 
+ * @param {string} member - this ist the full name of the member
+ * @returns initials of user i.e. "JD"
+ */
+function memberInitials(member){
+    let initials = member.split(' ').map(name => name[0]).join('');
+    return initials;
+}
