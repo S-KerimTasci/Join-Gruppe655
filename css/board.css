@@ -1,6 +1,6 @@
 .boardGeneralSettings {
     /* max-width: 396px; */
-
+    
     margin-top: 48px;
     padding: 0 3px;
 }
@@ -89,14 +89,19 @@ input[type=search]:focus {
     border: 1px dashed #A8A8A8;
 }
 
-.taskContainer{
-    
-    display: flex;
-    gap: 5px;
-    width: calc(100vw - 238px);
-    padding: 0 5px;
-    overflow-x: scroll;
-} 
+ .taskContainer{
+    background-color: green;
+   
+
+}  
+.singleTaskContainer{
+    /* display: inline-block; */
+    width: 250px;
+    height: 200px;
+    background-color: #f0f0f0;
+    margin-right: 10px;
+    vertical-align: top;
+}
 
 @media (min-width: 750px) {
     .boardGeneralSettings {
@@ -161,6 +166,7 @@ input[type=search]:focus {
     }
     .boardContent{
         padding: 0 64px;
+        /* width: calc(100vw - 425px); */
     }
 
 }
@@ -196,12 +202,11 @@ input[type=search]:focus {
         border: 1px dashed #A8A8A8;
     }
 
-    .taskContainer{
-        flex-direction: column;
-        width: auto;
-        padding: 0;
+     .taskContainer{
+        background-color: cadetblue;
+        
     }
-    
+     
     .conBoMob {
         display: none !important;
     }
