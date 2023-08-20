@@ -1,0 +1,153 @@
+font-face {
+    font-family: 'Inter';
+    src: url('../assets/fonts/Inter-Regular.woff') format('woff');
+    font-family: 'Inter Bold';
+    src: url('../assets/fonts/Inter-Bold.woff') format('woff');
+}
+
+
+body {
+    background-color: #F6F7F8;
+    font-family: 'Inter';
+}
+
+input{
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 13px 21px 13px 21px;
+    width: 90vw;
+    height: 6vh;
+}
+
+.contactsCart{
+    margin: 5vw 5vw 0 5vw;
+}
+
+.contactsHeader{
+    position: relative;
+}
+
+.backArrow{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+
+.aEmail{
+    text-decoration: underline;
+    color: blue;
+}
+
+.aPhone{
+    text-decoration: none;
+    color: black;
+}
+
+.name {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+}
+
+.circle {
+    width: 60px;
+    height: 60px;
+    border: solid 3px white;
+    border-radius: 70px;
+    background-color: orange;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.contactsMenu{
+    position: absolute;
+    right: 10px;
+    bottom: 90px;
+    height: 47px;
+}
+
+.createContactOverlay{
+    height: 100vh;
+}
+
+.contactsHeaderOverlay{
+    background-color: #2A3647;
+    color: white;
+    padding: 66px 24px 66px 24px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-bottom: -50px;
+    height: 260px;
+    position: relative;
+}
+
+.close{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+}
+
+.createContactProfile{
+    display: flex;
+    justify-content: center;
+    background-color: none;
+}
+
+.contactsFooterOverlay{
+    background-color: white;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin-top: -30px;
+    padding-top: 45px;
+}
+.inputArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.buttonDiv{
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+.createButton {
+    background-color: #2A3647;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.z12{
+    z-index: 12;
+}
+
+.circle80px{
+    height: 80px;
+    width: 80px;
+}
+
+.inputName{
+    background: url(../assets/img/person_input_name.svg) no-repeat scroll 7px 7px;
+    background-position: 95%;
+}
+
+.inputMail{
+    background: url(../assets/img/mail_inpit_mail.svg) no-repeat scroll 7px 7px;
+    background-position: 95%;
+}
+
+.inputTel{
+    background: url(../assets/img/call_input_tel.svg) no-repeat scroll 7px 7px;
+    background-position: 95%;
+}
