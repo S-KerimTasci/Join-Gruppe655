@@ -533,6 +533,7 @@ tr td:nth-child(2) {
 
 .confirm-text-responsiv-sign-up {
     color: transparent;
+    text-align: center;
 }
 
 .confirm-send-mail {
