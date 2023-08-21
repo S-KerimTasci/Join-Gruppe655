@@ -1,9 +1,8 @@
-let taskJson = [{
-
-
-    "task1": {
+let taskJson = [
+    {
+        "taskId": "1",
         "taskType": "User Story",
-        "dueDate": "10.9.2023",
+        "dueDate": "31.10.2023",
         "status": "inProgress",
         "headline": "Test 1",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -15,12 +14,11 @@ let taskJson = [{
             "Gerid Raht"
         ],
         "urgency": "urgent"
-    }
-},
-{
-    "task2": {
+    },
+    {
+        "taskId": "2",
         "taskType": "User Story",
-        "dueDate": "10.9.2023",
+        "dueDate": "27.9.2023",
         "status": "toDo",
         "headline": "Test 2",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -32,12 +30,11 @@ let taskJson = [{
             "Quenin Tarantino"
         ],
         "urgency": "medium"
-    }
-},
-{
-    "task3": {
+    },
+    {
+        "taskId": "3",
         "taskType": "Technical Task",
-        "dueDate": "10.9.2023",
+        "dueDate": "8.9.2023",
         "status": "toDo",
         "headline": "Test 3",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -48,12 +45,11 @@ let taskJson = [{
             "Nico Liebig"
         ],
         "urgency": "medium"
-    }
-},
-{
-    "task4": {
+    },
+    {
+        "taskId": "4",
         "taskType": "Technical Task",
-        "dueDate": "10.9.2023",
+        "dueDate": "10.12.2023",
         "status": "awaitFeedback",
         "headline": "Test 4",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -64,12 +60,11 @@ let taskJson = [{
             "Anne Xi"
         ],
         "urgency": "low"
-    }
-},
-{
-    "task5": {
+    },
+    {
+        "taskId": "5",
         "taskType": "Technical Task",
-        "dueDate": "10.9.2023",
+        "dueDate": "10.10.2023",
         "status": "toDo",
         "headline": "Test 5 mit ein wenig mehr Text, weil auch geschaut werden muss dass 2 Zeilen nicht überschritten werden.",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -81,12 +76,11 @@ let taskJson = [{
             "Frank Loh"
         ],
         "urgency": "low"
-    }
-},
-{
-    "task6": {
+    },
+    {
+        "taskId": "6",
         "taskType": "Technical Task",
-        "dueDate": "10.9.2023",
+        "dueDate": "10.11.2023",
         "status": "toDo",
         "headline": "Test 6 mit ein wenig mehr Text.",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -98,7 +92,6 @@ let taskJson = [{
         ],
         "urgency": "urgent"
     }
-}
 ]
 
 let contactJson = {

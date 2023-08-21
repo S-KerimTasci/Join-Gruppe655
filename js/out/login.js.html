@@ -26,8 +26,11 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- *  Animation Logo
+            <pre class="prettyprint source linenums"><code>let users = []; // Hier wird die users-Variable initialisiert
+
+
+/**
+ *  Animation logo
  */
 
 function initAnimation() {
@@ -48,79 +51,399 @@ function initAnimationResponsiv() {
     }, 2400);
 }
 
+
 /**
-* Open and Closing Popups
-*/
-
-function openLogIn(signUp) {
-    const loginContainer = signUp.closest('.login-container');
-    loginContainer.querySelector('.sign-up-content-responsiv').style.display = 'none';
-    loginContainer.querySelector('.msg-box').style.display = 'none';
-    loginContainer.querySelector('#loginInclusiveResponsiv').style.display = 'flex';
-    loginContainer.querySelector('#headerRight').style.display = 'flex';
-    document.getElementById('message').style.display = 'none';
-    document.getElementById('message').innerHTML = '';
+ *  function releases the button when the checkbox is checked
+ */
+function toggleSignUpButton(checkbox) {
+    const signUpButton = document.getElementById('signUpButton');
+    signUpButton.disabled = !checkbox.checked;
 }
 
-function openSignUp(signUp) {
-    const loginContainer = signUp.closest('.login-container');
-    loginContainer.querySelector('#loginInclusiveResponsiv').style.display = 'none';
-    loginContainer.querySelector('#headerRight').style.display = 'none';
-    loginContainer.querySelector('#signUpContentResponsiv').style.display = 'flex';
-    document.getElementById('message').style.display = 'none';
-    document.getElementById('message').innerHTML = '';
-    document.getElementById('confirmTextResponsivSignUp').style.display = 'none';
-    document.getElementById('confirmTextResponsivSignUp').innerHTML = '';
+
+/**
+ *  function to open other html pages
+ */
+function privacyPolicy() {
+    window.location.href = "../html/privacy_policy.html";
 }
 
-function closeSignUp(signUp) {
-    const loginContainer = signUp.closest('.login-container');
-    loginContainer.querySelector('#loginInclusiveResponsiv').style.display = 'flex';
-    loginContainer.querySelector('#headerRight').style.display = 'flex';
-    loginContainer.querySelector('.header-right-responsiv').style.display = 'flex';
-    loginContainer.querySelector('#signUpContentResponsiv').style.display = 'none';
-    document.getElementById('message').innerHTML = '';
-    document.getElementById('message').style.display = 'none';
-    document.getElementById('confirmTextResponsivLogin').style.display = 'none';
-    document.getElementById('confirmTextResponsivLogin').innerHTML = '';
+function openSignUp() {
+    window.location.href = "../html/sign_up.html";
 }
 
-function openSignUpAfterRegister() {
-    document.getElementById('signUpContentResponsiv').style.display = 'none';
-    document.getElementById('loginInclusiveResponsiv').style.display = 'flex';
-    document.getElementById('headerRight').style.display = 'flex';
+function openForgotPassword() {
+    window.location.href = "../html/forgot_password.html";
 }
 
-function openForgotPassword(password) {
-    const loginContainer = password.closest('.login-container');
-    loginContainer.querySelector('#loginInclusiveResponsiv').style.display = 'none';
-    loginContainer.querySelector('#headerRight').style.visibility = 'hidden';
-    loginContainer.querySelector('.forgot-inklusive-responsiv').style.display = 'flex';
-    document.getElementById('forgotMail').value = '';
-    document.getElementById('confirmSendMail').style.display = 'none';
-    document.getElementById('resetYourPassword').style.display = 'none';
+function displayMessage(message) {
+    const messageContainer = document.getElementById('confirmTextResponsivSignUp');
+    messageContainer.style.display = 'block';
+    messageContainer.innerHTML = message;
 }
 
-function closeForgotPassword(password) {
-    const loginContainer = password.closest('.login-container');
-    loginContainer.querySelector('#loginInclusiveResponsiv').style.display = 'flex';
-    loginContainer.querySelector('.login-header').style.visibility = 'visible';
-    loginContainer.querySelector('.header-right-responsiv').style.display = 'flex';
-    loginContainer.querySelector('.forgot-inklusive-responsiv').style.display = 'none';
-    document.getElementById('resetContent').style.display = 'none';
-    loginContainer.querySelector('#headerRight').style.visibility = 'visible';
-    document.getElementById('confirmTextResponsivLogin').style.display = 'none';
-    document.getElementById('confirmTextResponsivLogin').innerHTML = '';
+/**============Sign Up========== */
+
+/**
+ *  Downloads the users array from the backend.
+ *
+ */
+async function loadUsers() {
+    try {
+        const response = await getItem("users");
+        const usersData = response.data.value; 
+        users = JSON.parse(usersData);
+    } catch (e) {
+        console.error("Loading error:", e);
+    }
 }
 
-function closeResetPassword(password) {
-    const loginContainer = password.closest('.login-container');
-    loginContainer.querySelector('.login-header').style.visibility = 'visible';
-    loginContainer.querySelector('#resetContent').style.display = 'none';
-    loginContainer.querySelector('#resetContent').style.display = 'flex';
-    document.getElementById('forgotMail').value = '';
-    document.getElementById('confirmSendMail').style.display = 'none';
-}</code></pre>
+
+
+/**
+ * This function returns the initials of a given name
+ * 
+ * @param {string} name - The name to extract initials from
+ * @returns Initials of the name
+ */
+function initials(name) {
+    const words = name.split(' ');
+    if (words.length === 1) {
+        return words[0].charAt(0);
+    } else {
+        return words[0].charAt(0) + words[1].charAt(0);
+    }
+}
+
+
+/**
+ *  saves the user data in the backend
+ */
+async function addUser() {
+    const name = document.getElementById('newName').value;
+    const email = document.getElementById('signUpEmail').value;
+    const password = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+        handlePasswordMismatch();
+        return;
+    }
+
+    await loadUsers();
+
+    const existingUser = users.find(user => user.email === email);
+    
+    if (existingUser) {
+        handleExistingUser();
+        return;
+    }
+
+    setNewUser(name, email, password);
+
+    try {
+        const response = await setItem("users", JSON.stringify(users));
+        handleResponse(response);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function handlePasswordMismatch() {
+    const errorMessage = "Passwords do not match";
+
+    if (window.innerWidth &lt;= 768) {
+        const confirmTextResponsivSignUp = document.getElementById('confirmTextResponsivSignUp');
+        confirmTextResponsivSignUp.style.display = 'block';
+        confirmTextResponsivSignUp.innerHTML = errorMessage;
+
+        const msgBox = document.getElementById('messageNewUser');
+        msgBox.style.display = 'none';
+    } else {
+        const msgBox = document.getElementById('messageNewUser');
+        msgBox.style.display = 'block';
+        msgBox.innerHTML = errorMessage;
+        
+        const confirmTextResponsivSignUp = document.getElementById('confirmTextResponsivSignUp');
+        confirmTextResponsivSignUp.style.display = 'none';
+    }
+}
+
+function handleExistingUser() {
+    const errorMessage = "User already exists. Please Login";
+
+    if (window.innerWidth &lt;= 768) {
+        const confirmTextResponsivSignUp = document.getElementById('confirmTextResponsivSignUp');
+        confirmTextResponsivSignUp.style.display = 'block';
+        confirmTextResponsivSignUp.innerHTML = errorMessage;
+
+        const msgBox = document.getElementById('messageNewUser');
+        msgBox.style.display = 'none';
+    } else {
+        const msgBox = document.getElementById('messageNewUser');
+        msgBox.style.display = 'block';
+        msgBox.innerHTML = errorMessage;
+        
+        const confirmTextResponsivSignUp = document.getElementById('confirmTextResponsivSignUp');
+        confirmTextResponsivSignUp.style.display = 'none';
+    }
+    clearRegistrationForm();
+    redirectToLoginAfterDelay();
+}
+
+function handleResponse(response) {
+    if (response.status === "success") {
+        const successMessage = "You have successfully registered.";
+
+        if (window.innerWidth &lt;= 768) {
+            const confirmTextResponsivSignUp = document.getElementById('confirmTextResponsivSignUp');
+            confirmTextResponsivSignUp.style.display = 'block';
+            confirmTextResponsivSignUp.innerHTML = successMessage;
+
+            const msgBox = document.getElementById('messageNewUser');
+            msgBox.style.display = 'none';
+        } else {
+            const msgBox = document.getElementById('messageNewUser');
+            msgBox.style.display = 'block';
+            msgBox.innerHTML = successMessage;
+
+            const confirmTextResponsivSignUp = document.getElementById('confirmTextResponsivSignUp');
+            confirmTextResponsivSignUp.style.display = 'none';
+        }
+        clearRegistrationForm();
+        redirectToLoginAfterDelay();
+    }
+}
+
+/**
+ * This function redirects to the login page after a delay
+ */
+function redirectToLoginAfterDelay() {
+    setTimeout(() => {
+        window.location.href = "login.html";
+    }, 2000); 
+}
+
+  /**
+ * This function clears the registration form fields
+ */
+  function clearRegistrationForm() {
+    document.getElementById('newName').value = '';
+    document.getElementById('signUpEmail').value = '';
+    document.getElementById('newPassword').value = '';
+    document.getElementById('confirmPassword').value = '';
+}
+
+
+/**
+ * This function sets a new user with the given details and adds initial to the user object
+ * 
+ * @param {string} name - The name of the user
+ * @param {string} email - The email of the user
+ * @param {string} password - The password of the user
+ */
+function setNewUser(name, email, password) {
+    const userInitials = initials(name); 
+    users.push({
+        name: name.trim(),
+        email: email.trim(),
+        password: password,
+        initials: userInitials,        
+    });
+}
+
+
+
+/**============Login========== */
+
+/**
+ * check if user is already exist, if yes, forward to summary.html
+ * if not, option to sign up
+ */
+async function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        await loadUsers(); 
+
+        const user = users.find(c => c.email === email &amp;&amp; c.password === password);
+
+        const message = document.getElementById('message');
+        const messageResponsiv = document.getElementById('confirmTextResponsivLogin');
+
+        if (!user) {
+            message.style.display = 'flex';
+            message.innerHTML = generateHTMLifNotUserDesktop();
+            messageResponsiv.style.display = 'inline';
+            document.getElementById('headerRightResponsiv').style.display = 'none';
+            messageResponsiv.innerHTML = generateHTMLifNotUserMobile();
+        } else {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            window.location.href = '../html/summary.html';
+        }
+
+        document.getElementById('email').value = '';
+        document.getElementById('password').value = '';
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/**
+ * This function generates HTML for desktop view if the user is not registered
+ */
+function generateHTMLifNotUserDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">You are not registered yet.&lt;br> Click 
+                    &lt;span class="here" onclick="openSignUp(this)">here&lt;/span> to sign up
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view if the user is not registered
+ */
+function generateHTMLifNotUserMobile() {
+    return /*html*/`
+        You are not registered yet.&lt;br> Click 
+            &lt;span class="here-responsiv" onclick="openSignUp(this)">here&lt;/span> to sign up`;
+}
+
+
+/**============Forgot Password========== */
+
+/**
+ * This function confirms sending the email
+ */
+async function confirmSendMail() {
+    const emailInput = document.getElementById('forgotMail');
+    enteredEmail = emailInput.value; 
+
+    const message = document.getElementById('confirmSendMail');
+    const messageResponsiv = document.getElementById('confirmTextResponsiv');
+
+    await loadUsers();
+
+    const existingUser = users.find(user => user.email === enteredEmail);
+
+        if (existingUser) {
+            message.style.display = 'block';
+            message.innerHTML = sendPasswordDesktop();
+            messageResponsiv.style.display = 'block';
+            messageResponsiv.innerHTML = sendPasswordMobile();
+
+            setTimeout(() => {
+                window.location.href = '../html/reset_password.html';
+            }, 2000);
+
+        } else {
+            message.style.display = 'flex';
+            message.innerHTML = generateHTMLifNotUserDesktop();
+            messageResponsiv.style.display = 'inline';
+            messageResponsiv.innerHTML = generateHTMLifNotUserMobile();
+        }
+    
+
+    emailInput.value = '';
+}
+
+/**
+ * This function generates HTML for desktop view if the user is not registered
+ */
+function sendPasswordDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                    &lt;img src="../assets/img/email-send.svg">
+                    An E-Mail has been sent to you
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+/**
+ * This function generates HTML for mobile view if the user is not registered
+ */
+
+function sendPasswordMobile() {
+    return /*html*/ `
+        An E-Mail has been sent to you`;
+}
+
+
+
+
+
+
+
+/**============Reset Password========== */
+
+
+
+
+/**
+ * This function resets the user's password.
+ */
+
+
+function resetPasswordDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                    You reset your password
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+
+function resetPasswordMobile() {
+    return /*html*/ `
+        You reset your password`;
+}
+
+
+function passwordNotMatchDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                    Passwords do not match. Please try again.
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+function passwordNotMatchMobile() {
+    return /*html*/ `
+        Passwords do not match. Please try again.`;
+}
+
+
+/**============Nur zum Debuggen========== */
+
+async function loadAndDisplayUsers() {
+    await loadUsers(); 
+
+    // Zeige die Benutzerdaten im Klartext in der Konsole an
+    users.forEach(user => {
+        const { name, email, password } = user;
+        const userInitials = initials(name);
+        console.log(`Name: ${name}, Email: ${email}, Password: ${password}, Initials: ${userInitials}`);
+    });
+}
+
+// Rufe die Funktion auf, um die Benutzerdaten zu laden und anzuzeigen
+loadAndDisplayUsers();</code></pre>
         </article>
     </section>
 
@@ -130,13 +453,13 @@ function closeResetPassword(password) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAnimation">initAnimation</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#openLogIn">openLogIn</a></li><li><a href="global.html#setItem">setItem</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addNumToSummary">addNumToSummary</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#clearRegistrationForm">clearRegistrationForm</a></li><li><a href="global.html#colorTaskType">colorTaskType</a></li><li><a href="global.html#confirmSendMail">confirmSendMail</a></li><li><a href="global.html#countTasks">countTasks</a></li><li><a href="global.html#generateHTMLifNotUserDesktop">generateHTMLifNotUserDesktop</a></li><li><a href="global.html#generateHTMLifNotUserMobile">generateHTMLifNotUserMobile</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAnimation">initAnimation</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#loadAndDisplayUsers">loadAndDisplayUsers</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#memberInitials">memberInitials</a></li><li><a href="global.html#privacyPolicy">privacyPolicy</a></li><li><a href="global.html#redirectToLoginAfterDelay">redirectToLoginAfterDelay</a></li><li><a href="global.html#resetPasswordDesktop">resetPasswordDesktop</a></li><li><a href="global.html#sendPasswordDesktop">sendPasswordDesktop</a></li><li><a href="global.html#sendPasswordMobile">sendPasswordMobile</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setNewUser">setNewUser</a></li><li><a href="global.html#taskMember">taskMember</a></li><li><a href="global.html#toggleSignUpButton">toggleSignUpButton</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Aug 19 2023 12:14:43 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Aug 21 2023 13:53:01 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

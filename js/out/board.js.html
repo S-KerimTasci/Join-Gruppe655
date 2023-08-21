@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: board.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: board.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>function renderTasks() {
+    console.log(taskJson[0].status);
+    renderStatusContainer('toDo', 'idTaskToDo');
+    renderStatusContainer('inProgress', 'idTaskInProgress');
+    renderStatusContainer('awaitFeedback', 'idTaskAwaitFeedback');
+    renderStatusContainer('done', 'idTaskDone');
+}
+
+
+function renderStatusContainer(status, taskContainerId) {
+    for (let i = 0; i &lt; taskJson.length; i++) {
+        let taskNumber = i + 1;
+        let activeTask = taskJson[i];
+        console.log(i, activeTask);
+        if (status == activeTask.status) {
+            document.getElementById(taskContainerId).innerHTML += taskTemplate(activeTask, taskNumber);
+            callFunctionForSingleTask(activeTask, taskNumber);
+        }
+    }
+}
+
+function callFunctionForSingleTask(activeTask, taskNumber) {
+    colorTaskType(activeTask.taskType, taskNumber);
+    // hier muss eine Funktion rein, die den Text geürzt auf 2 Zeilen herausgibt
+    taskMember(activeTask.member, taskNumber);
+    // hier muss eine Funktion rein, die die subtask bar berechnet
+
+}
+
+
+function taskTemplate(task, taskNr) {
+    return /*html*/ `
+    &lt;div id="idTaskId${taskNr}" class="singleTaskContainer">
+        &lt;div id="idTaskType${taskNr}" class="singlTaskType">User Story &lt;/div>
+        &lt;div id="idTaskTxts${taskNr}" class="singelTaskTexts">
+            &lt;div id="idTaskHeadline${taskNr}" class="singleTaskHeadline">${task.headline}
+            &lt;/div>
+            &lt;div id="idTaskShortTxt${taskNr}" class="singleTaskTxt">Create a contact form and
+                imprint page...&lt;/div>
+        &lt;/div>
+        &lt;div id="idTaskSubTask${taskNr}" class="TaskSubTask">
+            &lt;div id="idSingleTaskSubProgress${taskNr}" class="SingleTaskSubProgress">&lt;/div>
+            &lt;div id="idSingleTaksCount${taskNr}" class="SingleTaksCount">
+                &lt;span id="idSingleTaksCountPart${taskNr}">${task.doneSubTasks}&lt;/span>
+                &lt;span>/&lt;/span>
+                &lt;span id="idSingleTaksCountTotal${taskNr}">${task.sbuTaskTotal}&lt;/span>
+                &lt;span> Subtasks&lt;/span>
+            &lt;/div>
+        &lt;/div>
+        &lt;div id="idSingleTaskMemberPrio${taskNr}" class="SingleTaskMemberPrio">
+            &lt;div id="idSingleTaskMember${taskNr}" class="SingleTaskMember">
+                &lt;!-- hier müssen dann über eine Funktion die Memberplaketten eingefügt werden -->
+            &lt;/div>
+            &lt;div id="idSingleTaskPrio${taskNr}" class="SingleTaskPrio">
+                &lt;img src="../assets/img/prio_urgent.svg" alt="">
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>`
+}
+
+/**
+ * this function returns the background color for the specific task type
+ * 
+ * @param {string} taskType - this is the specific task type
+ * @param {number} taskNr - used to find the specific element id
+ */
+function colorTaskType(taskType, taskNr) {
+    document.getElementById('idTaskType' + taskNr).innerText = taskType;
+    switch (taskType) {
+        case "User Story":
+            document.getElementById('idTaskType' + taskNr).style.backgroundColor = '#0038FF';
+            break;
+        case "Technical Task":
+            document.getElementById('idTaskType' + taskNr).style.backgroundColor = '#1FD7C1';
+            break;
+        default:
+            break;
+    }
+}
+
+/**
+ * This function add html container to a container with id 'idSingleTaskMember'
+ * used in renderStatusContainer()
+ * 
+ * @param {array} arrMember - array of full names of all members connected to the task
+ * @param {number} taskNr - to create a unique id
+ */
+function taskMember(arrMember, taskNr) {
+    for (let i = 0; i &lt; arrMember.length; i++) {
+        let membinitials = memberInitials(arrMember[i]);
+        document.getElementById('idSingleTaskMember' + taskNr).innerHTML += `&lt;div id="idMemberPlaceholder${taskNr}_${i}" class="memberPlaceholder">${membinitials}&lt;/div>`
+        // um die Hintergrundfarbe einzufügen muss hier noch Code rein. 
+    }
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addNumToSummary">addNumToSummary</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#clearRegistrationForm">clearRegistrationForm</a></li><li><a href="global.html#colorTaskType">colorTaskType</a></li><li><a href="global.html#confirmSendMail">confirmSendMail</a></li><li><a href="global.html#countTasks">countTasks</a></li><li><a href="global.html#generateHTMLifNotUserDesktop">generateHTMLifNotUserDesktop</a></li><li><a href="global.html#generateHTMLifNotUserMobile">generateHTMLifNotUserMobile</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAnimation">initAnimation</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#loadAndDisplayUsers">loadAndDisplayUsers</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#memberInitials">memberInitials</a></li><li><a href="global.html#privacyPolicy">privacyPolicy</a></li><li><a href="global.html#redirectToLoginAfterDelay">redirectToLoginAfterDelay</a></li><li><a href="global.html#resetPasswordDesktop">resetPasswordDesktop</a></li><li><a href="global.html#sendPasswordDesktop">sendPasswordDesktop</a></li><li><a href="global.html#sendPasswordMobile">sendPasswordMobile</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setNewUser">setNewUser</a></li><li><a href="global.html#taskMember">taskMember</a></li><li><a href="global.html#toggleSignUpButton">toggleSignUpButton</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Aug 21 2023 13:53:01 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

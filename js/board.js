@@ -1,5 +1,5 @@
 function renderTasks() {
-    console.log(taskJson[0]['task' + 1].status);
+    console.log(taskJson[0].status);
     renderStatusContainer('toDo', 'idTaskToDo');
     renderStatusContainer('inProgress', 'idTaskInProgress');
     renderStatusContainer('awaitFeedback', 'idTaskAwaitFeedback');
@@ -10,7 +10,7 @@ function renderTasks() {
 function renderStatusContainer(status, taskContainerId) {
     for (let i = 0; i < taskJson.length; i++) {
         let taskNumber = i + 1;
-        let activeTask = taskJson[i]['task' + taskNumber];
+        let activeTask = taskJson[i];
         console.log(i, activeTask);
         if (status == activeTask.status) {
             document.getElementById(taskContainerId).innerHTML += taskTemplate(activeTask, taskNumber);
