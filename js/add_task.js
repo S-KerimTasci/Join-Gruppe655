@@ -58,11 +58,15 @@ function loadContacts(){
 
 
 function highlight(x){
+    if (currentPrio == x) {
+        removeHighlight()
+    } else {
     removeHighlight()
     setPrio(x)
 
     document.getElementById(x).classList.add(x)
     document.getElementById(x+'IMG').src = `../assets/img/prio_${x}_white.svg`
+}
 }
 
 function setPrio(x){
