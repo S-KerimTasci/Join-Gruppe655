@@ -8,9 +8,11 @@ mql.onchange = (e) => {
     if (e.matches) {
         /* the viewport is 750 pixels wide or less */
         content.innerHTML = addTaskMobileTemplate();
+        content.classList.add('contentAlignMobile')
     } else {
         /* the viewport is more than 750 pixels wide */
         content.innerHTML = addTaskDektopTemplate();
+        content.classList.remove('contentAlignMobile')
     }
     loadContacts()
 }
@@ -21,8 +23,10 @@ function checkScreen() {
 
     if (big) {
         content.innerHTML = addTaskDektopTemplate();
+        content.classList.remove('contentAlignMobile')
     } else if (small) {
-        content.innerHTML = addTaskMobileTemplate()
+        content.innerHTML = addTaskMobileTemplate();
+        content.classList.add('contentAlignMobile')
     }
 
     loadContacts()
@@ -30,8 +34,9 @@ function checkScreen() {
 
 
 function addTaskMobileTemplate() {
-    return `<h1><b>Add Task</b></h1>
+    return `
     <form onsubmit="createTask();return false">
+        <h1><b>Add Task</b></h1>
         <div class="gap8px_flexDirCol">
             <span>Title</span>
             <input class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title" required>
@@ -78,6 +83,14 @@ function addTaskMobileTemplate() {
             </select>
         </div>
 
+            <div class="gap8px_flexDirCol">
+                        <span>Subtask</span>
+                        <div class="subtaskDiv">
+                            <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
+                            <img src="../assets/img/plus.svg">
+                        </div>
+            </div>
+
         <div class="buttonDiv">
             <button class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
         </div>
@@ -89,9 +102,9 @@ function addTaskMobileTemplate() {
 }
 
 function addTaskDektopTemplate() {
-    return `<div id="content" class="content">
-    <h1><b>Add Task</b></h1>
-    <form onsubmit="createTask();return false"></form>
+    return `
+    <h1 class="headerDektop"><b>Add Task</b></h1>
+    <form onsubmit="createTask();return false">
         <div class="addTaskDesktop">
         
             <div class="divLeft">
@@ -143,9 +156,9 @@ function addTaskDektopTemplate() {
                         <span>Subtask</span>
                         <div class="subtaskDiv">
                             <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
-                            <img src="../img/plus.svg">
+                            <img src="../assets/img/plus.svg">
                         </div>
-                    </div>
+                </div>
             </div>
         </div>
             <div class="buttonDiv">

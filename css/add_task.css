@@ -33,6 +33,13 @@ textarea{
     margin-left: 220px;
 }*/
 
+.contentAlignMobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
 .gap8px_flexDirCol{
     display: flex;
     flex-direction: column;
@@ -151,9 +158,16 @@ textarea{
     gap: 16px;
 }
 
+.headerDektop{
+    padding: 3vw 0 0 5vw;
+}
+
 .addTaskDesktop{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 2vw;
 }
 
 .divLeft{
@@ -166,21 +180,22 @@ textarea{
     flex-direction: column;
 }
 
-@media (min-width: 550px) {
+
+@media (min-width: 750px) {
     .inputdefault{
-        width: 40vw;
+        width: 30vw;
     }
     
     .inputDescription{
-        width: 40vw;
+        width: 30vw;
     }
     
     .prioDiv {
-        width: 40vw;
+        width: 30vw;
     }
 
     .subtaskDiv{
-        width: 40vw;
+        width: 30vw;
     }
    
 }
