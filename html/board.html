@@ -37,24 +37,26 @@
 </head>
 
 <body onload="init(), renderTasks()">
-    <div id="idBackgroundContainer">
-        <div id="idHeaderBody">
+    <div id="idBackgroundContainer" class="BackgroundContainer">
+        <div id="idHeaderBody" class="HeaderBody">
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
-            <div id="idCompleteBoard" class="d-flex justify-content-center gap-5 scrollContent">
-                <section class="boardGeneralSettings ">
+           <!--  <div id="idCompleteBoard" class="">  d-flex justify-content-center gap-5 scrollContent -->
+                <main class="boardGeneralSettings ">
                     <div id="idBoardHead" class="boardHeadBgCont">
                         <div class="headBoard">
-                            <div id="idBoardHead1" class=" d-flex justify-content-between align-items-center">
+                            <div id="idBoardHead1" class="BoardHead1 "> <!-- d-flex justify-content-between align-items-center -->
                                 <h1 class="boardHeading">Board</h1>
-                                <img class="boardHeadingAddTaskSmall" role="button"
+                                <img class="hideSmallBtnH1" role="button"
                                     src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
                             </div>
-                            <div id="idBoardHead2" class="headBoard2">
-                                <div id="idSearchContainer" class="myBoardHead2 d-flex justify-content-between">
-                                    <input id="idBoardSearch" type="search" placeholder="Find Task" class="">
+                            <div id="idBoardHead2" class="BoardHead2">
+                                <div id="idSearchContainerMob" class="myBoardHead2 d-flex justify-content-between">
+                                    <input id="idBoardSearchMob" type="search" placeholder="Find Task" class="boardSearch">
                                     <div class="searchDivider"></div>
                                     <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="search()">
                                 </div>
+                                <img class="hideSmallBtnH2 " role="button"
+                                    src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
                                 <button class="headAddTaskBtn" onclick="addTask()">
                                     <span>Add task</span>
                                     <img src="../assets/img/BoardAddTaskTop.svg" alt="">
@@ -152,7 +154,7 @@
                                             </div>
                                         </div>
                                         <div id="idSingleTaskMemberPrio0" class="SingleTaskMemberPrio">
-                                            <div id="idSingleTaskMember0" class="SingleTaskMember"> -->
+                                            <div id="idSingleTaskMember0" class="SingleTaskMember">
                                                 <!-- hier müssen dann über eine Funktion die Memberplaketten eingefüt werden -->
                                                 <div id="idMemberPlaceholder1" class="memberPlaceholder">AS</div>
                                                 <div id="idMemberPlaceholder2" class="memberPlaceholder">FM</div>
@@ -168,9 +170,9 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </main>
 
-            </div>
+            <!-- </div> -->
         </div>
         <footer w3-include-html="../assets/templates/footer.html"></footer>
     </div>

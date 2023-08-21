@@ -1,21 +1,62 @@
+/* css for scorolling only content start */
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.BackgroundContainer {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.HeaderBody {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
 .boardGeneralSettings {
-    /* max-width: 396px; */
-    
     margin-top: 48px;
     padding: 0 3px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
 }
 
-.scrollContent {
-    height: calc(100vh - 160px);
-    overflow-y: scroll;
+.boardContent {
+    flex: 1;
+    overflow-y: auto;
 }
+
+.taskContainer {
+    background-color: green;
+    display: flex;
+    overflow-x: auto;
+}
+
+.footer {
+    /* brauch ich hier, weil der Footer normal auf position fixed eingestellt ist  */
+    position: static;
+}
+
+/* css for scorolling only content end */
 
 .boardHeading {
-    /* height: 56px; */
+
     font-size: 47px;
     font-weight: 700;
-     
+
 }
+
+.BoardHead1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* search container start */
 
 .myBoardHead2 {
     margin-top: 32px;
@@ -26,28 +67,24 @@
     height: 48px;
     font-size: 24px;
     background-color: white;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .myBoardHead2:focus-within {
     border-color: rgb(148, 213, 240);
 }
 
-.headBoard3 {
-    display: none;
-}
-
-input[type=search] { /* das input benötigt eventuell eine Klasse */
+.boardSearch {
+    width: 210px;
     border: 0;
     outline: none;
-    width: 260px;
 }
 
-input[type=search]::placeholder {
+.boardSearch::placeholder {
     color: #D1D1D1;
 }
 
-input[type=search]:focus {
+.boardSearch:focus {
     border: 0;
 }
 
@@ -57,7 +94,18 @@ input[type=search]:focus {
     background-color: #D1D1D1;
 }
 
+.hideSmallBtnH2 {
+    display: none;
+}
+
 .headAddTaskBtn {
+    display: none;
+}
+
+/* search container end */
+
+/* menu bar for tasks shown at 1440px*/
+.headBoard3 {
     display: none;
 }
 
@@ -89,12 +137,9 @@ input[type=search]:focus {
     border: 1px dashed #A8A8A8;
 }
 
- .taskContainer{
-    background-color: green;
-   
 
-}  
-.singleTaskContainer{
+
+.singleTaskContainer {
     /* display: inline-block; */
     width: 250px;
     height: 200px;
@@ -103,10 +148,45 @@ input[type=search]:focus {
     vertical-align: top;
 }
 
+@media (min-width: 350px) {
+    .BoardHead2 {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 525px) {
+    .headBoard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .BoardHead2 {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+    }
+
+    .myBoardHead2 {
+        margin-top: 0;
+    }
+
+    .hideSmallBtnH2 {
+        display: block;
+    }
+
+    .hideSmallBtnH1 {
+        display: none;
+    }
+}
+
 @media (min-width: 750px) {
+    #idHeaderBody {
+        width: calc(100vw - 200px);
+    }
+
     .boardGeneralSettings {
-        max-width: 1440px;
-        width: 100%;
         margin-top: 0;
     }
 
@@ -118,17 +198,24 @@ input[type=search]:focus {
     }
 
     .headBoard {
-        display: flex;
-        align-items: center;
+
         max-width: 1240px;
         height: 73px;
-        justify-content: space-between;
-        padding: 0 64px;
+
+        padding: 0 13px;
         margin-bottom: 48px;
         gap: 32px;
     }
+}
 
-    .boardHeadingAddTaskSmall {
+@media (min-width: 871px) {
+    .boardGeneralSettings {
+        padding: 0 64px;
+    }
+}
+
+@media (min-width: 971px) {
+    .hideSmallBtnH2 {
         display: none;
     }
 
@@ -143,35 +230,16 @@ input[type=search]:focus {
         border: 1px #2A3647;
         background-color: #2A3647;
     }
-    .headAddTaskBtn span{
+
+    .headAddTaskBtn span {
         font-size: 21px;
         color: white;
     }
-    
-
-    .headBoard2 {
-        display: flex;
-        height: 48px;
-        width: 504px;
-        gap: 32px;
-        align-items: center;
-    }
-
-    .myBoardHead2 {
-        margin-top: 0;
-        width: 312px;
-    }
-    input[type=search] {
-        width: 227px;
-    }
-    .boardContent{
-        padding: 0 64px;
-        /* width: calc(100vw - 425px); */
-    }
-
 }
-@media (min-width: 1000px) {
-    .boardHeading{
+
+
+@media (min-width: 1060px) {
+    .boardHeading {
         font-size: 61px;
     }
 }
@@ -185,11 +253,11 @@ input[type=search]:focus {
         align-items: center;
         margin-top: 0;
     }
-    
+
     .contentBoard h3 {
         font-size: 20px;
     }
-    
+
     .defaultTaskContainer {
         display: flex;
         justify-content: center;
@@ -202,11 +270,11 @@ input[type=search]:focus {
         border: 1px dashed #A8A8A8;
     }
 
-     .taskContainer{
+    .taskContainer {
         background-color: cadetblue;
-        
+        flex-direction: column;
     }
-     
+
     .conBoMob {
         display: none !important;
     }
