@@ -138,6 +138,14 @@ function addTaskDektopTemplate() {
                         <option value="userStory">User Story</option>
                     </select>
                 </div>
+
+                <div class="gap8px_flexDirCol">
+                        <span>Subtask</span>
+                        <div class="subtaskDiv">
+                            <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
+                            <img src="../img/plus.svg">
+                        </div>
+                    </div>
             </div>
         </div>
             <div class="buttonDiv">

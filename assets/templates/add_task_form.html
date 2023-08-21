@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+     <!-- Bootstrap Files -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+     crossorigin="anonymous"></script>
+
+     <!-- CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/headerFooter.css">
+    <link rel="stylesheet" href="../../css/fonts.css">
+    <link rel="stylesheet" href="../../css/add_task.css">
+
+     <!-- JS -->
+     <script src="../../js/summary.js" defer></script>
+    <script src="../../js/script.js" defer></script>
+    <script src="../../js/add_task.js" defer></script>
+    <script src="../../js/headFootTemplate.js" defer></script>
+</head>
+
+<body>
+    <div id="idBackgroundContainer">
+        <div id="idHeaderBody">
+            <header w3-include-html="../assets/templates/headerTemplate.html"></header>
+
+
+            <div id="content" class="content">
+                <h1><b>Add Task</b></h1>
+                <form onsubmit="createTask();return false">
+                    <div class="gap8px_flexDirCol">
+                        <span>Title</span>
+                        <input class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title" required>
+                    </div>
+
+                    <div class="gap8px_flexDirCol">
+                        <span>Description</span>
+                        <textarea class="inputDescription" name="inputDescription" id="inputDescription" cols="30"
+                            rows="4" placeholder="Enter a Description" required></textarea>
+                    </div>
+
+                    <div class="gap8px_flexDirCol">
+                        <span>Prio</span>
+                        <div class="prioDiv">
+                            <div id="urgent" onclick="highlight('urgent')" class="prioOption"><span>Urgent</span><img
+                                    id="urgentIMG" src="../img/prio_urgent.svg" class="prioImg">
+                            </div>
+                            <div id="medium" onclick="highlight('medium')" class="prioOption"><span>Medium</span><img
+                                    id="mediumIMG" src="../img/prio_medium.svg" class="prioImg">
+                            </div>
+                            <div id="low" onclick="highlight('low')" class="prioOption"><span>Low</span><img id="lowIMG"
+                                    src="../img/prio_low.svg" class="prioImg"></div>
+                        </div>
+                    </div>
+
+                    <div class="gap8px_flexDirCol">
+                        <span>Due Date</span>
+                        <input class="inputdefault" id="inputDueDate" type="date" required>
+                    </div>
+
+                    <div class="gap8px_flexDirCol">
+                        <span>Category</span>
+                        <select class="inputdefault" name="category" id="inputCategory" required>
+                            <option value="" disabled selected hidden>Select task category</option>
+                            <option value="technicalTask">Technical Task</option>
+                            <option value="userStory">User Story</option>
+                        </select>
+                    </div>
+
+                    <div class="gap8px_flexDirCol">
+                        <span>Assigned To</span>
+                        <select class="inputdefault" name="assigned" id="inputAssignedTo" required>
+                            <option value="" disabled selected hidden>Select conntacts to assign</option>
+                        </select>
+                    </div>
+
+                    <div class="gap8px_flexDirCol">
+                        <span>Subtask</span>
+                        <div class="subtaskDiv">
+                            <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
+                            <img src="../img/plus.svg">
+                        </div>
+                    </div>
+
+                    <div class="buttonDiv">
+                        <button class="taskButton">Create Task <img src="../img/check.svg"></button>
+                    </div>
+                </form>
+
+                <div class="task_added_overlay">
+                    <span>Task added to board</span> <img src="../img/task_added_to_board.svg">
+                </div>
+            </div>
+        <footer w3-include-html="../assets/templates/footer.html"></footer>
+    </div>
+</body>
+
+</html>

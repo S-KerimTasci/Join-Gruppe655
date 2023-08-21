@@ -9,6 +9,7 @@ function createTask(){
     let category = document.getElementById('inputCategory').value
     let priority = currentPrio
     let priorityIMG = `../assets/img/prio_${currentPrio}.svg`
+    let subtask = document.getElementById('subtask').value
 
     let task={
         'title':title,
@@ -16,7 +17,9 @@ function createTask(){
         'dueDate':dueDate,
         'category':category,
         'priority':priority,
-        'priorityIMG':priorityIMG
+        'priorityIMG':priorityIMG,
+        'subtask': subtask
+
     }
 
     allTasks.push(task);
@@ -38,7 +41,8 @@ function loadAllTasks(){
     document.getElementById('overlayDescription').innerHTML= allTasks[i].description;
     document.getElementById('overlayDueDate').innerHTML= allTasks[i].dueDate;
     document.getElementById('overlayPrio').innerHTML= allTasks[i].priority;
-    document.getElementById('overlayPrioIMG').src = allTasks[i].priorityIMG;    
+    document.getElementById('overlayPrioIMG').src = allTasks[i].priorityIMG;
+    document.getElementById('overlayCategory').innerHTML= allTasks[i].category;    
     }
 }
 
