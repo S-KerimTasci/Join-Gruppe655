@@ -1,4 +1,4 @@
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .login-header {
         margin-bottom: 72px;
         position: absolute;
@@ -7,7 +7,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 830px) {
     .logo-black {
         width: 50px;
         height: 70px;
