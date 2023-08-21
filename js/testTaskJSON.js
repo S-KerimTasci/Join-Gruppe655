@@ -2,7 +2,7 @@ let taskJson = [
     {
         "taskId": "1",
         "taskType": "User Story",
-        "dueDate": "31.10.2023",
+        "dueDate": 1695247200000, /* 21.Sep.23 */
         "status": "inProgress",
         "headline": "Test 1",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -18,7 +18,7 @@ let taskJson = [
     {
         "taskId": "2",
         "taskType": "User Story",
-        "dueDate": "27.9.2023",
+        "dueDate": 1697839200000, /* 21.Oct.23 */
         "status": "toDo",
         "headline": "Test 2",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -34,7 +34,7 @@ let taskJson = [
     {
         "taskId": "3",
         "taskType": "Technical Task",
-        "dueDate": "8.9.2023",
+        "dueDate": 1694124000000, /* 8.Sep.23 */
         "status": "toDo",
         "headline": "Test 3",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -49,7 +49,7 @@ let taskJson = [
     {
         "taskId": "4",
         "taskType": "Technical Task",
-        "dueDate": "10.12.2023",
+        "dueDate": 1702162800000, /* 10.Dec.23 */
         "status": "awaitFeedback",
         "headline": "Test 4",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -64,7 +64,7 @@ let taskJson = [
     {
         "taskId": "5",
         "taskType": "Technical Task",
-        "dueDate": "10.10.2023",
+        "dueDate": 1696888800000, /* 10.10.23 */
         "status": "toDo",
         "headline": "Test 5 mit ein wenig mehr Text, weil auch geschaut werden muss dass 2 Zeilen nicht überschritten werden.",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
@@ -80,7 +80,7 @@ let taskJson = [
     {
         "taskId": "6",
         "taskType": "Technical Task",
-        "dueDate": "10.11.2023",
+        "dueDate": 1699570800000, /* 10.Nov.23 */
         "status": "toDo",
         "headline": "Test 6 mit ein wenig mehr Text.",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",

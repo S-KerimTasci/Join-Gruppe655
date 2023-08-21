@@ -20,14 +20,23 @@ document.addEventListener("DOMContentLoaded", function () {
  * @param {string} chkArr - array which should checked
  * @returns count
  */
-function countTasks(srcValue,compValue, chkArr) {
+function countTasks(srcValue, compValue, chkArr) {
     let count = 0;
     for (let i = 0; i < chkArr.length; i++) {
         if (srcValue == chkArr[i][compValue]) {
-            count++; 
-        }        
+            count++;
+        }
     }
     return count
+}
+
+/**
+ * This function calls function for adding counts and upcommingDeadline to summary
+ * 
+ */
+function addValuesToSummary() {
+    addNumToSummary(); 
+    upcommingDeadline();    
 }
 
 /**
@@ -36,16 +45,39 @@ function countTasks(srcValue,compValue, chkArr) {
  */
 function addNumToSummary() {
     document.getElementById('idCountAllTasks').innerText = taskJson.length;
-    document.getElementById('idCountTasksInProgress').innerText = countTasks('inProgress','status', taskJson);
-    document.getElementById('idCounttaskAwaitingFeedback').innerText = countTasks('awaitFeedback','status', taskJson);
-    document.getElementById('idTaskUrgent').innerText = countTasks('urgent','urgency', taskJson);
-    document.getElementById('idTaskToDd').innerText = countTasks('toDo','status', taskJson);
-    document.getElementById('idTaskDone').innerText = countTasks('done','status', taskJson);   
+    document.getElementById('idCountTasksInProgress').innerText = countTasks('inProgress', 'status', taskJson);
+    document.getElementById('idCounttaskAwaitingFeedback').innerText = countTasks('awaitFeedback', 'status', taskJson);
+    document.getElementById('idTaskUrgent').innerText = countTasks('urgent', 'urgency', taskJson);
+    document.getElementById('idTaskToDd').innerText = countTasks('toDo', 'status', taskJson);
+    document.getElementById('idTaskDone').innerText = countTasks('done', 'status', taskJson);
 }
 
+/**
+ * This function looks for the youngest date and calls function buildDateFormat which returns the correkt Format for idTaksUrgentDate 
+ * 
+ */
+function upcommingDeadline() {
+    let youngestDate = new Date(taskJson[0].dueDate);
+    for (let i = 1; i < taskJson.length; i++) {
+        let taskDate = new Date(taskJson[i].dueDate);
+        if (taskDate < youngestDate) {
+            youngestDate = taskDate;
+        }
+    }
+    document.getElementById('idTaksUrgentDate').innerText = buildDateFormat(youngestDate);
+}
 
-function upcommingDeadline(mydate) {
-    console.log(new Date().getTime())
-    document.getElementById('idCountAllTasks').innerText = mydate;
-    
+/**
+ * This function returns the date in Format Full month name, day and full year.
+ * 
+ * 
+ * @param {date} youngestDate 
+ * @returns formated date
+ */
+function buildDateFormat(youngestDate) {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let monthName = months[youngestDate.getMonth()];
+    let day = youngestDate.getDate();
+    let year = youngestDate.getFullYear();
+    return monthName + " " + day + ", " + year;
 }
