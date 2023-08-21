@@ -37,7 +37,7 @@
     <div id="idBackgroundContainer">
         <div id="idHeaderBody">
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
-            <div id="idCompleteSummary" class="d-flex justify-content-center gap-5">
+            <div id="idCompleteSummary" class="CompleteSummary d-flex justify-content-center gap-5">
                 <section class="mx-3">
                     <div class="summarHeader">
                         <h1>Summary</h1>
@@ -49,26 +49,26 @@
                     <div class="d-flex align-items-center gap-5">
                         <div id="idTaskOverview" class="taskOverviewSize">
                             <div id="idTaskOverviewTop" class="taskOvContainer d-flex justify-content-between gap24">
-                                <div id="idAllTasks" class="task3Container containerShadow">
+                                <a href="../html/board.html" id="idAllTasks" class="task3Container containerShadow">
                                     <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
                                         <h2 id="idCountAllTasks" class="taskNumbers">5</h2>
                                         <p class="taskTxt">Tasks in Board</p>
                                     </div>
-                                </div>
-                                <div id="idTasksInProgess" class="task3Container containerShadow">
+                                </a>
+                                <a href="../html/board.html" id="idTasksInProgess" class="task3Container containerShadow">
                                     <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
                                         <h2 id="idCountTasksInProgress" class="taskNumbers">2</h2>
                                         <p class="taskTxt">Tasks in Progress</p>
                                     </div>
-                                </div>
-                                <div id="idTaskAwaitingFeedback" class="task3Container containerShadow">
+                                </a>
+                                <a href="../html/board.html" id="idTaskAwaitingFeedback" class="task3Container containerShadow">
                                     <div class="taskOvervieInnerContainer mx-4 my-2 text-center">
                                         <h2 id="idCounttaskAwaitingFeedback" class="taskNumbers">2</h2>
                                         <p class="taskTxt">Awaiting Feedback</p>
                                     </div>
-                                </div>
+                                </a>
                             </div>
-                            <div id="idTaskOverviewMiddle"
+                            <a id="idTaskOverviewMiddle" href="../html/board.html"
                                 class="taskUrgentContainer containerShadow d-flex justify-content-center align-items-center">
                                 <div id="idTaskOverviewMiddleLeft" class="taskUrgentLeft d-flex align-items-center">
                                     <div class="d-flex align-items-center">
@@ -89,9 +89,9 @@
                                     <p id="idTaksUrgentDate">October 16, 2022</p>
                                     <p class="taskTxt">Upcoming Deadline</p>
                                 </div>
-                            </div>
+                            </a>
                             <div id="idTaskOverviewBottom" class="taskRestOvContainer d-flex justify-content-between">
-                                <div
+                                <a href="../html/board.html"
                                     class="taskRestOvWidth containerShadow d-flex justify-content-center align-items-center gap-2">
                                     <div>
                                         <img src="../assets/img/summeryPencil.svg" alt="Pencil">
@@ -100,8 +100,8 @@
                                         <h2 id="idTaskToDd" class="taskNumbers">1</h2>
                                         <p class="taskTxt">To-Do</p>
                                     </div>
-                                </div>
-                                <div
+                                </a>
+                                <a href="../html/board.html"
                                     class="taskRestOvWidth containerShadow d-flex justify-content-center align-items-center gap-2">
                                     <!-- <div> -->
                                         <img src="../assets/img/summeryDone.svg" alt="Pencil">
@@ -111,7 +111,7 @@
                                         <p class="taskTxt">Done</p>
                                     </div>
 
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div id="idWelcome" class="showWelcome d-none d-flex align-items-center justify-content-center">
