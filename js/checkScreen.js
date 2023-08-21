@@ -87,7 +87,11 @@ function addTaskMobileTemplate() {
                         <span>Subtask</span>
                         <div class="subtaskDiv">
                             <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
-                            <img src="../assets/img/plus.svg">
+                            <img src="../assets/img/plus.svg" onclick="addSubtask()">
+                        </div>
+                        </div>
+                        <div >
+                        <ul id="renderedSubtask"></ul>
                         </div>
             </div>
 
@@ -156,7 +160,10 @@ function addTaskDektopTemplate() {
                         <span>Subtask</span>
                         <div class="subtaskDiv">
                             <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
-                            <img src="../assets/img/plus.svg">
+                            <img src="../assets/img/plus.svg" onclick="addSubtask()">
+                        </div>
+                        <div >
+                        <ul id="renderedSubtask"></ul>
                         </div>
                 </div>
             </div>

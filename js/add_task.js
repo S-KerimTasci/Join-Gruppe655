@@ -87,3 +87,12 @@ function removeHighlight(){
     document.getElementById('lowIMG').src = `../assets/img/prio_low.svg`
 }
 
+function addSubtask(){
+    let subtask = document.getElementById('subtask')
+
+    document.getElementById('renderedSubtask').innerHTML += `
+    <li>${subtask.value} <img src="../assets/img/edit_subtask.svg"> <img src="../assets/img/delete_subtask.svg" ></li>
+    `
+    subtask.value =''
+
+}
