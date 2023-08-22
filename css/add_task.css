@@ -127,7 +127,7 @@ textarea{
 
 .subtaskInput{
     border: none;
-    width: 28vw;
+    width: 75vw;
 }
 
 .overlayTask{
@@ -196,6 +196,10 @@ textarea{
 
     .subtaskDiv{
         width: 30vw;
+    }
+
+    .subtaskInput{
+        width: 28vw;
     }
    
 }
