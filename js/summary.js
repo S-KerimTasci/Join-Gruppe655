@@ -12,6 +12,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
+ * This function returns the greeting phrase
+ * 
+ * 
+ * @returns - greeting which fits to the daytime
+ */
+function greetingText() {
+    let daytime = new Date().getHours();
+    if (daytime >= 5 && daytime < 12) {
+        return "Good Morning!";
+    } else if (daytime >= 12 && daytime < 19) {
+        return "Good Afternoon!";
+    } else {
+        return "Good Evening!";
+    }
+}
+
+/**
+ * this function adds the greeting texed provided by the call of greetingText() to the HTML Code
+ */
+function addGreetingPhrase() {
+    document.getElementById('idWelcomeMessage').innerText = greetingText(); 
+}
+
+
+/**
  * This function returns from an object(array) a count of all emements which contains a specific value
  * 
  * 
@@ -31,12 +56,13 @@ function countTasks(srcValue, compValue, chkArr) {
 }
 
 /**
- * This function calls function for adding counts and upcommingDeadline to summary
+ * This function calls function for adding counts and upcommingDeadline to summary it adds also the greeting formula too.
  * 
  */
 function addValuesToSummary() {
     addNumToSummary(); 
-    upcommingDeadline();    
+    upcommingDeadline();  
+    addGreetingPhrase()  
 }
 
 /**
