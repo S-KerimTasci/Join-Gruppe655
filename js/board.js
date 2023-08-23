@@ -1,4 +1,4 @@
-
+let taskToMove = '';
 /**
  * this function renders all tasks.
  */
@@ -23,7 +23,7 @@ function renderStatusContainer(status, taskContainerId) {
         let taskNumber = i + 1;
         let activeTask = taskJson[i];
         if (status == activeTask.status) {
-            document.getElementById(taskContainerId).innerHTML += taskTemplate(activeTask, taskNumber);
+            document.getElementById(taskContainerId).innerHTML += taskTemplate(taskNumber);
             callFunctionForSingleTask(activeTask, taskNumber);
             singleTaskCount++;
         }
@@ -40,3 +40,20 @@ function removeDefaultContainer(taskContainerId) {
     document.getElementById(taskContainerId + 'Default').classList.add('d-none');
 }
 
+
+function dragStart(taskNummer) {
+    taskToMove = taskNummer - 1;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+function moveTo(newStatus) {
+    taskJson[taskToMove].status = newStatus;
+    document.getElementById('idTaskToDo').innerHTML = '';
+    document.getElementById('idTaskInProgress').innerHTML = '';
+    document.getElementById('idTaskAwaitFeedback').innerHTML = '';
+    document.getElementById('idTaskDone').innerHTML = '';
+    renderTasks();
+}

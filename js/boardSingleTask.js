@@ -19,9 +19,9 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
  * @param {number} taskNr 
  * @returns - html code
  */
-function taskTemplate(task, taskNr) {
+function taskTemplate(taskNr) {
     return /*html*/ `
-    <div id="idTaskId${taskNr}" class="singleTaskContainer">
+    <div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" class="singleTaskContainer">
         <div id="idTaskType${taskNr}" class="singlTaskType">User Story </div>
         <div id="idTaskTxts${taskNr}" class="singelTaskTexts">
             <div id="idTaskHeadline${taskNr}" class="singleTaskHeadline">Headline

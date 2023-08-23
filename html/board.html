@@ -92,7 +92,7 @@
                             <div class="boardTaskContainer">
                                 <div id="idTaskToDoDefault" class="defaultTaskContainer"><span>No Tasks To do</span>
                                 </div>
-                                <div id="idTaskToDo" class="taskContainer"> 
+                                <div id="idTaskToDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)" class="taskContainer"> 
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->    
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                             <div class="boardTaskContainer">
                                 <div id="idTaskInProgressDefault" class="defaultTaskContainer"><span>No Tasks In
                                         progress</span></div>
-                                <div id="idTaskInProgress" class="taskContainer">
+                                <div id="idTaskInProgress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)" class="taskContainer">
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                             <div class="boardTaskContainer">
                                 <div id="idTaskAwaitFeedbackDefault" class="defaultTaskContainer"><span>No Tasks Await
                                         feedback</span></div>
-                                <div id="idTaskAwaitFeedback" class="taskContainer">
+                                <div id="idTaskAwaitFeedback" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)" class="taskContainer">
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                             <div class="boardTaskContainer">
                                 <div id="idTaskDoneDefault" class="defaultTaskContainer"><span>No Tasks Done</span>
                                 </div>
-                                <div id="idTaskDone" class="taskContainer">
+                                <div id="idTaskDone" ondrop="moveTo('done')" ondragover="allowDrop(event)" class="taskContainer">
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
                                        <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
                                     <div id="idTaskId0" class="singleTaskContainer">
