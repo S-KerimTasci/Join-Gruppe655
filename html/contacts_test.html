@@ -27,9 +27,44 @@
 <body onload="init()">
     <div id="idBackgroundContainer">
         <div id="idHeaderBody">
-            <header w3-include-html="../assets/templates/headerTemplate.html"></header>
+            <header id="headerContacts" w3-include-html="../assets/templates/headerTemplate.html"></header>
 
-            <div class="contacts-container" id="contactsContainer"></div>
+
+            <div class="contactsContent">
+                <div class="leftDiv">
+                    <div id="addButtonDiv" class="addButtonDiv">
+                        <button class="addButton"><span>Add new contact</span> <img
+                                src="../assets/img/person_add.svg"></button>
+                    </div>
+                    <div class="contacts-container" id="contactsContainer"></div>
+                </div>
+
+                <div class="rightDiv">
+                    <div class="contactsCart">
+                        <div class="contactsHeaderDektop">
+                            <h1 class="contactsHeaderh1">Contacts</h1>
+                            <div class="verticalLine"></div>
+                            <span class="contactsHeaderspan">Better with a team</span>
+                        </div>
+
+                        <div>
+                            <div class="name">
+                                <div class="circle">AM</div>
+                                <p>Anton Mayer</p>
+                            </div>
+                            <div class="contactInfo">
+                                <p>Contact Information</p>
+                                <p><b>Email</b></p>
+                                <a class="aEmail colorLink" href="mailto: abc@example.com">antom@gmail.com</a>
+                                <p><b>Phone</b></p>
+                                <a class="aPhone" href="tel: +49 1111 1111 1111">+49 1111 1111 1111</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
 
         </div>

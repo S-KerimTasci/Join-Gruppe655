@@ -59,142 +59,26 @@ const contactsJSON1 = [];
   }
   
 
-
-
-
-/*
-  function fillContactsJSON1() {
-    for (let i = 0; i < contacts.length; i++) {
-      const name = contacts[i];
-      const bgColor = colors[i % colors.length];
-      const initials = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-      
-      const contactInfo = {
-        name: name,
-        bgColor: bgColor,
-        initials: initials
-      };
-      
-      contactsJSON1.push(contactInfo);
-    }
+  function setHeightContactlist(){
+    let buttonDiv = document.getElementById('addButtonDiv');
+    let headerDiv = document.getElementById('headerContacts');
+    let contactsContainer = document.getElementById('contactsContainer');
+    
+    let windowHeight = window.innerHeight; // Nutze window.innerHeight, um die Fensterhöhe zu erhalten
+    
+    let buttonHeight = buttonDiv.clientHeight; // Verwende clientHeight, um die tatsächliche Höhe des Elements zu erhalten
+    let headerHeight = headerDiv.clientHeight;
+    
+    let height = windowHeight - buttonHeight - headerHeight;
+    
+    contactsContainer.style.height = height + 'px'; // Setze die Höhe mit 'px' am Ende
   }
   
-  fillContactsJSON1();
-  createContactList(contactsJSON1);
+  // Rufe die Funktion auf, um die Höhe beim Laden der Seite festzulegen
+  setHeightContactlist();
   
-  function createContactList(contacts) {
-    for (const letter of alphabet) {
-      const filteredContacts = contacts
-        .filter(contact => contact.name.toLowerCase().startsWith(letter))
-        .sort((a, b) => a.name.localeCompare(b.name));
-      
-      if (filteredContacts.length > 0) {
-        const html = `
-          <div class="contact-letter">${letter.toUpperCase()}</div>
-          <hr class="letter-line">
-          <div class="contacts-list">
-            ${filteredContacts.map(contact => {
-              return `
-                <div class="contact">
-                  <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
-                  ${contact.name}
-                </div>
-              `;
-            }).join('')}
-          </div>
-        `;
-        
-        contactsContainer.innerHTML += html;
-      }
-    }
-  }
-
-/*
-  function createContactList(contacts, colors) {
-    for (const letter of alphabet) {
-      const filteredContacts = contacts
-        .filter(contact => contact.toLowerCase().startsWith(letter))
-        .sort();
-      
-      if (filteredContacts.length > 0) {
-        const html = `
-          <div class="contact-letter">${letter.toUpperCase()}</div>
-          <hr class="letter-line">
-          <div class="contacts-list">
-            ${filteredContacts.map((contact, index) => {
-              const initials = contact.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-              const color = colors[index % colors.length]; // Zufällige Farbauswahl aus dem colors-Array
-              return `
-                <div class="contact">
-                  <div class="circle" style="background-color: ${color};">${initials}</div>
-                  ${contact}
-                </div>
-              `;
-            }).join('')}
-          </div>
-        `;
-        
-        contactsContainer.innerHTML += html;
-      }
-    }
-  }
-  
-  createContactList(contacts, colors);
+  // Führe die Funktion erneut aus, wenn sich die Fenstergröße ändert
+  window.addEventListener('resize', setHeightContactlist);
   
 
- 
-  function createContactList(contacts) {
-    for (const letter of alphabet) {
-        const filteredContacts = contacts
-          .filter(contact => contact.toLowerCase().startsWith(letter))
-          .sort(); // Hier wird das Array alphabetisch sortiert
-      
-      if (filteredContacts.length > 0) {
-        const html = `
-          <div class="contact-letter">${letter.toUpperCase()}</div>
-          <hr class="letter-line">
-          <div class="contacts-list">
-            ${filteredContacts.map(contact => `<div class="contact">${contact}</div>`).join('')}
-          </div>
-        `;
-        
-        contactsContainer.innerHTML += html;
-      }
-    }
-  }
-  
-  createContactList(contacts);
-  
 
- 
-  function createContactList(contacts) {
-    for (const letter of alphabet) {
-      const filteredContacts = contacts.filter(contact => contact.toLowerCase().startsWith(letter));
-      
-      if (filteredContacts.length > 0) {
-        const letterDiv = document.createElement('div');
-        letterDiv.className = 'contact-letter';
-        letterDiv.textContent = letter.toUpperCase();
-        
-        const line = document.createElement('hr');
-        line.className = 'letter-line';
-        
-        const contactsList = document.createElement('div');
-        contactsList.className = 'contacts-list';
-        
-        filteredContacts.forEach(contact => {
-          const contactDiv = document.createElement('div');
-          contactDiv.className = 'contact';
-          contactDiv.textContent = contact;
-          contactsList.appendChild(contactDiv);
-        });
-        
-        contactsContainer.appendChild(letterDiv);
-        contactsContainer.appendChild(line);
-        contactsContainer.appendChild(contactsList);
-      }
-    }
-  }
-  
-  createContactList(contacts);
-  */
