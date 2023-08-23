@@ -67,6 +67,15 @@ function redirectToSummaryPage() {
 }
 
 
+/**
+ * Redirects to the login page after a delay.
+ */
+function redirectToLoginPage() {
+    setTimeout(() => {
+        window.location.href = "../html/login.html";
+    }, 1500);
+}
+
 
 /**
  *  Downloads the users array from the backend.
@@ -78,22 +87,6 @@ async function loadUsers() {
         users = JSON.parse(usersData);
     } catch (e) {
         console.error("Loading error:", e);
-    }
-}
-
-
-/**
- * This function returns the initials of a given name
- * 
- * @param {string} name - The name to extract initials from
- * @returns Initials of the name
- */
-function initials(name) {
-    const words = name.split(' ');
-    if (words.length === 1) {
-        return words[0].charAt(0).toUpperCase();
-    } else {
-        return words[0].charAt(0).toUpperCase() + words[1].charAt(0).toUpperCase();
     }
 }
 
@@ -196,16 +189,6 @@ function handleFailureResponse() {
     const desktopMessage = generateHTMLifNotUserDesktop();
     const mobileMessage = generateHTMLifNotUserMobile();
     displayAndHideMessage(message, desktopMessage, mobileMessage);
-}
-
-
-/**
- * Redirects to the login page after a delay.
- */
-function redirectToLoginPage() {
-    setTimeout(() => {
-        window.location.href = "../html/login.html";
-    }, 1500);
 }
 
 
@@ -339,6 +322,22 @@ function setNewUser(fullName, email, password,) {
         password: password,
         initials: userInitials,
     });
+}
+
+
+/**
+ * This function returns the initials of a given name
+ * 
+ * @param {string} name - The name to extract initials from
+ * @returns Initials of the name
+ */
+function initials(name) {
+    const words = name.split(' ');
+    if (words.length === 1) {
+        return words[0].charAt(0).toUpperCase();
+    } else {
+        return words[0].charAt(0).toUpperCase() + words[1].charAt(0).toUpperCase();
+    }
 }
 
 
