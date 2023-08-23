@@ -1,24 +1,32 @@
 /**
- * This function calls function: includeHTML() and adds the return valus for function: initials() to header element id='userIntials'
+ * This function initializes the user interface.
+ * It includes HTML content and displays the user's initials in the header element.
  * 
  */
 async function init(){
-    await includeHTML();
-    document.getElementById('userIntials').innerText = initials(); //add global var for login
+    await includeHTML(); 
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')); 
+    document.getElementById('userIntials').innerText = initials(currentUser); 
 }
+
 /**
- * This function returns the initals of the loged in user
+ * This function returns the initials of the logged in user.
+ * If a user is logged in, it extracts the user's name, retrieves their initials using memberInitials(),
+ * and converts the initials to uppercase before returning. If no user is logged in, it returns 'G'.
  * 
- * @param {string} login - this is the login of the user
- * @returns initials of user
+ * @param {Object} currentUser - The user object containing the necessary information
+ * @returns {string} The initials of the user (in uppercase if available)
  */
-function initials(login) {
-    if (login) {
-        let member = login.fullName; // noch abzusprechen wie der Name des User abgespeichert wird
-        return memberInitials(member); // here add function for getting initials
-    } else { return 'G'}
-    
+function initials(currentUser) {
+    if (currentUser) {
+        const member = currentUser.name; 
+        const userInitials = memberInitials(member); 
+        return userInitials.toUpperCase(); 
+    } else {
+        return 'G'; 
+    }
 }
+
 
 /**
  * This function looks for all elements with the attribute w3-include-html and loads the code from the source added as value for this attribute  

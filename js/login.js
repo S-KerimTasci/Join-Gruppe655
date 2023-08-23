@@ -54,6 +54,10 @@ function privacyPolicy() {
     window.location.href = "../html/privacy_policy.html";
 }
 
+function login() {
+    window.location.href = "../html/login.html";
+}
+
 function openSignUp() {
     window.location.href = "../html/sign_up.html";
 }
@@ -322,22 +326,6 @@ function setNewUser(fullName, email, password,) {
         password: password,
         initials: userInitials,
     });
-}
-
-
-/**
- * This function returns the initials of a given name
- * 
- * @param {string} name - The name to extract initials from
- * @returns Initials of the name
- */
-function initials(name) {
-    const words = name.split(' ');
-    if (words.length === 1) {
-        return words[0].charAt(0).toUpperCase();
-    } else {
-        return words[0].charAt(0).toUpperCase() + words[1].charAt(0).toUpperCase();
-    }
 }
 
 

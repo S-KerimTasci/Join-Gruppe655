@@ -5,11 +5,6 @@
     src: url('../assets/fonts/Inter-Regular.woff') format('woff')
 }
 
-@font-face {
-    font-family: 'Inter Bold';
-    src: url('../assets/fonts/Inter-Bold.woff') format('woff');
-}
-
 body {
     margin: 0;
     cursor: default;
@@ -137,56 +132,12 @@ form {
     text-decoration: underline;
 }
 
-
-/*Help, Legal Notice, Privacy Policy*/
-
-.help-responsiv {
-    display: none;
-}
-
-.legal-notice-responsiv {
-    display: none;
-}
-
-.help {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-.help-content {
-    padding: 145px 64px 20px 362px;
-}
-
-.header-help {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header-help img {
-    cursor: pointer;
-}
-
-.subtitle {
-    font-family: 'Inter Bold';
-    font-size: 24px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 20px;
-    font-family: 'Inter';
-    text-align: justify;
-}
-
 table {
     height: 200px;
 }
 
 tr td:first-child {
-    font-size: 24px;
+    font-size: 25px;
     font-family: 'Inter Bold';
     margin-top: 40px;
     width: 50px;
@@ -194,7 +145,7 @@ tr td:first-child {
 
 tr td:nth-child(2) {
     font-family: 'Inter';
-    font-size: 20px;
+    font-size: 21px;
     text-align: justify;
 }
 
