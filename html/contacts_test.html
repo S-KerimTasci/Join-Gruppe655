@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/contacts.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/headerFooter.css">
+
+
+    <!-- JS -->
+    <script src="../js/add_contact.js" defer></script>
+    <script src="../js/headFootTemplate.js" defer></script>
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body onload="init()">
+    <div id="idBackgroundContainer">
+        <div id="idHeaderBody">
+            <header w3-include-html="../assets/templates/headerTemplate.html"></header>
+
+            <div class="contacts-container" id="contactsContainer"></div>
+
+
+        </div>
+        <footer w3-include-html="../assets/templates/footer.html"></footer>
+    </div>
+
+
+
+</body>
+
+</html>

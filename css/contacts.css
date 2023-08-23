@@ -7,7 +7,7 @@ font-face {
 
 
 body {
-    background-color: #F6F7F8;
+    background-color: white;
     font-family: 'Inter';
 }
 
@@ -54,7 +54,7 @@ input{
     height: 60px;
     border: solid 3px white;
     border-radius: 70px;
-    background-color: orange;
+    /*background-color: orange;*/
     color: white;
     display: flex;
     justify-content: center;
@@ -151,3 +151,52 @@ input{
     background: url(../assets/img/call_input_tel.svg) no-repeat scroll 7px 7px;
     background-position: 95%;
 }
+
+  /* Chat GPT */
+
+.d-none{
+    display: none;
+}
+  
+  .contacts-container {
+    background-color: #ffffff;
+    padding: 20px;
+    padding-bottom: 80px;
+  }
+  
+  .contact-letter {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+  
+  .letter-line {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 5px 0;
+  }
+  
+  .contacts-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
+  .contact {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nameDiv{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .colorLink{
+    color: #0000EE !important;
+  }
+  
+  /* Weitere Stile für Kontakte und Buchstaben hinzufügen */
+  
