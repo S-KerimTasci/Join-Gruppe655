@@ -32,6 +32,7 @@
     <!-- <script src="../js/summary.js" defer></script> -->
     <script src="../js/headFootTemplate.js" defer></script>
     <script src="../js/board.js" defer></script>
+    <script src="../js/boardSingleTask.js" defer></script>
     <!-- for tests!!!!! -->
     <script src="../js/testTaskJSON.js"></script>
 </head>
@@ -89,7 +90,7 @@
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
                             <div class="boardTaskContainer">
-                                <div id="idPlaceholderTaskToDo" class="defaultTaskContainer"><span>No Tasks To do</span>
+                                <div id="idTaskToDoDefault" class="defaultTaskContainer"><span>No Tasks To do</span>
                                 </div>
                                 <div id="idTaskToDo" class="taskContainer"> 
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->    
@@ -103,7 +104,7 @@
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
                             <div class="boardTaskContainer">
-                                <div id="idPlaceholderTaskInProgr" class="defaultTaskContainer"><span>No Tasks In
+                                <div id="idTaskInProgressDefault" class="defaultTaskContainer"><span>No Tasks In
                                         progress</span></div>
                                 <div id="idTaskInProgress" class="taskContainer">
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
@@ -116,7 +117,7 @@
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
                             <div class="boardTaskContainer">
-                                <div id="idPlaceholderTaskAwaitFeedb" class="defaultTaskContainer"><span>No Tasks Await
+                                <div id="idTaskAwaitFeedbackDefault" class="defaultTaskContainer"><span>No Tasks Await
                                         feedback</span></div>
                                 <div id="idTaskAwaitFeedback" class="taskContainer">
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
@@ -129,7 +130,7 @@
 
                             </div>
                             <div class="boardTaskContainer">
-                                <div id="idPlaceholderTaskDone" class="defaultTaskContainer"><span>No Tasks Done</span>
+                                <div id="idTaskDoneDefault" class="defaultTaskContainer"><span>No Tasks Done</span>
                                 </div>
                                 <div id="idTaskDone" class="taskContainer">
                                     <!-- der Code ab hier kommt ist nur Platzhalter für Testzwecke-->
@@ -137,7 +138,7 @@
                                     <div id="idTaskId0" class="singleTaskContainer">
                                         <div id="idTaskType0" class="singlTaskType">User Story</div>
                                         <div id="idTaskTxts0" class="singelTaskTexts">
-                                            <div id="idTaskHeadline0" class="singleTaskHeadline">Contact Form & Imprint
+                                            <div id="idTaskHeadline0" class="singleTaskHeadline">this is the PlaceholderTask
                                             </div>
                                             <div id="idTaskShortTxt0" class="singleTaskTxt">Create a contact form and
                                                 imprint page...</div>

@@ -3,10 +3,10 @@ let taskJson = [
         "taskId": "1",
         "taskType": "User Story",
         "dueDate": 1695247200000, /* 21.Sep.23 */
-        "status": "inProgress",
+        "status": "inProgress", /*toDo inProgress awaitFeedback done*/
         "headline": "Test 1",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
-        "doneSubTasks": 0,
+        "doneSubTasks": 1,
         "sbuTaskTotal": 2,
         "member": [
             "Alex Solms",
@@ -19,7 +19,7 @@ let taskJson = [
         "taskId": "2",
         "taskType": "User Story",
         "dueDate": 1697839200000, /* 21.Oct.23 */
-        "status": "toDo",
+        "status": "toDo", /*toDo inProgress awaitFeedback done*/
         "headline": "Test 2",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
@@ -35,8 +35,8 @@ let taskJson = [
         "taskId": "3",
         "taskType": "Technical Task",
         "dueDate": 1694124000000, /* 8.Sep.23 */
-        "status": "toDo",
-        "headline": "Test 3",
+        "status": "toDo", /*toDo inProgress awaitFeedback done*/
+        "headline": "WasPassiertWennIchDieMaximaleZeilenbreiteÜber",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 0,
         "sbuTaskTotal": 0,
@@ -50,7 +50,7 @@ let taskJson = [
         "taskId": "4",
         "taskType": "Technical Task",
         "dueDate": 1702162800000, /* 10.Dec.23 */
-        "status": "awaitFeedback",
+        "status": "awaitFeedback", /*toDo inProgress awaitFeedback done*/
         "headline": "Test 4",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
@@ -65,11 +65,11 @@ let taskJson = [
         "taskId": "5",
         "taskType": "Technical Task",
         "dueDate": 1696888800000, /* 10.10.23 */
-        "status": "toDo",
-        "headline": "Test 5 mit ein wenig mehr Text, weil auch geschaut werden muss dass 2 Zeilen nicht überschritten werden.",
+        "status": "toDo", /*toDo inProgress awaitFeedback done*/
+        "headline": "Test 5 mit ein wenig mehr Text",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
-        "doneSubTasks": 0,
-        "sbuTaskTotal": 2,
+        "doneSubTasks": 2,
+        "sbuTaskTotal": 5,
         "member": [
             "Kurt Nies",
             "Candy Noor",
@@ -81,7 +81,7 @@ let taskJson = [
         "taskId": "6",
         "taskType": "Technical Task",
         "dueDate": 1699570800000, /* 10.Nov.23 */
-        "status": "toDo",
+        "status": "toDo", /*toDo inProgress awaitFeedback done*/
         "headline": "Test 6 mit ein wenig mehr Text.",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
@@ -89,6 +89,21 @@ let taskJson = [
         "member": [
             "Lisbeth Kummer",
             "Olli Hopfen"
+        ],
+        "urgency": "urgent"
+    },
+    {
+        "taskId": "7",
+        "taskType": "User Story",
+        "dueDate": 1699580800000, /* 9.Sep.23 */
+        "status": "done", /*toDo inProgress awaitFeedback done*/
+        "headline": "Test 7",
+        "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
+        "doneSubTasks": 0,
+        "sbuTaskTotal": 0,
+        "member": [
+            "Fred Kasten",
+            "Arun Kliet"
         ],
         "urgency": "urgent"
     }

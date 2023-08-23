@@ -1,10 +1,11 @@
 .singleTaskContainer{
-    width: 244px; /* hier muss ich noch schaun, dass die Breite passt wegen dem Schatten */
+    width: 252px; /* hier muss ich noch schaun, dass die Breite passt wegen dem Schatten */
     height: 263px; /* das hier muss auf auto später */
     box-shadow: 0px 0px 10px 3px #00000014;
     padding: 16px;
     border-radius: 24px;
     background-color: white;
+
 }
 
 .singlTaskType{
@@ -22,13 +23,18 @@
 
 .singelTaskTexts{
     margin: 24px 0;
+    height: 84px;
 }
 .singleTaskHeadline{
+    
     font-size: 16px;
     font-weight: 700;
+    line-height: 19px;
     margin-bottom: 8px;
+    word-wrap: break-word;
 }
 .singleTaskTxt{
+    line-height: 19px;
     font-size: 16px;
     font-weight: 400;
     color: #A8A8A8;
@@ -39,11 +45,17 @@
     justify-content: space-between;
     margin-bottom: 24px;
 }
-.SingleTaskSubProgress{
+.SingleTaskSubProgressOuterCon{
     height: 8px;
     width: 128px;
     border-radius: 8px;
-    background-color: aqua; /*  #F4F4F4;*/
+    background-color: #F4F4F4; 
+}
+.SingleTaskSubProgress{
+    height: 8px;
+    width: 0px;
+    border-radius: 8px;
+    background-color: #4589FF;
 }
 .SingleTaksCount{
     font-size: 12px;
