@@ -21,7 +21,6 @@ input{
 
 .contactsContent{
     display: flex;
-    width: 100%-200px;
 }
 
 .contactsCart{
@@ -90,14 +89,28 @@ input{
 }
 
 .contactsMenu{
-    position: absolute;
+    position: fixed;
+    right: 10px;
+    bottom: 90px;
+    height: 47px;
+}
+
+.addContactMenu{
+    position: fixed;
     right: 10px;
     bottom: 90px;
     height: 47px;
 }
 
 .createContactOverlay{
-    height: 100vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    position: fixed;
+    top: 80px;
+    bottom: 76px;
+    background-color: white;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .contactsHeaderOverlay{
@@ -198,7 +211,7 @@ input{
 
   /* Chat GPT */
 
-.d-none{
+.dd-none{
     display: none;
 }
   
@@ -206,7 +219,6 @@ input{
     background-color: #ffffff;
     padding: 20px;
     padding-bottom: 80px;
-    height: 69vh;
     overflow-y: scroll;
   }
   
@@ -252,6 +264,14 @@ input{
     color: #007CEE !important;
   }
   
+  .leftDiv{
+    width: 100%
+}
+
+.rightDiv{
+    width: 0;
+
+}
   /* Weitere Stile für Kontakte und Buchstaben hinzufügen */
   
   @media (min-width: 750px) {
@@ -267,8 +287,17 @@ input{
     }
 
     .rightDiv{
+        display: block;
         width: 60%;
         background-color: #f6f7f8;
+    }
+
+    .contacts-container {
+        padding-bottom: 0px;
+      }
+
+    .addContactMenu{
+        display: none;
     }
 
 

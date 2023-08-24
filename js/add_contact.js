@@ -80,5 +80,13 @@ const contactsJSON1 = [];
   // Führe die Funktion erneut aus, wenn sich die Fenstergröße ändert
   window.addEventListener('resize', setHeightContactlist);
   
+function openAddContactOverlay(){
+    document.getElementById('addContactMenu').classList.add('dd-none')
+    document.getElementById('createContactOverlay').classList.remove('dd-none')
+}
 
-
+function closeAddContactOverlay(){
+    document.getElementById('addContactMenu').classList.remove('dd-none')
+    document.getElementById('createContactOverlay').classList.add('dd-none')
+    
+}
