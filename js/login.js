@@ -70,6 +70,9 @@ function redirectToSummaryPage() {
     window.location.href = '../html/summary.html';
 }
 
+function goBack() {
+    window.history.back();
+  }
 
 /**
  * Redirects to the login page after a delay.
