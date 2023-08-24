@@ -1,6 +1,6 @@
 /* Global or not assigned more precisely */
 
-font-face {
+@font-face {
     font-family: 'Inter';
     src: url('../assets/fonts/Inter-Regular.woff') format('woff');
     font-family: 'Inter Bold';
@@ -132,23 +132,6 @@ form {
 
 .here:hover { 
     text-decoration: underline;
-}
-
-table {
-    height: 200px;
-}
-
-tr td:first-child {
-    font-size: 25px;
-    font-family: 'Inter Bold';
-    margin-top: 40px;
-    width: 50px;
-}
-
-tr td:nth-child(2) {
-    font-family: 'Inter';
-    font-size: 21px;
-    text-align: justify;
 }
 
 .legal-notice {
@@ -298,7 +281,7 @@ tr td:nth-child(2) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 80px;
+    padding: 180px 80px 80px 80px;
     height: 100vh;
 }
 
@@ -306,7 +289,7 @@ tr td:nth-child(2) {
     display: flex;
     justify-content: space-between;
     position: fixed;
-    top: 50px;
+    top: 30px;
     left: 50px;
     right: 50px;
 }
@@ -318,7 +301,7 @@ tr td:nth-child(2) {
     align-items: center;
     padding: 35px 0px;
     width: 820px;
-    height: 560px;
+    height: 550px;
     background: #FFFFFF;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;

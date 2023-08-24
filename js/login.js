@@ -54,7 +54,7 @@ function privacyPolicy() {
     window.location.href = "../html/privacy_policy.html";
 }
 
-function login() {
+function loginHtml() {
     window.location.href = "../html/login.html";
 }
 
@@ -193,25 +193,6 @@ function handleFailureResponse() {
     const desktopMessage = generateHTMLifNotUserDesktop();
     const mobileMessage = generateHTMLifNotUserMobile();
     displayAndHideMessage(message, desktopMessage, mobileMessage);
-}
-
-
-/**
- * Displays and then hides the given messages on the page.
- *
- * @param {HTMLElement} messageElement - The message element on the page.
- * @param {string} desktopMessage - The desktop message to display.
- * @param {string} mobileMessage - The mobile message to display.
- */
-function displayAndHideMessage(messageElement, desktopMessage, mobileMessage) {
-    messageElement.style.display = 'block';
-    messageElement.innerHTML = desktopMessage;
-    confirmTextResponsivSignUp.style.display = 'block';
-    confirmTextResponsivSignUp.innerHTML = mobileMessage;
-    setTimeout(() => {
-        messageElement.style.display = 'none';
-        confirmTextResponsivSignUp.style.display = 'none';
-    }, 1500);
 }
 
 
