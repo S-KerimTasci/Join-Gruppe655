@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: headFootTemplate.js</title>
+    <title>JSDoc: Source: loginMessages.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: headFootTemplate.js</h1>
+    <h1 class="page-title">Source: loginMessages.js</h1>
 
     
 
@@ -27,51 +27,191 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * This function initializes the user interface.
- * It includes HTML content and displays the user's initials in the header element.
- * 
+ * Closes the overlay by hiding it.
  */
-async function init(){
-    await includeHTML(); 
-    const currentUser = JSON.parse(localStorage.getItem('currentUser')); 
-    document.getElementById('userIntials').innerText = initials(currentUser); 
-}
-
-/**
- * This function returns the initials of the logged in user.
- * If a user is logged in, it extracts the user's name, retrieves their initials using memberInitials(),
- * and converts the initials to uppercase before returning. If no user is logged in, it returns 'G'.
- * 
- * @param {Object} currentUser - The user object containing the necessary information
- * @returns {string} The initials of the user (in uppercase if available)
- */
-function initials(currentUser) {
-    if (currentUser) {
-        const member = currentUser.name; 
-        const userInitials = memberInitials(member); 
-        return userInitials.toUpperCase(); 
-    } else {
-        return 'G'; 
-    }
+function closeOverlay() {
+    const overlay = document.getElementById('popUpBg');
+    overlay.style.display = 'none';
 }
 
 
 /**
- * This function looks for all elements with the attribute w3-include-html and loads the code from the source added as value for this attribute  
- * 
+ * Prevents the overlay from closing when clicked inside the overlay content.
+ *
+ * @param {Event} event - The event object.
  */
-async function includeHTML() {
-    let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i &lt; includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute('w3-include-html');
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = 'Page not found';
-        }
-    }
+function doNotCloseOverlay(event) {
+    event.stopPropagation(); 
+}
+
+
+/**
+ * This function generates HTML for desktop view if the user's name is missing
+ */
+function handleMissingNameDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                Enter first and last name
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view if the user's name is missing
+ */
+function handleMissingNameMobile() {
+    return /*html*/ `
+        Enter first and last name`;
+}
+
+
+/**
+ * This function generates HTML for desktop view if the user already exists
+ */
+function handleExistingUserDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                User already exists. Please Login
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view if the user already exists
+ */
+function handleExistingUserMobile() {
+    return /*html*/ `
+        User already exists. Please Login`;
+}
+
+
+/**
+ * This function generates HTML for desktop view when a user has registered
+ */
+function handleResponseDesktop(response) {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                You have successfully registered.
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view when a user has registered 
+ */
+function handleResponseMobile(response) {
+    return /*html*/ `
+        You have successfully registered.`;
+}
+
+
+/**
+ * This function generates HTML for desktop view if the user is not registered
+ */
+function generateHTMLifNotUserDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">You are not registered yet.&lt;br> Click 
+                    &lt;span class="here" onclick="openSignUp(this)">here&lt;/span> to sign up
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view if the user is not registered
+ */
+function generateHTMLifNotUserMobile() {
+    return /*html*/`
+        You are not registered yet.&lt;br> Click 
+            &lt;span class="here-responsiv" onclick="openSignUp(this)">here&lt;/span> to sign up`;
+}
+
+
+/**
+ * This function generates HTML for desktop view send an email to the user
+ */
+function sendPasswordDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                    &lt;img src="../assets/img/email-send.svg">
+                    An E-Mail has been sent to you
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view send an email to the user
+ */
+function sendPasswordMobile() {
+    return /*html*/ `
+        An E-Mail has been sent to you`;
+}
+
+
+/**
+ * This function generates HTML for desktop view if the user resets their password
+ */
+function resetPasswordDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                    You reset your password
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view if the user resets their password
+ */
+function resetPasswordMobile() {
+    return /*html*/ `
+        You reset your password`;
+}
+
+
+/**
+ * This function generates HTML for desktop view if the user password not match
+ */
+function passwordNotMatchDesktop() {
+    return /*html*/ `
+        &lt;div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            &lt;div class="confirm-box">
+                &lt;div onclick="doNotCloseOverlay(event)" class="register-text">
+                    Passwords do not match. Please try again.
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view if the user password not match
+ */
+function passwordNotMatchMobile() {
+    return /*html*/ `
+        Passwords do not match. Please try again.`;
 }</code></pre>
         </article>
     </section>

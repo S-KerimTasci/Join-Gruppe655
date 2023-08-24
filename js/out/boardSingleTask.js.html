@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: headFootTemplate.js</title>
+    <title>JSDoc: Source: boardSingleTask.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: headFootTemplate.js</h1>
+    <h1 class="page-title">Source: boardSingleTask.js</h1>
 
     
 
@@ -27,50 +27,187 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * This function initializes the user interface.
- * It includes HTML content and displays the user's initials in the header element.
+ * this function calls all functions for adding values to the html code within the active task
  * 
+ * @param {object} activeTask 
+ * @param {number} taskNumber 
  */
-async function init(){
-    await includeHTML(); 
-    const currentUser = JSON.parse(localStorage.getItem('currentUser')); 
-    document.getElementById('userIntials').innerText = initials(currentUser); 
+function callFunctionForSingleTask(activeTask, taskNumber) {
+    colorTaskType(activeTask.taskType, taskNumber);
+    addTaskTitle(activeTask.headline, taskNumber);
+    addTaskTxt(activeTask.description, taskNumber);
+    subTaskBarProgress(activeTask.doneSubTasks, activeTask.sbuTaskTotal, taskNumber);
+    taskMember(activeTask.member, taskNumber);
+    taskUrgency(activeTask.urgency, taskNumber);
+    selectionHTML(activeTask.status, taskNumber);
 }
 
 /**
- * This function returns the initials of the logged in user.
- * If a user is logged in, it extracts the user's name, retrieves their initials using memberInitials(),
- * and converts the initials to uppercase before returning. If no user is logged in, it returns 'G'.
+ * This function returns the HTML code for a task
  * 
- * @param {Object} currentUser - The user object containing the necessary information
- * @returns {string} The initials of the user (in uppercase if available)
+ * @param {number} taskNr 
+ * @returns - html code
  */
-function initials(currentUser) {
-    if (currentUser) {
-        const member = currentUser.name; 
-        const userInitials = memberInitials(member); 
-        return userInitials.toUpperCase(); 
-    } else {
-        return 'G'; 
+function taskTemplate(taskNr) {
+    return /*html*/ `
+    &lt;div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" class="singleTaskContainer">
+        &lt;div class="d-flex justify-content-between align-item-center">
+            &lt;div id="idTaskType${taskNr}" class="singlTaskType">User Story &lt;/div>
+            &lt;select id="idChangeStatus${taskNr}" onchange="changeStatus(this)" class="changeStatus">
+             &lt;!-- hier kommt das dropdownelement rein -->
+             &lt;/select> 
+        &lt;/div>
+        &lt;div id="idTaskTxts${taskNr}" class="singelTaskTexts">
+            &lt;div id="idTaskHeadline${taskNr}" class="singleTaskHeadline">Headline
+            &lt;/div>
+            &lt;div id="idTaskShortTxt${taskNr}" class="singleTaskTxt">Create a contact form and
+                imprint page...&lt;/div>
+        &lt;/div>
+        &lt;div id="idTaskSubTask${taskNr}" class="TaskSubTask">
+            &lt;div class="SingleTaskSubProgressOuterCon"> 
+                &lt;div id="idSingleTaskSubProgress${taskNr}" class="SingleTaskSubProgress">&lt;/div>
+            &lt;/div>
+            &lt;div id="idSingleTaksCount${taskNr}" class="SingleTaksCount">
+                &lt;span id="idSingleTaksCountPart${taskNr}">1&lt;/span>
+                &lt;span>/&lt;/span>
+                &lt;span id="idSingleTaksCountTotal${taskNr}">2&lt;/span>
+                &lt;span> Subtasks&lt;/span>
+            &lt;/div>
+        &lt;/div>
+        &lt;div id="idSingleTaskMemberPrio${taskNr}" class="SingleTaskMemberPrio">
+            &lt;div id="idSingleTaskMember${taskNr}" class="SingleTaskMember">
+                &lt;!-- hier müssen dann über eine Funktion die Memberplaketten eingefügt werden -->
+            &lt;/div>
+            &lt;div id="idSingleTaskPrio${taskNr}" class="SingleTaskPrio">
+                &lt;img id="idSingleTaskPrioImg${taskNr}" src="../assets/img/prio_urgent.svg" alt="">
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>`
+}
+
+/**
+ * 
+ * @param {string} taskStatus provides the actual status of task
+ * @param {number} taskNr - provides the task number of task
+ */
+function selectionHTML(taskStatus, taskNr) {
+    const statusArr = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
+    let htmlOptions = `&lt;option value="${taskStatus}">${taskStatus}&lt;/option>`;
+    for (let i = 0; i &lt; statusArr.length; i++) {
+        if (taskStatus !== statusArr[i]) {
+            htmlOptions += `&lt;option value="${statusArr[i]}">${statusArr[i]}&lt;/option>`;
+        }  
+    }
+    document.getElementById('idChangeStatus' + taskNr).innerHTML = htmlOptions;
+}
+
+
+/**
+ * this function returns the background color for the specific task type
+ * 
+ * @param {string} taskType - this is the specific task type
+ * @param {number} taskNr - used to find the specific element id
+ */
+function colorTaskType(taskType, taskNr) {
+    document.getElementById('idTaskType' + taskNr).innerText = taskType;
+    switch (taskType) {
+        case "User Story":
+            document.getElementById('idTaskType' + taskNr).style.backgroundColor = '#0038FF';
+            break;
+        case "Technical Task":
+            document.getElementById('idTaskType' + taskNr).style.backgroundColor = '#1FD7C1';
+            break;
+        default:
+            break;
     }
 }
 
+/**
+ * This function adds the Headline of task to the html element
+ * 
+ * @param {string} taskHeadline 
+ * @param {number} taskNr 
+ */
+function addTaskTitle(taskHeadline, taskNr) {
+    document.getElementById('idTaskHeadline' + taskNr).innerText = taskHeadline;
+}
 
 /**
- * This function looks for all elements with the attribute w3-include-html and loads the code from the source added as value for this attribute  
+ * This function adds the limited text to the html code of the task
  * 
+ * @param {string} taskText 
+ * @param {number} taskNr 
  */
-async function includeHTML() {
-    let includeElements = document.querySelectorAll('[w3-include-html]');
-    for (let i = 0; i &lt; includeElements.length; i++) {
-        const element = includeElements[i];
-        file = element.getAttribute('w3-include-html');
-        let resp = await fetch(file);
-        if (resp.ok) {
-            element.innerHTML = await resp.text();
-        } else {
-            element.innerHTML = 'Page not found';
-        }
+function addTaskTxt(taskText, taskNr) {
+    document.getElementById('idTaskShortTxt' + taskNr).innerText = limitTextTo37Char(taskText);
+}
+
+/**
+ * This function retuns string of 37 chars plus '...' if the lenght of the string is graeter than 37 chars
+ * 
+ * @param {string} text 
+ * @returns - text limited to 37 chars plus three dots
+ */
+function limitTextTo37Char(text) {
+    if (text.length &lt;= 37) {
+        return text
+    } else {
+        return text.substring(0, 37) + '...';
+    }
+}
+
+/**
+ * This function changes the progress bar width
+ * 
+ * @param {number} doneSubTasks 
+ * @param {number} sbuTaskTotal 
+ * @param {number} taskNr 
+ */
+function subTaskBarProgress(doneSubTasks, sbuTaskTotal, taskNr) {
+    let faktor = 1;
+    document.getElementById('idSingleTaksCountPart' + taskNr).innerText = doneSubTasks;
+    document.getElementById('idSingleTaksCountTotal' + taskNr).innerText = sbuTaskTotal;
+    if (sbuTaskTotal != 0) {
+        faktor = doneSubTasks / sbuTaskTotal;
+        document.getElementById('idSingleTaskSubProgress' + taskNr).style.width = Math.round(128 * faktor) + 'px';
+        
+    } else {
+        document.getElementById('idSingleTaskSubProgress' + taskNr).style.width = 0;
+    }
+}
+
+/**
+ * This function add html container to a container with id 'idSingleTaskMember'
+ * used in renderStatusContainer()
+ * 
+ * @param {array} arrMember - array of full names of all members connected to the task
+ * @param {number} taskNr - to create a unique id
+ */
+function taskMember(arrMember, taskNr) {
+    for (let i = 0; i &lt; arrMember.length; i++) {
+        let membinitials = memberInitials(arrMember[i]);
+        document.getElementById('idSingleTaskMember' + taskNr).innerHTML += `&lt;div id="idMemberPlaceholder${taskNr}_${i}" class="memberPlaceholder">${membinitials}&lt;/div>`
+        // um die Hintergrundfarbe einzufügen muss hier noch Code rein. 
+    }
+}
+
+/**
+ * This function changes the img urgency belonging to task urgency
+ * 
+ * @param {string} urgency 
+ * @param {number} taskNr 
+ */
+function taskUrgency(urgency, taskNr) {
+    switch (urgency) {
+        case 'low':
+            document.getElementById('idSingleTaskPrioImg' + taskNr).src = "../assets/img/prio_low.svg";
+            break;
+        case 'medium':
+            document.getElementById('idSingleTaskPrioImg' + taskNr).src = "../assets/img/prio_medium.svg";
+            break;
+        case 'urgent':
+            document.getElementById('idSingleTaskPrioImg' + taskNr).src = "../assets/img/prio_urgent.svg";
+            break;
     }
 }</code></pre>
         </article>

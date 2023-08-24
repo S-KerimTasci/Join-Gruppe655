@@ -118,7 +118,7 @@ function addTaskTxt(taskText, taskNr) {
  * This function retuns string of 37 chars plus '...' if the lenght of the string is graeter than 37 chars
  * 
  * @param {string} text 
- * @returns 
+ * @returns - text limited to 37 chars plus three dots
  */
 function limitTextTo37Char(text) {
     if (text.length <= 37) {
