@@ -28,7 +28,10 @@ function renderStatusContainer(status, taskContainerId) {
             singleTaskCount++;
         }
     }
-    if (singleTaskCount) removeDefaultContainer(taskContainerId);
+console.log(taskContainerId + '  ' + singleTaskCount);
+
+    // debugger;
+    toggleDefaultContainer(taskContainerId, singleTaskCount);
 }
 
 /**
@@ -36,8 +39,14 @@ function renderStatusContainer(status, taskContainerId) {
  * 
  * @param {string} taskContainerId 
  */
-function removeDefaultContainer(taskContainerId) {
-    document.getElementById(taskContainerId + 'Default').classList.add('d-none');
+function toggleDefaultContainer(taskContainerId, taskCount) {
+    const taskContainer = document.getElementById(taskContainerId + 'Default');
+    if (taskCount == 0 && taskContainer.classList.contains('d-none')) {
+        taskContainer.classList.toggle('d-none');
+    }else if (taskCount > 0 && !taskContainer.classList.contains('d-none')) {
+        taskContainer.classList.toggle('d-none');
+    }
+    
 }
 
 
