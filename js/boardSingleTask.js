@@ -11,6 +11,7 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
     subTaskBarProgress(activeTask.doneSubTasks, activeTask.sbuTaskTotal, taskNumber);
     taskMember(activeTask.member, taskNumber);
     taskUrgency(activeTask.urgency, taskNumber);
+    selectionHTML(activeTask.status, taskNumber);
 }
 
 /**
@@ -22,7 +23,12 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
 function taskTemplate(taskNr) {
     return /*html*/ `
     <div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" class="singleTaskContainer">
-        <div id="idTaskType${taskNr}" class="singlTaskType">User Story </div>
+        <div class="d-flex justify-content-between align-item-center">
+            <div id="idTaskType${taskNr}" class="singlTaskType">User Story </div>
+            <select id="idChangeStatus${taskNr}" onchange="changeStatus(this)" class="changeStatus">
+             <!-- hier kommt das dropdownelement rein -->
+             </select> 
+        </div>
         <div id="idTaskTxts${taskNr}" class="singelTaskTexts">
             <div id="idTaskHeadline${taskNr}" class="singleTaskHeadline">Headline
             </div>
@@ -50,6 +56,23 @@ function taskTemplate(taskNr) {
         </div>
     </div>`
 }
+
+/**
+ * 
+ * @param {string} taskStatus provides the actual status of task
+ * @param {number} taskNr - provides the task number of task
+ */
+function selectionHTML(taskStatus, taskNr) {
+    const statusArr = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
+    let htmlOptions = `<option value="${taskStatus}">${taskStatus}</option>`;
+    for (let i = 0; i < statusArr.length; i++) {
+        if (taskStatus !== statusArr[i]) {
+            htmlOptions += `<option value="${statusArr[i]}">${statusArr[i]}</option>`;
+        }  
+    }
+    document.getElementById('idChangeStatus' + taskNr).innerHTML = htmlOptions;
+}
+
 
 /**
  * this function returns the background color for the specific task type

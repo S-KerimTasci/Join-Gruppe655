@@ -50,10 +50,24 @@ function allowDrop(ev) {
   }
 
 function moveTo(newStatus) {
+    //debugger;
     taskJson[taskToMove].status = newStatus;
     document.getElementById('idTaskToDo').innerHTML = '';
     document.getElementById('idTaskInProgress').innerHTML = '';
     document.getElementById('idTaskAwaitFeedback').innerHTML = '';
     document.getElementById('idTaskDone').innerHTML = '';
     renderTasks();
+}
+
+/**
+ * This function is called by the onchange attribut of a specific task with the purpose of moving task to another status area. It is needed in mobile version
+ * 
+ * @param {object} task - contains the complete task (HTML)
+ */
+function changeStatus(task) {
+    taskToMove = +task.id.replace("idChangeStatus", "") - 1;
+    // console.log(taskToMove);
+    // console.log(task.value);
+    moveTo(task.value);
+    document.getElementById(task.id).focus() 
 }

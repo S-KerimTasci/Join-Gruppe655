@@ -1,6 +1,8 @@
-.singleTaskContainer{
-    width: 252px; /* hier muss ich noch schaun, dass die Breite passt wegen dem Schatten */
-    height: 263px; /* das hier muss auf auto später */
+.singleTaskContainer {
+    width: 252px;
+    /* hier muss ich noch schaun, dass die Breite passt wegen dem Schatten */
+    height: 263px;
+    /* das hier muss auf auto später */
     box-shadow: 0px 0px 10px 3px #00000014;
     padding: 16px;
     border-radius: 24px;
@@ -8,7 +10,7 @@
 
 }
 
-.singlTaskType{
+.singlTaskType {
     display: flex;
     align-items: center;
     height: 27px;
@@ -20,63 +22,95 @@
     font-size: 16px;
     font-weight: 400;
 }
+/* css for dropdown for changing status */
+.changeStatus {
+    border: 0;
+    font-size: 0;
+    color: rgba(137, 43, 226, 0.267);
+}
 
-.singelTaskTexts{
+.changeStatus:hover {
+    color: rgb(51, 129, 219);
+    transform: rotate(15deg) scale(1.9);
+    transition: all 300ms ease-in-out;
+}
+
+.custom-select::-ms-expand {
+    display: none; /* remove standard Dropdown-Arrow in IE */ 
+}
+
+.changeStatus option {
+    font-size: 14px;
+    color: black;
+}
+/* css for dropdown for changing status end */
+
+.singelTaskTexts {
     margin: 24px 0;
     height: 84px;
 }
-.singleTaskHeadline{
-    
+
+.singleTaskHeadline {
+
     font-size: 16px;
     font-weight: 700;
     line-height: 19px;
     margin-bottom: 8px;
     word-wrap: break-word;
 }
-.singleTaskTxt{
+
+.singleTaskTxt {
     line-height: 19px;
     font-size: 16px;
     font-weight: 400;
     color: #A8A8A8;
 }
-.TaskSubTask{
+
+.TaskSubTask {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 24px;
 }
-.SingleTaskSubProgressOuterCon{
+
+.SingleTaskSubProgressOuterCon {
     height: 8px;
     width: 128px;
     border-radius: 8px;
-    background-color: #F4F4F4; 
+    background-color: #F4F4F4;
 }
-.SingleTaskSubProgress{
+
+.SingleTaskSubProgress {
     height: 8px;
     width: 0px;
     border-radius: 8px;
     background-color: #4589FF;
 }
-.SingleTaksCount{
+
+.SingleTaksCount {
     font-size: 12px;
     font-weight: 400;
 }
-.SingleTaskMemberPrio{
+
+.SingleTaskMemberPrio {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 32px;
     width: 220px;
 }
-.SingleTaskPrio img{
+
+.SingleTaskPrio img {
     width: 26px;
 }
-.SingleTaskMember{
+
+.SingleTaskMember {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.memberPlaceholder{
+
+.memberPlaceholder {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,15 +121,17 @@
     height: 30px;
     width: 30px;
 }
-#idMemberPlaceholder1{
+
+#idMemberPlaceholder1 {
     background-color: aquamarine;
 }
-#idMemberPlaceholder2{
+
+#idMemberPlaceholder2 {
     background-color: teal;
     margin-left: -6px;
 }
-#idMemberPlaceholder3{
+
+#idMemberPlaceholder3 {
     background-color: blueviolet;
     margin-left: -6px;
 }
-
