@@ -1,8 +1,10 @@
 /* Global or not assigned more precisely */
 
-@font-face {
+font-face {
     font-family: 'Inter';
-    src: url('../assets/fonts/Inter-Regular.woff') format('woff')
+    src: url('../assets/fonts/Inter-Regular.woff') format('woff');
+    font-family: 'Inter Bold';
+    src: url('../assets/fonts/inter-v12-latin-700.woff2') format('woff2');
 }
 
 body {
