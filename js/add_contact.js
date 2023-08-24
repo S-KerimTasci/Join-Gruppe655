@@ -79,7 +79,21 @@ const contactsJSON1 = [];
   
   // Führe die Funktion erneut aus, wenn sich die Fenstergröße ändert
   window.addEventListener('resize', setHeightContactlist);
-  
+ 
+
+  function openAddContactOverlay(){
+    document.getElementById('addContactMenu').classList.add('dd-none');
+    document.getElementById('createContactOverlay').classList.remove('hide'); // Entferne hide-Klasse
+    document.getElementById('createContactOverlay').classList.add('show'); // Füge show-Klasse hinzu
+}
+
+function closeAddContactOverlay(){
+    document.getElementById('addContactMenu').classList.remove('dd-none');
+    document.getElementById('createContactOverlay').classList.remove('show'); // Entferne show-Klasse
+    document.getElementById('createContactOverlay').classList.add('hide'); // Füge hide-Klasse hinzu
+}
+
+/*  
 function openAddContactOverlay(){
     document.getElementById('addContactMenu').classList.add('dd-none')
     document.getElementById('createContactOverlay').classList.remove('dd-none')
@@ -88,5 +102,5 @@ function openAddContactOverlay(){
 function closeAddContactOverlay(){
     document.getElementById('addContactMenu').classList.remove('dd-none')
     document.getElementById('createContactOverlay').classList.add('dd-none')
-    
 }
+*/

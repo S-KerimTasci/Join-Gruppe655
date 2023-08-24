@@ -11,7 +11,7 @@ body {
     font-family: 'Inter';
 }
 
-input{
+input {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     padding: 13px 21px 13px 21px;
@@ -19,52 +19,52 @@ input{
     height: 6vh;
 }
 
-.contactsContent{
+.contactsContent {
     display: flex;
 }
 
-.contactsCart{
+.contactsCart {
     margin: 5vw 5vw 0 5vw;
 }
 
-.contactsHeader{
+.contactsHeader {
     position: relative;
 }
 
-.contactsHeaderh1{
+.contactsHeaderh1 {
     font-size: 61px;
     font-weight: 700;
 }
 
-.contactsHeaderspan{
+.contactsHeaderspan {
     font-size: 27px;
     font-weight: 400;
 }
 
-.contactsHeaderDektop{
+.contactsHeaderDektop {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.verticalLine{
+.verticalLine {
     border: solid 3px #29ABE2;
     height: 59px;
 }
 
 
-.backArrow{
+.backArrow {
     position: absolute;
     right: 3px;
     top: 3px;
 }
 
-.aEmail{
+.aEmail {
     text-decoration: underline;
     color: blue;
 }
 
-.aPhone{
+.aPhone {
     text-decoration: none;
     color: black;
 }
@@ -88,32 +88,58 @@ input{
     font-size: 22px;
 }
 
-.contactsMenu{
+.contactsMenu {
     position: fixed;
     right: 10px;
     bottom: 90px;
     height: 47px;
 }
 
-.addContactMenu{
+.addContactMenu {
     position: fixed;
     right: 10px;
     bottom: 90px;
     height: 47px;
 }
 
-.createContactOverlay{
-    margin-left: 5vw;
+
+.createContactOverlay {
+    /* margin-left: 5vw;
     margin-right: 5vw;
     position: fixed;
     top: 80px;
     bottom: 76px;
     background-color: white;
     border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;*/
+
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    max-height: 0;
+    overflow: hidden;
+    border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    transition: max-height 0.4s ease-in-out, top 0.4s ease-in-out;
+  
 }
 
-.contactsHeaderOverlay{
+
+.createContactOverlay.show {
+    bottom: 76px;
+    max-height: 1000px; /* Höchstwert für max-height, um das Overlay einzublenden */
+    top: 80px; /* Top-Position beibehalten */
+}
+
+.createContactOverlay.hide {
+    max-height: 0; /* Overlay ausblenden */
+  top: 100vh; /* Zurück zur Startposition unten */
+}
+
+.contactsHeaderOverlay {
     background-color: #2A3647;
     color: white;
     padding: 66px 24px 66px 24px;
@@ -124,33 +150,34 @@ input{
     position: relative;
 }
 
-.close{
+.close {
     position: absolute;
     right: 20px;
     top: 25px;
 }
 
-.createContactProfile{
+.createContactProfile {
     display: flex;
     justify-content: center;
     background-color: none;
 }
 
-.contactsFooterOverlay{
+.contactsFooterOverlay {
     background-color: white;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     margin-top: -30px;
     padding-top: 45px;
 }
-.inputArea{
+
+.inputArea {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
 }
 
-.buttonDiv{
+.buttonDiv {
     width: 80vw;
     display: flex;
     justify-content: center;
@@ -168,31 +195,31 @@ input{
     align-items: center;
 }
 
-.z12{
+.z12 {
     z-index: 12;
 }
 
-.circle80px{
+.circle80px {
     height: 80px;
     width: 80px;
 }
 
-.inputName{
+.inputName {
     background: url(../assets/img/person_input_name.svg) no-repeat scroll 7px 7px;
     background-position: 95%;
 }
 
-.inputMail{
+.inputMail {
     background: url(../assets/img/mail_inpit_mail.svg) no-repeat scroll 7px 7px;
     background-position: 95%;
 }
 
-.inputTel{
+.inputTel {
     background: url(../assets/img/call_input_tel.svg) no-repeat scroll 7px 7px;
     background-position: 95%;
 }
 
-.addButtonDiv{
+.addButtonDiv {
     display: none;
 }
 
@@ -209,84 +236,85 @@ input{
     width: 95%;
 }
 
-  /* Chat GPT */
+/* Chat GPT */
 
-.dd-none{
+.dd-none {
     display: none;
 }
-  
-  .contacts-container {
+
+.contacts-container {
     background-color: #ffffff;
     padding: 20px;
     padding-bottom: 80px;
     overflow-y: scroll;
-  }
-  
-  .contact-letter {
+}
+
+.contact-letter {
     font-size: 24px;
     font-weight: bold;
     padding-left: 40px;
-  }
-  
-  .letter-line {
+}
+
+.letter-line {
     border: none;
     border-top: 2px solid #ccc;
     margin: 5px 0;
-  }
-  
-  .contacts-list {
+}
+
+.contacts-list {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     width: 95%;
     padding-left: 5px;
-  }
+}
 
-  .contact:hover{
+.contact:hover {
     background-color: #2A3647;
     color: white;
-  }
-  
-  .contact {
+}
+
+.contact {
     padding: 5px 0 5px 20px;
     display: flex;
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-  }
+}
 
-  .nameDiv{
+.nameDiv {
     display: flex;
     flex-direction: column;
-  }
+}
 
-  .colorLink{
+.colorLink {
     color: #007CEE !important;
-  }
-  
-  .leftDiv{
+}
+
+.leftDiv {
     width: 100%
 }
 
-.rightDiv{
+.rightDiv {
     width: 0;
 
 }
-  /* Weitere Stile für Kontakte und Buchstaben hinzufügen */
-  
-  @media (min-width: 750px) {
-    .addButtonDiv{
+
+/* Weitere Stile für Kontakte und Buchstaben hinzufügen */
+
+@media (min-width: 750px) {
+    .addButtonDiv {
         display: flex;
         justify-content: center;
         padding: 20px;
     }
 
-    .leftDiv{
+    .leftDiv {
         width: 40%;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 4px 0px;
     }
 
-    .rightDiv{
+    .rightDiv {
         display: block;
         width: 60%;
         background-color: #f6f7f8;
@@ -294,11 +322,33 @@ input{
 
     .contacts-container {
         padding-bottom: 0px;
-      }
+    }
 
-    .addContactMenu{
+    .addContactMenu {
         display: none;
     }
+    .createContactOverlay{
+        display: flex;
+        align-items: center;
+        height: 60vh;
+        width: 80vw;
+        left: unset;
+        padding: 0;
+        border-radius: 30px;
+    }
 
+    .contactsHeaderOverlay {
+        background-color: #2A3647;
+        color: white;
+        padding: 66px 24px 66px 24px;
+        border-top-left-radius: 30px;
+        margin-bottom: 0;
+        height: 100%;
+    }
+
+    .contactsFooterOverlay{
+        margin: 0;
+        padding: 0;
 
     }
+}
