@@ -322,6 +322,7 @@ input {
 
     .contacts-container {
         padding-bottom: 0px;
+        height: calc(100vh - 192px);
     }
 
     .addContactMenu {

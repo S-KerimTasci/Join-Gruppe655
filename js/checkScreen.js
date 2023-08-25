@@ -39,7 +39,7 @@ function addTaskMobileTemplate() {
         <h1><b>Add Task</b></h1>
         <div class="gap8px_flexDirCol">
             <span>Title</span>
-            <input class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title" required>
+            <input maxlength="48" class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title" required>
         </div>
 
         <div class="gap8px_flexDirCol">
@@ -114,7 +114,7 @@ function addTaskDektopTemplate() {
             <div class="divLeft">
                 <div class="gap8px_flexDirCol">
                     <span>Title</span>
-                    <input class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title" required>
+                    <input maxlength="48" class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title" required>
                 </div>
                 <div class="gap8px_flexDirCol">
                     <span>Description</span>
