@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>singleTaskOverlay</title>
+// ~~~~~~~~Task overlay~~~~~~~~~
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/add_task.css">
+function renderOverlayTask(taskNumber) {
+    let activeTask = taskJson[taskNumber - 1];
+    document.getElementById('idTaskOverlay').innerHTML = singleTaskOvHtmlTemp();
+    addTaskTitle(activeTask.headline, 'Ov');
+    
+}
 
-
-    <script src="../js/add_task.js"></script>
-</head>
-
-<body>
-    <!-- die IDs bekommen das Format Ov statt einer Nummer. Grund, damit kann ich alle Singletask funktionen nutzen -->
+function singleTaskOvHtmlTemp() {
+    return /*html*/ `    
     <section id="idBackgroundTaskOverlay" class="BackgroundTaskOverlay">
         <div id="idTopAreaOv">
             <div id="idTaskTypeOv"> </div>
@@ -37,7 +31,7 @@
         <div id="idAssingedToContainer">
             <span id="idAssingedTo">Assinged To:</span>
             <div id="idSingleTaskMemberContainerOV">
-                <!-- Hier Schleife zum Einbinden der SubContainer -->
+                <!-- Schleife zum Einbinden der SubContainer START (ausgelagerte Funktion!!!)-->
                 <div id="idSingleTaskMemberSubContainerOV1">
                     <div id="idSingleTaskMemberInitialsOv1"></div>
                     <span id="idSingleTaskMemberFullNameOv1"></span>
@@ -50,12 +44,13 @@
                     <div id="idSingleTaskMemberInitialsOv3"></div>
                     <span id="idSingleTaskMemberFullNameOv3"></span>
                 </div>
+                <!-- Schleife zum Einbinden der SubContainer ENDE -->
             </div>
-
         </div>
         <div id="idSubTaskContainerOv">
             <span id="idSubTaskOv">Subtasks:</span>
             <div id="idSubTaskSubContainerOv">
+                <!-- Schleife zum Einbinden der SubContainer START (ausgelagerte Funktion!!!)-->
                 <div id="idSingleSubTaskContainerOv1">
                     <input id="idSingleSubTaskChkboxOv1" type="checkbox">
                     <label id="idSingleSubTaskLabelOv1" for="idSingleSubTaskChkboxOv1"></label>
@@ -68,6 +63,7 @@
                     <input id="idSingleSubTaskChkboxOv3" type="checkbox">
                     <label id="idSingleSubTaskLabelOv3" for="idSingleSubTaskChkboxOv3"></label>
                 </div>
+                <!-- Schleife zum Einbinden der SubContainer ENDE -->
             </div>
         </div>
         <div id="idBottomAreaOv">
@@ -83,12 +79,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
-    </section>
-
-</body>
-
-</html>
+    </section>`    
+}

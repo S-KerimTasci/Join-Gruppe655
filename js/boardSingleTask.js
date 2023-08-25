@@ -17,12 +17,12 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
 /**
  * This function returns the HTML code for a task
  * 
- * @param {number} taskNr 
+ * @param {string} taskNr - to create a uniqe identifier 
  * @returns - html code
  */
 function taskTemplate(taskNr) {
     return /*html*/ `
-    <div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" class="singleTaskContainer">
+    <div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" onclick="renderOverlayTask(${taskNr})" class="singleTaskContainer">
         <div class="d-flex justify-content-between align-item-center">
             <div id="idTaskType${taskNr}" class="singlTaskType">User Story </div>
             <select id="idChangeStatus${taskNr}" onchange="changeStatus(this)" class="changeStatus">
@@ -60,7 +60,7 @@ function taskTemplate(taskNr) {
 /**
  * 
  * @param {string} taskStatus provides the actual status of task
- * @param {number} taskNr - provides the task number of task
+ * @param {string} taskNr - used to find the specific element id
  */
 function selectionHTML(taskStatus, taskNr) {
     const statusArr = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
@@ -78,7 +78,7 @@ function selectionHTML(taskStatus, taskNr) {
  * this function returns the background color for the specific task type
  * 
  * @param {string} taskType - this is the specific task type
- * @param {number} taskNr - used to find the specific element id
+ * @param {string} taskNr - used to find the specific element id
  */
 function colorTaskType(taskType, taskNr) {
     document.getElementById('idTaskType' + taskNr).innerText = taskType;
@@ -97,8 +97,8 @@ function colorTaskType(taskType, taskNr) {
 /**
  * This function adds the Headline of task to the html element
  * 
- * @param {string} taskHeadline 
- * @param {number} taskNr 
+ * @param {string} taskHeadline - text from task title
+ * @param {string} taskNr - used to find the specific element id
  */
 function addTaskTitle(taskHeadline, taskNr) {
     document.getElementById('idTaskHeadline' + taskNr).innerText = taskHeadline;
@@ -107,8 +107,8 @@ function addTaskTitle(taskHeadline, taskNr) {
 /**
  * This function adds the limited text to the html code of the task
  * 
- * @param {string} taskText 
- * @param {number} taskNr 
+ * @param {string} taskText - text from task description
+ * @param {string} taskNr - used to find the specific element id
  */
 function addTaskTxt(taskText, taskNr) {
     document.getElementById('idTaskShortTxt' + taskNr).innerText = limitTextTo37Char(taskText);
@@ -117,7 +117,7 @@ function addTaskTxt(taskText, taskNr) {
 /**
  * This function retuns string of 37 chars plus '...' if the lenght of the string is graeter than 37 chars
  * 
- * @param {string} text 
+ * @param {string} text - just a text
  * @returns - text limited to 37 chars plus three dots
  */
 function limitTextTo37Char(text) {
@@ -131,9 +131,9 @@ function limitTextTo37Char(text) {
 /**
  * This function changes the progress bar width
  * 
- * @param {number} doneSubTasks 
- * @param {number} sbuTaskTotal 
- * @param {number} taskNr 
+ * @param {number} doneSubTasks - count of solved tasks
+ * @param {number} sbuTaskTotal - count of total tasks
+ * @param {string} taskNr - used to find the specific element id
  */
 function subTaskBarProgress(doneSubTasks, sbuTaskTotal, taskNr) {
     let faktor = 1;
@@ -153,7 +153,7 @@ function subTaskBarProgress(doneSubTasks, sbuTaskTotal, taskNr) {
  * used in renderStatusContainer()
  * 
  * @param {array} arrMember - array of full names of all members connected to the task
- * @param {number} taskNr - to create a unique id
+ * @param {string} taskNr - used to find the specific element id
  */
 function taskMember(arrMember, taskNr) {
     for (let i = 0; i < arrMember.length; i++) {
@@ -166,8 +166,8 @@ function taskMember(arrMember, taskNr) {
 /**
  * This function changes the img urgency belonging to task urgency
  * 
- * @param {string} urgency 
- * @param {number} taskNr 
+ * @param {string} urgency - for low, medium, urgent
+ * @param {string} taskNr - used to find the specific element id
  */
 function taskUrgency(urgency, taskNr) {
     switch (urgency) {
