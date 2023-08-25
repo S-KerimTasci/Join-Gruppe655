@@ -58,7 +58,7 @@ const contactsJSON1 = [];
     }
   }
   
-
+/*
   function setHeightContactlist(){
     let buttonDiv = document.getElementById('addButtonDiv');
     let headerDiv = document.getElementById('headerContacts');
@@ -79,7 +79,7 @@ const contactsJSON1 = [];
   
   // Führe die Funktion erneut aus, wenn sich die Fenstergröße ändert
   window.addEventListener('resize', setHeightContactlist);
- 
+ */
 
   function openAddContactOverlay(){
     document.getElementById('addContactMenu').classList.add('dd-none');

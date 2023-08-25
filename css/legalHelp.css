@@ -21,12 +21,15 @@ body {
 #idBackgroundContainer {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Mindestens die volle Höhe des Viewports */
+    min-height: 100vh;
+    /* Mindestens die volle Höhe des Viewports */
 }
 
-#idHeaderBody, footer {
+#idHeaderBody,
+footer {
     position: relative;
-    z-index: 1; /* Damit sie über den Inhalt angezeigt werden */
+    z-index: 1;
+    /* Damit sie über den Inhalt angezeigt werden */
 }
 
 .help-content {
@@ -98,36 +101,45 @@ tr td:nth-child(2) {
 }
 
 @media (max-width: 830px) {
-.title {
-    font-size: 48px;
-}
+    .title {
+        font-size: 48px;
+    }
 
-.help-content {
-    padding: 64px 64px 20px 64px;
-    max-height: calc(100vh - 200px);
-}
+    .help-content {
+        padding: 64px 64px 20px 64px;
+        max-height: calc(100vh - 200px);
+    }
 }
 
 @media (max-width: 425px) {
-    
-.subtitle {
-    font-size: 16px;
-}
 
-.subtitle-table {
-    font-family: 'Inter Bold';
-    font-size: 14px;
-}
+    .title {
+        font-size: 32px;
+    }
 
-p {
-    font-size: 12px;
-}
+    .subtitle {
+        font-size: 16px;
+    }
 
-tr td:first-child {
-    font-size: 14px;
-}
+    .help-content {
+        padding: 64px 20px;
+        max-height: calc(100vh - 200px);
+    }
 
-tr td:nth-child(2) {
-    font-size: 12px;
-}
+    .subtitle-table {
+        font-family: 'Inter Bold';
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    tr td:first-child {
+        font-size: 14px;
+    }
+
+    tr td:nth-child(2) {
+        font-size: 12px;
+    }
 }
