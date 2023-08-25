@@ -7,7 +7,6 @@ font-face {
 
 
 body {
-
     font-family: 'Inter';
 }
 
@@ -124,19 +123,23 @@ input {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     transition: max-height 0.4s ease-in-out, top 0.4s ease-in-out;
-  
+
 }
 
 
 .createContactOverlay.show {
     bottom: 76px;
-    max-height: 1000px; /* Höchstwert für max-height, um das Overlay einzublenden */
-    top: 80px; /* Top-Position beibehalten */
+    max-height: 1000px;
+    /* Höchstwert für max-height, um das Overlay einzublenden */
+    top: 80px;
+    /* Top-Position beibehalten */
 }
 
 .createContactOverlay.hide {
-    max-height: 0; /* Overlay ausblenden */
-  top: 100vh; /* Zurück zur Startposition unten */
+    max-height: 0;
+    /* Overlay ausblenden */
+    top: 100vh;
+    /* Zurück zur Startposition unten */
 }
 
 .contactsHeaderOverlay {
@@ -199,9 +202,9 @@ input {
     z-index: 12;
 }
 
-.circle80px {
-    height: 80px;
-    width: 80px;
+.circleoverlay {
+    height: 120px;
+    width: 120px;
 }
 
 .inputName {
@@ -303,11 +306,20 @@ input {
 /* Weitere Stile für Kontakte und Buchstaben hinzufügen */
 
 @media (min-width: 750px) {
+    input {
+        width: 422px;
+    }
+
     .addButtonDiv {
         display: flex;
         justify-content: center;
         padding: 20px;
     }
+
+    .buttonDiv {
+        width: unset;
+    }
+
 
     .leftDiv {
         width: 40%;
@@ -328,14 +340,20 @@ input {
     .addContactMenu {
         display: none;
     }
-    .createContactOverlay{
+
+    .createContactOverlay {
         display: flex;
         align-items: center;
-        height: 60vh;
-        width: 80vw;
-        left: unset;
+        justify-content: space-between;
+        height: 592px;
+        width: 1212px;
+        left: 42px;
         padding: 0;
         border-radius: 30px;
+    }
+
+    .createContactOverlay.show {
+        top: 20%;
     }
 
     .contactsHeaderOverlay {
@@ -345,11 +363,15 @@ input {
         border-top-left-radius: 30px;
         margin-bottom: 0;
         height: 100%;
+        width: 467px;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: center;
     }
 
-    .contactsFooterOverlay{
+    .contactsFooterOverlay {
         margin: 0;
-        padding: 0;
-
+        padding: 0 5vw 0 0;
     }
 }
