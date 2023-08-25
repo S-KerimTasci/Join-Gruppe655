@@ -1,6 +1,12 @@
 const STORAGE_TOKEN = 'JCBM19KHMDXFWN16VAJWOY8L41ZV33EX7L3HYKWY';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
-const KEY_for_JSON = 'Join-Group655';
+const KEY_for_JSON_TASKS = 'Join-Group655_tasks';
+const KEY_for_JSON_PW = 'Join-Group655_pw';
+const KEY_for_JSON_CONTACS = 'Join-Group655_contacts';
+let taskJson = [];
+let contactJSON = {};
+let loginJson = {};
+let afterSetItemServerAnswer = {};
 
 /**
  * This function saves Data into the backend.
@@ -36,4 +42,16 @@ async function getItem(key) {
 function memberInitials(member){
     let initials = member.split(' ').map(name => name[0]).join('');
     return initials;
+}
+
+/**
+ * this funktion returns the JSON based on the key
+ * 
+ * 
+ * @param {const} key - which data should be requested
+ * @returns - JSON
+ */
+async function loadJSON(key) {
+    let serverAnswer = await getItem(key);
+    return JSON.parse(serverAnswer.data.value);
 }

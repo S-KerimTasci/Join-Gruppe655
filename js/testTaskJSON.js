@@ -1,4 +1,4 @@
-let taskJson = [
+let taskJson2 = [
     {
         "taskId": "1",
         "taskType": "User Story",
@@ -109,7 +109,7 @@ let taskJson = [
     }
 ]
 
-let contactJson = {
+let contactJson2 = {
     "kummer@online.de": {
         "usrName": "Lisbeth Kummer",
         "bgColor": "aquamarine",
@@ -124,5 +124,20 @@ let contactJson = {
         "usrName": "Frank Loh",
         "bgColor": "green",
         "initials": "FL"
+    }
+}
+
+let loginJson2 = {
+    "kummer@online.de": {
+        "usrName": "Lisbeth Kummer",
+        "password": "aquamarine"
+    },
+    "hopfen@online.de": {
+        "usrName": "Oliver Hopfen",
+        "password": "blue"
+    },
+    "loh@online.de": {
+        "usrName": "Frank Loh",
+        "password": "green"
     }
 }

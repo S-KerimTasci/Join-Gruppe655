@@ -2,8 +2,10 @@ let taskToMove = '';
 /**
  * this function renders all tasks.
  */
-function renderTasks() {
-    console.log(taskJson);
+async function renderTasks() {
+    //console.log(taskJson);
+    taskJson = await loadJSON(KEY_for_JSON_TASKS);
+    //console.log(taskJson);
     renderStatusContainer('toDo', 'idTaskToDo');
     renderStatusContainer('inProgress', 'idTaskInProgress');
     renderStatusContainer('awaitFeedback', 'idTaskAwaitFeedback');
@@ -28,8 +30,7 @@ function renderStatusContainer(status, taskContainerId) {
             singleTaskCount++;
         }
     }
-console.log(taskContainerId + '  ' + singleTaskCount);
-
+    //console.log(taskContainerId + '  ' + singleTaskCount);
     // debugger;
     toggleDefaultContainer(taskContainerId, singleTaskCount);
 }
@@ -43,10 +44,10 @@ function toggleDefaultContainer(taskContainerId, taskCount) {
     const taskContainer = document.getElementById(taskContainerId + 'Default');
     if (taskCount == 0 && taskContainer.classList.contains('d-none')) {
         taskContainer.classList.toggle('d-none');
-    }else if (taskCount > 0 && !taskContainer.classList.contains('d-none')) {
+    } else if (taskCount > 0 && !taskContainer.classList.contains('d-none')) {
         taskContainer.classList.toggle('d-none');
     }
-    
+
 }
 
 
@@ -56,11 +57,13 @@ function dragStart(taskNummer) {
 
 function allowDrop(ev) {
     ev.preventDefault();
-  }
+}
 
-function moveTo(newStatus) {
+async function moveTo(newStatus) {
     //debugger;
     taskJson[taskToMove].status = newStatus;
+    afterSetItemServerAnswer = await setItem(KEY_for_JSON_TASKS, taskJson);
+    //console.log(afterSetItemServerAnswer);
     document.getElementById('idTaskToDo').innerHTML = '';
     document.getElementById('idTaskInProgress').innerHTML = '';
     document.getElementById('idTaskAwaitFeedback').innerHTML = '';
@@ -78,5 +81,5 @@ function changeStatus(task) {
     // console.log(taskToMove);
     // console.log(task.value);
     moveTo(task.value);
-    document.getElementById(task.id).focus() 
+    //document.getElementById(task.id).focus() 
 }

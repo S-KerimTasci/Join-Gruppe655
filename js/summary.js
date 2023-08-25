@@ -59,10 +59,12 @@ function countTasks(srcValue, compValue, chkArr) {
  * This function calls function for adding counts and upcommingDeadline to summary it adds also the greeting formula too.
  * 
  */
-function addValuesToSummary() {
+async function addValuesToSummary() {
+    addGreetingPhrase();  
+    taskJson = await loadJSON(KEY_for_JSON_TASKS);
     addNumToSummary(); 
     upcommingDeadline();  
-    addGreetingPhrase()  
+    
 }
 
 /**
