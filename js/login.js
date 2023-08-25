@@ -89,9 +89,7 @@ function redirectToLoginPage() {
  */
 async function loadUsers() {
     try {
-        const response = await getItem("users");
-        const usersData = response.data.value;
-        users = JSON.parse(usersData);
+        users = await loadJSON(KEY_for_JSON_PW); 
     } catch (e) {
         console.error("Loading error:", e);
     }
@@ -275,7 +273,7 @@ function checkExistingUser(email) {
 async function addNewUser(fullName, email, password) {
     setNewUser(fullName, email, password);
     try {
-        const response = await setItem("users", JSON.stringify(users));
+        const response = await setItem(KEY_for_JSON_PW, JSON.stringify(users)); 
         handleResponse(response);
     } catch (error) {
         console.error(error);
@@ -379,4 +377,3 @@ function resetInputFields() {
     document.getElementById('email').value = '';
     document.getElementById('password').value = '';
 }
-

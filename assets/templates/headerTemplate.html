@@ -11,11 +11,17 @@
     <a id="helpIcon"  href="help.html" class="iconHelp">
       <img class="headHelpImg" src="../assets/img/headerHelp.svg" alt="helpIcon">
     </a>
-    <a href="contacts.html" class="initials">
+    <a onclick="togglePopupBar()" class="initials">
       <div class="headCircle d-flex justify-content-center align-items-center">
         <div id="userIntials">
         </div>
       </div>
     </a>
+    <div id="popupBar" class="d-none">
+      <a href="../html/legal_notice.html">Legal Notice</a>
+      <a href="../html/privacy_policy.html">Privacy Policy</a>
+      <a href="../html/login.html" onclick="logout();">Log out</a> 
+    </div>
   </div>
+
 </div>

@@ -83,6 +83,7 @@ async function resetPassword() {
 }
 
 
+
 /**
  * Resets the user's password if user exists, otherwise displays an error message.
  * @param {HTMLElement} messageElement - The message element.
@@ -142,15 +143,9 @@ function getEmailFromURLParams() {
 async function resetUserPassword(user, newPassword, messageElement, messageResponsivElement) {
     user.password = newPassword;
     try {
-        const response = await setItem("users", JSON.stringify(users));
+        const response = await setItem(KEY_for_JSON_PW, JSON.stringify(users)); // Benutzerdaten im Backend aktualisieren
         if (response.status === "success") {
-            messageElement.style.display = 'block';
-            messageElement.innerHTML = resetPasswordDesktop();
-            messageResponsivElement.style.display = 'block';
-            messageResponsivElement.innerHTML = resetPasswordMobile();
-            setTimeout(() => {
-                window.location.href = '../html/login.html';
-            }, 2000);
+            displaySuccessMessageAndRedirect(resetPasswordDesktop(), messageElement, messageResponsivElement);
         }
     } catch (error) {
         console.error(error);

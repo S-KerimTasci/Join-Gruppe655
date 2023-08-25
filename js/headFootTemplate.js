@@ -45,3 +45,22 @@ async function includeHTML() {
         }
     }
 }
+
+
+/**
+ * function will show toggle bar when clicking on the initials
+ *
+ */
+function togglePopupBar() {
+    let popupBar = document.getElementById("popupBar");
+    popupBar.classList.toggle("d-none");
+  }
+
+
+/**
+* This function logs that the user is logged out from the Website
+*
+*/
+function logout(){
+    localStorage.removeItem('currentUser');
+  }
