@@ -2,9 +2,9 @@
 // ~~~~~~~~Task overlay~~~~~~~~~
 
 function renderOverlayTask(taskNumber) {
-    let activeTask = taskJson[taskNumber - 1];
+    
     document.getElementById('idTaskOverlay').innerHTML = singleTaskOvHtmlTemp();
-    addTaskTitle(activeTask.headline, 'Ov');
+    addDataSingleTaskOverlay(taskNumber - 1);
     
 }
 
@@ -25,7 +25,7 @@ function singleTaskOvHtmlTemp() {
             <span>Priority:</span>
             <div id="idUrgencySubContainerOv">
                 <span id="idUrgencyOv"></span>
-                <img id="idUrgencyImgOv" src="" alt="">
+                <img id="idSingleTaskPrioImgOv" src="" alt="">
             </div>
         </div>
         <div id="idAssingedToContainer">
@@ -69,15 +69,60 @@ function singleTaskOvHtmlTemp() {
         <div id="idBottomAreaOv">
             <div id="idBottomAreaContainerOv">
                 <div id="idDeleteContainerOv">
-                    <img src="" alt="waste">
+                    <img src="../assets/img/taskOverlayTrash.svg" alt="waste">
                     <span>Delete</span>
                 </div>
                 <div id="idBottomAreaContainerSeparatorOv"></div> 
                 <div id="idEditContainer">
-                    <img src="" alt="waste">
+                    <img src="../assets/img/taskOverlayEdit.svg" alt="edit">
                     <span>Edit</span>
                 </div>
             </div>
         </div>
     </section>`    
+}
+
+/**
+ * this function calls different function for adding values from task JSON to html
+ * 
+ * @param {number} taskNumber - number of clicked task
+ */
+function addDataSingleTaskOverlay(taskNr) {
+    let activeTask = taskJson[taskNr];
+    addTaskTitle(activeTask.headline, 'Ov');
+    colorTaskType(activeTask.taskType, 'Ov');
+    document.getElementById('idTaskDescriptionOv').innerText = activeTask.description;
+    taskOverlayDate(activeTask);
+    taskOverlayPrio(activeTask);
+    taskOverlayMember(activeTask);
+    
+}
+
+/**
+ * This function get the due date and give to idTaskDescriptionOv the formated date
+ * 
+ * @param {object} activeTask - single task
+ */
+function taskOverlayDate(activeTask) {
+    let taskDate = new Date(activeTask.dueDate);
+    let taskMonth = taskDate.getMonth().toString();
+    let taskDay = taskDate.getDate().toString();
+    let taskYear = taskDate.getFullYear().toString();
+    taskDay = (taskDay.length == 2)? taskDay : ('0' + taskDay);
+    taskMonth = (taskMonth.length == 2)? taskMonth : ('0' + taskMonth);
+    document.getElementById('idDueDateOv').innerText = taskDay + '/' + taskMonth + '/' + taskYear;
+}
+
+/**
+ * This function add to the html the urgency and the related image
+ * 
+ * @param {object} activeTask - single task
+ */
+function taskOverlayPrio(activeTask) {
+    document.getElementById('idUrgencyOv').innerText = activeTask.urgency;
+    taskUrgency(activeTask.urgency, 'Ov');
+}
+
+function taskOverlayMember(activeTask) {
+    
 }

@@ -8,6 +8,10 @@ let taskJson2 = [
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
         "sbuTaskTotal": 2,
+        "subTaskText": [
+            "Text 1",
+            "Text 2"
+        ],
         "member": [
             "Alex Solms",
             "Frida Moll",
@@ -24,6 +28,11 @@ let taskJson2 = [
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
         "sbuTaskTotal": 3,
+        "subTaskText": [
+            "Text 1",
+            "Text 2",
+            "Text 3"
+        ],
         "member": [
             "Zecki Guhl",
             "Wolf Wald",
@@ -40,6 +49,8 @@ let taskJson2 = [
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 0,
         "sbuTaskTotal": 0,
+        "subTaskText": [
+        ],
         "member": [
             "Lukas Greig",
             "Nico Liebig"
@@ -55,6 +66,9 @@ let taskJson2 = [
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
         "sbuTaskTotal": 1,
+        "subTaskText": [
+            "Text 1"
+        ],
         "member": [
             "Lara Steak",
             "Anne Xi"
@@ -70,6 +84,13 @@ let taskJson2 = [
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 2,
         "sbuTaskTotal": 5,
+        "subTaskText": [
+            "Text 1",
+            "Text 2",
+            "Text 3",
+            "Text 4",
+            "Text 5"
+        ],
         "member": [
             "Kurt Nies",
             "Candy Noor",
@@ -86,6 +107,9 @@ let taskJson2 = [
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
         "sbuTaskTotal": 1,
+        "subTaskText": [
+            "Text 1"            
+        ],
         "member": [
             "Lisbeth Kummer",
             "Olli Hopfen"
@@ -101,6 +125,8 @@ let taskJson2 = [
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 0,
         "sbuTaskTotal": 0,
+        "subTaskText": [
+        ],
         "member": [
             "Fred Kasten",
             "Arun Kliet"
