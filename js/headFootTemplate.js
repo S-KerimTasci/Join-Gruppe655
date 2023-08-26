@@ -11,17 +11,16 @@ async function init(){
 
 /**
  * This function returns the initials of the logged in user.
- * If a user is logged in, it extracts the user's name, retrieves their initials using memberInitials(),
- * and converts the initials to uppercase before returning. If no user is logged in, it returns 'G'.
+ * If a user is logged in, it extracts the user's name, retrieves their initials using memberInitials().
+ * If no user is logged in, it returns 'G'.
  * 
  * @param {Object} currentUser - The user object containing the necessary information
- * @returns {string} The initials of the user (in uppercase if available)
+ * @returns {string} The initials of the user
  */
 function initials(currentUser) {
     if (currentUser) {
-        const member = currentUser.name; 
-        const userInitials = memberInitials(member); 
-        return userInitials.toUpperCase(); 
+        const member = currentUser.name;  
+        return memberInitials(member); 
     } else {
         return 'G'; 
     }

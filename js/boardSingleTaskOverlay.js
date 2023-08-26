@@ -1,13 +1,21 @@
 
 // ~~~~~~~~Task overlay~~~~~~~~~
-
+/**
+ * This function renders the task overlay
+ * 
+ * @param {number} taskNumber - task number of aktive task
+ */
 function renderOverlayTask(taskNumber) {
     
     document.getElementById('idTaskOverlay').innerHTML = singleTaskOvHtmlTemp();
     addDataSingleTaskOverlay(taskNumber - 1);
     
 }
-
+/**
+ * This function returns the HTML Code for the task overlay
+ * 
+ * @returns - returns the HTML Code for the task overlay
+ */
 function singleTaskOvHtmlTemp() {
     return /*html*/ `    
     <section id="idBackgroundTaskOverlay" class="BackgroundTaskOverlay">
@@ -124,5 +132,25 @@ function taskOverlayPrio(activeTask) {
 }
 
 function taskOverlayMember(activeTask) {
-    
+ const MEMBER = activeTask.member;
+ document.getElementById('idSingleTaskMemberContainerOV').innerHTML = taskOverlayMemberHTMLContainer(MEMBER);
+ taskOverlayMemberHTMLValues(MEMBER);
 }
+
+function taskOverlayMemberHTMLContainer(MEMBER) {
+    let memberHTML = '';
+    for (let i = 0; i < MEMBER.length; i++) {
+        memberHTML += /*html*/ `
+        <div id="idSingleTaskMemberSubContainerOV${i}">
+            <div id="idSingleTaskMemberInitialsOv${i}"></div>
+            <span id="idSingleTaskMemberFullNameOv${i}"></span>
+        </div>` 
+    }
+    return memberHTML
+}
+
+ 
+
+/* function taskOverlayMemberBackgroundColor(memberName) {
+    
+} */

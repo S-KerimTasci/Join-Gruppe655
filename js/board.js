@@ -5,6 +5,8 @@ let taskToMove = '';
 async function renderTasks() {
     //console.log(taskJson);
     taskJson = await loadJSON(KEY_for_JSON_TASKS);
+    contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
+    loginJson = await loadJSON(KEY_for_JSON_PW);
     //console.log(taskJson);
     renderStatusContainer('toDo', 'idTaskToDo');
     renderStatusContainer('inProgress', 'idTaskInProgress');

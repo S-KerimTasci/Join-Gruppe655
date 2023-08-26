@@ -37,11 +37,11 @@ async function getItem(key) {
  * used in headFootTemplate.js and board.js
  * 
  * @param {string} member - this ist the full name of the member
- * @returns initials of user i.e. "JD"
+ * @returns initials of user i.e. "JD" in upper case
  */
 function memberInitials(member){
     let initials = member.split(' ').map(name => name[0]).join('');
-    return initials;
+    return initials.toUpperCase();
 }
 
 /**

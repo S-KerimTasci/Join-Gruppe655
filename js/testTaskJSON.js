@@ -70,8 +70,8 @@ let taskJson2 = [
             "Text 1"
         ],
         "member": [
-            "Lara Steak",
-            "Anne Xi"
+            "Frank Samstag",
+            "ralf humpelbein"
         ],
         "urgency": "low"
     },
@@ -92,9 +92,9 @@ let taskJson2 = [
             "Text 5"
         ],
         "member": [
-            "Kurt Nies",
-            "Candy Noor",
-            "Frank Loh"
+            "jan test",
+            "Olli Hopfen",
+            "Arun Kliet"
         ],
         "urgency": "low"
     },
@@ -108,7 +108,7 @@ let taskJson2 = [
         "doneSubTasks": 1,
         "sbuTaskTotal": 1,
         "subTaskText": [
-            "Text 1"            
+            "Text 1"
         ],
         "member": [
             "Lisbeth Kummer",
@@ -135,35 +135,116 @@ let taskJson2 = [
     }
 ]
 
-let contactJson2 = {
-    "kummer@online.de": {
-        "usrName": "Lisbeth Kummer",
-        "bgColor": "aquamarine",
-        "initials": "LK"
+let contactJson2 = [
+    {
+        "email": "jan@web.de",
+        "initials": "JT",
+        "name": "jan test",
+        "bgColor": "#FF7A00"
     },
-    "hopfen@online.de": {
-        "usrName": "Oliver Hopfen",
-        "bgColor": "blue",
-        "initials": "OH"
+    {
+        "email": "kummer@online.de",
+        "initials": "JT",
+        "name": "Lisbeth Kummer",
+        "bgColor": "#FF5EB3"
     },
-    "loh@online.de": {
-        "usrName": "Frank Loh",
-        "bgColor": "green",
-        "initials": "FL"
+    {
+        "email": "hopfen@online.de",
+        "initials": "OH",
+        "name": "Oliver Hopfen",
+        "bgColor": "#6E52FF"
+    },
+    {
+        "email": "loh@online.de",
+        "initials": "FL",
+        "name": "Frank Loh",
+        "bgColor": "#9327FF"
+    },
+    {
+        "email": "samstag@week.de",
+        "initials": "FS",
+        "name": "Frank Samstag",
+        "bgColor": "#00BEE8"
+    },
+    {
+        "email": "humpi@bla.fr",
+        "initials": "RH",
+        "name": "ralf humpelbein",
+        "bgColor": "#1FD7C1"
+    },
+    {
+        "email": "kasten@bla.fr",
+        "initials": "FK",
+        "name": "Fred Kasten",
+        "bgColor": "#FF745E"
+    },
+    {
+        "email": "kliet@bla.fr",
+        "initials": "AK",
+        "name": "Arun Kliet",
+        "bgColor": "#FFA35E"
+    },
+    {
+        "email": "hopfen@bla.fr",
+        "initials": "OH",
+        "name": "Olli Hopfen",
+        "bgColor": "#FC71FF"      
     }
-}
+]
 
-let loginJson2 = {
-    "kummer@online.de": {
-        "usrName": "Lisbeth Kummer",
+let loginJson2 = [
+    {
+        "email": "jan@web.de",
+        "initials": "JT",
+        "name": "jan test",
+        "password": "234"
+    },
+    {
+        "email": "kummer@online.de",
+        "initials": "JT",
+        "name": "Lisbeth Kummer",
         "password": "aquamarine"
     },
-    "hopfen@online.de": {
-        "usrName": "Oliver Hopfen",
+    {
+        "email": "hopfen@online.de",
+        "initials": "OH",
+        "name": "Oliver Hopfen",
         "password": "blue"
     },
-    "loh@online.de": {
-        "usrName": "Frank Loh",
+    {
+        "email": "loh@online.de",
+        "initials": "FL",
+        "name": "Frank Loh",
         "password": "green"
+    },
+    {
+        "email": "samstag@week.de",
+        "initials": "FS",
+        "name": "Frank Samstag",
+        "password": "12345"
+    },
+    {
+        "email": "humpi@bla.fr",
+        "initials": "RH",
+        "name": "ralf humpelbein",
+        "password": "54321"
+    },
+    {
+        "email": "kasten@bla.fr",
+        "initials": "FK",
+        "name": "Fred Kasten",
+        "password": "54321"
+    },
+    {
+        "email": "kliet@bla.fr",
+        "initials": "AK",
+        "name": "Arun Kliet",
+        "password": "54321"
+    },
+    {
+        "email": "hopfen@bla.fr",
+        "initials": "OH",
+        "name": "Olli Hopfen",
+        "password": "54321"
     }
-}
+]
