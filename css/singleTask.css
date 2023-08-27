@@ -31,8 +31,13 @@
 
 .changeStatus:hover {
     color: rgb(51, 129, 219);
-    transform: rotate(15deg) scale(1.9);
+    transform: rotate(15deg);
     transition: all 300ms ease-in-out;
+}
+.changeStatus:focus {
+    color: rgb(51, 129, 219);
+    transform: rotate(15deg);
+    /* transition: all 300ms ease-in-out; */
 }
 
 .custom-select::-ms-expand {

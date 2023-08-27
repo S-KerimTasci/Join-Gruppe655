@@ -6,10 +6,10 @@
  * @param {number} taskNumber - task number of aktive task
  */
 function renderOverlayTask(taskNumber) {
-    
+
     document.getElementById('idTaskOverlay').innerHTML = singleTaskOvHtmlTemp();
     addDataSingleTaskOverlay(taskNumber - 1);
-    
+
 }
 /**
  * This function returns the HTML Code for the task overlay
@@ -76,7 +76,7 @@ function singleTaskOvHtmlTemp() {
                 </div>
             </div>
         </div>
-    </section>`    
+    </section>`
 }
 
 /**
@@ -99,7 +99,7 @@ function addDataSingleTaskOverlay(taskNr) {
     taskOverlayDate(activeTask);
     taskOverlayPrio(activeTask);
     taskOverlayMember(activeTask);
-    
+
 }
 
 /**
@@ -112,8 +112,8 @@ function taskOverlayDate(activeTask) {
     let taskMonth = taskDate.getMonth().toString();
     let taskDay = taskDate.getDate().toString();
     let taskYear = taskDate.getFullYear().toString();
-    taskDay = (taskDay.length == 2)? taskDay : ('0' + taskDay);
-    taskMonth = (taskMonth.length == 2)? taskMonth : ('0' + taskMonth);
+    taskDay = (taskDay.length == 2) ? taskDay : ('0' + taskDay);
+    taskMonth = (taskMonth.length == 2) ? taskMonth : ('0' + taskMonth);
     document.getElementById('idDueDateOv').innerText = taskDay + '/' + taskMonth + '/' + taskYear;
 }
 
@@ -127,26 +127,72 @@ function taskOverlayPrio(activeTask) {
     taskUrgency(activeTask.urgency, 'Ov');
 }
 
+/**
+ * this function gets the member information from contactJson based on the member tracked for this single task
+ * 
+ * @param {object} activeTask - clicked task
+ */
 function taskOverlayMember(activeTask) {
- const MEMBER = activeTask.member;
- document.getElementById('idSingleTaskMemberContainerOV').innerHTML = taskOverlayMemberHTMLContainer(MEMBER);
- taskOverlayMemberHTMLValues(MEMBER);
+    const MEMBER = activeTask.member;
+    document.getElementById('idSingleTaskMemberContainerOV').innerHTML = taskOverlayMemberContainer(MEMBER);
 }
 
-function taskOverlayMemberHTMLContainer(MEMBER) {
+/**
+ * this function returns the complete HTML code for all members of this task
+ * 
+ * @param {object} MEMBER - all members of task
+ * @returns - HTML Code for all member of task
+ */
+function taskOverlayMemberContainer(MEMBER) {
     let memberHTML = '';
     for (let i = 0; i < MEMBER.length; i++) {
-        memberHTML += /*html*/ `
-        <div id="idSingleTaskMemberSubContainerOV${i}">
-            <div id="idSingleTaskMemberInitialsOv${i}"></div>
-            <span id="idSingleTaskMemberFullNameOv${i}"></span>
-        </div>` 
+        const contactMember = contactJSON.find(contact => contact.name === MEMBER[i]);
+        if (contactMember) {
+            const memberColor = contactMember.bgColor.slice(1);
+            memberHTML += taskOverlayMemberHTML(MEMBER[i], memberColor, contactMember.initials, i);  
+        }
     }
     return memberHTML
 }
 
- 
+/**
+ * this function returns the HTML code for a single member of this task
+ * 
+ * @param {string} memberName - name of member
+ * @param {string} memberColor - background color for disk of member
+ * @param {string} memberinitials - intitials of member
+ * @param {number} i - count of loop
+ * @returns - HTML for single member of this task
+ */
+function taskOverlayMemberHTML(memberName, memberColor, memberinitials, i) {
+    return /*html*/ `
+    <div id="idSingleTaskMemberSubContainerOV${i}">
+        <div id="idSingleTaskMemberInitialsOv${i}" class="memberDisk memberBgColor${memberColor}">${memberinitials}</div>
+        <span id="idSingleTaskMemberFullNameOv${i}">${memberName}</span>
+    </div>`
+}
 
-/* function taskOverlayMemberBackgroundColor(memberName) {
-    
-} */
+function taskOverlaySubTasks(activeTask) {
+    const TASKS = activeTask.subTaskText;
+    document.getElementById('idSubTaskSubContainerOv').innerHTML = taskOverlaySubTaskContainer(TASKS);
+}
+
+function taskOverlaySubTaskContainer(TASKS){
+    let memberHTML = '';
+    for (let i = 0; i < MEMBER.length; i++) {
+        const contactMember = contactJSON.find(contact => contact.name === MEMBER[i]);
+        if (contactMember) {
+            const memberColor = contactMember.bgColor.slice(1);
+            memberHTML += taskOverlayMemberHTML(MEMBER[i], memberColor, contactMember.initials, i);  
+        }
+    }
+    return memberHTML
+}
+
+function taskOverlayMemberHTML(memberName, memberColor, memberinitials, i) {
+    return /*html*/ `
+    <div id="idSingleSubTaskContainerOv${i}">
+        <input id="idSingleSubTaskChkboxOv${i}" type="checkbox">
+        <label id="idSingleSubTaskLabelOv${i}" for="idSingleSubTaskChkboxOv${i}"></label>
+    </div>`
+}

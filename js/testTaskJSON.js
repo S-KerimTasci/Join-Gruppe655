@@ -9,13 +9,19 @@ let taskJson2 = [
         "doneSubTasks": 1,
         "sbuTaskTotal": 2,
         "subTaskText": [
-            "Text 1",
-            "Text 2"
+            {
+                "label": "Text 1",
+                "checked": "none"
+            },
+            {
+                "label": "Text 2",
+                "checked": "none"
+            }
         ],
         "member": [
-             "Olli Hopfen",
-             "Frank Samstag",
-             "Lisbeth Kummer"
+            "Olli Hopfen",
+            "Frank Samstag",
+            "Lisbeth Kummer"
         ],
         "urgency": "urgent"
     },
@@ -29,14 +35,23 @@ let taskJson2 = [
         "doneSubTasks": 1,
         "sbuTaskTotal": 3,
         "subTaskText": [
-            "Text 1",
-            "Text 2",
-            "Text 3"
+            {
+                "label": "Text 1",
+                "checked": "none"
+            },
+            {
+                "label": "Text 2",
+                "checked": "none"
+            },
+            {
+                "label": "Text 3",
+                "checked": "none"
+            }
         ],
         "member": [
-             "Frank Loh",
-             "Wolf Wald",
-             "jan test"
+            "Frank Loh",
+            "Wolf Wald",
+            "jan test"
         ],
         "urgency": "medium"
     },
@@ -50,10 +65,12 @@ let taskJson2 = [
         "doneSubTasks": 0,
         "sbuTaskTotal": 0,
         "subTaskText": [
+            {
+            }
         ],
         "member": [
-             "Frank Loh",
-             "Wolf Wald" 
+            "Frank Loh",
+            "Wolf Wald"
         ],
         "urgency": "medium"
     },
@@ -67,7 +84,10 @@ let taskJson2 = [
         "doneSubTasks": 1,
         "sbuTaskTotal": 1,
         "subTaskText": [
-            "Text 1"
+            {
+                "label": "Text 1",
+                "checked": "none"
+            }
         ],
         "member": [
             "Frank Samstag",
@@ -85,11 +105,26 @@ let taskJson2 = [
         "doneSubTasks": 2,
         "sbuTaskTotal": 5,
         "subTaskText": [
-            "Text 1",
-            "Text 2",
-            "Text 3",
-            "Text 4",
-            "Text 5"
+            {
+                "label": "Text 1",
+                "checked": "none"
+            },
+            {
+                "label": "Text 2",
+                "checked": "none"
+            },
+            {
+                "label": "Text 3",
+                "checked": "none"
+            },
+            {
+                "label": "Text 4",
+                "checked": "none"
+            },
+            {
+                "label": "Text 5",
+                "checked": "none"
+            }
         ],
         "member": [
             "jan test",
@@ -108,7 +143,10 @@ let taskJson2 = [
         "doneSubTasks": 1,
         "sbuTaskTotal": 1,
         "subTaskText": [
-            "Text 1"
+            {
+                "label": "Text 1",
+                "checked": "none"
+            }
         ],
         "member": [
             "Lisbeth Kummer",
@@ -126,6 +164,8 @@ let taskJson2 = [
         "doneSubTasks": 0,
         "sbuTaskTotal": 0,
         "subTaskText": [
+            { 
+            }
         ],
         "member": [
             "Fred Kasten",
@@ -188,7 +228,7 @@ let contactJson2 = [
         "email": "hopfen@bla.fr",
         "initials": "OH",
         "name": "Olli Hopfen",
-        "bgColor": "#FC71FF"      
+        "bgColor": "#FC71FF"
     }
 ]
 

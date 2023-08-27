@@ -25,7 +25,7 @@ function taskTemplate(taskNr) {
     <div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" onclick="renderOverlayTask(${taskNr})" class="singleTaskContainer">
         <div class="d-flex justify-content-between align-item-center">
             <div id="idTaskType${taskNr}" class="singlTaskType">User Story </div>
-            <select id="idChangeStatus${taskNr}" onchange="changeStatus(this)" class="changeStatus">
+            <select id="idChangeStatus${taskNr}" onclick="innerClick(event)" onchange="changeStatus(this)" class="changeStatus">
              <!-- hier kommt das dropdownelement rein -->
              </select> 
         </div>
@@ -56,6 +56,16 @@ function taskTemplate(taskNr) {
         </div>
     </div>`
 }
+
+/**
+ * This function prevents the onclick event of the parent
+ * 
+ * @param {event} event - onclick event
+ */
+function innerClick(event) {
+    event.stopPropagation(); // Verhindert Event-Bubbling
+  }
+
 
 /**
  * 
