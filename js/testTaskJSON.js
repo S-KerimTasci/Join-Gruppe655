@@ -13,9 +13,9 @@ let taskJson2 = [
             "Text 2"
         ],
         "member": [
-            "Alex Solms",
-            "Frida Moll",
-            "Gerid Raht"
+             "Olli Hopfen",
+             "Frank Samstag",
+             "Lisbeth Kummer"
         ],
         "urgency": "urgent"
     },
@@ -34,9 +34,9 @@ let taskJson2 = [
             "Text 3"
         ],
         "member": [
-            "Zecki Guhl",
-            "Wolf Wald",
-            "Quenin Tarantino"
+             "Frank Loh",
+             "Wolf Wald",
+             "jan test"
         ],
         "urgency": "medium"
     },
@@ -52,8 +52,8 @@ let taskJson2 = [
         "subTaskText": [
         ],
         "member": [
-            "Lukas Greig",
-            "Nico Liebig"
+             "Frank Loh",
+             "Wolf Wald" 
         ],
         "urgency": "medium"
     },
@@ -144,14 +144,14 @@ let contactJson2 = [
     },
     {
         "email": "kummer@online.de",
-        "initials": "JT",
+        "initials": "LK",
         "name": "Lisbeth Kummer",
         "bgColor": "#FF5EB3"
     },
     {
-        "email": "hopfen@online.de",
-        "initials": "OH",
-        "name": "Oliver Hopfen",
+        "email": "wald@online.de",
+        "initials": "WW",
+        "name": "Wolf Wald",
         "bgColor": "#6E52FF"
     },
     {
@@ -201,7 +201,7 @@ let loginJson2 = [
     },
     {
         "email": "kummer@online.de",
-        "initials": "JT",
+        "initials": "LK",
         "name": "Lisbeth Kummer",
         "password": "aquamarine"
     },

@@ -108,9 +108,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 6px;
 }
 
-.memberPlaceholder {
+.memberDisk {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,18 +121,5 @@
     border-radius: 100%;
     height: 30px;
     width: 30px;
-}
-
-#idMemberPlaceholder1 {
-    background-color: aquamarine;
-}
-
-#idMemberPlaceholder2 {
-    background-color: teal;
-    margin-left: -6px;
-}
-
-#idMemberPlaceholder3 {
-    background-color: blueviolet;
     margin-left: -6px;
 }

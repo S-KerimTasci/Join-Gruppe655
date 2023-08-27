@@ -21,7 +21,9 @@ function singleTaskOvHtmlTemp() {
     <section id="idBackgroundTaskOverlay" class="BackgroundTaskOverlay">
         <div id="idTopAreaOv">
             <div id="idTaskTypeOv"> </div>
-            <div id="idTaskCloseOv"></div>
+            <div id="idTaskCloseOv" role="button" onclick="closeSingleTaskOverlay()">
+                <img src="../assets/img/taskOverlayClose.svg" alt="">
+            </div>
         </div>
         <div id="idTaskHeadlineOv"></div>
         <div id="idTaskDescriptionOv"></div>
@@ -39,20 +41,7 @@ function singleTaskOvHtmlTemp() {
         <div id="idAssingedToContainer">
             <span id="idAssingedTo">Assinged To:</span>
             <div id="idSingleTaskMemberContainerOV">
-                <!-- Schleife zum Einbinden der SubContainer START (ausgelagerte Funktion!!!)-->
-                <div id="idSingleTaskMemberSubContainerOV1">
-                    <div id="idSingleTaskMemberInitialsOv1"></div>
-                    <span id="idSingleTaskMemberFullNameOv1"></span>
-                </div>
-                <div id="idSingleTaskMemberSubContainerOV2">
-                    <div id="idSingleTaskMemberInitialsOv2"></div>
-                    <span id="idSingleTaskMemberFullNameOv2"></span>
-                </div>
-                <div id="idSingleTaskMemberSubContainerOV2">
-                    <div id="idSingleTaskMemberInitialsOv3"></div>
-                    <span id="idSingleTaskMemberFullNameOv3"></span>
-                </div>
-                <!-- Schleife zum Einbinden der SubContainer ENDE -->
+                <!-- extra function for adding Members-->
             </div>
         </div>
         <div id="idSubTaskContainerOv">
@@ -88,6 +77,13 @@ function singleTaskOvHtmlTemp() {
             </div>
         </div>
     </section>`    
+}
+
+/**
+ * this function removes all html in container idTaskOverlay
+ */
+function closeSingleTaskOverlay() {
+    document.getElementById('idTaskOverlay').innerHTML = '';
 }
 
 /**

@@ -157,9 +157,13 @@ function subTaskBarProgress(doneSubTasks, sbuTaskTotal, taskNr) {
  */
 function taskMember(arrMember, taskNr) {
     for (let i = 0; i < arrMember.length; i++) {
-        let membinitials = memberInitials(arrMember[i]);
-        document.getElementById('idSingleTaskMember' + taskNr).innerHTML += `<div id="idMemberPlaceholder${taskNr}_${i}" class="memberPlaceholder">${membinitials}</div>`
-        // um die Hintergrundfarbe einzufügen muss hier noch Code rein. 
+        const member = contactJSON.find(contact => contact.name === arrMember[i]);
+        if (member) {
+            const membInitials = member.initials;
+            const memberColor = member.bgColor.slice(1);
+            const memberSingleTask = `<div id="idMemberSingleTask${taskNr}_${i}" class="memberDisk memberBgColor${memberColor}">${membInitials}</div>`;
+            document.getElementById('idSingleTaskMember' + taskNr).innerHTML += memberSingleTask;
+        }
     }
 }
 
