@@ -18,61 +18,52 @@ function renderOverlayTask(taskNumber) {
  */
 function singleTaskOvHtmlTemp() {
     return /*html*/ `    
-    <section id="idBackgroundTaskOverlay" class="BackgroundTaskOverlay">
-        <div id="idTopAreaOv">
-            <div id="idTaskTypeOv"> </div>
-            <div id="idTaskCloseOv" role="button" onclick="closeSingleTaskOverlay()">
-                <img src="../assets/img/taskOverlayClose.svg" alt="">
-            </div>
-        </div>
-        <div id="idTaskHeadlineOv"></div>
-        <div id="idTaskDescriptionOv"></div>
-        <div id="idDueDateContainerOv">
-            <span>Due date:</span>
-            <span id="idDueDateOv"></span>
-        </div>
-        <div id="idUrgencyContainerOv">
-            <span>Priority:</span>
-            <div id="idUrgencySubContainerOv">
-                <span id="idUrgencyOv"></span>
-                <img id="idSingleTaskPrioImgOv" src="" alt="">
-            </div>
-        </div>
-        <div id="idAssingedToContainer">
-            <span id="idAssingedTo">Assinged To:</span>
-            <div id="idSingleTaskMemberContainerOV">
-                <!-- extra function for adding Members-->
-            </div>
-        </div>
-        <div id="idSubTaskContainerOv">
-            <span id="idSubTaskOv">Subtasks:</span>
-            <div id="idSubTaskSubContainerOv">
-                <!-- Schleife zum Einbinden der SubContainer START (ausgelagerte Funktion!!!)-->
-                <div id="idSingleSubTaskContainerOv1">
-                    <input id="idSingleSubTaskChkboxOv1" type="checkbox">
-                    <label id="idSingleSubTaskLabelOv1" for="idSingleSubTaskChkboxOv1"></label>
+    <section id="idBackgroundTaskOverlay" class="backgroundTaskOverlay">
+        <div id="idBgOuterContainerTaskOverlay" class="bgOuterContainerTaskOverlay">
+            <div id="idBgInnerContainerTaskOverlay" class="bgInnerContainerTaskOverlay">
+                <div id="idTopAreaOv" class="d-flex justify-content-between">
+                    <div id="idTaskTypeOv" class="singlTaskType"> </div>
+                    <div id="idTaskCloseOv" role="button" onclick="closeSingleTaskOverlay()">
+                        <img src="../assets/img/taskOverlayClose.svg" alt="">
+                    </div>
                 </div>
-                <div id="idSingleSubTaskContainerOv2">
-                    <input id="idSingleSubTaskChkboxOv2" type="checkbox">
-                    <label id="idSingleSubTaskLabelOv2" for="idSingleSubTaskChkboxOv2"></label>
+                <div id="idTaskHeadlineOv"></div>
+                <div id="idTaskDescriptionOv"></div>
+                <div id="idDueDateContainerOv">
+                    <span>Due date:</span>
+                    <span id="idDueDateOv"></span>
                 </div>
-                <div id="idSingleSubTaskContainerOv3">
-                    <input id="idSingleSubTaskChkboxOv3" type="checkbox">
-                    <label id="idSingleSubTaskLabelOv3" for="idSingleSubTaskChkboxOv3"></label>
+                <div id="idUrgencyContainerOv">
+                    <span>Priority:</span>
+                    <div id="idUrgencySubContainerOv">
+                        <span id="idUrgencyOv"></span>
+                        <img id="idSingleTaskPrioImgOv" src="" alt="">
+                    </div>
                 </div>
-                <!-- Schleife zum Einbinden der SubContainer ENDE -->
-            </div>
-        </div>
-        <div id="idBottomAreaOv">
-            <div id="idBottomAreaContainerOv">
-                <div id="idDeleteContainerOv">
-                    <img src="../assets/img/taskOverlayTrash.svg" alt="waste">
-                    <span>Delete</span>
+                <div id="idAssingedToContainer">
+                    <span id="idAssingedTo">Assinged To:</span>
+                    <div id="idSingleTaskMemberContainerOV">
+                        <!-- extra function for adding Members-->
+                    </div>
                 </div>
-                <div id="idBottomAreaContainerSeparatorOv"></div> 
-                <div id="idEditContainer">
-                    <img src="../assets/img/taskOverlayEdit.svg" alt="edit">
-                    <span>Edit</span>
+                <div id="idSubTaskContainerOv">
+                    <span id="idSubTaskOv">Subtasks:</span>
+                    <div id="idSubTaskSubContainerOv">
+                        <!-- extra function for adding subtasks-->
+                    </div>
+                </div>
+                <div id="idBottomAreaOv">
+                    <div id="idBottomAreaContainerOv">
+                        <div id="idDeleteContainerOv">
+                            <img src="../assets/img/taskOverlayTrash.svg" alt="waste">
+                            <span>Delete</span>
+                        </div>
+                        <div id="idBottomAreaContainerSeparatorOv"></div> 
+                        <div id="idEditContainer">
+                            <img src="../assets/img/taskOverlayEdit.svg" alt="edit">
+                            <span>Edit</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,6 +90,7 @@ function addDataSingleTaskOverlay(taskNr) {
     taskOverlayDate(activeTask);
     taskOverlayPrio(activeTask);
     taskOverlayMember(activeTask);
+    taskOverlaySubTasks(activeTask);
 
 }
 
@@ -172,27 +164,43 @@ function taskOverlayMemberHTML(memberName, memberColor, memberinitials, i) {
     </div>`
 }
 
+/**
+ * this function gets the sub task information from contactJson based on the sub tasks tracked for this single task
+ * 
+ * @param {object} activeTask - selected task
+ */
 function taskOverlaySubTasks(activeTask) {
     const TASKS = activeTask.subTaskText;
     document.getElementById('idSubTaskSubContainerOv').innerHTML = taskOverlaySubTaskContainer(TASKS);
 }
 
+/**
+ * this function returns the complete HTML code for all subtasks of this task
+ * 
+ * @param {object} TASKS  - all subtasks of task
+ * @returns - HTML Code for all subtasks of task
+ */
 function taskOverlaySubTaskContainer(TASKS){
-    let memberHTML = '';
-    for (let i = 0; i < MEMBER.length; i++) {
-        const contactMember = contactJSON.find(contact => contact.name === MEMBER[i]);
-        if (contactMember) {
-            const memberColor = contactMember.bgColor.slice(1);
-            memberHTML += taskOverlayMemberHTML(MEMBER[i], memberColor, contactMember.initials, i);  
-        }
+    let tasksHTML = '';
+    for (let i = 0; i < TASKS.length; i++) {
+        let taskChecked = TASKS[i].checked ? "checked" : '';
+        tasksHTML += taskOverlaySubTaskHTML(TASKS[i].label, taskChecked, i); 
     }
-    return memberHTML
+    return tasksHTML
 }
 
-function taskOverlayMemberHTML(memberName, memberColor, memberinitials, i) {
+/**
+ * this function returns the HTML code for a single subtask of this task
+ * 
+ * @param {string} taskLabel - text of subtask
+ * @param {string} taskChecked - checked if checked is true. If false string is empty
+ * @param {number} i - count of loop 
+ * @returns 
+ */
+function taskOverlaySubTaskHTML(taskLabel, taskChecked, i) {
     return /*html*/ `
     <div id="idSingleSubTaskContainerOv${i}">
-        <input id="idSingleSubTaskChkboxOv${i}" type="checkbox">
-        <label id="idSingleSubTaskLabelOv${i}" for="idSingleSubTaskChkboxOv${i}"></label>
+        <input id="idSingleSubTaskChkboxOv${i}" type="checkbox" ${taskChecked}>
+        <label id="idSingleSubTaskLabelOv${i}" for="idSingleSubTaskChkboxOv${i}">${taskLabel}</label>
     </div>`
 }

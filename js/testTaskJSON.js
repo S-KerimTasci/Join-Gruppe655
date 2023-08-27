@@ -11,11 +11,11 @@ let taskJson2 = [
         "subTaskText": [
             {
                 "label": "Text 1",
-                "checked": "none"
+                "checked": true
             },
             {
                 "label": "Text 2",
-                "checked": "none"
+                "checked": false
             }
         ],
         "member": [
@@ -37,15 +37,15 @@ let taskJson2 = [
         "subTaskText": [
             {
                 "label": "Text 1",
-                "checked": "none"
+                "checked": false
             },
             {
                 "label": "Text 2",
-                "checked": "none"
+                "checked": true
             },
             {
                 "label": "Text 3",
-                "checked": "none"
+                "checked": false
             }
         ],
         "member": [
@@ -65,8 +65,6 @@ let taskJson2 = [
         "doneSubTasks": 0,
         "sbuTaskTotal": 0,
         "subTaskText": [
-            {
-            }
         ],
         "member": [
             "Frank Loh",
@@ -86,7 +84,7 @@ let taskJson2 = [
         "subTaskText": [
             {
                 "label": "Text 1",
-                "checked": "none"
+                "checked": true
             }
         ],
         "member": [
@@ -107,23 +105,23 @@ let taskJson2 = [
         "subTaskText": [
             {
                 "label": "Text 1",
-                "checked": "none"
+                "checked": false
             },
             {
                 "label": "Text 2",
-                "checked": "none"
+                "checked": false
             },
             {
                 "label": "Text 3",
-                "checked": "none"
+                "checked": true
             },
             {
                 "label": "Text 4",
-                "checked": "none"
+                "checked": false
             },
             {
                 "label": "Text 5",
-                "checked": "none"
+                "checked": true
             }
         ],
         "member": [
@@ -145,7 +143,7 @@ let taskJson2 = [
         "subTaskText": [
             {
                 "label": "Text 1",
-                "checked": "none"
+                "checked": true
             }
         ],
         "member": [
@@ -164,8 +162,6 @@ let taskJson2 = [
         "doneSubTasks": 0,
         "sbuTaskTotal": 0,
         "subTaskText": [
-            { 
-            }
         ],
         "member": [
             "Fred Kasten",
