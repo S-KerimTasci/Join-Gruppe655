@@ -153,6 +153,12 @@ input {
     position: relative;
 }
 
+.overlayLogo {
+    width: 55.6px;
+    height: 66.48px;
+    display: none;
+}
+
 .close {
     position: absolute;
     right: 20px;
@@ -226,6 +232,21 @@ input {
     display: none;
 }
 
+.cancelButton {
+    width: 126px;
+    height: 56px;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+    background-color: #ffffff;
+    display: none;
+    color: #2A3647;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
 .addButton {
     background-color: #2A3647;
     color: white;
@@ -237,6 +258,15 @@ input {
     align-items: center;
     justify-content: center;
     width: 95%;
+}
+
+.closeResponsive {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 48px;
+    right: 70px;
+    border-radius: 56px;
 }
 
 /* Chat GPT */
@@ -303,7 +333,6 @@ input {
 
 }
 
-/* Weitere Stile für Kontakte und Buchstaben hinzufügen */
 
 @media (min-width: 750px) {
     input {
@@ -317,7 +346,8 @@ input {
     }
 
     .buttonDiv {
-        width: unset;
+        width: 100%;
+        justify-content: space-between;
     }
 
 
@@ -347,13 +377,18 @@ input {
         justify-content: space-between;
         height: 592px;
         width: 1212px;
-        left: 42px;
+        left: calc((100vw - 1212px)/2);
         padding: 0;
         border-radius: 30px;
     }
 
+    .overlayLogo {
+        display: unset;
+    }
+
+
     .createContactOverlay.show {
-        top: 20%;
+        top: calc((100vh - 592px)/2);
     }
 
     .contactsHeaderOverlay {
@@ -371,7 +406,20 @@ input {
     }
 
     .contactsFooterOverlay {
-        margin: 0;
-        padding: 0 5vw 0 0;
+        margin-top: 90px;
+        padding-right: 70px;
+    }
+
+    .close {
+        display: none;
+
+    }
+
+    .cancelButton {
+        display: flex;
+    }
+
+    .closeResponsive:hover {
+        background-color: lightgray;
     }
 }
