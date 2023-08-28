@@ -90,9 +90,61 @@ function removeHighlight(){
 function addSubtask(){
     let subtask = document.getElementById('subtask')
 
-    document.getElementById('renderedSubtask').innerHTML += `
-    <li>${subtask.value} <img src="../assets/img/edit_subtask.svg"> <img src="../assets/img/delete_subtask.svg" ></li>
+    if (subtask.value.length == "") {
+        
+    } else {
+        document.getElementById('renderedSubtask').innerHTML += `<li id="${subtask.value}">
+        <span>${subtask.value}</span>
+        <input type="text" class="editInput" style="display: none;">
+        <img onclick="editSubtask('${subtask.value}')" src="../assets/img/edit_subtask.svg">
+        <img onclick="deleteSubtask('${subtask.value}')" src="../assets/img/delete_subtask.svg">
+    </li>
     `
-    subtask.value =''
+     
+    /*
+        `
+    <li id="${subtask.value}">${subtask.value} <img src="../assets/img/edit_subtask.svg"> <img onclick="deleteSubtask(${subtask.value})" src="../assets/img/delete_subtask.svg" ></li>
+    `*/
 
+    subtask.value =''
+    }
+}
+
+function deleteSubtask(subtaskValue) {
+    const renderedSubtask = document.getElementById('renderedSubtask');
+    const subtaskElement = document.getElementById(subtaskValue);
+
+    if (subtaskElement) {
+        renderedSubtask.removeChild(subtaskElement);
+    }
+}
+
+/*
+function deleteSubtask(i){
+    let currentSubtask = document.getElementById(i)
+     //document.getElementById(`${i}`)
+
+    console.log(currentSubtask.innerHTML)
+
+    //subtask.remove()
+}
+*/
+
+function editSubtask(subtaskValue) {
+    const subtaskElement = document.getElementById(subtaskValue);
+    const subtaskTextSpan = subtaskElement.querySelector('span');
+    const editInput = subtaskElement.querySelector('.editInput');
+
+    if (subtaskElement) {
+        subtaskTextSpan.style.display = 'none';
+        editInput.style.display = 'inline';
+        editInput.value = subtaskTextSpan.textContent;
+        editInput.focus();
+        
+        editInput.addEventListener('blur', () => {
+            subtaskTextSpan.textContent = editInput.value;
+            subtaskTextSpan.style.display = 'inline';
+            editInput.style.display = 'none';
+        });
+    }
 }
