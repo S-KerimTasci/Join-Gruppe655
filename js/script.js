@@ -55,3 +55,12 @@ async function loadJSON(key) {
     let serverAnswer = await getItem(key);
     return JSON.parse(serverAnswer.data.value);
 }
+
+/**
+ * This function prevents the onclick event of the parent, used in boardSigleTask.js and boardSingleTaskOverlay.js
+ * 
+ * @param {event} event - onclick event
+ */
+function innerClick(event) {
+    event.stopPropagation(); // prevents event bubbling
+  }

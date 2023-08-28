@@ -58,16 +58,6 @@ function taskTemplate(taskNr) {
 }
 
 /**
- * This function prevents the onclick event of the parent
- * 
- * @param {event} event - onclick event
- */
-function innerClick(event) {
-    event.stopPropagation(); // Verhindert Event-Bubbling
-  }
-
-
-/**
  * 
  * @param {string} taskStatus provides the actual status of task
  * @param {string} taskNr - used to find the specific element id

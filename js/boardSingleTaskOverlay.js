@@ -18,48 +18,48 @@ function renderOverlayTask(taskNumber) {
  */
 function singleTaskOvHtmlTemp() {
     return /*html*/ `    
-    <section id="idBackgroundTaskOverlay" class="backgroundTaskOverlay">
-        <div id="idBgOuterContainerTaskOverlay" class="bgOuterContainerTaskOverlay">
-            <div id="idBgInnerContainerTaskOverlay" class="bgInnerContainerTaskOverlay">
-                <div id="idTopAreaOv" class="d-flex justify-content-between">
+    <section id="idBackgroundTaskOverlay" class="backgroundTaskOverlay" onclick="closeSingleTaskOverlay()">
+        <div id="idBgOuterContainerTaskOverlay" class="bgOuterContainerTaskOverlay" onclick="innerClick(event)">
+            <div id="idBgInnerContainerTaskOverlay" class="bgInnerContainerTaskOverlay taskOvText">
+                <div id="idTopAreaOv" class="topAreaOv d-flex justify-content-between">
                     <div id="idTaskTypeOv" class="singlTaskType"> </div>
                     <div id="idTaskCloseOv" role="button" onclick="closeSingleTaskOverlay()">
                         <img src="../assets/img/taskOverlayClose.svg" alt="">
                     </div>
                 </div>
-                <div id="idTaskHeadlineOv"></div>
-                <div id="idTaskDescriptionOv"></div>
-                <div id="idDueDateContainerOv">
-                    <span>Due date:</span>
+                <div id="idTaskHeadlineOv" class="taskHeadlineOv"></div>
+                <div id="idTaskDescriptionOv" class="taskDescriptionOv"></div>
+                <div id="idDueDateContainerOv" class="dueDateAndUrgencyContainerOv">
+                    <span class="taskOvSectionHeadline">Due date:</span>
                     <span id="idDueDateOv"></span>
                 </div>
-                <div id="idUrgencyContainerOv">
-                    <span>Priority:</span>
-                    <div id="idUrgencySubContainerOv">
+                <div id="idUrgencyContainerOv" class="dueDateAndUrgencyContainerOv">
+                    <span class="taskOvSectionHeadline">Priority:</span>
+                    <div id="idUrgencySubContainerOv" class="urgencySubContainerOv">
                         <span id="idUrgencyOv"></span>
                         <img id="idSingleTaskPrioImgOv" src="" alt="">
                     </div>
                 </div>
                 <div id="idAssingedToContainer">
-                    <span id="idAssingedTo">Assinged To:</span>
-                    <div id="idSingleTaskMemberContainerOV">
-                        <!-- extra function for adding Members-->
+                    <span id="idAssingedTo" class="taskOvSectionHeadline">Assinged To:</span>
+                    <div id="idSingleTaskMemberContainerOV" class="singleTaskMemberContainerOV">
+                        <!-- extra function taskOverlayMember(activeTask) for adding Members-->
                     </div>
                 </div>
                 <div id="idSubTaskContainerOv">
-                    <span id="idSubTaskOv">Subtasks:</span>
-                    <div id="idSubTaskSubContainerOv">
-                        <!-- extra function for adding subtasks-->
+                    <span id="idSubTaskOv" class="taskOvSectionHeadline">Subtasks:</span>
+                    <div id="idSubTaskSubContainerOv" class="singleTaskSubTaskContainerOV">
+                        <!-- extra function taskOverlaySubTasks(activeTask) for adding subtasks-->
                     </div>
                 </div>
-                <div id="idBottomAreaOv">
-                    <div id="idBottomAreaContainerOv">
-                        <div id="idDeleteContainerOv">
+                <div id="idBottomAreaOv" class="d-flex justify-content-end">
+                    <div id="idBottomAreaContainerOv" class="d-flex align-item-center">
+                        <div id="idDeleteContainerOv" class="bottomAreaSubContainer">
                             <img src="../assets/img/taskOverlayTrash.svg" alt="waste">
                             <span>Delete</span>
                         </div>
-                        <div id="idBottomAreaContainerSeparatorOv"></div> 
-                        <div id="idEditContainer">
+                        <div id="idBottomAreaContainerSeparatorOv" class="bottomAreaContainerSeparatorOv"></div> 
+                        <div id="idEditContainer"  class="bottomAreaSubContainer">
                             <img src="../assets/img/taskOverlayEdit.svg" alt="edit">
                             <span>Edit</span>
                         </div>
@@ -158,8 +158,8 @@ function taskOverlayMemberContainer(MEMBER) {
  */
 function taskOverlayMemberHTML(memberName, memberColor, memberinitials, i) {
     return /*html*/ `
-    <div id="idSingleTaskMemberSubContainerOV${i}">
-        <div id="idSingleTaskMemberInitialsOv${i}" class="memberDisk memberBgColor${memberColor}">${memberinitials}</div>
+    <div id="idSingleTaskMemberSubContainerOV${i}" class="singleTaskMemberSubContainerOV">
+        <div id="idSingleTaskMemberInitialsOv${i}" class="memberDiskOv memberBgColor${memberColor}">${memberinitials}</div>
         <span id="idSingleTaskMemberFullNameOv${i}">${memberName}</span>
     </div>`
 }
@@ -199,8 +199,8 @@ function taskOverlaySubTaskContainer(TASKS){
  */
 function taskOverlaySubTaskHTML(taskLabel, taskChecked, i) {
     return /*html*/ `
-    <div id="idSingleSubTaskContainerOv${i}">
-        <input id="idSingleSubTaskChkboxOv${i}" type="checkbox" ${taskChecked}>
+    <div id="idSingleSubTaskContainerOv${i}"  class="singleTaskSubTaskSubContainerOV">
+        <input id="idSingleSubTaskChkboxOv${i}" type="checkbox" class="check_box" ${taskChecked}>
         <label id="idSingleSubTaskLabelOv${i}" for="idSingleSubTaskChkboxOv${i}">${taskLabel}</label>
     </div>`
 }
