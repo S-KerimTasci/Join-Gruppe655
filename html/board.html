@@ -54,10 +54,10 @@
                                     src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
                             </div>
                             <div id="idBoardHead2" class="BoardHead2">
-                                <div id="idSearchContainerMob" class="myBoardHead2 d-flex justify-content-between">
-                                    <input id="idBoardSearchMob" type="search" placeholder="Find Task" class="boardSearch">
+                                <div id="idSearchContainer" class="myBoardHead2 d-flex justify-content-between">
+                                    <input id="idBoardSearch" type="search" placeholder="Find Task" class="boardSearch" onsearch="searchTask()" onkeyup="searchTask()">
                                     <div class="searchDivider"></div>
-                                    <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="search()">
+                                    <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="searchTask()">
                                 </div>
                                 <img class="hideSmallBtnH2 " role="button"
                                     src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
