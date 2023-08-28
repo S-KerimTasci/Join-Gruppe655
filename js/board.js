@@ -1,17 +1,26 @@
 let taskToMove = '';
+let searchTaskObj = [];
 /**
  * this function renders all tasks.
  */
 async function renderTasks() {
-    //console.log(taskJson);
     taskJson = await loadJSON(KEY_for_JSON_TASKS);
     contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
     loginJson = await loadJSON(KEY_for_JSON_PW);
-    //console.log(taskJson);
-    renderStatusContainer('toDo', 'idTaskToDo');
-    renderStatusContainer('inProgress', 'idTaskInProgress');
-    renderStatusContainer('awaitFeedback', 'idTaskAwaitFeedback');
-    renderStatusContainer('done', 'idTaskDone');
+    clearContainer();
+    renderAllContainer(taskJson)
+}
+
+/**
+ * This function renders all status container based on the JSON
+ * 
+ * @param {object} jsonObj - contains data which schould used for rendering
+ */
+function renderAllContainer(jsonObj){
+    renderStatusContainer('toDo', 'idTaskToDo', jsonObj);
+    renderStatusContainer('inProgress', 'idTaskInProgress', jsonObj);
+    renderStatusContainer('awaitFeedback', 'idTaskAwaitFeedback', jsonObj);
+    renderStatusContainer('done', 'idTaskDone', jsonObj);
 }
 
 
@@ -21,19 +30,17 @@ async function renderTasks() {
  * @param {string} status 
  * @param {string} taskContainerId 
  */
-function renderStatusContainer(status, taskContainerId) {
+function renderStatusContainer(status, taskContainerId, jsonObj) {
     let singleTaskCount = 0;
-    for (let i = 0; i < taskJson.length; i++) {
+    for (let i = 0; i < jsonObj.length; i++) {
         let taskNumber = i + 1;
-        let activeTask = taskJson[i];
+        let activeTask = jsonObj[i];
         if (status == activeTask.status) {
             document.getElementById(taskContainerId).innerHTML += taskTemplate(taskNumber);
             callFunctionForSingleTask(activeTask, taskNumber);
             singleTaskCount++;
         }
     }
-    //console.log(taskContainerId + '  ' + singleTaskCount);
-    // debugger;
     toggleDefaultContainer(taskContainerId, singleTaskCount);
 }
 
@@ -49,28 +56,47 @@ function toggleDefaultContainer(taskContainerId, taskCount) {
     } else if (taskCount > 0 && !taskContainer.classList.contains('d-none')) {
         taskContainer.classList.toggle('d-none');
     }
-
 }
 
-
+/**
+ * This function juste stores the number of the task which should moved
+ * 
+ * @param {number} taskNummer -- provides the task number i.e. 2 which ist storred on place 1 in array because count in array starts with 0
+ */
 function dragStart(taskNummer) {
     taskToMove = taskNummer - 1;
 }
-
+/**
+ * This function prevents the standard behavior for event dragover
+ * 
+ * @param {event} ev - event dragover
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * This function saves the new status of the task in backend and calls the render function.
+ * 
+ * @param {string} newStatus - status of target container
+ */
 async function moveTo(newStatus) {
-    //debugger;
     taskJson[taskToMove].status = newStatus;
     afterSetItemServerAnswer = await setItem(KEY_for_JSON_TASKS, taskJson);
-    //console.log(afterSetItemServerAnswer);
+    taskJson = await loadJSON(KEY_for_JSON_TASKS);
+    //searchTask(); // Hier ist das Problem, dass ich im Suchzustand die Karten nicht verschieben kann, weil sich deren Kartennummer ändert
+    renderTasks();
+}
+
+/**
+ * this function clears all status containers
+ * 
+ */
+function clearContainer() {
     document.getElementById('idTaskToDo').innerHTML = '';
     document.getElementById('idTaskInProgress').innerHTML = '';
     document.getElementById('idTaskAwaitFeedback').innerHTML = '';
     document.getElementById('idTaskDone').innerHTML = '';
-    renderTasks();
 }
 
 /**
@@ -80,8 +106,35 @@ async function moveTo(newStatus) {
  */
 function changeStatus(task) {
     taskToMove = +task.id.replace("idChangeStatus", "") - 1;
-    // console.log(taskToMove);
-    // console.log(task.value);
     moveTo(task.value);
-    //document.getElementById(task.id).focus() 
 }
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+// search function start
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+function searchTask() {
+    let search = document.getElementById('idBoardSearch').value;
+    search = search.toLowerCase();
+    search !== '' ? searchFunction(search) : renderTasks();
+    /* if (search === '') {renderTasks();} 
+    else { searchFunction(search);} */
+}
+
+function searchFunction(search) {
+    //blockAddNewCardsForSearch = true;
+    clearContainer();
+    searchTaskObj = [];
+    //document.getElementById('fourtyBucket').innerHTML = '';
+    let searchIndex = 0;
+    for (let i = 0; i < taskJson.length; i++) {
+        if (taskJson[i].headline.toLowerCase().includes(search)) {
+            searchTaskObj[searchIndex] = taskJson[i];
+            searchIndex++;
+        }
+    }
+    renderAllContainer(searchTaskObj);
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+// search function end
+//~~~~~~~~~~~~~~~~~~~~~~~~~
