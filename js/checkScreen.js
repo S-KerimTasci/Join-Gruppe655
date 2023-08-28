@@ -169,6 +169,7 @@ function addTaskDektopTemplate() {
             </div>
         </div>
             <div class="buttonDiv">
+                <button class="clearButton">Clear <img src="../assets/img/cancel_contactOverlay.svg" alt=""></button>
                 <button class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
             </div>
     </form>
