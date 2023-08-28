@@ -173,11 +173,13 @@ textarea{
 .divLeft{
     display: flex;
     flex-direction: column;
+    width: 30vw;
 }
 
 .divRight{
     display: flex;
     flex-direction: column;
+    width: 30vw;
 }
 
 
