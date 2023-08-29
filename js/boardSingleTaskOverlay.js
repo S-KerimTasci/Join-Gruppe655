@@ -196,7 +196,7 @@ function taskOverlaySubTaskContainer(TASKS){
  * @param {string} taskLabel - text of subtask
  * @param {string} taskChecked - checked if checked is true. If false string is empty
  * @param {number} i - count of loop 
- * @returns 
+ * @returns - html Code for sub tasks
  */
 function taskOverlaySubTaskHTML(taskLabel, taskChecked, i) {
     return /*html*/ `

@@ -36,7 +36,7 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
     colorTaskType(activeTask.taskType, taskNumber);
     addTaskTitle(activeTask.headline, taskNumber);
     addTaskTxt(activeTask.description, taskNumber);
-    subTaskBarProgress(activeTask.doneSubTasks, activeTask.sbuTaskTotal, taskNumber);
+    subTaskBarProgress(activeTask.doneSubTasks, activeTask.subTaskTotal, taskNumber);
     taskMember(activeTask.member, taskNumber);
     taskUrgency(activeTask.urgency, taskNumber);
     selectionHTML(activeTask.status, taskNumber);
@@ -45,15 +45,15 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
 /**
  * This function returns the HTML code for a task
  * 
- * @param {number} taskNr 
+ * @param {string} taskNr - to create a uniqe identifier 
  * @returns - html code
  */
 function taskTemplate(taskNr) {
     return /*html*/ `
-    &lt;div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" class="singleTaskContainer">
+    &lt;div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" onclick="renderOverlayTask(${taskNr - 1})" class="singleTaskContainer">
         &lt;div class="d-flex justify-content-between align-item-center">
             &lt;div id="idTaskType${taskNr}" class="singlTaskType">User Story &lt;/div>
-            &lt;select id="idChangeStatus${taskNr}" onchange="changeStatus(this)" class="changeStatus">
+            &lt;select id="idChangeStatus${taskNr}" onclick="innerClick(event)" onchange="changeStatus(this)" class="changeStatus">
              &lt;!-- hier kommt das dropdownelement rein -->
              &lt;/select> 
         &lt;/div>
@@ -88,7 +88,7 @@ function taskTemplate(taskNr) {
 /**
  * 
  * @param {string} taskStatus provides the actual status of task
- * @param {number} taskNr - provides the task number of task
+ * @param {string} taskNr - used to find the specific element id
  */
 function selectionHTML(taskStatus, taskNr) {
     const statusArr = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
@@ -106,7 +106,7 @@ function selectionHTML(taskStatus, taskNr) {
  * this function returns the background color for the specific task type
  * 
  * @param {string} taskType - this is the specific task type
- * @param {number} taskNr - used to find the specific element id
+ * @param {string} taskNr - used to find the specific element id
  */
 function colorTaskType(taskType, taskNr) {
     document.getElementById('idTaskType' + taskNr).innerText = taskType;
@@ -125,8 +125,8 @@ function colorTaskType(taskType, taskNr) {
 /**
  * This function adds the Headline of task to the html element
  * 
- * @param {string} taskHeadline 
- * @param {number} taskNr 
+ * @param {string} taskHeadline - text from task title
+ * @param {string} taskNr - used to find the specific element id
  */
 function addTaskTitle(taskHeadline, taskNr) {
     document.getElementById('idTaskHeadline' + taskNr).innerText = taskHeadline;
@@ -135,8 +135,8 @@ function addTaskTitle(taskHeadline, taskNr) {
 /**
  * This function adds the limited text to the html code of the task
  * 
- * @param {string} taskText 
- * @param {number} taskNr 
+ * @param {string} taskText - text from task description
+ * @param {string} taskNr - used to find the specific element id
  */
 function addTaskTxt(taskText, taskNr) {
     document.getElementById('idTaskShortTxt' + taskNr).innerText = limitTextTo37Char(taskText);
@@ -145,7 +145,7 @@ function addTaskTxt(taskText, taskNr) {
 /**
  * This function retuns string of 37 chars plus '...' if the lenght of the string is graeter than 37 chars
  * 
- * @param {string} text 
+ * @param {string} text - just a text
  * @returns - text limited to 37 chars plus three dots
  */
 function limitTextTo37Char(text) {
@@ -159,16 +159,16 @@ function limitTextTo37Char(text) {
 /**
  * This function changes the progress bar width
  * 
- * @param {number} doneSubTasks 
- * @param {number} sbuTaskTotal 
- * @param {number} taskNr 
+ * @param {number} doneSubTasks - count of solved tasks
+ * @param {number} subTaskTotal - count of total tasks
+ * @param {string} taskNr - used to find the specific element id
  */
-function subTaskBarProgress(doneSubTasks, sbuTaskTotal, taskNr) {
+function subTaskBarProgress(doneSubTasks, subTaskTotal, taskNr) {
     let faktor = 1;
     document.getElementById('idSingleTaksCountPart' + taskNr).innerText = doneSubTasks;
-    document.getElementById('idSingleTaksCountTotal' + taskNr).innerText = sbuTaskTotal;
-    if (sbuTaskTotal != 0) {
-        faktor = doneSubTasks / sbuTaskTotal;
+    document.getElementById('idSingleTaksCountTotal' + taskNr).innerText = subTaskTotal;
+    if (subTaskTotal != 0) {
+        faktor = doneSubTasks / subTaskTotal;
         document.getElementById('idSingleTaskSubProgress' + taskNr).style.width = Math.round(128 * faktor) + 'px';
         
     } else {
@@ -181,21 +181,25 @@ function subTaskBarProgress(doneSubTasks, sbuTaskTotal, taskNr) {
  * used in renderStatusContainer()
  * 
  * @param {array} arrMember - array of full names of all members connected to the task
- * @param {number} taskNr - to create a unique id
+ * @param {string} taskNr - used to find the specific element id
  */
 function taskMember(arrMember, taskNr) {
     for (let i = 0; i &lt; arrMember.length; i++) {
-        let membinitials = memberInitials(arrMember[i]);
-        document.getElementById('idSingleTaskMember' + taskNr).innerHTML += `&lt;div id="idMemberPlaceholder${taskNr}_${i}" class="memberPlaceholder">${membinitials}&lt;/div>`
-        // um die Hintergrundfarbe einzufügen muss hier noch Code rein. 
+        const member = contactJSON.find(contact => contact.name === arrMember[i]);
+        if (member) {
+            const membInitials = member.initials;
+            const memberColor = member.bgColor.slice(1);
+            const memberSingleTask = `&lt;div id="idMemberSingleTask${taskNr}_${i}" class="memberDisk memberBgColor${memberColor}">${membInitials}&lt;/div>`;
+            document.getElementById('idSingleTaskMember' + taskNr).innerHTML += memberSingleTask;
+        }
     }
 }
 
 /**
  * This function changes the img urgency belonging to task urgency
  * 
- * @param {string} urgency 
- * @param {number} taskNr 
+ * @param {string} urgency - for low, medium, urgent
+ * @param {string} taskNr - used to find the specific element id
  */
 function taskUrgency(urgency, taskNr) {
     switch (urgency) {
@@ -219,13 +223,13 @@ function taskUrgency(urgency, taskNr) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addGreetingPhrase">addGreetingPhrase</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addNumToSummary">addNumToSummary</a></li><li><a href="global.html#addTaskTitle">addTaskTitle</a></li><li><a href="global.html#addTaskTxt">addTaskTxt</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#addValuesToSummary">addValuesToSummary</a></li><li><a href="global.html#arePasswordsMatching">arePasswordsMatching</a></li><li><a href="global.html#buildDateFormat">buildDateFormat</a></li><li><a href="global.html#callFunctionForSingleTask">callFunctionForSingleTask</a></li><li><a href="global.html#changeStatus">changeStatus</a></li><li><a href="global.html#checkExistingUser">checkExistingUser</a></li><li><a href="global.html#clearRegistrationForm">clearRegistrationForm</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#colorTaskType">colorTaskType</a></li><li><a href="global.html#confirmSendMail">confirmSendMail</a></li><li><a href="global.html#countTasks">countTasks</a></li><li><a href="global.html#displayAndHideMessage">displayAndHideMessage</a></li><li><a href="global.html#displayErrorMessage">displayErrorMessage</a></li><li><a href="global.html#displayPasswordMismatchErrorMessage">displayPasswordMismatchErrorMessage</a></li><li><a href="global.html#displaySendPasswordMessageAndRedirect">displaySendPasswordMessageAndRedirect</a></li><li><a href="global.html#displaySuccessMessageAndRedirect">displaySuccessMessageAndRedirect</a></li><li><a href="global.html#displayUserMessageOrRedirect">displayUserMessageOrRedirect</a></li><li><a href="global.html#displayUserNotFoundErrorMessage">displayUserNotFoundErrorMessage</a></li><li><a href="global.html#displayUserNotFoundMessage">displayUserNotFoundMessage</a></li><li><a href="global.html#displayUserNotFoundMessageForEmail">displayUserNotFoundMessageForEmail</a></li><li><a href="global.html#doNotCloseOverlay">doNotCloseOverlay</a></li><li><a href="global.html#findUserByEmail">findUserByEmail</a></li><li><a href="global.html#findUserByEmailAndPassword">findUserByEmailAndPassword</a></li><li><a href="global.html#generateHTMLifNotUserDesktop">generateHTMLifNotUserDesktop</a></li><li><a href="global.html#generateHTMLifNotUserMobile">generateHTMLifNotUserMobile</a></li><li><a href="global.html#getEmailFromURLParams">getEmailFromURLParams</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#greetingText">greetingText</a></li><li><a href="global.html#handleExistingUser">handleExistingUser</a></li><li><a href="global.html#handleExistingUserDesktop">handleExistingUserDesktop</a></li><li><a href="global.html#handleExistingUserMobile">handleExistingUserMobile</a></li><li><a href="global.html#handleFailureResponse">handleFailureResponse</a></li><li><a href="global.html#handleMissingName">handleMissingName</a></li><li><a href="global.html#handleMissingNameDesktop">handleMissingNameDesktop</a></li><li><a href="global.html#handleMissingNameMobile">handleMissingNameMobile</a></li><li><a href="global.html#handlePasswordMismatch">handlePasswordMismatch</a></li><li><a href="global.html#handleResponse">handleResponse</a></li><li><a href="global.html#handleResponseDesktop">handleResponseDesktop</a></li><li><a href="global.html#handleResponseMobile">handleResponseMobile</a></li><li><a href="global.html#handleSignUpButtonClick">handleSignUpButtonClick</a></li><li><a href="global.html#handleSuccessResponse">handleSuccessResponse</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAnimation">initAnimation</a></li><li><a href="global.html#initAnimationResponsiv">initAnimationResponsiv</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#limitTextTo37Char">limitTextTo37Char</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#memberInitials">memberInitials</a></li><li><a href="global.html#passwordNotMatchDesktop">passwordNotMatchDesktop</a></li><li><a href="global.html#passwordNotMatchMobile">passwordNotMatchMobile</a></li><li><a href="global.html#privacyPolicy">privacyPolicy</a></li><li><a href="global.html#processEmailConfirmation">processEmailConfirmation</a></li><li><a href="global.html#redirectToLoginPage">redirectToLoginPage</a></li><li><a href="global.html#removeDefaultContainer">removeDefaultContainer</a></li><li><a href="global.html#renderStatusContainer">renderStatusContainer</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPassword">resetPassword</a></li><li><a href="global.html#resetPasswordDesktop">resetPasswordDesktop</a></li><li><a href="global.html#resetPasswordMobile">resetPasswordMobile</a></li><li><a href="global.html#resetUserPassword">resetUserPassword</a></li><li><a href="global.html#resetUserPasswordOrDisplayError">resetUserPasswordOrDisplayError</a></li><li><a href="global.html#selectionHTML">selectionHTML</a></li><li><a href="global.html#sendPasswordDesktop">sendPasswordDesktop</a></li><li><a href="global.html#sendPasswordMobile">sendPasswordMobile</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setNewUser">setNewUser</a></li><li><a href="global.html#subTaskBarProgress">subTaskBarProgress</a></li><li><a href="global.html#taskMember">taskMember</a></li><li><a href="global.html#taskTemplate">taskTemplate</a></li><li><a href="global.html#taskUrgency">taskUrgency</a></li><li><a href="global.html#toggleSignUpButton">toggleSignUpButton</a></li><li><a href="global.html#upcommingDeadline">upcommingDeadline</a></li><li><a href="global.html#validateFullName">validateFullName</a></li><li><a href="global.html#validatePasswordMatch">validatePasswordMatch</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addDataSingleTaskOverlay">addDataSingleTaskOverlay</a></li><li><a href="global.html#addGreetingPhrase">addGreetingPhrase</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addNumToSummary">addNumToSummary</a></li><li><a href="global.html#addTaskTitle">addTaskTitle</a></li><li><a href="global.html#addTaskTxt">addTaskTxt</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#addValuesToSummary">addValuesToSummary</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#arePasswordsMatching">arePasswordsMatching</a></li><li><a href="global.html#buildDateFormat">buildDateFormat</a></li><li><a href="global.html#callFunctionForSingleTask">callFunctionForSingleTask</a></li><li><a href="global.html#changeStatus">changeStatus</a></li><li><a href="global.html#checkExistingUser">checkExistingUser</a></li><li><a href="global.html#clearContainer">clearContainer</a></li><li><a href="global.html#clearRegistrationForm">clearRegistrationForm</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeSingleTaskOverlay">closeSingleTaskOverlay</a></li><li><a href="global.html#colorTaskType">colorTaskType</a></li><li><a href="global.html#confirmSendMail">confirmSendMail</a></li><li><a href="global.html#countTasks">countTasks</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteTaskCancel">deleteTaskCancel</a></li><li><a href="global.html#deleteTaskConfirm">deleteTaskConfirm</a></li><li><a href="global.html#displayAndHideMessage">displayAndHideMessage</a></li><li><a href="global.html#displayErrorMessage">displayErrorMessage</a></li><li><a href="global.html#displayPasswordMismatchErrorMessage">displayPasswordMismatchErrorMessage</a></li><li><a href="global.html#displaySendPasswordMessageAndRedirect">displaySendPasswordMessageAndRedirect</a></li><li><a href="global.html#displaySuccessMessageAndRedirect">displaySuccessMessageAndRedirect</a></li><li><a href="global.html#displayUserMessageOrRedirect">displayUserMessageOrRedirect</a></li><li><a href="global.html#displayUserNotFoundErrorMessage">displayUserNotFoundErrorMessage</a></li><li><a href="global.html#displayUserNotFoundMessage">displayUserNotFoundMessage</a></li><li><a href="global.html#displayUserNotFoundMessageForEmail">displayUserNotFoundMessageForEmail</a></li><li><a href="global.html#doNotCloseOverlay">doNotCloseOverlay</a></li><li><a href="global.html#dragStart">dragStart</a></li><li><a href="global.html#findUserByEmail">findUserByEmail</a></li><li><a href="global.html#findUserByEmailAndPassword">findUserByEmailAndPassword</a></li><li><a href="global.html#generateHTMLifNotUserDesktop">generateHTMLifNotUserDesktop</a></li><li><a href="global.html#generateHTMLifNotUserMobile">generateHTMLifNotUserMobile</a></li><li><a href="global.html#getEmailFromURLParams">getEmailFromURLParams</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#greetingText">greetingText</a></li><li><a href="global.html#handleExistingUser">handleExistingUser</a></li><li><a href="global.html#handleExistingUserDesktop">handleExistingUserDesktop</a></li><li><a href="global.html#handleExistingUserMobile">handleExistingUserMobile</a></li><li><a href="global.html#handleFailureResponse">handleFailureResponse</a></li><li><a href="global.html#handleMissingName">handleMissingName</a></li><li><a href="global.html#handleMissingNameDesktop">handleMissingNameDesktop</a></li><li><a href="global.html#handleMissingNameMobile">handleMissingNameMobile</a></li><li><a href="global.html#handlePasswordMismatch">handlePasswordMismatch</a></li><li><a href="global.html#handleResponse">handleResponse</a></li><li><a href="global.html#handleResponseDesktop">handleResponseDesktop</a></li><li><a href="global.html#handleResponseMobile">handleResponseMobile</a></li><li><a href="global.html#handleSignUpButtonClick">handleSignUpButtonClick</a></li><li><a href="global.html#handleSuccessResponse">handleSuccessResponse</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAnimation">initAnimation</a></li><li><a href="global.html#initAnimationResponsiv">initAnimationResponsiv</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#innerClick">innerClick</a></li><li><a href="global.html#limitTextTo37Char">limitTextTo37Char</a></li><li><a href="global.html#loadJSON">loadJSON</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#memberInitials">memberInitials</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#passwordNotMatchDesktop">passwordNotMatchDesktop</a></li><li><a href="global.html#passwordNotMatchMobile">passwordNotMatchMobile</a></li><li><a href="global.html#popUp">popUp</a></li><li><a href="global.html#privacyPolicy">privacyPolicy</a></li><li><a href="global.html#processEmailConfirmation">processEmailConfirmation</a></li><li><a href="global.html#redirectToLoginPage">redirectToLoginPage</a></li><li><a href="global.html#renderAllContainer">renderAllContainer</a></li><li><a href="global.html#renderOverlayTask">renderOverlayTask</a></li><li><a href="global.html#renderStatusContainer">renderStatusContainer</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPassword">resetPassword</a></li><li><a href="global.html#resetPasswordDesktop">resetPasswordDesktop</a></li><li><a href="global.html#resetPasswordMobile">resetPasswordMobile</a></li><li><a href="global.html#resetUserPassword">resetUserPassword</a></li><li><a href="global.html#resetUserPasswordOrDisplayError">resetUserPasswordOrDisplayError</a></li><li><a href="global.html#selectionHTML">selectionHTML</a></li><li><a href="global.html#sendPasswordDesktop">sendPasswordDesktop</a></li><li><a href="global.html#sendPasswordMobile">sendPasswordMobile</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setNewUser">setNewUser</a></li><li><a href="global.html#singleTaskOvHtmlTemp">singleTaskOvHtmlTemp</a></li><li><a href="global.html#subTaskBarProgress">subTaskBarProgress</a></li><li><a href="global.html#taskMember">taskMember</a></li><li><a href="global.html#taskOverlayDate">taskOverlayDate</a></li><li><a href="global.html#taskOverlayMember">taskOverlayMember</a></li><li><a href="global.html#taskOverlayMemberContainer">taskOverlayMemberContainer</a></li><li><a href="global.html#taskOverlayMemberHTML">taskOverlayMemberHTML</a></li><li><a href="global.html#taskOverlayPrio">taskOverlayPrio</a></li><li><a href="global.html#taskOverlaySubTaskContainer">taskOverlaySubTaskContainer</a></li><li><a href="global.html#taskOverlaySubTaskHTML">taskOverlaySubTaskHTML</a></li><li><a href="global.html#taskOverlaySubTasks">taskOverlaySubTasks</a></li><li><a href="global.html#taskTemplate">taskTemplate</a></li><li><a href="global.html#taskUrgency">taskUrgency</a></li><li><a href="global.html#toggleDefaultContainer">toggleDefaultContainer</a></li><li><a href="global.html#togglePopupBar">togglePopupBar</a></li><li><a href="global.html#toggleSignUpButton">toggleSignUpButton</a></li><li><a href="global.html#upcommingDeadline">upcommingDeadline</a></li><li><a href="global.html#validateFullName">validateFullName</a></li><li><a href="global.html#validatePasswordMatch">validatePasswordMatch</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Aug 24 2023 13:30:25 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 16:24:44 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -27,15 +27,28 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>let taskToMove = '';
+let searchTaskObj = [];
 /**
  * this function renders all tasks.
  */
-function renderTasks() {
-    console.log(taskJson);
-    renderStatusContainer('toDo', 'idTaskToDo');
-    renderStatusContainer('inProgress', 'idTaskInProgress');
-    renderStatusContainer('awaitFeedback', 'idTaskAwaitFeedback');
-    renderStatusContainer('done', 'idTaskDone');
+async function renderTasks() {
+    taskJson = await loadJSON(KEY_for_JSON_TASKS);
+    contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
+    loginJson = await loadJSON(KEY_for_JSON_PW);
+    clearContainer();
+    renderAllContainer(taskJson)
+}
+
+/**
+ * This function renders all status container based on the JSON
+ * 
+ * @param {object} jsonObj - contains data which schould used for rendering
+ */
+function renderAllContainer(jsonObj){
+    renderStatusContainer('toDo', 'idTaskToDo', jsonObj);
+    renderStatusContainer('inProgress', 'idTaskInProgress', jsonObj);
+    renderStatusContainer('awaitFeedback', 'idTaskAwaitFeedback', jsonObj);
+    renderStatusContainer('done', 'idTaskDone', jsonObj);
 }
 
 
@@ -45,18 +58,18 @@ function renderTasks() {
  * @param {string} status 
  * @param {string} taskContainerId 
  */
-function renderStatusContainer(status, taskContainerId) {
+function renderStatusContainer(status, taskContainerId, jsonObj) {
     let singleTaskCount = 0;
-    for (let i = 0; i &lt; taskJson.length; i++) {
+    for (let i = 0; i &lt; jsonObj.length; i++) {
         let taskNumber = i + 1;
-        let activeTask = taskJson[i];
+        let activeTask = jsonObj[i];
         if (status == activeTask.status) {
             document.getElementById(taskContainerId).innerHTML += taskTemplate(taskNumber);
             callFunctionForSingleTask(activeTask, taskNumber);
             singleTaskCount++;
         }
     }
-    if (singleTaskCount) removeDefaultContainer(taskContainerId);
+    toggleDefaultContainer(taskContainerId, singleTaskCount);
 }
 
 /**
@@ -64,27 +77,54 @@ function renderStatusContainer(status, taskContainerId) {
  * 
  * @param {string} taskContainerId 
  */
-function removeDefaultContainer(taskContainerId) {
-    document.getElementById(taskContainerId + 'Default').classList.add('d-none');
+function toggleDefaultContainer(taskContainerId, taskCount) {
+    const taskContainer = document.getElementById(taskContainerId + 'Default');
+    if (taskCount == 0 &amp;&amp; taskContainer.classList.contains('d-none')) {
+        taskContainer.classList.toggle('d-none');
+    } else if (taskCount > 0 &amp;&amp; !taskContainer.classList.contains('d-none')) {
+        taskContainer.classList.toggle('d-none');
+    }
 }
 
-
+/**
+ * This function juste stores the number of the task which should moved
+ * 
+ * @param {number} taskNummer -- provides the task number i.e. 2 which ist storred on place 1 in array because count in array starts with 0
+ */
 function dragStart(taskNummer) {
     taskToMove = taskNummer - 1;
 }
-
+/**
+ * This function prevents the standard behavior for event dragover
+ * 
+ * @param {event} ev - event dragover
+ */
 function allowDrop(ev) {
     ev.preventDefault();
-  }
+}
 
-function moveTo(newStatus) {
-    //debugger;
+/**
+ * This function saves the new status of the task in backend and calls the render function.
+ * 
+ * @param {string} newStatus - status of target container
+ */
+async function moveTo(newStatus) {
     taskJson[taskToMove].status = newStatus;
+    afterSetItemServerAnswer = await setItem(KEY_for_JSON_TASKS, taskJson);
+    taskJson = await loadJSON(KEY_for_JSON_TASKS);
+    //searchTask(); // Hier ist das Problem, dass ich im Suchzustand die Karten nicht verschieben kann, weil sich deren Kartennummer ändert
+    renderTasks();
+}
+
+/**
+ * this function clears all status containers
+ * 
+ */
+function clearContainer() {
     document.getElementById('idTaskToDo').innerHTML = '';
     document.getElementById('idTaskInProgress').innerHTML = '';
     document.getElementById('idTaskAwaitFeedback').innerHTML = '';
     document.getElementById('idTaskDone').innerHTML = '';
-    renderTasks();
 }
 
 /**
@@ -94,11 +134,38 @@ function moveTo(newStatus) {
  */
 function changeStatus(task) {
     taskToMove = +task.id.replace("idChangeStatus", "") - 1;
-    // console.log(taskToMove);
-    // console.log(task.value);
     moveTo(task.value);
-    document.getElementById(task.id).focus() 
-}</code></pre>
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+// search function start
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+function searchTask() {
+    let search = document.getElementById('idBoardSearch').value;
+    search = search.toLowerCase();
+    search !== '' ? searchFunction(search) : renderTasks();
+    /* if (search === '') {renderTasks();} 
+    else { searchFunction(search);} */
+}
+
+function searchFunction(search) {
+    //blockAddNewCardsForSearch = true;
+    clearContainer();
+    searchTaskObj = [];
+    //document.getElementById('fourtyBucket').innerHTML = '';
+    let searchIndex = 0;
+    for (let i = 0; i &lt; taskJson.length; i++) {
+        if (taskJson[i].headline.toLowerCase().includes(search)) {
+            searchTaskObj[searchIndex] = taskJson[i];
+            searchIndex++;
+        }
+    }
+    renderAllContainer(searchTaskObj);
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~
+// search function end
+//~~~~~~~~~~~~~~~~~~~~~~~~~</code></pre>
         </article>
     </section>
 
@@ -108,13 +175,13 @@ function changeStatus(task) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addGreetingPhrase">addGreetingPhrase</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addNumToSummary">addNumToSummary</a></li><li><a href="global.html#addTaskTitle">addTaskTitle</a></li><li><a href="global.html#addTaskTxt">addTaskTxt</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#addValuesToSummary">addValuesToSummary</a></li><li><a href="global.html#arePasswordsMatching">arePasswordsMatching</a></li><li><a href="global.html#buildDateFormat">buildDateFormat</a></li><li><a href="global.html#callFunctionForSingleTask">callFunctionForSingleTask</a></li><li><a href="global.html#changeStatus">changeStatus</a></li><li><a href="global.html#checkExistingUser">checkExistingUser</a></li><li><a href="global.html#clearRegistrationForm">clearRegistrationForm</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#colorTaskType">colorTaskType</a></li><li><a href="global.html#confirmSendMail">confirmSendMail</a></li><li><a href="global.html#countTasks">countTasks</a></li><li><a href="global.html#displayAndHideMessage">displayAndHideMessage</a></li><li><a href="global.html#displayErrorMessage">displayErrorMessage</a></li><li><a href="global.html#displayPasswordMismatchErrorMessage">displayPasswordMismatchErrorMessage</a></li><li><a href="global.html#displaySendPasswordMessageAndRedirect">displaySendPasswordMessageAndRedirect</a></li><li><a href="global.html#displaySuccessMessageAndRedirect">displaySuccessMessageAndRedirect</a></li><li><a href="global.html#displayUserMessageOrRedirect">displayUserMessageOrRedirect</a></li><li><a href="global.html#displayUserNotFoundErrorMessage">displayUserNotFoundErrorMessage</a></li><li><a href="global.html#displayUserNotFoundMessage">displayUserNotFoundMessage</a></li><li><a href="global.html#displayUserNotFoundMessageForEmail">displayUserNotFoundMessageForEmail</a></li><li><a href="global.html#doNotCloseOverlay">doNotCloseOverlay</a></li><li><a href="global.html#findUserByEmail">findUserByEmail</a></li><li><a href="global.html#findUserByEmailAndPassword">findUserByEmailAndPassword</a></li><li><a href="global.html#generateHTMLifNotUserDesktop">generateHTMLifNotUserDesktop</a></li><li><a href="global.html#generateHTMLifNotUserMobile">generateHTMLifNotUserMobile</a></li><li><a href="global.html#getEmailFromURLParams">getEmailFromURLParams</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#greetingText">greetingText</a></li><li><a href="global.html#handleExistingUser">handleExistingUser</a></li><li><a href="global.html#handleExistingUserDesktop">handleExistingUserDesktop</a></li><li><a href="global.html#handleExistingUserMobile">handleExistingUserMobile</a></li><li><a href="global.html#handleFailureResponse">handleFailureResponse</a></li><li><a href="global.html#handleMissingName">handleMissingName</a></li><li><a href="global.html#handleMissingNameDesktop">handleMissingNameDesktop</a></li><li><a href="global.html#handleMissingNameMobile">handleMissingNameMobile</a></li><li><a href="global.html#handlePasswordMismatch">handlePasswordMismatch</a></li><li><a href="global.html#handleResponse">handleResponse</a></li><li><a href="global.html#handleResponseDesktop">handleResponseDesktop</a></li><li><a href="global.html#handleResponseMobile">handleResponseMobile</a></li><li><a href="global.html#handleSignUpButtonClick">handleSignUpButtonClick</a></li><li><a href="global.html#handleSuccessResponse">handleSuccessResponse</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAnimation">initAnimation</a></li><li><a href="global.html#initAnimationResponsiv">initAnimationResponsiv</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#limitTextTo37Char">limitTextTo37Char</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#memberInitials">memberInitials</a></li><li><a href="global.html#passwordNotMatchDesktop">passwordNotMatchDesktop</a></li><li><a href="global.html#passwordNotMatchMobile">passwordNotMatchMobile</a></li><li><a href="global.html#privacyPolicy">privacyPolicy</a></li><li><a href="global.html#processEmailConfirmation">processEmailConfirmation</a></li><li><a href="global.html#redirectToLoginPage">redirectToLoginPage</a></li><li><a href="global.html#removeDefaultContainer">removeDefaultContainer</a></li><li><a href="global.html#renderStatusContainer">renderStatusContainer</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPassword">resetPassword</a></li><li><a href="global.html#resetPasswordDesktop">resetPasswordDesktop</a></li><li><a href="global.html#resetPasswordMobile">resetPasswordMobile</a></li><li><a href="global.html#resetUserPassword">resetUserPassword</a></li><li><a href="global.html#resetUserPasswordOrDisplayError">resetUserPasswordOrDisplayError</a></li><li><a href="global.html#selectionHTML">selectionHTML</a></li><li><a href="global.html#sendPasswordDesktop">sendPasswordDesktop</a></li><li><a href="global.html#sendPasswordMobile">sendPasswordMobile</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setNewUser">setNewUser</a></li><li><a href="global.html#subTaskBarProgress">subTaskBarProgress</a></li><li><a href="global.html#taskMember">taskMember</a></li><li><a href="global.html#taskTemplate">taskTemplate</a></li><li><a href="global.html#taskUrgency">taskUrgency</a></li><li><a href="global.html#toggleSignUpButton">toggleSignUpButton</a></li><li><a href="global.html#upcommingDeadline">upcommingDeadline</a></li><li><a href="global.html#validateFullName">validateFullName</a></li><li><a href="global.html#validatePasswordMatch">validatePasswordMatch</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addDataSingleTaskOverlay">addDataSingleTaskOverlay</a></li><li><a href="global.html#addGreetingPhrase">addGreetingPhrase</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addNumToSummary">addNumToSummary</a></li><li><a href="global.html#addTaskTitle">addTaskTitle</a></li><li><a href="global.html#addTaskTxt">addTaskTxt</a></li><li><a href="global.html#addUser">addUser</a></li><li><a href="global.html#addValuesToSummary">addValuesToSummary</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#arePasswordsMatching">arePasswordsMatching</a></li><li><a href="global.html#buildDateFormat">buildDateFormat</a></li><li><a href="global.html#callFunctionForSingleTask">callFunctionForSingleTask</a></li><li><a href="global.html#changeStatus">changeStatus</a></li><li><a href="global.html#checkExistingUser">checkExistingUser</a></li><li><a href="global.html#clearContainer">clearContainer</a></li><li><a href="global.html#clearRegistrationForm">clearRegistrationForm</a></li><li><a href="global.html#closeOverlay">closeOverlay</a></li><li><a href="global.html#closeSingleTaskOverlay">closeSingleTaskOverlay</a></li><li><a href="global.html#colorTaskType">colorTaskType</a></li><li><a href="global.html#confirmSendMail">confirmSendMail</a></li><li><a href="global.html#countTasks">countTasks</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteTaskCancel">deleteTaskCancel</a></li><li><a href="global.html#deleteTaskConfirm">deleteTaskConfirm</a></li><li><a href="global.html#displayAndHideMessage">displayAndHideMessage</a></li><li><a href="global.html#displayErrorMessage">displayErrorMessage</a></li><li><a href="global.html#displayPasswordMismatchErrorMessage">displayPasswordMismatchErrorMessage</a></li><li><a href="global.html#displaySendPasswordMessageAndRedirect">displaySendPasswordMessageAndRedirect</a></li><li><a href="global.html#displaySuccessMessageAndRedirect">displaySuccessMessageAndRedirect</a></li><li><a href="global.html#displayUserMessageOrRedirect">displayUserMessageOrRedirect</a></li><li><a href="global.html#displayUserNotFoundErrorMessage">displayUserNotFoundErrorMessage</a></li><li><a href="global.html#displayUserNotFoundMessage">displayUserNotFoundMessage</a></li><li><a href="global.html#displayUserNotFoundMessageForEmail">displayUserNotFoundMessageForEmail</a></li><li><a href="global.html#doNotCloseOverlay">doNotCloseOverlay</a></li><li><a href="global.html#dragStart">dragStart</a></li><li><a href="global.html#findUserByEmail">findUserByEmail</a></li><li><a href="global.html#findUserByEmailAndPassword">findUserByEmailAndPassword</a></li><li><a href="global.html#generateHTMLifNotUserDesktop">generateHTMLifNotUserDesktop</a></li><li><a href="global.html#generateHTMLifNotUserMobile">generateHTMLifNotUserMobile</a></li><li><a href="global.html#getEmailFromURLParams">getEmailFromURLParams</a></li><li><a href="global.html#getItem">getItem</a></li><li><a href="global.html#greetingText">greetingText</a></li><li><a href="global.html#handleExistingUser">handleExistingUser</a></li><li><a href="global.html#handleExistingUserDesktop">handleExistingUserDesktop</a></li><li><a href="global.html#handleExistingUserMobile">handleExistingUserMobile</a></li><li><a href="global.html#handleFailureResponse">handleFailureResponse</a></li><li><a href="global.html#handleMissingName">handleMissingName</a></li><li><a href="global.html#handleMissingNameDesktop">handleMissingNameDesktop</a></li><li><a href="global.html#handleMissingNameMobile">handleMissingNameMobile</a></li><li><a href="global.html#handlePasswordMismatch">handlePasswordMismatch</a></li><li><a href="global.html#handleResponse">handleResponse</a></li><li><a href="global.html#handleResponseDesktop">handleResponseDesktop</a></li><li><a href="global.html#handleResponseMobile">handleResponseMobile</a></li><li><a href="global.html#handleSignUpButtonClick">handleSignUpButtonClick</a></li><li><a href="global.html#handleSuccessResponse">handleSuccessResponse</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAnimation">initAnimation</a></li><li><a href="global.html#initAnimationResponsiv">initAnimationResponsiv</a></li><li><a href="global.html#initials">initials</a></li><li><a href="global.html#innerClick">innerClick</a></li><li><a href="global.html#limitTextTo37Char">limitTextTo37Char</a></li><li><a href="global.html#loadJSON">loadJSON</a></li><li><a href="global.html#loadUsers">loadUsers</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#memberInitials">memberInitials</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#passwordNotMatchDesktop">passwordNotMatchDesktop</a></li><li><a href="global.html#passwordNotMatchMobile">passwordNotMatchMobile</a></li><li><a href="global.html#popUp">popUp</a></li><li><a href="global.html#privacyPolicy">privacyPolicy</a></li><li><a href="global.html#processEmailConfirmation">processEmailConfirmation</a></li><li><a href="global.html#redirectToLoginPage">redirectToLoginPage</a></li><li><a href="global.html#renderAllContainer">renderAllContainer</a></li><li><a href="global.html#renderOverlayTask">renderOverlayTask</a></li><li><a href="global.html#renderStatusContainer">renderStatusContainer</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#resetInputFields">resetInputFields</a></li><li><a href="global.html#resetPassword">resetPassword</a></li><li><a href="global.html#resetPasswordDesktop">resetPasswordDesktop</a></li><li><a href="global.html#resetPasswordMobile">resetPasswordMobile</a></li><li><a href="global.html#resetUserPassword">resetUserPassword</a></li><li><a href="global.html#resetUserPasswordOrDisplayError">resetUserPasswordOrDisplayError</a></li><li><a href="global.html#selectionHTML">selectionHTML</a></li><li><a href="global.html#sendPasswordDesktop">sendPasswordDesktop</a></li><li><a href="global.html#sendPasswordMobile">sendPasswordMobile</a></li><li><a href="global.html#setItem">setItem</a></li><li><a href="global.html#setNewUser">setNewUser</a></li><li><a href="global.html#singleTaskOvHtmlTemp">singleTaskOvHtmlTemp</a></li><li><a href="global.html#subTaskBarProgress">subTaskBarProgress</a></li><li><a href="global.html#taskMember">taskMember</a></li><li><a href="global.html#taskOverlayDate">taskOverlayDate</a></li><li><a href="global.html#taskOverlayMember">taskOverlayMember</a></li><li><a href="global.html#taskOverlayMemberContainer">taskOverlayMemberContainer</a></li><li><a href="global.html#taskOverlayMemberHTML">taskOverlayMemberHTML</a></li><li><a href="global.html#taskOverlayPrio">taskOverlayPrio</a></li><li><a href="global.html#taskOverlaySubTaskContainer">taskOverlaySubTaskContainer</a></li><li><a href="global.html#taskOverlaySubTaskHTML">taskOverlaySubTaskHTML</a></li><li><a href="global.html#taskOverlaySubTasks">taskOverlaySubTasks</a></li><li><a href="global.html#taskTemplate">taskTemplate</a></li><li><a href="global.html#taskUrgency">taskUrgency</a></li><li><a href="global.html#toggleDefaultContainer">toggleDefaultContainer</a></li><li><a href="global.html#togglePopupBar">togglePopupBar</a></li><li><a href="global.html#toggleSignUpButton">toggleSignUpButton</a></li><li><a href="global.html#upcommingDeadline">upcommingDeadline</a></li><li><a href="global.html#validateFullName">validateFullName</a></li><li><a href="global.html#validatePasswordMatch">validatePasswordMatch</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Aug 24 2023 13:30:25 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 16:24:44 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>
