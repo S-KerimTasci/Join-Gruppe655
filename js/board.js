@@ -33,11 +33,11 @@ function renderAllContainer(jsonObj){
 function renderStatusContainer(status, taskContainerId, jsonObj) {
     let singleTaskCount = 0;
     for (let i = 0; i < jsonObj.length; i++) {
-        let taskNumber = i + 1;
+        //let taskNumber = i + 1;
         let activeTask = jsonObj[i];
         if (status == activeTask.status) {
-            document.getElementById(taskContainerId).innerHTML += taskTemplate(taskNumber);
-            callFunctionForSingleTask(activeTask, taskNumber);
+            document.getElementById(taskContainerId).innerHTML += taskTemplate(i);
+            callFunctionForSingleTask(activeTask, i);
             singleTaskCount++;
         }
     }

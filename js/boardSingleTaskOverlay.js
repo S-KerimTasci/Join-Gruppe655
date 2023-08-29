@@ -76,6 +76,7 @@ function singleTaskOvHtmlTemp(taskNr) {
  */
 function closeSingleTaskOverlay() {
     document.getElementById('idTaskOverlay').innerHTML = '';
+    renderTasks();
 }
 
 /**
@@ -91,7 +92,7 @@ function addDataSingleTaskOverlay(taskNr) {
     taskOverlayDate(activeTask);
     taskOverlayPrio(activeTask);
     taskOverlayMember(activeTask);
-    taskOverlaySubTasks(activeTask);
+    taskOverlaySubTasks(activeTask, taskNr);
 
 }
 
@@ -142,7 +143,7 @@ function taskOverlayMemberContainer(MEMBER) {
         const contactMember = contactJSON.find(contact => contact.name === MEMBER[i]);
         if (contactMember) {
             const memberColor = contactMember.bgColor.slice(1);
-            memberHTML += taskOverlayMemberHTML(MEMBER[i], memberColor, contactMember.initials, i);  
+            memberHTML += taskOverlayMemberHTML(MEMBER[i], memberColor, contactMember.initials, i);
         }
     }
     return memberHTML
@@ -169,23 +170,25 @@ function taskOverlayMemberHTML(memberName, memberColor, memberinitials, i) {
  * this function gets the sub task information from contactJson based on the sub tasks tracked for this single task
  * 
  * @param {object} activeTask - selected task
+ * @param {number} activeTaskNr - number of open task
  */
-function taskOverlaySubTasks(activeTask) {
+function taskOverlaySubTasks(activeTask, activeTaskNr) {
     const TASKS = activeTask.subTaskText;
-    document.getElementById('idSubTaskSubContainerOv').innerHTML = taskOverlaySubTaskContainer(TASKS);
+    document.getElementById('idSubTaskSubContainerOv').innerHTML = taskOverlaySubTaskContainer(TASKS, activeTaskNr);
 }
 
 /**
  * this function returns the complete HTML code for all subtasks of this task
  * 
  * @param {object} TASKS  - all subtasks of task
+ * @param {number} activeTaskNr - number of open task
  * @returns - HTML Code for all subtasks of task
  */
-function taskOverlaySubTaskContainer(TASKS){
+function taskOverlaySubTaskContainer(TASKS, activeTaskNr) {
     let tasksHTML = '';
     for (let i = 0; i < TASKS.length; i++) {
         let taskChecked = TASKS[i].checked ? "checked" : '';
-        tasksHTML += taskOverlaySubTaskHTML(TASKS[i].label, taskChecked, i); 
+        tasksHTML += taskOverlaySubTaskHTML(TASKS[i].label, taskChecked, activeTaskNr, i);
     }
     return tasksHTML
 }
@@ -195,12 +198,13 @@ function taskOverlaySubTaskContainer(TASKS){
  * 
  * @param {string} taskLabel - text of subtask
  * @param {string} taskChecked - checked if checked is true. If false string is empty
+ * @param {number} activeTaskNr - number of open task
  * @param {number} i - count of loop 
  * @returns - html Code for sub tasks
  */
-function taskOverlaySubTaskHTML(taskLabel, taskChecked, i) {
+function taskOverlaySubTaskHTML(taskLabel, taskChecked, activeTaskNr, i) {
     return /*html*/ `
-    <div id="idSingleSubTaskContainerOv${i}"  class="singleTaskSubTaskSubContainerOV">
+    <div id="idSingleSubTaskContainerOv${i}"  class="singleTaskSubTaskSubContainerOV"  onchange="checkUncheckSubtask(${activeTaskNr})">
         <input id="idSingleSubTaskChkboxOv${i}" type="checkbox" class="check_box" ${taskChecked}>
         <label id="idSingleSubTaskLabelOv${i}" for="idSingleSubTaskChkboxOv${i}">${taskLabel}</label>
     </div>`
@@ -209,7 +213,7 @@ function taskOverlaySubTaskHTML(taskLabel, taskChecked, i) {
 /**
  * this function calls the pop up for delete task
  * 
- * @param {number} taskNr 
+ * @param {number} taskNr  - number of open task
  */
 function deleteTask(taskNr) {
     document.getElementById('idTaskOverlay').innerHTML += popUp(taskNr);
@@ -218,7 +222,7 @@ function deleteTask(taskNr) {
 /**
  * This function returns the HTNL code for the delete PopUp
  * 
- * @param {number} taskNr 
+ * @param {number} taskNr  - number of open task
  * @returns - html code for the delete PopUp
  */
 function popUp(taskNr) {
@@ -238,12 +242,12 @@ function popUp(taskNr) {
 /**
  * This function get the task JSON from Backend, removes the selected task and the overlay task card and send the task JSON back to Backend
  * 
- * @param {number} taskNr 
+ * @param {number} taskNr  - number of open task
  */
 async function deleteTaskConfirm(taskNr) {
     taskJson = await loadJSON(KEY_for_JSON_TASKS);
     taskJson.splice(taskNr, 1);
-    setItem(KEY_for_JSON_TASKS, taskJson)
+    setItem(KEY_for_JSON_TASKS, taskJson);
     document.getElementById('idTaskOverlay').innerHTML = '';
     renderTasks();
 }
@@ -251,8 +255,25 @@ async function deleteTaskConfirm(taskNr) {
 /**
  * This function removes the delete popup
  * 
- * @param {number} taskNr 
+ * @param {number} taskNr - number of open task 
  */
 function deleteTaskCancel(taskNr) {
-    renderOverlayTask(taskNr); 
+    renderOverlayTask(taskNr);
 }
+
+/**
+ * 
+ * @param {number} taskNr - number of open task
+ */
+async function checkUncheckSubtask(taskNr) {
+    taskJson = await loadJSON(KEY_for_JSON_TASKS);
+    let solvedSubtask = 0;
+    for (let i = 0; i < taskJson[taskNr].subTaskTotal; i++) {
+        let subtaskChk = document.getElementById('idSingleSubTaskChkboxOv' + i).checked;
+        subtaskChk == true ? solvedSubtask++ : '';
+        taskJson[taskNr].subTaskText[i].checked = subtaskChk;
+    }
+    taskJson[taskNr].doneSubTasks = solvedSubtask;
+    setItem(KEY_for_JSON_TASKS, taskJson);
+}
+
