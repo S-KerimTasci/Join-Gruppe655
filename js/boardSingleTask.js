@@ -8,7 +8,7 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
     colorTaskType(activeTask.taskType, taskNumber);
     addTaskTitle(activeTask.headline, taskNumber);
     addTaskTxt(activeTask.description, taskNumber);
-    subTaskBarProgress(activeTask.doneSubTasks, activeTask.sbuTaskTotal, taskNumber);
+    subTaskBarProgress(activeTask.doneSubTasks, activeTask.subTaskTotal, taskNumber);
     taskMember(activeTask.member, taskNumber);
     taskUrgency(activeTask.urgency, taskNumber);
     selectionHTML(activeTask.status, taskNumber);
@@ -132,15 +132,15 @@ function limitTextTo37Char(text) {
  * This function changes the progress bar width
  * 
  * @param {number} doneSubTasks - count of solved tasks
- * @param {number} sbuTaskTotal - count of total tasks
+ * @param {number} subTaskTotal - count of total tasks
  * @param {string} taskNr - used to find the specific element id
  */
-function subTaskBarProgress(doneSubTasks, sbuTaskTotal, taskNr) {
+function subTaskBarProgress(doneSubTasks, subTaskTotal, taskNr) {
     let faktor = 1;
     document.getElementById('idSingleTaksCountPart' + taskNr).innerText = doneSubTasks;
-    document.getElementById('idSingleTaksCountTotal' + taskNr).innerText = sbuTaskTotal;
-    if (sbuTaskTotal != 0) {
-        faktor = doneSubTasks / sbuTaskTotal;
+    document.getElementById('idSingleTaksCountTotal' + taskNr).innerText = subTaskTotal;
+    if (subTaskTotal != 0) {
+        faktor = doneSubTasks / subTaskTotal;
         document.getElementById('idSingleTaskSubProgress' + taskNr).style.width = Math.round(128 * faktor) + 'px';
         
     } else {

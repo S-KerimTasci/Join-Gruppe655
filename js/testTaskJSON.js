@@ -7,7 +7,7 @@ let taskJson2 = [
         "headline": "Test 1",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
-        "sbuTaskTotal": 2,
+        "subTaskTotal": 2,
         "subTaskText": [
             {
                 "label": "Text 1",
@@ -33,7 +33,7 @@ let taskJson2 = [
         "headline": "Test 2",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
-        "sbuTaskTotal": 3,
+        "subTaskTotal": 3,
         "subTaskText": [
             {
                 "label": "Text 1",
@@ -63,7 +63,7 @@ let taskJson2 = [
         "headline": "WasPassiertWennIchDieMaximaleZeilenbreiteÜber",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 0,
-        "sbuTaskTotal": 0,
+        "subTaskTotal": 0,
         "subTaskText": [
         ],
         "member": [
@@ -80,7 +80,7 @@ let taskJson2 = [
         "headline": "Test 4",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
-        "sbuTaskTotal": 1,
+        "subTaskTotal": 1,
         "subTaskText": [
             {
                 "label": "Text 1",
@@ -101,7 +101,7 @@ let taskJson2 = [
         "headline": "Test 5 mit ein wenig mehr Text",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 2,
-        "sbuTaskTotal": 5,
+        "subTaskTotal": 5,
         "subTaskText": [
             {
                 "label": "Text 1",
@@ -139,7 +139,7 @@ let taskJson2 = [
         "headline": "Test 6 mit ein wenig mehr Text.",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 1,
-        "sbuTaskTotal": 1,
+        "subTaskTotal": 1,
         "subTaskText": [
             {
                 "label": "Text 1",
@@ -160,7 +160,7 @@ let taskJson2 = [
         "headline": "Test 7",
         "description": "Some text which should describe the task. The first two lines should be visible and the rest should be replaced by ...",
         "doneSubTasks": 0,
-        "sbuTaskTotal": 0,
+        "subTaskTotal": 0,
         "subTaskText": [
         ],
         "member": [

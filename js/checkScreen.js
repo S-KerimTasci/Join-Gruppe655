@@ -35,7 +35,7 @@ function checkScreen() {
 
 function addTaskMobileTemplate() {
     return `
-    <form onsubmit="createTask();return false">
+    <form onsubmit="storeNewTask();return false">
         <h1><b>Add Task</b></h1>
         <div class="gap8px_flexDirCol">
             <span>Title</span>
@@ -86,7 +86,7 @@ function addTaskMobileTemplate() {
             <div class="gap8px_flexDirCol">
                         <span>Subtask</span>
                         <div class="subtaskDiv">
-                            <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
+                            <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask">
                             <img src="../assets/img/plus.svg" onclick="addSubtask()">
                         </div>
                         </div>
@@ -96,7 +96,7 @@ function addTaskMobileTemplate() {
             </div>
 
         <div class="buttonDiv">
-            <button class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
+            <button type="submit" class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
         </div>
     </form>
 
@@ -108,7 +108,7 @@ function addTaskMobileTemplate() {
 function addTaskDektopTemplate() {
     return `
     <h1 class="headerDektop"><b>Add Task</b></h1>
-    <form onsubmit="createTask();return false">
+    <form onsubmit="storeNewTask();return false">
         <div class="addTaskDesktop">
         
             <div class="divLeft">
@@ -159,7 +159,7 @@ function addTaskDektopTemplate() {
                 <div class="gap8px_flexDirCol">
                         <span>Subtask</span>
                         <div class="subtaskDiv">
-                            <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" required>
+                            <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask" >
                             <img src="../assets/img/plus.svg" onclick="addSubtask()">
                         </div>
                         <div >
@@ -169,8 +169,8 @@ function addTaskDektopTemplate() {
             </div>
         </div>
             <div class="buttonDiv">
-                <button class="clearButton">Clear <img src="../assets/img/cancel_contactOverlay.svg" alt=""></button>
-                <button class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
+                <button type="reset" class="clearButton">Clear <img src="../assets/img/cancel_contactOverlay.svg" alt=""></button>
+                <button type="submit" class="taskButton" >Create Task <img src="../assets/img/check.svg"></button>
             </div>
     </form>
 </div>`
