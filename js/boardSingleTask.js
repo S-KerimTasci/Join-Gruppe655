@@ -22,7 +22,7 @@ function callFunctionForSingleTask(activeTask, taskNumber) {
  */
 function taskTemplate(taskNr) {
     return /*html*/ `
-    <div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" onclick="renderOverlayTask(${taskNr})" class="singleTaskContainer">
+    <div id="idTaskId${taskNr}"  draggable='true' ondragstart="dragStart(${taskNr})" onclick="renderOverlayTask(${taskNr - 1})" class="singleTaskContainer">
         <div class="d-flex justify-content-between align-item-center">
             <div id="idTaskType${taskNr}" class="singlTaskType">User Story </div>
             <select id="idChangeStatus${taskNr}" onclick="innerClick(event)" onchange="changeStatus(this)" class="changeStatus">

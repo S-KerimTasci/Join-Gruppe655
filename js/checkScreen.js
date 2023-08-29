@@ -35,7 +35,7 @@ function checkScreen() {
 
 function addTaskMobileTemplate() {
     return `
-    <form onsubmit="storeNewTask();return false">
+    <form id="addTaskForm" onsubmit="storeNewTask();return false">
         <h1><b>Add Task</b></h1>
         <div class="gap8px_flexDirCol">
             <span>Title</span>
@@ -108,7 +108,7 @@ function addTaskMobileTemplate() {
 function addTaskDektopTemplate() {
     return `
     <h1 class="headerDektop"><b>Add Task</b></h1>
-    <form onsubmit="storeNewTask();return false">
+    <form id="addTaskForm" onsubmit="storeNewTask();return false">
         <div class="addTaskDesktop">
         
             <div class="divLeft">
@@ -169,7 +169,7 @@ function addTaskDektopTemplate() {
             </div>
         </div>
             <div class="buttonDiv">
-                <button type="reset" class="clearButton">Clear <img src="../assets/img/cancel_contactOverlay.svg" alt=""></button>
+                <button type="reset" class="clearButton" onclick="clearAddTaskForm()">Clear <img src="../assets/img/cancel_contactOverlay.svg" alt=""></button>
                 <button type="submit" class="taskButton" >Create Task <img src="../assets/img/check.svg"></button>
             </div>
     </form>

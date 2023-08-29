@@ -136,17 +136,29 @@ function editSubtask(subtaskValue) {
 
 
 //Code added by Alex ~~~~~ start
+let task2 = {
+    "taskId": "", // task id - should be a ongoing number
+    "taskType": "", //type of task
+    "dueDate": "", //date of task /* 21.Sep.23 */
+    "status": "", //status of task /*toDo inProgress awaitFeedback done*/
+    "headline": "", //title of task
+    "description": "", //decription of task
+    "doneSubTasks": "", // count of tasks which checked
+    "subTaskTotal": "", // count of all tasks
+    "subTaskText": [],//needs a push
+    "member": [],//needs a push
+    "urgency": ""
+};
+
 async function storeNewTask() {
-    
         taskJson = await loadJSON(KEY_for_JSON_TASKS);
-        debugger;
         getValuesForTaskArr();
-        debugger;
         taskJson.push(task2);
         setItem(KEY_for_JSON_TASKS, taskJson);
-        
-    
-    
+        subtaskObj = [];
+        removeHighlight();
+        document.getElementById("addTaskForm").reset();
+        document.getElementById('renderedSubtask').innerHTML ='';
 }
 
 
@@ -157,8 +169,9 @@ function getValuesForTaskArr() {
     getValuesFromForm();
     getSubtaskFromForm();
     getMembersFromForm();
-
 }
+
+
 function getValuesFromForm() {
     task2.taskType = document.getElementById('inputCategory').value;
     task2.headline = document.getElementById('inputTitle').value;
@@ -191,16 +204,8 @@ function calcTaskId() {
     task2.taskId = taskJson.length + 1;
 }
 
-let task2 = {
-    "taskId": "", // task id - should be a ongoing number
-    "taskType": "", //type of task
-    "dueDate": "", //date of task /* 21.Sep.23 */
-    "status": "", //status of task /*toDo inProgress awaitFeedback done*/
-    "headline": "", //title of task
-    "description": "", //decription of task
-    "doneSubTasks": "", // count of tasks which checked
-    "subTaskTotal": "", // count of all tasks
-    "subTaskText": [],//needs a push
-    "member": [],//needs a push
-    "urgency": ""
-};
+function clearAddTaskForm() {
+    document.getElementById('renderedSubtask').innerHTML ='';
+    subtaskObj = [];
+    removeHighlight();
+}

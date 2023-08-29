@@ -7,16 +7,17 @@
  */
 function renderOverlayTask(taskNumber) {
 
-    document.getElementById('idTaskOverlay').innerHTML = singleTaskOvHtmlTemp();
-    addDataSingleTaskOverlay(taskNumber - 1);
+    document.getElementById('idTaskOverlay').innerHTML = singleTaskOvHtmlTemp(taskNumber);
+    addDataSingleTaskOverlay(taskNumber);
 
 }
 /**
  * This function returns the HTML Code for the task overlay
  * 
+ * @param {number} taskNr - number of clicked task
  * @returns - returns the HTML Code for the task overlay
  */
-function singleTaskOvHtmlTemp() {
+function singleTaskOvHtmlTemp(taskNr) {
     return /*html*/ `    
     <section id="idBackgroundTaskOverlay" class="backgroundTaskOverlay" onclick="closeSingleTaskOverlay()">
         <div id="idBgOuterContainerTaskOverlay" class="bgOuterContainerTaskOverlay" onclick="innerClick(event)">
@@ -54,7 +55,7 @@ function singleTaskOvHtmlTemp() {
                 </div>
                 <div id="idBottomAreaOv" class="d-flex justify-content-end">
                     <div id="idBottomAreaContainerOv" class="d-flex align-item-center">
-                        <div id="idDeleteContainerOv" class="bottomAreaSubContainer">
+                        <div id="idDeleteContainerOv" class="bottomAreaSubContainer" role="button" onclick="deleteTask(${taskNr})">
                             <img src="../assets/img/taskOverlayTrash.svg" alt="waste">
                             <span>Delete</span>
                         </div>
@@ -203,4 +204,55 @@ function taskOverlaySubTaskHTML(taskLabel, taskChecked, i) {
         <input id="idSingleSubTaskChkboxOv${i}" type="checkbox" class="check_box" ${taskChecked}>
         <label id="idSingleSubTaskLabelOv${i}" for="idSingleSubTaskChkboxOv${i}">${taskLabel}</label>
     </div>`
+}
+
+/**
+ * this function calls the pop up for delete task
+ * 
+ * @param {number} taskNr 
+ */
+function deleteTask(taskNr) {
+    document.getElementById('idTaskOverlay').innerHTML += popUp(taskNr);
+}
+
+/**
+ * This function returns the HTNL code for the delete PopUp
+ * 
+ * @param {number} taskNr 
+ * @returns - html code for the delete PopUp
+ */
+function popUp(taskNr) {
+    return /*html*/ `
+    <div id="idDeletePopUpBackground" class="deletePopUpBg">
+        <div id="idDeletePopUpContainer" class="deletePopUpContainer text-center">
+            <h5>You will delete this task?</h5>
+               <p> Please confirm.</p>
+            <div id="idDeletePopUpButtonSection" class="d-flex justify-content-between align-item-center p-4 w-100" >
+                <div id="idDeletePopUpButtonCancel" class="deletePopUpButton" onclick="deleteTaskCancel(${taskNr})" role="button">Cancel</div>
+                <div id="idDeletePopUpButtonConfirm" class="deletePopUpButton" onclick="deleteTaskConfirm(${taskNr})" role="button">Confirm</div>
+            </div>
+        </div>
+    </div>`
+}
+
+/**
+ * This function get the task JSON from Backend, removes the selected task and the overlay task card and send the task JSON back to Backend
+ * 
+ * @param {number} taskNr 
+ */
+async function deleteTaskConfirm(taskNr) {
+    taskJson = await loadJSON(KEY_for_JSON_TASKS);
+    taskJson.splice(taskNr, 1);
+    setItem(KEY_for_JSON_TASKS, taskJson)
+    document.getElementById('idTaskOverlay').innerHTML = '';
+    renderTasks();
+}
+
+/**
+ * This function removes the delete popup
+ * 
+ * @param {number} taskNr 
+ */
+function deleteTaskCancel(taskNr) {
+    renderOverlayTask(taskNr); 
 }
