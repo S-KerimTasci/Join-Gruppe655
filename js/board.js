@@ -64,7 +64,7 @@ function toggleDefaultContainer(taskContainerId, taskCount) {
  * @param {number} taskNummer -- provides the task number i.e. 2 which ist storred on place 1 in array because count in array starts with 0
  */
 function dragStart(taskNummer) {
-    taskToMove = taskNummer - 1;
+    taskToMove = taskNummer;
 }
 /**
  * This function prevents the standard behavior for event dragover

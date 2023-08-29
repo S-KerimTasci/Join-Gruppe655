@@ -71,8 +71,8 @@ function addTaskMobileTemplate() {
             <span>Category</span>
             <select class="inputdefault" name="category" id="inputCategory" required>
                 <option value="" disabled selected hidden>Select task category</option>
-                <option value="technicalTask">Technical Task</option>
-                <option value="userStory">User Story</option>
+                <option value="Technical Task">Technical Task</option>
+                <option value="User Story">User Story</option>
             </select>
         </div>
 
@@ -151,8 +151,8 @@ function addTaskDektopTemplate() {
                     <span>Category</span>
                     <select class="inputdefault" name="category" id="inputCategory" required>
                         <option value="" disabled selected hidden>Select task category</option>
-                        <option value="technicalTask">Technical Task</option>
-                        <option value="userStory">User Story</option>
+                        <option value="Technical Task">Technical Task</option>
+                        <option value="User Story">User Story</option>
                     </select>
                 </div>
 

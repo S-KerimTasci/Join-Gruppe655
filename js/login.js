@@ -273,7 +273,7 @@ function checkExistingUser(email) {
 async function addNewUser(fullName, email, password) {
     setNewUser(fullName, email, password);
     try {
-        const response = await setItem(KEY_for_JSON_PW, JSON.stringify(users)); 
+        const response = await setItem(KEY_for_JSON_PW, users); 
         handleResponse(response);
     } catch (error) {
         console.error(error);
@@ -308,6 +308,21 @@ function setNewUser(fullName, email, password,) {
         password: password,
         initials: userInitials,
     });
+    //debugger; added by Alex
+    saveNewUserInContacts(email);
+}
+
+// added by Alex
+async function saveNewUserInContacts(email) {
+    contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
+    const NR = users.length - 1;
+    const existingUser = contactJSON.find(contact => contact.email === email);
+    if(!existingUser){
+        let contact = {"email": users[NR].email, "initials": users[NR].initials, "name": users[NR].name, "bgColor": "#FF7A00"}
+        contactJSON.push(contact);
+        //debugger;
+        setItem(KEY_for_JSON_CONTACS, contactJSON);
+    }
 }
 
 

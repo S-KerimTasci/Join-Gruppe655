@@ -28,11 +28,20 @@ function greetingText() {
     }
 }
 
+function activeUser(params) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    let activeUserName = currentUser ? currentUser.name : '';   
+    return activeUserName;
+} 
+
+
+
 /**
  * this function adds the greeting texed provided by the call of greetingText() to the HTML Code
  */
 function addGreetingPhrase() {
-    document.getElementById('idWelcomeMessage').innerText = greetingText(); 
+    document.getElementById('idWelcomeMessage').innerText = greetingText();
+    document.getElementById('idWelcomeUserName').innerText = activeUser(); 
 }
 
 
