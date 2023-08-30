@@ -52,6 +52,9 @@ let contactJSONBE = [];
 
 
 function showContactInfo(i){
+  document.getElementById('ContactsInfoContainer').classList.remove('dd-none')
+
+
   let circle = document.getElementById('contactsCircle');
   let name = document.getElementById('contactsName');
   let mail = document.getElementById('contactsMail');
