@@ -1,0 +1,52 @@
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.addTaskOvGeneralSettings {
+    max-width: 396px;
+    padding: 0 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 16px;
+    color: black;
+    line-height: 19px;
+    height: 100vh;
+}
+
+.headlineAddTaskOv {
+    color: #000;
+    font-size: 47px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px;
+    margin: 48px 0 32px 16px;
+}
+
+.contentContainerAddTaskOv{
+    display: flex;
+    flex-direction: column;
+    /* gap: 16px; */
+    overflow-y: auto;
+    padding: 0 8px;
+}
+.inputTitleAddTaskOv{
+   padding: 10px 21px 10px 21px;
+       margin-top: 8px;
+       margin-bottom: 4px;
+}
+.requiredInfo{
+    color: #FF8190;
+    font-size: 12px;
+    line-height: 14px;
+}
+.inputDescriptionAddTaskOv{
+    padding: 18px 21px 18px 21px;
+    height: 88px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+.inputDescriptionAddTaskOv::placeholder{
+    color:  #D1D1D1; 
+}

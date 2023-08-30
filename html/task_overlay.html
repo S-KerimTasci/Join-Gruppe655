@@ -6,88 +6,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>singleTaskOverlay</title>
 
+     <!-- Bootstrap Files -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+     crossorigin="anonymous"></script>
+
+
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <!-- <link rel="stylesheet" href="../css/add_task.css"> -->
-
+<link rel="stylesheet" href="../css/add_task_overlay.css">
 
     <!-- <script src="../js/add_task.js"></script> -->
 </head>
 
 <body>
     <!-- die IDs bekommen das Format Ov statt einer Nummer. Grund, damit kann ich alle Singletask funktionen nutzen -->
-    <form id="addTaskForm" onsubmit="storeNewTask();return false">
+    <form id="idAddTaskForm" onsubmit="storeNewTask();return false" class="addTaskOvGeneralSettings">
         
-        <h1>Add Task</h1>
-        <div>
-            <div class="">
-                <span>Title</span>
-                <input maxlength="48" class="inputdefault" id="inputTitle" type="text" placeholder="Enter a title"
+        <h1 id="idHeadlineAddTask" class="headlineAddTaskOv">Add Task</h1>
+        <div id="idContentContainerAddTaskOv" class="contentContainerAddTaskOv">
+            <div id="idInputTitleContainerAddTaskOv" class="d-flex flex-column">
+                <label for="idInputTitleAddTaskOv">Title</label>
+                <input id="idInputTitleAddTaskOv" maxlength="48" class="inputTitleAddTaskOv" type="text" placeholder="Enter a title"
                     required>
+                    <span class="requiredInfo">This field is required</span>
             </div>
 
-            <div class="">
-                <span>Description</span>
-                <textarea class="inputDescription" name="inputDescription" id="inputDescription" cols="30" rows="4"
+            <div id="idInputDescriptionContainerAddTaskOv" class="mt-1 d-flex flex-column">
+                <label for="idInputDescriptionAddTaskOv">Description</label>
+                <textarea id="idInputDescriptionAddTaskOv" class="inputDescriptionAddTaskOv" name="inputDescription"  
                     placeholder="Enter a Description" required></textarea>
+                <span class="requiredInfo">This field is required</span>
             </div>
 
-            <div class="">
-                <span>Prio</span>
-                <div class="prioDiv">
-                    <div id="urgent" onclick="highlight('urgent')" class="prioOption"><span>Urgent</span><img
-                            id="urgentIMG" src="../assets/img/prio_urgent.svg" class="prioImg">
+            <div id="idPriorityContainerAddTaskOv" class="">
+                <label for="idPriorityAddTaskOv">Prio</label>
+                <div id="idPriorityAddTaskOv" class="prioDiv">
+                    <div id="idUrgentContainerAddTaskOv" onclick="highlight('urgent')" class="prioOption">
+                        <label for="idUrgentIMGAddTaskOv">Urgent</label>
+                        <img id="idUrgentIMGAddTaskOv" src="../assets/img/prio_urgent.svg" class="prioImg">
                     </div>
-                    <div id="medium" onclick="highlight('medium')" class="prioOption"><span>Medium</span><img
-                            id="mediumIMG" src="../assets/img/prio_medium.svg" class="prioImg">
+                    <div id="idMediumContainerAddTaskOv" onclick="highlight('medium')" class="prioOption">
+                        <label for="idMediumIMGAddTaskOv">Medium</label>
+                        <img id="idMediumIMGAddTaskOv" src="../assets/img/prio_medium.svg" class="prioImg">
                     </div>
-                    <div id="low" onclick="highlight('low')" class="prioOption"><span>Low</span><img id="lowIMG"
-                            src="../assets/img/prio_low.svg" class="prioImg">
+                    <div id="idLowContainerAddTaskOv" onclick="highlight('low')" class="prioOption">
+                        <label for="idLowIMGAddTaskOv">Low</label>
+                        <img id="idLowIMGAddTaskOv" src="../assets/img/prio_low.svg" class="prioImg">
                     </div>
                 </div>
             </div>
 
-            <div class="">
-                <span>Due Date</span>
-                <input class="inputdefault" id="inputDueDate" type="date" required>
+            <div id="idDueDateContainerAddTaskOv" class="">
+                <label for="idInputDueDateAddTaskOv">Due Date</label>
+                <input id="idInputDueDateAddTaskOv" class="" type="date" required>
             </div>
 
-            <div class="">
-                <span>Category</span>
-                <select class="inputdefault" name="category" id="inputCategory" required>
+            <div id="idInputCategoryContainerAddTaskOv" class="">
+                <label for="idSelectCategoryAddTaskOv">Category</label>
+                <select id="idSelectCategoryAddTaskOv" class="" name="category"" required>
                     <option value="" disabled selected hidden>Select task category</option>
                     <option value="Technical Task">Technical Task</option>
                     <option value="User Story">User Story</option>
                 </select>
             </div>
 
-            <div class="">
-                <span>Assigned To</span>
-                <select class="inputdefault" name="assigned" id="inputAssignedTo" required>
+            <div id="idInputAssignedToContainerAddTaskOv" class="">
+                <label for="idInputAssignedToAddTaskOv">Assigned To</label>
+                <select id="idInputAssignedToAddTaskOv" class="" name="assigned" required>
                     <option value="" disabled selected hidden>Select conntacts to assign</option>
                 </select>
             </div>
 
-            <div class="">
-                <span>Subtask</span>
-                <div class="subtaskDiv">
-                    <input class="subtaskInput" type="text" id="subtask" placeholder="Add new subtask">
+            <div id="idSubtaskContainerAddTaskOv" class="">
+                <label for="idSubtaskAddTaskOv">Subtask</label>
+                <div id="idSubtaskSubContainerAddTaskOv" class="subtaskDiv">
+                    <input id="idSubtaskAddTaskOv" class="subtaskInput" type="text" placeholder="Add new subtask">
                     <img src="../assets/img/plus.svg" onclick="addSubtask()">
                 </div>
             </div>
-            <div>
-                <ul id="renderedSubtask"></ul>
+            <div id="idRenderedSubtaskContainerAddTaskOv">
+                <ul id="idRenderedSubtaskAddTaskOv"></ul>
             </div>
         </div>
 
-        <div class="buttonDiv">
-            <button type="submit" class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
+        <div id="idSubmitContainerAddTaskOv" class="buttonDiv">
+            <button id="idSubmitButtonAddTaskOv" type="submit" class="taskButton">Create Task <img src="../assets/img/check.svg"></button>
         </div>
 
     </form>
 
-    <div class="task_added_overlay">
-        <span>Task added to board</span> <img src="../assets/img/task_added_to_board.svg">
+    <div id="idTaskAddedConfimationAddTaskOv" class="taskButton">
+        <span>Task added to board</span> 
+        <img src="../assets/img/task_added_to_board.svg">
     </div>`
 
 
