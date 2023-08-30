@@ -17,7 +17,7 @@ let contactJSONBE = [];
   }
 
   async function createContactList() {
-    const contacts = await loadContacts(); // Lade die Kontaktliste aus dem Server
+    const contacts = await loadContacts();
 
     for (const letter of alphabet) {
         const filteredContacts = contacts
@@ -29,9 +29,10 @@ let contactJSONBE = [];
                 <div class="contact-letter">${letter.toUpperCase()}</div>
                 <hr class="letter-line">
                 <div class="contacts-list">
-                    ${filteredContacts.map(contact => {
+                    ${filteredContacts.map((contact, index) => {
+                        const contactIndex = contacts.indexOf(contact); // Finde den Index des Kontakts im contacts-Array
                         return `
-                            <div class="contact">
+                            <div class="contact" onclick="showContactInfo(${contactIndex})">
                                 <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
                                 <div class="nameDiv">
                                     ${contact.name}
@@ -48,8 +49,20 @@ let contactJSONBE = [];
     }
 }
 
- // loadContacts()
-  //createContactList(contactJSONBE);
+
+
+function showContactInfo(i){
+  let circle = document.getElementById('contactsCircle');
+  let name = document.getElementById('contactsName');
+  let mail = document.getElementById('contactsMail');
+  //let phone = document.getElementById('contactsPhone');
+
+  circle.innerHTML = contactJSONBE[i].initials;
+  circle.style.backgroundColor = contactJSONBE[i].bgColor;
+  name.innerHTML = contactJSONBE[i].name;
+  mail.innerHTML = contactJSONBE[i].email;
+  //phone.innerHTML = contactJSONBE[i].phone; 
+}
 
   /*
   function fillContactsJSON1() {
