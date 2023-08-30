@@ -157,7 +157,7 @@ header {
         flex-direction: row-reverse;
         /* neu */
         justify-content: flex-end;
-        max-width: 1440px;
+        /* max-width: 1440px; */
     }
 
     #idHeaderBody {

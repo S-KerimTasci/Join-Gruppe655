@@ -87,12 +87,12 @@
                         </div>
                     </div>
                     <div id="idContentBoard" class="boardContent">
-                        <div id="idFirstContentContainer" class="">
+                        <div id="idFirstContentContainer" class="" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
                             <div id="idFirstContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>To do</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
-                            <div class="boardTaskContainer" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+                            <div class="boardTaskContainer">
                                 <div id="idTaskToDoDefault" class="defaultTaskContainer"><span>No Tasks To do</span>
                                 </div>
                                 <div id="idTaskToDo"  class="taskContainer"> 
@@ -100,13 +100,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="idSecondContentContainer" class="">
-                            <div id="idSecondContentBoardMob"
-                                class="d-flex justify-content-between contentBoard conBoMob">
+                        <div id="idSecondContentContainer" class="" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+                            <div id="idSecondContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>In progress</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
-                            <div class="boardTaskContainer" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+                            <div class="boardTaskContainer" >
                                 <div id="idTaskInProgressDefault" class="defaultTaskContainer"><span>No Tasks In
                                         progress</span></div>
                                 <div id="idTaskInProgress"  class="taskContainer">
@@ -114,12 +113,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="idThirdContentContainer" class="">
+                        <div id="idThirdContentContainer" class="" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
                             <div id="idThirdContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>Await feedback</h3>
                                 <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
                             </div>
-                            <div class="boardTaskContainer" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
+                            <div class="boardTaskContainer">
                                 <div id="idTaskAwaitFeedbackDefault" class="defaultTaskContainer"><span>No Tasks Await
                                         feedback</span></div>
                                 <div id="idTaskAwaitFeedback" class="taskContainer">
@@ -127,12 +126,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="idFourthContentContainer" class="">
+                        <div id="idFourthContentContainer" class="" ondrop="moveTo('done')" ondragover="allowDrop(event)">
                             <div id="idFourthContentBoardMob" class="d-flex contentBoard conBoMob">
                                 <h3>Done</h3>
-
                             </div>
-                            <div class="boardTaskContainer" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                            <div class="boardTaskContainer">
                                 <div id="idTaskDoneDefault" class="defaultTaskContainer"><span>No Tasks Done</span>
                                 </div>
                                 <div id="idTaskDone" class="taskContainer">
@@ -142,6 +140,8 @@
                         </div>
                     </div>
                     <div id="idTaskOverlay"></div>
+                    <div id="idAddTaskOverlay"></div> <!-- for the add task overlay and the edit task overlay -->
+
                 </main>
 
             <!-- </div> -->
