@@ -73,21 +73,42 @@ input {
 
 .name {
     display: flex;
-    align-items: end;
-    gap: 10px;
+    align-items: center;
+    gap: 54px;
 }
 
 .circle {
-    width: 60px;
-    height: 60px;
-    border: solid 3px white;
+    width: 42px;
+    height: 42px;
+    border: solid 2px white;
     border-radius: 70px;
-    background-color: orange;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 22px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.4px;
+}
+
+.circleBig{
+    width: 120px;
+    height: 120px;
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+    border: solid 2px white;
+    border-radius: 70px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactsName{
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
 }
 
 .contactsMenu {

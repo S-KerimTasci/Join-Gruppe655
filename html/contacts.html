@@ -54,53 +54,61 @@
 
                         <div>
                             <div class="name">
-                                <div id="contactsCircle" class="circle">AM</div>
-                                <p id="contactsName">Anton Mayer</p>
+                                <div id="contactsCircle" class="circleBig">AM</div>
+                                <div>
+                                    <p id="contactsName" class="contactsName">Anton Mayer</p>
+                                    <div>
+                                        <span><img src="../assets/img/edit_subtask.svg">Edit </span>
+                                        <span><img src="../assets/img/delete_subtask.svg">Delete</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="contactInfo">
                                 <p>Contact Information</p>
                                 <p><b>Email</b></p>
-                                <a id="contactsMail" class="aEmail colorLink" href="mailto: abc@example.com">antom@gmail.com</a>
+                                <a id="contactsMail" class="aEmail colorLink"
+                                    href="mailto: abc@example.com">antom@gmail.com</a>
                                 <p><b>Phone</b></p>
-                                <a id="contactsPhone" class="aPhone" href="tel: +49 1111 1111 1111">+49 1111 1111 1111</a>
+                                <a id="contactsPhone" class="aPhone" href="tel: +49 1111 1111 1111">+49 1111 1111
+                                    1111</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-                <div id="createContactOverlay" class="createContactOverlay">
-                    <div class="contactsHeaderOverlay">
-                        <img class="overlayLogo" src="../assets/img/logo-white.svg">
-                        <h1><b>Add contact</b></h1>
-                        <p>Task are better with a team</p>
-                        <img src="../assets/img/login-underline.png" alt="">
-                        <img onclick="closeAddContactOverlay()" class="close" src="../assets/img/close.svg" alt="">
-                    </div>
-
-                    <div class="createContactProfile">
-                        <div class="circle z12 circleoverlay">AM</div>
-                    </div>
-
-                    <div class="contactsFooterOverlay">
-                        <form id="addContactForm" class="inputArea" onsubmit="xy();return false">
-                            <input class="inputName" type="text" placeholder="Name" required>
-                            <input class="inputMail" type="email" placeholder="Email" required>
-                            <input class="inputTel" type="tel" placeholder="Phone" required>
-                            <div class="buttonDiv">
-                                <button type="reset" onclick="closeAddContactOverlay()" class="cancelButton">Cancel <img
-                                        src="../assets/img/cancel_contactOverlay.svg"></button>
-                                <button class="createButton"><span>Create contact</span> <img
-                                        src="../assets/img/check.svg"></button>
-                            </div>
-                        </form>
-
-                        <img onclick="closeAddContactOverlay()" class="closeResponsive"
-                            src="../assets/img/cancel_contactOverlay.svg">
-                    </div>
-
+            <div id="createContactOverlay" class="createContactOverlay">
+                <div class="contactsHeaderOverlay">
+                    <img class="overlayLogo" src="../assets/img/logo-white.svg">
+                    <h1><b>Add contact</b></h1>
+                    <p>Task are better with a team</p>
+                    <img src="../assets/img/login-underline.png" alt="">
+                    <img onclick="closeAddContactOverlay()" class="close" src="../assets/img/close.svg" alt="">
                 </div>
-            
+
+                <div class="createContactProfile">
+                    <div class="circle z12 circleoverlay">AM</div>
+                </div>
+
+                <div class="contactsFooterOverlay">
+                    <form id="addContactForm" class="inputArea" onsubmit="xy();return false">
+                        <input class="inputName" type="text" placeholder="Name" required>
+                        <input class="inputMail" type="email" placeholder="Email" required>
+                        <input class="inputTel" type="tel" placeholder="Phone" required>
+                        <div class="buttonDiv">
+                            <button type="reset" onclick="closeAddContactOverlay()" class="cancelButton">Cancel <img
+                                    src="../assets/img/cancel_contactOverlay.svg"></button>
+                            <button class="createButton"><span>Create contact</span> <img
+                                    src="../assets/img/check.svg"></button>
+                        </div>
+                    </form>
+
+                    <img onclick="closeAddContactOverlay()" class="closeResponsive"
+                        src="../assets/img/cancel_contactOverlay.svg">
+                </div>
+
+            </div>
+
 
 
 
