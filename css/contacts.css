@@ -33,11 +33,14 @@ input {
 .contactsHeaderh1 {
     font-size: 61px;
     font-weight: 700;
+    line-height: 73.2px;
 }
 
 .contactsHeaderspan {
     font-size: 27px;
     font-weight: 400;
+    line-height: 32.4px;
+
 }
 
 .contactsHeaderDektop {
@@ -258,6 +261,9 @@ input {
     align-items: center;
     justify-content: center;
     width: 95%;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 25.2px;
 }
 
 .closeResponsive {
@@ -313,6 +319,9 @@ input {
     align-items: center;
     gap: 10px;
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
 }
 
 .nameDiv {
