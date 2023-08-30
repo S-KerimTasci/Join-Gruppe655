@@ -308,17 +308,23 @@ function setNewUser(fullName, email, password,) {
         password: password,
         initials: userInitials,
     });
-    //debugger; added by Alex
+    //debugger; //added by Alex
     saveNewUserInContacts(email);
 }
 
 // added by Alex
+/**
+ * This function checkes the contact JASON if the new user exist, if not new user will added
+ * 
+ * @param {string} email - email of new user
+ */
 async function saveNewUserInContacts(email) {
     contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
     const NR = users.length - 1;
-    const existingUser = contactJSON.find(contact => contact.email === email);
-    if(!existingUser){
-        let contact = {"email": users[NR].email, "initials": users[NR].initials, "name": users[NR].name, "bgColor": "#FF7A00"}
+    const existingUser = contactJSON.some(contact => contact.email === email);
+    const randomColorIndex = Math.floor(Math.random() * COLORS.length);
+    if(existingUser === false){
+        let contact = {"email": users[NR].email, "initials": users[NR].initials, "name": users[NR].name, "bgColor": COLORS[randomColorIndex]}
         contactJSON.push(contact);
         //debugger;
         setItem(KEY_for_JSON_CONTACS, contactJSON);
