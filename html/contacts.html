@@ -82,12 +82,12 @@
                     </div>
 
                     <div class="contactsFooterOverlay">
-                        <form class="inputArea" onsubmit="xy();return false">
+                        <form id="addContactForm" class="inputArea" onsubmit="xy();return false">
                             <input class="inputName" type="text" placeholder="Name" required>
                             <input class="inputMail" type="email" placeholder="Email" required>
                             <input class="inputTel" type="tel" placeholder="Phone" required>
                             <div class="buttonDiv">
-                                <button onclick="closeAddContactOverlay()" class="cancelButton">Cancel <img
+                                <button type="reset" onclick="closeAddContactOverlay()" class="cancelButton">Cancel <img
                                         src="../assets/img/cancel_contactOverlay.svg"></button>
                                 <button class="createButton"><span>Create contact</span> <img
                                         src="../assets/img/check.svg"></button>

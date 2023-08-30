@@ -88,6 +88,7 @@ const contactsJSON1 = [];
 }
 
 function closeAddContactOverlay(){
+    document.getElementById("addContactForm").reset();
     document.getElementById('addContactMenu').classList.remove('dd-none');
     document.getElementById('createContactOverlay').classList.remove('show'); // Entferne show-Klasse
     document.getElementById('createContactOverlay').classList.add('hide'); // Füge hide-Klasse hinzu
