@@ -4,10 +4,54 @@ const colors =['#FF7A00', '#FF5EB3','#6E52FF','#9327FF','#00BEE8','#1FD7C1','#FF
 
 const contactsJSON1 = [];
 
+let contactJSONBE = [];
+
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   const contactsContainer = document.getElementById('contactsContainer');
 
 
+  async function loadContacts(){
+    contactJSONBE = await loadJSON(KEY_for_JSON_CONTACS); 
+    let serverAnswer = await getItem(KEY_for_JSON_CONTACS);
+    return JSON.parse(serverAnswer.data.value);
+  }
+
+  async function createContactList() {
+    const contacts = await loadContacts(); // Lade die Kontaktliste aus dem Server
+
+    for (const letter of alphabet) {
+        const filteredContacts = contacts
+            .filter(contact => contact.name.toLowerCase().startsWith(letter))
+            .sort((a, b) => a.name.localeCompare(b.name));
+
+        if (filteredContacts.length > 0) {
+            const html = `
+                <div class="contact-letter">${letter.toUpperCase()}</div>
+                <hr class="letter-line">
+                <div class="contacts-list">
+                    ${filteredContacts.map(contact => {
+                        return `
+                            <div class="contact">
+                                <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
+                                <div class="nameDiv">
+                                    ${contact.name}
+                                    <a class="colorLink" href="mailto:${contact.email}">${contact.email}</a>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+
+            contactsContainer.innerHTML += html;
+        }
+    }
+}
+
+ // loadContacts()
+  //createContactList(contactJSONBE);
+
+  /*
   function fillContactsJSON1() {
     for (let i = 0; i < contacts.length; i++) {
       const name = contacts[i];
@@ -24,16 +68,27 @@ const contactsJSON1 = [];
     }
   }
   
-  fillContactsJSON1();
+  fillContactsJSON1(); 
   createContactList(contactsJSON1);
+  */
+
   
+  
+ 
+/*
   function createContactList(contacts) {
+    loadContacts() 
+
     for (const letter of alphabet) {
       const filteredContacts = Object.values(contacts)
-        .filter(contact => contact.usrName.toLowerCase().startsWith(letter))
-        .sort((a, b) => a.usrName.localeCompare(b.usrName));
+        .filter(contact => contact.name.toLowerCase().startsWith(letter))
+        .sort((a, b) => a.usrName.localeCompare(b.name));
   
       if (filteredContacts.length > 0) {
+        for (let i = 0; i < contacts.length; i++) {
+          const contact = contacts[i];
+          
+        
         const html = `
           <div class="contact-letter">${letter.toUpperCase()}</div>
           <hr class="letter-line">
@@ -43,8 +98,8 @@ const contactsJSON1 = [];
                 <div class="contact">
                   <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
                     <div class="nameDiv">
-                        ${contact.usrName}
-                        <a class="colorLink" href="mailto:${contact.usrMail}">${contact.usrMail}</a> <!-- Änderung: Verweis auf usrMail -->
+                        ${contact.name}
+                        <a class="colorLink" href="mailto:${contact.email}">${contact.email}</a> <!-- Änderung: Verweis auf usrMail -->
                     </div>
                 </div>
                 
@@ -56,7 +111,9 @@ const contactsJSON1 = [];
         contactsContainer.innerHTML += html;
       }
     }
+    }
   }
+  */
   
 /*
   function setHeightContactlist(){
