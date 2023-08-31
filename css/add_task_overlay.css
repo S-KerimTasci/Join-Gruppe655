@@ -13,6 +13,7 @@ body {
     color: black;
     line-height: 19px;
     height: 100vh;
+    background-color: yellowgreen;
 }
 
 .headlineAddTaskOv {
@@ -24,29 +25,172 @@ body {
     margin: 48px 0 32px 16px;
 }
 
-.contentContainerAddTaskOv{
+.contentContainerAddTaskOv {
     display: flex;
     flex-direction: column;
     /* gap: 16px; */
     overflow-y: auto;
     padding: 0 8px;
 }
-.inputTitleAddTaskOv{
-   padding: 10px 21px 10px 21px;
-       margin-top: 8px;
-       margin-bottom: 4px;
+
+.inputTitleAddTaskOv {
+    padding: 10px 21px 10px 21px;
+    margin-top: 8px;
 }
-.requiredInfo{
+
+.requiredInfo {
     color: #FF8190;
     font-size: 12px;
     line-height: 14px;
+    margin-top: 4px;
 }
-.inputDescriptionAddTaskOv{
+
+.inputDescriptionAddTaskOv {
     padding: 18px 21px 18px 21px;
     height: 88px;
     margin-top: 8px;
-    margin-bottom: 4px;
 }
-.inputDescriptionAddTaskOv::placeholder{
-    color:  #D1D1D1; 
+
+.inputDescriptionAddTaskOv::placeholder {
+    color: #D1D1D1;
+}
+
+.priorityButtonContainerAddTaskOv {
+    padding: 5px 0;
+    margin-bottom: 16px;
+}
+
+.prioContainerAddTaskOv {
+    width: 121px;
+    height: 41px;
+    border-radius: 10px;
+    gap: 8px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.inputDueDateAddTaskOv {
+    margin-top: 8px;
+    padding: 8px 21px;
+    position: relative;
+    height: 40px;
+}
+
+.inputDueDateAddTaskOv:invalid {
+    color: #D1D1D1;
+}
+
+.inputDueDateAddTaskOv::-webkit-calendar-picker-indicator {
+    background-image: url("../assets/img/addTaskCalendar.svg");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+    background-size: 18px;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.selectContainerOv {
+    margin-top: 8px;
+    height: 48px;
+    padding: 0 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    /* das hier hinzugefügt */
+}
+
+.selectArrow {
+    background-image:
+        linear-gradient(45deg, transparent 50%, black 50%),
+        linear-gradient(135deg, black 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.selectArrow:focus {
+    background-image:
+        linear-gradient(45deg, black 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, black 50%);
+    background-position:
+        calc(100% - 15px),
+        calc(100% - 20px),
+        calc(100% - 2.5em) 0.5em;
+    background-size:
+        5px 5px,
+        5px 5px,
+        1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.selectMultUserOv {
+    position: relative;
+    flex: 1;
+}
+
+.overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.checkboxesSelectMultUserOv {
+    display: none;
+    border: 1px #dadada solid;
+}
+
+.checkboxesSelectMultUserOv label {
+    display: block;
+}
+
+.checkboxesSelectMultUserOv label:hover {
+    background-color: #1e90ff;
+}
+
+.subtaskSubContainerAddTaskOv {
+    border: 1px solid #A8A8A8;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 8px;
+    height: 48px;
+    padding: 0 16px;
+}
+
+.subtaskSubContainerAddTaskOv:focus-within {
+    border-color: #29ABE2;
+    outline: none;
+}
+
+.subtaskAddTaskOv{
+    border:none;
+    flex: 1;
+}
+.submitContainerAddTaskOv{
+    height: 88px;
+    padding: 16px;
 }
