@@ -176,55 +176,64 @@ let contactJson2 = [
         "email": "jan@web.de",
         "initials": "JT",
         "name": "jan test",
-        "bgColor": "#FF7A00"
+        "bgColor": "#FF7A00",
+        "phone": "+49223111111"
     },
     {
         "email": "kummer@online.de",
         "initials": "LK",
         "name": "Lisbeth Kummer",
-        "bgColor": "#FF5EB3"
+        "bgColor": "#FF5EB3",
+        "phone": "+49223144411"
     },
     {
         "email": "wald@online.de",
         "initials": "WW",
         "name": "Wolf Wald",
-        "bgColor": "#6E52FF"
+        "bgColor": "#6E52FF",
+        "phone": "+49223114911"
     },
     {
         "email": "loh@online.de",
         "initials": "FL",
         "name": "Frank Loh",
-        "bgColor": "#9327FF"
+        "bgColor": "#9327FF",
+        "phone": "+49223112211"
     },
     {
         "email": "samstag@week.de",
         "initials": "FS",
         "name": "Frank Samstag",
-        "bgColor": "#00BEE8"
+        "bgColor": "#00BEE8",
+        "phone": "+49223113581"
     },
     {
         "email": "humpi@bla.fr",
         "initials": "RH",
         "name": "ralf humpelbein",
-        "bgColor": "#1FD7C1"
+        "bgColor": "#1FD7C1",
+        "phone": "+49223167111"
     },
     {
         "email": "kasten@bla.fr",
         "initials": "FK",
         "name": "Fred Kasten",
-        "bgColor": "#FF745E"
+        "bgColor": "#FF745E",
+        "phone": "+49223111189"
     },
     {
         "email": "kliet@bla.fr",
         "initials": "AK",
         "name": "Arun Kliet",
-        "bgColor": "#FFA35E"
+        "bgColor": "#FFA35E",
+        "phone": "+49223115611"
     },
     {
         "email": "hopfen@bla.fr",
         "initials": "OH",
         "name": "Olli Hopfen",
-        "bgColor": "#FC71FF"
+        "bgColor": "#FC71FF",
+        "phone": "+49223133311"
     }
 ]
 

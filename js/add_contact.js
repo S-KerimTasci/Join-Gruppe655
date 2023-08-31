@@ -70,13 +70,13 @@ function showContactInfo(i) {
   let circle = document.getElementById('contactsCircle');
   let name = document.getElementById('contactsName');
   let mail = document.getElementById('contactsMail');
-  //let phone = document.getElementById('contactsPhone');
+  let phone = document.getElementById('contactsPhone');
 
   circle.innerHTML = contactJSONBE[i].initials;
   circle.style.backgroundColor = contactJSONBE[i].bgColor;
   name.innerHTML = contactJSONBE[i].name;
   mail.innerHTML = contactJSONBE[i].email;
-  //phone.innerHTML = contactJSONBE[i].phone; 
+  phone.innerHTML = contactJSONBE[i].phone; 
 }
 
 /*
