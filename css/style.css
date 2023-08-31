@@ -88,3 +88,23 @@ textarea:focus-within {
 .memberBgColorFFE62B{background-color: #FFE62B;}
 .memberBgColorFF4646{background-color: #FF4646;}
 .memberBgColorFFBB2B{background-color: #FFBB2B;}
+
+/* scrollbar settings */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #F6F7F8;
+    border-radius: 10px;
+    border: solid 2px #d7d4d45c;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #e7e7e7;
+    border-radius: 10px;
+    border: 2px solid #bbc3ba;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #4589FF;
+}
