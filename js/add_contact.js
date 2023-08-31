@@ -1,37 +1,37 @@
-const contacts = ['Anna Adalbert','Adalbert Annason', 'Berta Github', 'Dora Dorado','Aaron Knoblauch', 'Eva Müller', 'Frieda Maurer', 'Greta Schuster', 'Hannah Arndt', 'Ida Tenya', 'Klara Münz'];
+const contacts = ['Anna Adalbert', 'Adalbert Annason', 'Berta Github', 'Dora Dorado', 'Aaron Knoblauch', 'Eva Müller', 'Frieda Maurer', 'Greta Schuster', 'Hannah Arndt', 'Ida Tenya', 'Klara Münz'];
 const mails = ['anna@example.com', 'adalbert@example.com', 'berta@example.com', 'dora@example.com', 'aaron@example.com', 'eva@example.com', 'frieda@example.com', 'greta@example.com', 'hannah@example.com', 'ida@example.com', 'klara@example.com'];
-const colors =['#FF7A00', '#FF5EB3','#6E52FF','#9327FF','#00BEE8','#1FD7C1','#FF745E','#FFA35E','#FC71FF','#FFC701','#0038FF','#C3FF2B','#FFE62B','#FF4646','#FFBB2B'];
+const colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
 
 const contactsJSON1 = [];
 
 let contactJSONBE = [];
 
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-  const contactsContainer = document.getElementById('contactsContainer');
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const contactsContainer = document.getElementById('contactsContainer');
 
 
-  async function loadContacts(){
-    contactJSONBE = await loadJSON(KEY_for_JSON_CONTACS); 
-    let serverAnswer = await getItem(KEY_for_JSON_CONTACS);
-    return JSON.parse(serverAnswer.data.value);
-  }
+async function loadContacts() {
+  contactJSONBE = await loadJSON(KEY_for_JSON_CONTACS);
+  let serverAnswer = await getItem(KEY_for_JSON_CONTACS);
+  return JSON.parse(serverAnswer.data.value);
+}
 
-  async function createContactList() {
-    const contacts = await loadContacts();
+async function createContactList() {
+  const contacts = await loadContacts();
 
-    for (const letter of alphabet) {
-        const filteredContacts = contacts
-            .filter(contact => contact.name.toLowerCase().startsWith(letter))
-            .sort((a, b) => a.name.localeCompare(b.name));
+  for (const letter of alphabet) {
+    const filteredContacts = contacts
+      .filter(contact => contact.name.toLowerCase().startsWith(letter))
+      .sort((a, b) => a.name.localeCompare(b.name));
 
-        if (filteredContacts.length > 0) {
-            const html = `
+    if (filteredContacts.length > 0) {
+      const html = `
                 <div class="contact-letter">${letter.toUpperCase()}</div>
                 <hr class="letter-line">
                 <div class="contacts-list">
                     ${filteredContacts.map((contact, index) => {
-                        const contactIndex = contacts.indexOf(contact); // Finde den Index des Kontakts im contacts-Array
-                        return `
+        const contactIndex = contacts.indexOf(contact); // Finde den Index des Kontakts im contacts-Array
+        return `
                             <div class="contact" onclick="showContactInfo(${contactIndex})">
                                 <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
                                 <div class="nameDiv">
@@ -40,19 +40,31 @@ let contactJSONBE = [];
                                 </div>
                             </div>
                         `;
-                    }).join('')}
+      }).join('')}
                 </div>
             `;
 
-            contactsContainer.innerHTML += html;
-        }
+      contactsContainer.innerHTML += html;
     }
+  }
 }
 
 
+function hideContactInfo() {
+  document.getElementById('leftDiv').classList.remove('dd-none')
+  document.getElementById('rightDiv').classList.add('dd-none')
+  document.getElementById('rightDiv').classList.remove('rightDivRes')
+}
 
-function showContactInfo(i){
+function showContactInfo(i) {
   document.getElementById('ContactsInfoContainer').classList.remove('dd-none')
+
+
+  if (window.innerWidth < 750) {
+    document.getElementById('leftDiv').classList.add('dd-none')
+    document.getElementById('rightDiv').classList.remove('dd-none')
+    document.getElementById('rightDiv').classList.add('rightDivRes')
+  }
 
 
   let circle = document.getElementById('contactsCircle');
@@ -67,30 +79,30 @@ function showContactInfo(i){
   //phone.innerHTML = contactJSONBE[i].phone; 
 }
 
-  /*
-  function fillContactsJSON1() {
-    for (let i = 0; i < contacts.length; i++) {
-      const name = contacts[i];
-      const email = mails[i];
-      const bgColor = colors[i % colors.length];
-      const initials = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-  
-      contactsJSON1[email] = {
-        usrMail: email,
-        usrName: name,
-        bgColor: bgColor,
-        initials: initials
-      };
-    }
-  }
-  
-  fillContactsJSON1(); 
-  createContactList(contactsJSON1);
-  */
-
-  
-  
+/*
+function fillContactsJSON1() {
+  for (let i = 0; i < contacts.length; i++) {
+    const name = contacts[i];
+    const email = mails[i];
+    const bgColor = colors[i % colors.length];
+    const initials = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
  
+    contactsJSON1[email] = {
+      usrMail: email,
+      usrName: name,
+      bgColor: bgColor,
+      initials: initials
+    };
+  }
+}
+ 
+fillContactsJSON1(); 
+createContactList(contactsJSON1);
+*/
+
+
+
+
 /*
   function createContactList(contacts) {
     loadContacts() 
@@ -130,7 +142,7 @@ function showContactInfo(i){
     }
   }
   */
-  
+
 /*
   function setHeightContactlist(){
     let buttonDiv = document.getElementById('addButtonDiv');
@@ -154,17 +166,17 @@ function showContactInfo(i){
   window.addEventListener('resize', setHeightContactlist);
  */
 
-  function openAddContactOverlay(){
-    document.getElementById('addContactMenu').classList.add('dd-none');
-    document.getElementById('createContactOverlay').classList.remove('hide'); // Entferne hide-Klasse
-    document.getElementById('createContactOverlay').classList.add('show'); // Füge show-Klasse hinzu
+function openAddContactOverlay() {
+  document.getElementById('addContactMenu').classList.add('dd-none');
+  document.getElementById('createContactOverlay').classList.remove('hide'); // Entferne hide-Klasse
+  document.getElementById('createContactOverlay').classList.add('show'); // Füge show-Klasse hinzu
 }
 
-function closeAddContactOverlay(){
-    document.getElementById("addContactForm").reset();
-    document.getElementById('addContactMenu').classList.remove('dd-none');
-    document.getElementById('createContactOverlay').classList.remove('show'); // Entferne show-Klasse
-    document.getElementById('createContactOverlay').classList.add('hide'); // Füge hide-Klasse hinzu
+function closeAddContactOverlay() {
+  document.getElementById("addContactForm").reset();
+  document.getElementById('addContactMenu').classList.remove('dd-none');
+  document.getElementById('createContactOverlay').classList.remove('show'); // Entferne show-Klasse
+  document.getElementById('createContactOverlay').classList.add('hide'); // Füge hide-Klasse hinzu
 }
 
 /*  

@@ -33,7 +33,7 @@
 
 
             <div class="contactsContent">
-                <div class="leftDiv">
+                <div id="leftDiv" class="leftDiv">
                     <div id="addButtonDiv" class="addButtonDiv">
                         <button onclick="openAddContactOverlay()" class="addButton"><span>Add new contact</span> <img
                                 src="../assets/img/person_add.svg"></button>
@@ -44,12 +44,13 @@
                 <img onclick="openAddContactOverlay()" id="addContactMenu" class="addContactMenu"
                     src="../assets/img/person_add_contacts.svg">
 
-                <div class="rightDiv dd-none">
+                <div id="rightDiv" class="rightDiv dd-none">
                     <div class="contactsCart">
                         <div class="contactsHeaderDektop">
                             <h1 class="contactsHeaderh1">Contacts</h1>
                             <div class="verticalLine"></div>
                             <span class="contactsHeaderspan">Better with a team</span>
+                            <img class="backArrow" src="../assets/img/sign-up-arrow-left.svg" onclick="hideContactInfo()">
                         </div>
 
                         <div id="ContactsInfoContainer" class="dd-none">
