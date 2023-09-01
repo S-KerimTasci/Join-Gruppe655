@@ -20,31 +20,11 @@
     <!-- <link rel="stylesheet" href="../css/add_task.css"> -->
     <link rel="stylesheet" href="../css/add_task_overlay.css">
 
-    <!-- <script src="../js/add_task.js"></script> -->
+    <script src="../js/add_task_overlay.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 
-<body>
-    <script>
-        let expanded = false;
-
-        function showUserNames() {
-            let checkboxes = document.getElementById("idCheckboxesSelectMultUserOv");
-            if (!expanded) {
-                checkboxes.style.display = "block";
-                expanded = true;
-            } else {
-                checkboxes.style.display = "none";
-                expanded = false;
-            }
-        }
-
-        function switchIons(count) {
-            console.log(count);
-            document.getElementById('idSubtaskPlus').classList.toggle("d-none");
-            document.getElementById('idSubtaskIconContainer').classList.toggle("d-none");
-            
-        }
-    </script>
+<body onload="loadContacts()">
     <!-- die IDs bekommen das Format Ov statt einer Nummer. Grund, damit kann ich alle Singletask funktionen nutzen -->
     <form id="idAddTaskForm" onsubmit="storeNewTask();return false" class="addTaskOvGeneralSettings">
 
@@ -68,17 +48,17 @@
                 <span for="idPriorityAddTaskOv">Prio</span>
                 <div id="idPriorityAddTaskOv"
                     class="d-flex flex-row justify-content-between priorityButtonContainerAddTaskOv">
-                    <div id="idUrgentContainerAddTaskOv" onclick="highlight('urgent')" class="prioContainerAddTaskOv">
+                    <div id="idurgentContainerAddTaskOv" onclick="highlight('urgent')" class="prioContainerAddTaskOv">
                         <span for="idUrgentIMGAddTaskOv">Urgent</span>
-                        <img id="idUrgentIMGAddTaskOv" src="../assets/img/prio_urgent.svg" class="">
+                        <img id="idurgentIMGAddTaskOv" src="../assets/img/prio_urgent.svg" class="">
                     </div>
-                    <div id="idMediumContainerAddTaskOv" onclick="highlight('medium')" class="prioContainerAddTaskOv">
+                    <div id="idmediumContainerAddTaskOv" onclick="highlight('medium')" class="prioContainerAddTaskOv">
                         <span for="idMediumIMGAddTaskOv">Medium</span>
-                        <img id="idMediumIMGAddTaskOv" src="../assets/img/prio_medium.svg" class="">
+                        <img id="idmediumIMGAddTaskOv" src="../assets/img/prio_medium.svg" class="">
                     </div>
-                    <div id="idLowContainerAddTaskOv" onclick="highlight('low')" class="prioContainerAddTaskOv">
+                    <div id="idlowContainerAddTaskOv" onclick="highlight('low')" class="prioContainerAddTaskOv">
                         <span for="idLowIMGAddTaskOv">Low</span>
-                        <img id="idLowIMGAddTaskOv" src="../assets/img/prio_low.svg" class="">
+                        <img id="idlowIMGAddTaskOv" src="../assets/img/prio_low.svg" class="">
                     </div>
                 </div>
             </div>
@@ -102,22 +82,25 @@
             <div id="idInputAssignedToContainerAddTaskOv" class="mt-3 d-flex flex-column">
                 <label for="idInputAssignedToAddTaskOv">Assigned To</label>
                 <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames()">
-                    <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow" placeholder="Select contacts to assign">
+                    <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow"
+                        placeholder="Select contacts to assign">
                 </div>
                 <div id="idSelectedUserAddTaskOv"><!-- hier kommen die User rein, die ausgewählt wurden --></div>
-                <div id="idCheckboxesSelectMultUserOv" class="checkboxesSelectMultUserOv">
-                    <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
-                    <div>
-                        <label for="one">First checkbox</label>
-                        <input type="checkbox" id="one">
-                    </div>
-                    <div>
-                        <label for="two">
-                            <input type="checkbox" id="two">Second checkbox</label>
-                    </div>
-                    <div>
-                        <label for="three">
-                            <input type="checkbox" id="three">Third checkbox</label>
+                <div id="idChkSelectMultUserOuterConOv" class="chkSelectMultUserOuterConOv">
+                    <div id="idCheckboxesSelectMultUserOv" class="checkboxesSelectMultUserOv">
+                        <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
+                        <div>
+                            <label for="one">First checkbox</label>
+                            <input type="checkbox" id="one">
+                        </div>
+                        <div>
+                            <label for="two">
+                                <input type="checkbox" id="two">Second checkbox</label>
+                        </div>
+                        <div>
+                            <label for="three">
+                                <input type="checkbox" id="three">Third checkbox</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,14 +108,15 @@
             <div id="idSubtaskContainerAddTaskOv" class="mt-3">
                 <label for="idSubtaskAddTaskOv">Subtask</label>
                 <div id="idSubtaskSubContainerAddTaskOv"
-                    class="d-flex flex-row justify-content-between align-items-center subtaskSubContainerAddTaskOv" >
-                    <input id="idSubtaskAddTaskOv" onfocus ="switchIons(3)" onblur ="switchIons(3)" class="subtaskAddTaskOv" type="text" placeholder="Add new subtask">
-                    <div id="idSwitchIcons"  >
-                        <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick ="switchIons(4)">
+                    class="d-flex flex-row justify-content-between align-items-center subtaskSubContainerAddTaskOv">
+                    <input id="idSubtaskAddTaskOv" onfocus="switchIons(3)" onblur="switchIons(3)"
+                        class="subtaskAddTaskOv" type="text" placeholder="Add new subtask">
+                    <div id="idSwitchIcons">
+                        <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(4)">
                         <div id="idSubtaskIconContainer" class="d-flex flex-row d-none">
-                            <img src="../assets/img/taskOverlayClose.svg" alt="" onclick ="switchIons(4)">
+                            <img src="../assets/img/taskOverlayClose.svg" alt="" onclick="switchIons(4)">
                             <div id="idSubTaskDivider" class="subTaskDivider"></div>
-                            <img src="../assets/img/checkBlack.svg" alt=""  onclick="addSubtask()">
+                            <img src="../assets/img/checkBlack.svg" alt="" onclick="addSubtask()">
                         </div>
                     </div>
                 </div>
@@ -142,13 +126,14 @@
             </div>
         </div>
 
-        <div id="idSubmitContainerAddTaskOv" class="submitContainerAddTaskOv d-flex justify-content-end align-items-center">
+        <div id="idSubmitContainerAddTaskOv" onsubmit="storeNewTask()"
+            class="submitContainerAddTaskOv d-flex justify-content-end align-items-center">
             <button id="idSubmitButtonAddTaskOv" type="submit" class="taskButton">Create Task <img
                     src="../assets/img/check.svg"></button>
         </div>
 
     </form>
-<!-- das einfliegen lassen? -->
+    <!-- das einfliegen lassen? -->
     <div id="idTaskAddedConfimationAddTaskOv" class="taskButton">
         <span>Task added to board</span>
         <img src="../assets/img/task_added_to_board.svg">

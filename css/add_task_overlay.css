@@ -73,6 +73,20 @@ body {
     gap: 8px;
 }
 
+.urgent {
+    background-color: #ff3d00;
+    color: white;
+}
+
+.medium {
+    background-color: #ffa800;
+    color: white;
+}
+
+.low {
+    background-color: #7ae229;
+    color: white;
+}
 
 .inputDueDateAddTaskOv {
     margin-top: 8px;
@@ -159,9 +173,14 @@ body {
     width: 100%;
 }
 
-.checkboxesSelectMultUserOv {
+.chkSelectMultUserOuterConOv{
     display: none;
+}
+.checkboxesSelectMultUserOv {
+    /* display: none; */
     border: 1px #dadada solid;
+    max-height: 200px;
+    overflow: auto;
 }
 
 .checkboxesSelectMultUserOv label {
