@@ -59,7 +59,7 @@ function getContactsValues() {
 }
 
 function setColor() {
-  let i = contactJSONBE.length++
+  let i = contactJSONBE.length;
   let color = colors[i % colors.length];
   return color
 

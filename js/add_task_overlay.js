@@ -71,6 +71,7 @@ function showUserNames() {
     }
 }
 
+
 function switchIons(count) {
     //console.log(count);
     document.getElementById('idSubtaskPlus').classList.toggle("d-none");
@@ -79,11 +80,11 @@ function switchIons(count) {
 }
 //Code changed by Alex ~~~~~ start
 function addSubtask() {
-    let subtask = document.getElementById('subtask');
+    let subtask = document.getElementById('idSubtaskAddTaskOv');
     subtask.value !== '' ? subtaskObj.push(subtask.value) : '';
-    document.getElementById('renderedSubtask').innerHTML = '';
+    document.getElementById('idRenderedSubtaskAddTaskOv').innerHTML = '';
     for (let i = 0; i < subtaskObj.length; i++) {
-        document.getElementById('renderedSubtask').innerHTML += subtaskHTML(i);
+        document.getElementById('idRenderedSubtaskAddTaskOv').innerHTML += subtaskHTML(i);
         subtask.value = '';
     }
 }
@@ -104,7 +105,7 @@ function deleteSubtask(subtaskObjElement) {
 //Code changed by Alex ~~~~~ end
 
 function editSubtask(subtaskValue) {
-    const subtaskElement = document.getElementById(subtaskValue);
+    const subtaskElement = document.getElementById("editSubtask" + subtaskValue);
     const subtaskTextSpan = subtaskElement.querySelector('span');
     const editInput = subtaskElement.querySelector('.editInput');
     if (subtaskElement) {
@@ -171,14 +172,14 @@ async function loadContacts() {
 }
 
 function userOvHTML(memberName, memberColor, memberinitials, i) {
-    return  `
+    return `
     <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex justify-content-between align-items-center">
             <div id="idAssingedToInitialsOv${i}" class="memberDiskOv memberBgColor${memberColor}">${memberinitials}
             </div>
-            <label for=idAssingedTo${i}>${memberName}</label>
+            <label id="idAssingedToLab${i}" for=idAssingedTo${i}>${memberName}</label>
         </div>
-        <input type="checkbox" id=idAssingedTo${i}>
+        <input id=idAssingedTo${i} type="checkbox" class="AssingedToChk" >
     </div>`
 }
 
@@ -197,10 +198,19 @@ function userOvHTMLButton() {
 function getMembersFromForm() {
     //die Datenquelle Assinged to ist falsch. Aktuell kann ich hier nur einen Wert auslesen weil das <select> Element verwendet wird
     //Ich werde hier erst einmal nur die gewählte Select Option nehmen.
-    let selectElement = document.getElementById("inputAssignedTo");
-    let selectedIndex = selectElement.selectedIndex;
-    task2.member.push(selectElement.options[selectedIndex].text);
+    let CHKBOXARR = document.getElementsByClassName('AssingedToChk');
+    for (let i = 0; i < CHKBOXARR.length; i++) {
+        console.log(CHKBOXARR[i].checked);
+         //debugger;
+        if (CHKBOXARR[i].checked == true) {
+            //  let selectElement = document.getElementById("idAssingedTo" + i);
+            // let selectedIndex = selectElement.selectedIndex;
+            task2.member.push(document.getElementById("idAssingedToLab" + i).innerText); 
+        }
+    }  
+    console.log(task2) ;     
 }
+
 
 function calcTaskId() {
     for (let i = 0; i < taskJson.length; i++) {

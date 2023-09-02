@@ -234,6 +234,20 @@ let contactJson2 = [
         "name": "Olli Hopfen",
         "bgColor": "#FC71FF",
         "phone": "+49223133311"
+    },
+    {
+        "email": "mal@sehen.de",
+        "initials": "AS",
+        "name": "Alexander Solms",
+        "bgColor": "#1FD7C1",
+        "phone": "+49223133311"
+    },
+    {
+        "email": "oes@er.de",
+        "initials": "NO",
+        "name": "Nico Oeser",
+        "bgColor": "#FF7A00",
+        "phone": "+49223133311"
     }
 ]
 
@@ -291,5 +305,17 @@ let loginJson2 = [
         "initials": "OH",
         "name": "Olli Hopfen",
         "password": "54321"
+    },
+    {
+        "email": "mal@sehen.de",
+        "initials": "AS",
+        "name": "Alexander Solms",
+        "password": "12",
+    },
+    {
+        "email": "oes@er.de",
+        "initials": "NO",
+        "name": "Nico Oeser",
+        "password": "12" 
     }
 ]
