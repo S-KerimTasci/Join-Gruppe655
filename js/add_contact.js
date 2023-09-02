@@ -182,10 +182,12 @@ function closeAddContactOverlay() {
 
 function showEditDeletOverlay(){
   document.getElementById('editDeletOverlay').classList.add('show')
+  document.getElementById('editDeletOverlay').classList.remove('hide')
 }
 
 function hideEditDeletOverlay(){
   document.getElementById('editDeletOverlay').classList.add('hide')
+  document.getElementById('editDeletOverlay').classList.remove('show')
 }
 
 /*  
