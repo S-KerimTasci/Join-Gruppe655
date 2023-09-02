@@ -2,7 +2,15 @@ const contacts = ['Anna Adalbert', 'Adalbert Annason', 'Berta Github', 'Dora Dor
 const mails = ['anna@example.com', 'adalbert@example.com', 'berta@example.com', 'dora@example.com', 'aaron@example.com', 'eva@example.com', 'frieda@example.com', 'greta@example.com', 'hannah@example.com', 'ida@example.com', 'klara@example.com'];
 const colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
 
-const contactsJSON1 = [];
+//const contactsJSON1 = [];
+
+let contactJSON1 = {
+  "email" :"",
+  "initials" : "",
+  "name" : "",
+  "bgColor" : "",
+  "phone" : ""
+}
 
 let contactJSONBE = [];
 
@@ -14,6 +22,47 @@ async function loadContacts() {
   contactJSONBE = await loadJSON(KEY_for_JSON_CONTACS);
   let serverAnswer = await getItem(KEY_for_JSON_CONTACS);
   return JSON.parse(serverAnswer.data.value);
+}
+
+async function addContact() {
+  loadContacts()
+  getContactsValues();
+  contactJSONBE.push(contactJSON1);
+  await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
+
+  document.getElementById("addContactForm").reset();
+  createContactList()
+}
+
+function getContactsValues() {
+  let name = document.getElementById('inputName').value
+  let mail = document.getElementById('inputMail').value
+  let phone = document.getElementById('inputTel').value
+  let bgColor = setColor()
+  let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+
+  /*
+  contactJSON1.push({
+    email : mail,
+    initials : initial,
+    name : name,
+    bgColor : bgColor,
+    phone : phone,
+  })*/
+
+  contactJSON1.email = mail
+  contactJSON1.initials = initial
+  contactJSON1.name = name
+  contactJSON1.bgColor = bgColor
+  contactJSON1.phone = phone
+
+}
+
+function setColor() {
+  let i = contactJSONBE.length++
+  let color = colors[i % colors.length];
+  return color
+
 }
 
 async function createContactList() {
@@ -76,7 +125,7 @@ function showContactInfo(i) {
   circle.style.backgroundColor = contactJSONBE[i].bgColor;
   name.innerHTML = contactJSONBE[i].name;
   mail.innerHTML = contactJSONBE[i].email;
-  phone.innerHTML = contactJSONBE[i].phone; 
+  phone.innerHTML = contactJSONBE[i].phone;
 }
 
 /*
@@ -180,12 +229,12 @@ function closeAddContactOverlay() {
 }
 
 
-function showEditDeletOverlay(){
+function showEditDeletOverlay() {
   document.getElementById('editDeletOverlay').classList.add('show')
   document.getElementById('editDeletOverlay').classList.remove('hide')
 }
 
-function hideEditDeletOverlay(){
+function hideEditDeletOverlay() {
   document.getElementById('editDeletOverlay').classList.add('hide')
   document.getElementById('editDeletOverlay').classList.remove('show')
 }

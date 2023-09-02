@@ -102,10 +102,10 @@
                 </div>
 
                 <div class="contactsFooterOverlay">
-                    <form id="addContactForm" class="inputArea" onsubmit="xy();return false">
-                        <input class="inputName" type="text" placeholder="Name" required>
-                        <input class="inputMail" type="email" placeholder="Email" required>
-                        <input class="inputTel" type="tel" placeholder="Phone" required>
+                    <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
+                        <input id="inputName" class="inputName" type="text" placeholder="Name" required>
+                        <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
+                        <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
                         <div class="buttonDiv">
                             <button type="reset" onclick="closeAddContactOverlay()" class="cancelButton">Cancel <img
                                     src="../assets/img/cancel_contactOverlay.svg"></button>
