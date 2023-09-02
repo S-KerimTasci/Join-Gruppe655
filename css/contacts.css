@@ -152,27 +152,24 @@ input {
     width: 100%;
     background-color: white;
     padding: 20px;
-    max-height: 0;
     overflow: hidden;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    transition: max-height 0.4s ease-in-out, top 0.4s ease-in-out;
+    transition: bottom 0.4s ease-in-out;
+    height: calc(100% - 160px);
 
 }
 
 
 .createContactOverlay.show {
     bottom: 76px;
-    max-height: 1000px;
-    /* Höchstwert für max-height, um das Overlay einzublenden */
+    /* 
     top: 80px;
-    /* Top-Position beibehalten */
+    */
 }
 
 .createContactOverlay.hide {
-    max-height: 0;
-    /* Overlay ausblenden */
-    top: 100vh;
+    bottom: -100%
     /* Zurück zur Startposition unten */
 }
 
