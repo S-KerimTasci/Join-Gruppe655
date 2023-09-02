@@ -45,14 +45,21 @@ input {
 
 .contactsHeaderDektop {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: baseline;
     justify-content: space-between;
     position: relative;
 }
 
+.contactsHeaderHeadline {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+}
+
 .verticalLine {
     border: solid 3px #29ABE2;
-    height: 59px;
+    width: 90px;
 }
 
 
@@ -76,6 +83,7 @@ input {
     display: flex;
     align-items: center;
     gap: 54px;
+    margin-top: 30px;
 }
 
 .circle {
@@ -374,6 +382,41 @@ input {
     position: absolute;
 }
 
+.editDeletDiv {
+    display: none; 
+}
+
+.editDeletOverlay.show{
+    right: 10px;
+}
+.editDeletOverlay.hide{
+    right: -100%;
+}
+
+.editDeletOverlay{
+    height: 100px;
+    width: 116px;
+    background-color: white;
+    border-radius: 20px 20px 0px 20px;
+    padding: 10px;
+    position: fixed;
+    bottom: 90px;
+    right: -100%;
+    transition: right 0.2s ease-in-out;
+}
+
+.editDeletOverlayButton {
+    height: 40px;
+    width: 96px;
+    padding: 8px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    border: none;
+    background-color: transparent;
+    
+
+}
 
 @media (min-width: 750px) {
     input {
@@ -497,7 +540,37 @@ input {
         background-color: lightgray;
     }
 
-    .backArrow{
+    .backArrow {
         display: none;
     }
+
+    .contactsMenu {
+        display: none;
+    }
+
+    .contactsHeaderDektop {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        gap: 30px;
+        position: relative;
+    }
+
+    .contactsHeaderHeadline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .verticalLine {
+        height: 59px;
+        width: unset;
+    }
+
+    .editDeletDiv {
+        display: unset;
+    }
+
 }

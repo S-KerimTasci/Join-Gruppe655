@@ -45,13 +45,16 @@
                 <img onclick="openAddContactOverlay()" id="addContactMenu" class="addContactMenu"
                     src="../assets/img/person_add_contacts.svg">
 
-                <div id="rightDiv" class="rightDiv dd-none">
+                <div onclick="hideEditDeletOverlay()" id="rightDiv" class="rightDiv dd-none">
                     <div class="contactsCart">
                         <div class="contactsHeaderDektop">
-                            <h1 class="contactsHeaderh1">Contacts</h1>
-                            <div class="verticalLine"></div>
-                            <span class="contactsHeaderspan">Better with a team</span>
-                            <img class="backArrow" src="../assets/img/sign-up-arrow-left.svg" onclick="hideContactInfo()">
+                            <span class="contactsHeaderh1">Contacts</span>
+                            <div class="contactsHeaderHeadline">
+                                <div class="verticalLine"></div>
+                                <div><span class="contactsHeaderspan">Better with a team</span></div>
+                            </div>
+                            <img class="backArrow" src="../assets/img/sign-up-arrow-left.svg"
+                                onclick="hideContactInfo(); innerClick(event)">
                         </div>
 
                         <div id="ContactsInfoContainer" class="dd-none">
@@ -59,7 +62,7 @@
                                 <div id="contactsCircle" class="circleBig">AM</div>
                                 <div>
                                     <p id="contactsName" class="contactsName">Anton Mayer</p>
-                                    <div>
+                                    <div class="editDeletDiv">
                                         <span><img src="../assets/img/edit_subtask.svg">Edit </span>
                                         <span><img src="../assets/img/delete_subtask.svg">Delete</span>
                                     </div>
@@ -73,6 +76,12 @@
                                 <p><b>Phone</b></p>
                                 <a id="contactsPhone" class="aPhone" href="tel: +49 1111 1111 1111">+49 1111 1111
                                     1111</a>
+                            </div>
+                            <img onclick="showEditDeletOverlay(); innerClick(event)" class="contactsMenu" src="../assets/img/menu_contact_options.svg">
+
+                            <div id="editDeletOverlay" class="editDeletOverlay">
+                                <button class="editDeletOverlayButton"><img src="../assets/img/edit_subtask.svg"> Edit</button>
+                                <button class="editDeletOverlayButton"><img src="../assets/img/delete_subtask.svg">Delete</button>
                             </div>
                         </div>
                     </div>

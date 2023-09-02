@@ -179,6 +179,15 @@ function closeAddContactOverlay() {
   document.getElementById('createContactOverlay').classList.add('hide'); // Füge hide-Klasse hinzu
 }
 
+
+function showEditDeletOverlay(){
+  document.getElementById('editDeletOverlay').classList.add('show')
+}
+
+function hideEditDeletOverlay(){
+  document.getElementById('editDeletOverlay').classList.add('hide')
+}
+
 /*  
 function openAddContactOverlay(){
     document.getElementById('addContactMenu').classList.add('dd-none')
