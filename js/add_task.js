@@ -115,8 +115,8 @@ function deleteSubtask(subtaskObjElement) {
 }
 //Code changed by Alex ~~~~~ end
 
-function editSubtask(subtaskValue) {
-    const subtaskElement = document.getElementById(subtaskValue);
+function editSubtask(i) {
+    const subtaskElement = document.getElementById(`SubTask${i}`);
     const subtaskTextSpan = subtaskElement.querySelector('span');
     const editInput = subtaskElement.querySelector('.editInput');
 
