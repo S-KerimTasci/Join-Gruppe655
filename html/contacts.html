@@ -93,23 +93,23 @@
             <div id="createContactOverlay" class="createContactOverlay">
                 <div class="contactsHeaderOverlay">
                     <img class="overlayLogo" src="../assets/img/logo-white.svg">
-                    <h1><b>Add contact</b></h1>
-                    <p>Task are better with a team</p>
+                    <h1 id="overlayHeader" ><b>Add contact</b></h1>
+                    <p id="overlayHeaderText">Task are better with a team</p>
                     <img src="../assets/img/login-underline.png" alt="">
                     <img onclick="closeAddContactOverlay()" class="close" src="../assets/img/close.svg" alt="">
                 </div>
 
                 <div class="createContactProfile">
-                    <div class="circle z12 circleoverlay">AM</div>
+                    <div id="overlayCircle" class="circle z12 circleoverlay"><img src="../assets/img/person_add_contact_overlay.svg"></div>
                 </div>
 
-                <div class="contactsFooterOverlay">
+                <div id="contactsFooterOverlay" class="contactsFooterOverlay">
                     <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
                         <input id="inputName" class="inputName" type="text" placeholder="Name" required>
                         <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
                         <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
-                        <div class="buttonDiv">
-                            <button type="reset" onclick="closeAddContactOverlay()" class="cancelButton">Cancel <img
+                        <div id="overlayButtonDiv" class="buttonDiv">
+                            <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
                                     src="../assets/img/cancel_contactOverlay.svg"></button>
                             <button id="createButton" class="createButton"><span>Create contact</span> <img
                                     src="../assets/img/check.svg"></button>

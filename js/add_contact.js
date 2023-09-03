@@ -148,8 +148,74 @@ function setEditDeleteDivDesktop(i) {
   `
 }
 
-//function setEditDeleteDivRes(i) {}
 
+function editContact(i){
+  openAddContactOverlay()
+  setEditContactOVerlay(i)
+}
+
+
+function setEditContactOVerlay(i){
+  editContactOverlayTemplate(i)
+
+  let overlayHeader = document.getElementById('overlayHeader')
+  let overlayHeaderText = document.getElementById('overlayHeaderText')
+  let overlayCircle = document.getElementById('overlayCircle')
+ 
+  let inputName = document.getElementById('inputName')
+  let inputMail = document.getElementById('inputMail')
+  let inputTel = document.getElementById('inputTel')
+ 
+  let overlayButtonDiv = document.getElementById('overlayButtonDiv')
+  
+ 
+  overlayHeader.innerHTML = 'Edit Contact';
+  overlayHeaderText.classList.add('dd-none')
+  overlayCircle.innerHTML = contactJSONBE[i].initials;
+  overlayCircle.style.backgroundColor = contactJSONBE[i].bgColor;
+ 
+  inputName.value = contactJSONBE[i].name;
+  inputMail.value = contactJSONBE[i].email;
+  inputTel.value = contactJSONBE[i].phone;
+ 
+  overlayButtonDiv.innerHTML = `
+     <button type="reset" onclick="deleteContact(${i})" id="cancelButton" class="cancelButton">Delete <img
+     src="../assets/img/cancel_contactOverlay.svg"></button>
+ 
+     <button id="createButton" class="createButton"><span>Save</span> <img
+     src="../assets/img/check.svg"></button>`
+}
+
+function setAddContactOVerlay(){
+  addContactOverlayTemplate()
+
+  let overlayHeader = document.getElementById('overlayHeader')
+  let overlayHeaderText = document.getElementById('overlayHeaderText')
+  let overlayCircle = document.getElementById('overlayCircle')
+ 
+  let inputName = document.getElementById('inputName')
+  let inputMail = document.getElementById('inputMail')
+  let inputTel = document.getElementById('inputTel')
+ 
+  let overlayButtonDiv = document.getElementById('overlayButtonDiv')
+  
+ 
+  overlayHeader.innerHTML = 'Add contact';
+  overlayHeaderText.classList.remove('dd-none')
+  overlayCircle.style.backgroundColor = '#d1d1d1';
+  overlayCircle.innerHTML ='<img src="../assets/img/person_add_contact_overlay.svg">'
+ 
+  inputName.value = '';
+  inputMail.value = '';
+  inputTel.value = '';
+ 
+  overlayButtonDiv.innerHTML = `
+      <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
+      src="../assets/img/cancel_contactOverlay.svg"></button>
+
+      <button id="createButton" class="createButton"><span>Create contact</span> <img
+      src="../assets/img/check.svg"></button>`
+}
 
 async function deleteContact(i) {
   contactJSONBE.splice(i, 1)
@@ -169,6 +235,7 @@ function openAddContactOverlay() {
   document.getElementById('addContactMenu').classList.add('dd-none');
   document.getElementById('createContactOverlay').classList.remove('hide'); // Entferne hide-Klasse
   document.getElementById('createContactOverlay').classList.add('show'); // Füge show-Klasse hinzu
+  setAddContactOVerlay()
 }
 
 function closeAddContactOverlay() {
@@ -187,4 +254,44 @@ function showEditDeletOverlay() {
 function hideEditDeletOverlay() {
   document.getElementById('editDeletOverlay').classList.add('hide')
   document.getElementById('editDeletOverlay').classList.remove('show')
+}
+
+function editContactOverlayTemplate(i){
+  let form = document.getElementById("contactsFooterOverlay").innerHTML =`
+  <form id="addContactForm" class="inputArea" onsubmit="addContactViaEditOverlay(${i});return false">
+                        <input id="inputName" class="inputName" type="text" placeholder="Name" required>
+                        <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
+                        <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
+                        <div id="overlayButtonDiv" class="buttonDiv">
+                            <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
+                                    src="../assets/img/cancel_contactOverlay.svg"></button>
+                            <button id="createButton" class="createButton"><span>Create contact</span> <img
+                                    src="../assets/img/check.svg"></button>
+                        </div>
+                    </form>
+
+                    <img onclick="closeAddContactOverlay()" class="closeResponsive"
+                        src="../assets/img/cancel_contactOverlay.svg">
+  `;
+  return form;
+}
+
+function addContactOverlayTemplate(){
+  let form = document.getElementById("contactsFooterOverlay").innerHTML =`
+  <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
+  <input id="inputName" class="inputName" type="text" placeholder="Name" required>
+  <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
+  <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
+  <div id="overlayButtonDiv" class="buttonDiv">
+      <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
+              src="../assets/img/cancel_contactOverlay.svg"></button>
+      <button id="createButton" class="createButton"><span>Create contact</span> <img
+              src="../assets/img/check.svg"></button>
+  </div>
+</form>
+
+<img onclick="closeAddContactOverlay()" class="closeResponsive"
+  src="../assets/img/cancel_contactOverlay.svg">
+  `;
+  return form;
 }
