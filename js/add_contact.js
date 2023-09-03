@@ -3,11 +3,11 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const contactsContainer = document.getElementById('contactsContainer');
 let contactJSONBE = [];
 let contactJSON1 = {
-  "email" :"",
-  "initials" : "",
-  "name" : "",
-  "bgColor" : "",
-  "phone" : ""
+  "email": "",
+  "initials": "",
+  "name": "",
+  "bgColor": "",
+  "phone": ""
 }
 
 
@@ -25,7 +25,7 @@ async function addContact() {
   closeOvelayAfterNewContact()
 }
 
-function closeOvelayAfterNewContact(){
+function closeOvelayAfterNewContact() {
   createContactList()
   createButton.disabled = false
   closeAddContactOverlay()
@@ -73,7 +73,7 @@ async function createContactList() {
                                 <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
                                 <div class="nameDiv">
                                     ${contact.name}
-                                    <a class="colorLink" href="mailto:${contact.email}">${contact.email}</a>
+                                    <span class="colorLink"> ${contact.email}</span>
                                 </div>
                             </div>
                         `;
@@ -92,10 +92,12 @@ function hideContactInfo() {
   document.getElementById('rightDiv').classList.add('dd-none')
   document.getElementById('rightDiv').classList.remove('rightDivRes')
 }
+function hideContactInfoDektop() {
+  document.getElementById('ContactsInfoContainer').classList.add('dd-none')
+}
 
 function showContactInfo(i) {
   document.getElementById('ContactsInfoContainer').classList.remove('dd-none')
-
 
   if (window.innerWidth < 750) {
     document.getElementById('leftDiv').classList.add('dd-none')
@@ -103,7 +105,12 @@ function showContactInfo(i) {
     document.getElementById('rightDiv').classList.add('rightDivRes')
   }
 
+  setContactInfo(i)
 
+  setEditDeleteDivDesktop(i)
+}
+
+function setContactInfo(i){
   let circle = document.getElementById('contactsCircle');
   let name = document.getElementById('contactsName');
   let mail = document.getElementById('contactsMail');
@@ -114,6 +121,47 @@ function showContactInfo(i) {
   name.innerHTML = contactJSONBE[i].name;
   mail.innerHTML = contactJSONBE[i].email;
   phone.innerHTML = contactJSONBE[i].phone;
+}
+
+function resetContactInfo(){
+  let circle = document.getElementById('contactsCircle');
+  let name = document.getElementById('contactsName');
+  let mail = document.getElementById('contactsMail');
+  let phone = document.getElementById('contactsPhone');
+
+  circle.innerHTML = '';
+  circle.style.backgroundColor = 'transparent';
+  name.innerHTML = '';
+  mail.innerHTML = '';
+  phone.innerHTML = '';
+}
+
+function setEditDeleteDivDesktop(i) {
+  document.getElementById('editDelteContactDektop').innerHTML = `
+  <span onclick="editContact(${i})"><img src="../assets/img/edit_subtask.svg">Edit </span>
+  <span onclick="deleteContact(${i})"><img src="../assets/img/delete_subtask.svg">Delete</span>
+  `
+
+  document.getElementById('editDeletOverlay').innerHTML = `
+  <button onclick="editContact(${i})" class="editDeletOverlayButton"><img src="../assets/img/edit_subtask.svg"> Edit</button>
+  <button onclick="deleteContact(${i})" class="editDeletOverlayButton"><img src="../assets/img/delete_subtask.svg">Delete</button>
+  `
+}
+
+//function setEditDeleteDivRes(i) {}
+
+
+async function deleteContact(i) {
+  contactJSONBE.splice(i, 1)
+  await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
+  hideContactInfoDektop(); 
+  document.getElementById('contactsContainer').innerHTML = '';
+  resetContactInfo()
+  createContactList();
+
+  if (window.innerWidth < 750) {
+    hideContactInfo()
+  }
 }
 
 

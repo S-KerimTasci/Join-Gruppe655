@@ -25,6 +25,8 @@
     <script src="../js/script.js" defer></script>
     <script src="../js/add_contact.js" defer></script>
     <script src="../js/checkScreenContacts.js" defer></script>
+    <script src="../js/testTaskJSON.js" defer></script>
+
 </head>
 
 <body onload="init(), createContactList();">
@@ -62,7 +64,7 @@
                                 <div id="contactsCircle" class="circleBig">AM</div>
                                 <div>
                                     <p id="contactsName" class="contactsName">Anton Mayer</p>
-                                    <div class="editDeletDiv">
+                                    <div id="editDelteContactDektop" class="editDeletDiv">
                                         <span><img src="../assets/img/edit_subtask.svg">Edit </span>
                                         <span><img src="../assets/img/delete_subtask.svg">Delete</span>
                                     </div>
@@ -80,8 +82,8 @@
                             <img onclick="showEditDeletOverlay(); innerClick(event)" class="contactsMenu" src="../assets/img/menu_contact_options.svg">
 
                             <div id="editDeletOverlay" class="editDeletOverlay">
-                                <button class="editDeletOverlayButton"><img src="../assets/img/edit_subtask.svg"> Edit</button>
-                                <button class="editDeletOverlayButton"><img src="../assets/img/delete_subtask.svg">Delete</button>
+                                <button onclick="editContact(i)" class="editDeletOverlayButton"><img src="../assets/img/edit_subtask.svg"> Edit</button>
+                                <button onclick="deleteContact(i)" class="editDeletOverlayButton"><img src="../assets/img/delete_subtask.svg">Delete</button>
                             </div>
                         </div>
                     </div>
