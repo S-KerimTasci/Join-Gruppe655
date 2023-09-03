@@ -11,10 +11,23 @@ let contactJSON1 = {
 }
 
 
+
+
 async function loadContacts() {
   contactJSONBE = await loadJSON(KEY_for_JSON_CONTACS);
 }
 
+async function addContactViaEditOverlay(i){
+  createButton.disabled = true
+  getContactsValuesEditOVerlay(i);
+  contactJSONBE.splice(i, 1);
+  contactJSONBE.push(contactJSON1);
+  await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
+  closeOvelayAfterNewContact()
+  createButton.disabled = false
+
+
+}
 
 async function addContact() {
   createButton.disabled = true
@@ -23,12 +36,34 @@ async function addContact() {
   contactJSONBE.push(contactJSON1);
   await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
   closeOvelayAfterNewContact()
+  createButton.disabled = false
 }
 
 function closeOvelayAfterNewContact() {
+  displayNewContact()
+  contactsContainer.innerHTML = ''
   createContactList()
-  createButton.disabled = false
   closeAddContactOverlay()
+}
+
+function displayNewContact(){
+  let display= contactJSONBE.length - 1;
+  showContactInfo(display)
+}
+
+function getContactsValuesEditOVerlay(i){
+  let name = document.getElementById('inputName').value
+  let mail = document.getElementById('inputMail').value
+  let phone = document.getElementById('inputTel').value
+  let bgColor = contactJSONBE[i].bgColor
+  let initial = contactJSONBE[i].initials
+
+  contactJSON1.email = mail
+  contactJSON1.initials = initial
+  contactJSON1.name = name
+  contactJSON1.bgColor = bgColor
+  contactJSON1.phone = phone
+
 }
 
 function getContactsValues() {
