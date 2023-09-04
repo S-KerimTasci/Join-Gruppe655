@@ -107,16 +107,16 @@
 
             <div id="idSubtaskContainerAddTaskOv" class="mt-3">
                 <label for="idSubtaskAddTaskOv">Subtask</label>
-                <div id="idSubtaskSubContainerAddTaskOv"
+                <div id="idSubtaskSubContainerAddTaskOv" onfocus="switchIons(1)" onblur="switchIons(1)" 
                     class="d-flex flex-row justify-content-between align-items-center subtaskSubContainerAddTaskOv">
-                    <input id="idSubtaskAddTaskOv" onfocus="switchIons(3)" onblur="switchIons(3)"
+                    <input id="idSubtaskAddTaskOv" onfocus="switchIons(1)" 
                         class="subtaskAddTaskOv" type="text" placeholder="Add new subtask">
                     <div id="idSwitchIcons">
-                        <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(4)">
+                        <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(2)"> <!-- onclick="switchIons(4)" -->
                         <div id="idSubtaskIconContainer" class="d-flex flex-row d-none">
                             <img src="../assets/img/taskOverlayClose.svg" alt="" onclick="switchIons(4)">
                             <div id="idSubTaskDivider" class="subTaskDivider"></div>
-                            <img src="../assets/img/checkBlack.svg" alt="" onclick="addSubtask()">
+                            <img src="../assets/img/checkBlack.svg" alt="" onclick="addSubtask(); switchIons(4)">
                         </div>
                     </div>
                 </div>

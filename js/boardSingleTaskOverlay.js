@@ -19,12 +19,12 @@ function renderOverlayTask(taskNumber) {
  */
 function singleTaskOvHtmlTemp(taskNr) {
     return /*html*/ `    
-    <section id="idBackgroundTaskOverlay" class="backgroundTaskOverlay" onclick="closeSingleTaskOverlay()">
+    <section id="idBackgroundTaskOverlay" class="backgroundTaskOverlay" onclick="closeOverlay('idTaskOverlay')">
         <div id="idBgOuterContainerTaskOverlay" class="bgOuterContainerTaskOverlay" onclick="innerClick(event)">
             <div id="idBgInnerContainerTaskOverlay" class="bgInnerContainerTaskOverlay taskOvText">
                 <div id="idTopAreaOv" class="topAreaOv d-flex justify-content-between">
                     <div id="idTaskTypeOv" class="singlTaskType"> </div>
-                    <div id="idTaskCloseOv" role="button" onclick="closeSingleTaskOverlay()">
+                    <div id="idTaskCloseOv" role="button" onclick="closeOverlay('idTaskOverlay')">
                         <img src="../assets/img/taskOverlayClose.svg" alt="">
                     </div>
                 </div>
@@ -74,8 +74,8 @@ function singleTaskOvHtmlTemp(taskNr) {
 /**
  * this function removes all html in container idTaskOverlay
  */
-function closeSingleTaskOverlay() {
-    document.getElementById('idTaskOverlay').innerHTML = '';
+function closeOverlay(overlay) {
+    document.getElementById(overlay).innerHTML = '';
     renderTasks();
 }
 

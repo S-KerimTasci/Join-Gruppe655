@@ -65,3 +65,8 @@ async function loadJSON(key) {
 function innerClick(event) {
     event.stopPropagation(); // prevents event bubbling
   }
+
+  function innerSubmit(event) {
+    event.stopPropagation(); // prevents event bubbling
+  }
+ 

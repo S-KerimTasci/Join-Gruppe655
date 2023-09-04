@@ -24,18 +24,20 @@
     <link rel="stylesheet" href="../css/headerFooter.css">
     <link rel="stylesheet" href="../css/singleTask.css">
     <link rel="stylesheet" href="../css/singleTaskOverlay.css">
+    <link rel="stylesheet" href="../css/add_task_overlay.css">
 
 
     <!-- JS -->
     <script src="../js/script.js"></script>
     <!-- <script src="/js/add_contact"></script> -->
-    <script src="../js/add_task.js"></script>
+    <!-- <script src="../js/add_task.js"></script> -->
     <!-- <script src="/js/login.js"></script> -->
     <!-- <script src="../js/summary.js" defer></script> -->
     <script src="../js/headFootTemplate.js" defer></script>
     <script src="../js/board.js" defer></script>
     <script src="../js/boardSingleTask.js" defer></script>
     <script src="../js/boardSingleTaskOverlay.js"></script>
+    <script src="../js/add_task_overlay.js"></script>
     <!-- for tests!!!!! -->
     <script src="../js/testTaskJSON.js"></script>
 </head>
@@ -51,7 +53,7 @@
                             <div id="idBoardHead1" class="BoardHead1 "> <!-- d-flex justify-content-between align-items-center -->
                                 <h1 class="boardHeading">Board</h1>
                                 <img class="hideSmallBtnH1" role="button"
-                                    src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
+                                    src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="openAddtaskOverlay()">
                             </div>
                             <div id="idBoardHead2" class="BoardHead2">
                                 <div id="idSearchContainer" class="myBoardHead2 d-flex justify-content-between">
@@ -60,8 +62,8 @@
                                     <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="searchTask()">
                                 </div>
                                 <img class="hideSmallBtnH2 " role="button"
-                                    src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="addTask()">
-                                <button class="headAddTaskBtn" onclick="addTask()">
+                                    src="../assets/img/BoardAddTaskTop.svg" alt="" onclick="openAddtaskOverlay()">
+                                <button class="headAddTaskBtn" onclick="openAddtaskOverlay()">
                                     <span>Add task</span>
                                     <img src="../assets/img/BoardAddTaskTop.svg" alt="">
                                 </button>
@@ -70,15 +72,15 @@
                         <div id="idBoardHead3" class="headBoard3">
                             <div id="idFirstContentBoardDesk" class="d-flex justify-content-between contentBoard">
                                 <h3>To do</h3>
-                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
+                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="openAddtaskOverlay()">
                             </div>
                             <div id="idSecondContentBoardDesk" class="d-flex justify-content-between contentBoard">
                                 <h3>In progress</h3>
-                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
+                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="openAddtaskOverlay()">
                             </div>
                             <div id="idThirdContentBoardDesk" class="d-flex justify-content-between contentBoard">
                                 <h3>Await feedback</h3>
-                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
+                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="openAddtaskOverlay()">
                             </div>
                             <div id="idFourthContentBoardDesk" class="d-flex contentBoard">
                                 <h3>Done</h3>
@@ -90,7 +92,7 @@
                         <div id="idFirstContentContainer" class="" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
                             <div id="idFirstContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>To do</h3>
-                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
+                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="openAddtaskOverlay()">
                             </div>
                             <div class="boardTaskContainer">
                                 <div id="idTaskToDoDefault" class="defaultTaskContainer"><span>No Tasks To do</span>
@@ -103,7 +105,7 @@
                         <div id="idSecondContentContainer" class="" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
                             <div id="idSecondContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>In progress</h3>
-                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
+                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="openAddtaskOverlay()">
                             </div>
                             <div class="boardTaskContainer" >
                                 <div id="idTaskInProgressDefault" class="defaultTaskContainer"><span>No Tasks In
@@ -116,7 +118,7 @@
                         <div id="idThirdContentContainer" class="" ondrop="moveTo('awaitFeedback')" ondragover="allowDrop(event)">
                             <div id="idThirdContentBoardMob" class="d-flex justify-content-between contentBoard conBoMob">
                                 <h3>Await feedback</h3>
-                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="addTask()">
+                                <img role="button" src="../assets/img/boardSmallAddTask.svg" alt="" onclick="openAddtaskOverlay()">
                             </div>
                             <div class="boardTaskContainer">
                                 <div id="idTaskAwaitFeedbackDefault" class="defaultTaskContainer"><span>No Tasks Await
