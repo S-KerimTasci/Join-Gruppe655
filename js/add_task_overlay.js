@@ -178,3 +178,8 @@ function openAddtaskOverlay() {
     htmlAddTaskOverlay();
     loadContacts();
 }
+
+function toggleChkBox(chkNr) {
+    let chkChecked = document.getElementById('idAssingedTo' + chkNr);
+    chkChecked.checked ? chkChecked.checked = false : chkChecked.checked = true;
+}

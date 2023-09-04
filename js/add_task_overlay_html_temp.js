@@ -106,13 +106,14 @@ function userOvHTMLButton() {
 
 function userOvHTML(memberName, memberColor, memberinitials, i) {
     return `
-    <div class="d-flex justify-content-between align-items-center">
-        <div class="d-flex justify-content-between align-items-center">
-            <div id="idAssingedToInitialsOv${i}" class="memberDiskOv memberBgColor${memberColor}">${memberinitials}
-            </div>
-            <label id="idAssingedToLab${i}" for=idAssingedTo${i}>${memberName}</label>
+    <div class="d-flex justify-content-between align-items-center" onclick="toggleChkBox(${i})">
+        <div id="idAssingedToInitialsOv${i}" class="memberDiskOv memberBgColor${memberColor}">${memberinitials}
         </div>
-        <input id=idAssingedTo${i} type="checkbox" class="AssingedToChk" >
+        <span id="idAssingedToName${i}">${memberName}</span>
+        <div class="chkContainerAssingdTo">
+            <input id=idAssingedTo${i} type="checkbox" class="check_box chkHeight" >
+            <label for=idAssingedTo${i}></label>
+        </div>
     </div>`
 }
 
