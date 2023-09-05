@@ -52,7 +52,7 @@ function htmlAddTaskOverlay() {
                     </div>
                     <div id="idInputAssignedToContainerAddTaskOv" class="mt-3 d-flex flex-column">
                         <label for="idInputAssignedToAddTaskOv">Assigned To</label>
-                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames()">
+                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames(); renderTaskMember()">
                             <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow"
                                 placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                         </div>
@@ -112,7 +112,7 @@ function userOvHTML(memberName, memberColor, memberinitials, i) {
         <span id="idAssingedToName${i}">${memberName}</span>
         <div class="chkContainerAssingdTo">
             <input id=idAssingedToChk${i} type="checkbox" class="check_box chkHeight" >
-            <label for=idAssingedToLab${i}></label>
+            <label for=idAssingedToChk${i}></label>
         </div>
     </div>`
 }

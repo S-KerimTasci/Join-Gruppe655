@@ -2,6 +2,7 @@ let expanded = false;
 let subtaskPlus = true;
 let currentPrio ='';
 let subtaskObj = [];
+let activTaskNumber = '';
 let task2 = {
     "taskId": "", // task id - should be a ongoing number
     "taskType": "", //type of task
@@ -16,7 +17,7 @@ let task2 = {
     "urgency": ""
 };
 
-function resetTask2() {
+function resetTask2() { // ich denke ich kann die deklaration uf let = {} beschränken
     task2 = {
         "taskId": "", 
         "taskType": "", 
@@ -86,6 +87,7 @@ function switchIons(count) {
 
 //Code changed by Alex ~~~~~ start
 function addSubtask() {
+    
     let subtask = document.getElementById('idSubtaskAddTaskOv');
     subtask.value !== '' ? subtaskObj.push(subtask.value) : '';
     document.getElementById('idRenderedSubtaskAddTaskOv').innerHTML = '';
@@ -133,7 +135,7 @@ function getValuesForTaskArr() {
     getValuesFromForm();
     getSubtaskFromForm();
     console.log(task2);
-    debugger;
+    //debugger;
     //getMembersFromForm();
 }
 
