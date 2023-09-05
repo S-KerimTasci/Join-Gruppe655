@@ -107,7 +107,7 @@ async function createContactList() {
                             <div class="contact" onclick="showContactInfo(${contactIndex})">
                                 <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
                                 <div class="nameDiv">
-                                    ${contact.name}
+                                    <span class="textcap">${contact.name}</span>
                                     <span class="colorLink"> ${contact.email}</span>
                                 </div>
                             </div>
@@ -292,9 +292,10 @@ function hideEditDeletOverlay() {
 }
 
 function editContactOverlayTemplate(i){
+ // let pattern = '^(\w+\s\w+)$'
   let form = document.getElementById("contactsFooterOverlay").innerHTML =`
   <form id="addContactForm" class="inputArea" onsubmit="addContactViaEditOverlay(${i});return false">
-                        <input id="inputName" class="inputName" type="text" placeholder="Name" required>
+                        <input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
                         <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
                         <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
                         <div id="overlayButtonDiv" class="buttonDiv">
@@ -314,7 +315,7 @@ function editContactOverlayTemplate(i){
 function addContactOverlayTemplate(){
   let form = document.getElementById("contactsFooterOverlay").innerHTML =`
   <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
-  <input id="inputName" class="inputName" type="text" placeholder="Name" required>
+  <input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
   <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
   <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
   <div id="overlayButtonDiv" class="buttonDiv">

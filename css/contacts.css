@@ -18,6 +18,10 @@ input {
     height: 6vh;
 }
 
+.textcap{
+    text-transform: capitalize;
+}
+
 .contactsContent {
     display: flex;
 }
@@ -119,6 +123,7 @@ input {
     font-size: 47px;
     font-weight: 500;
     line-height: 56.4px;
+    text-transform: capitalize;
 }
 
 .contactsMenu {

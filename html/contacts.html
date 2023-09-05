@@ -105,7 +105,7 @@
 
                 <div id="contactsFooterOverlay" class="contactsFooterOverlay">
                     <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
-                        <input id="inputName" class="inputName" type="text" placeholder="Name" required>
+                        <input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\w+\s\w+)$" title="Surname Name">
                         <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
                         <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
                         <div id="overlayButtonDiv" class="buttonDiv">
