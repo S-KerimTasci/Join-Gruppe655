@@ -111,8 +111,8 @@ function userOvHTML(memberName, memberColor, memberinitials, i) {
         </div>
         <span id="idAssingedToName${i}">${memberName}</span>
         <div class="chkContainerAssingdTo">
-            <input id=idAssingedTo${i} type="checkbox" class="check_box chkHeight" >
-            <label for=idAssingedTo${i}></label>
+            <input id=idAssingedToChk${i} type="checkbox" class="check_box chkHeight" >
+            <label for=idAssingedToLab${i}></label>
         </div>
     </div>`
 }

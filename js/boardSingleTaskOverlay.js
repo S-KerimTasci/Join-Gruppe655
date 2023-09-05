@@ -6,7 +6,7 @@
  * @param {number} taskNumber - task number of aktive task
  */
 function renderOverlayTask(taskNumber) {
-
+    
     document.getElementById('idTaskOverlay').innerHTML = singleTaskOvHtmlTemp(taskNumber);
     addDataSingleTaskOverlay(taskNumber);
 
@@ -61,7 +61,7 @@ function singleTaskOvHtmlTemp(taskNr) {
                         </div>
                         <div id="idBottomAreaContainerSeparatorOv" class="bottomAreaContainerSeparatorOv"></div> 
                         <div id="idEditContainer"  class="bottomAreaSubContainer">
-                            <img src="../assets/img/taskOverlayEdit.svg" alt="edit">
+                            <img src="../assets/img/taskOverlayEdit.svg" alt="edit" onclick="renderEditTask(${taskNr})">
                             <span>Edit</span>
                         </div>
                     </div>
@@ -93,7 +93,6 @@ function addDataSingleTaskOverlay(taskNr) {
     taskOverlayPrio(activeTask);
     taskOverlayMember(activeTask);
     taskOverlaySubTasks(activeTask, taskNr);
-
 }
 
 /**
@@ -103,11 +102,11 @@ function addDataSingleTaskOverlay(taskNr) {
  */
 function taskOverlayDate(activeTask) {
     let taskDate = new Date(activeTask.dueDate);
-    let taskMonth = taskDate.getMonth().toString();
+    let taskMonth = +taskDate.getMonth().toString() + 1;
     let taskDay = taskDate.getDate().toString();
     let taskYear = taskDate.getFullYear().toString();
-    taskDay = (taskDay.length == 2) ? taskDay : ('0' + taskDay);
-    taskMonth = (taskMonth.length == 2) ? taskMonth : ('0' + taskMonth);
+    taskDay = (taskDay.length === 2) ? taskDay : ('0' + taskDay);
+    taskMonth = (taskMonth > 9) ? taskMonth : ('0' + taskMonth);
     document.getElementById('idDueDateOv').innerText = taskDay + '/' + taskMonth + '/' + taskYear;
 }
 

@@ -16,6 +16,22 @@ let task2 = {
     "urgency": ""
 };
 
+function resetTask2() {
+    task2 = {
+        "taskId": "", 
+        "taskType": "", 
+        "dueDate": "", 
+        "status": "", 
+        "headline": "", 
+        "description": "", 
+        "doneSubTasks": "", 
+        "subTaskTotal": "", 
+        "subTaskText": [],
+        "member": [],
+        "urgency": ""
+    } 
+}
+
 
 /* functions for highlight the priority button start */
 function highlight(prio) {
@@ -116,7 +132,9 @@ function getValuesForTaskArr() {
     task2.urgency = currentPrio;
     getValuesFromForm();
     getSubtaskFromForm();
-    getMembersFromForm();
+    console.log(task2);
+    debugger;
+    //getMembersFromForm();
 }
 
 
@@ -149,16 +167,18 @@ async function loadContacts() {
 
 
 
-function getMembersFromForm() {
+/* function getMembersFromForm() {
     task2.member = [];
-    let CHKBOXARR = document.getElementsByClassName('AssingedToChk');
-    for (let i = 0; i < CHKBOXARR.length; i++) {
-        if (CHKBOXARR[i].checked == true) {
-            task2.member.push(document.getElementById("idAssingedToLab" + i).innerText); 
+    let myArr = document.querySelectorAll('chkContainerAssingdTo');
+    for (let i = 0; i < myArr.length; i++) {
+    let CHKBOXARR = document.getElementsByClassName('idAssingedToChk' + i);
+    
+        if (CHKBOXARR.checked == true) {
+            task2.member.push(document.getElementById("idAssingedTName" + i).innerText); 
         }
     }      
 }
-
+ */
 
 function calcTaskId() {
     for (let i = 0; i < taskJson.length; i++) {
@@ -175,11 +195,20 @@ function clearAddTaskForm() {
 
 
 function openAddtaskOverlay() {
+    resetTask2();
     htmlAddTaskOverlay();
     loadContacts();
 }
 
 function toggleChkBox(chkNr) {
-    let chkChecked = document.getElementById('idAssingedTo' + chkNr);
-    chkChecked.checked ? chkChecked.checked = false : chkChecked.checked = true;
+    let chkChecked = document.getElementById('idAssingedToChk' + chkNr);
+    if (chkChecked.checked) {
+        chkChecked.checked = false
+        task2.member = task2.member.filter(item => item !== document.getElementById('idAssingedToName' + chkNr).innerText);
+    } else {
+        chkChecked.checked = true
+        task2.member.push(document.getElementById('idAssingedToName' + chkNr).innerText);
+    }
+     console.log(task2.member);
+    
 }
