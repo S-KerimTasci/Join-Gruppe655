@@ -32,7 +32,6 @@ function initAnimationResponsiv() {
  */
 function toggleSignUpButton(checkbox) {
     const signUpButton = document.getElementById('signUpButton');
-    signUpButton.disabled = !checkbox.checked;
 }
 
 
@@ -153,6 +152,18 @@ function handleExistingUser() {
 
 
 /**
+ * Handles the case where the checkbox is not checked.
+ */
+function handleCheckboxNotChecked() {
+    const message = document.getElementById('messageNewUser');
+    const desktopMessage = privacyPolicyCheckboxDesktop();
+    const mobileMessage = privacyPolicyCheckboxMobile();
+    displayAndHideMessage(message, desktopMessage, mobileMessage);
+}
+
+
+
+/**
  * Handles the response from the server.
  *
  * @param {Object} response - The response object from the server.
@@ -209,6 +220,11 @@ async function addUser() {
         return;
     }
     if (!validatePasswordMatch(password, confirmPassword)) {
+        return;
+    }
+    const checkbox = document.getElementById('signUpCheckbox');
+    if (!checkbox.checked) {
+        handleCheckboxNotChecked();
         return;
     }
     await loadUsers();

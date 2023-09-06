@@ -185,3 +185,27 @@ function passwordNotMatchMobile() {
     return /*html*/ `
         Passwords do not match. Please try again.`;
 }
+
+
+/**
+ * This function generates HTML for desktop view if the pravacy policy is not accept
+ */
+function privacyPolicyCheckboxDesktop() {
+    return /*html*/ `
+        <div id="popUpBg" class="confirm-send-mail" onclick="closeOverlay()">
+            <div class="confirm-box">
+                <div onclick="doNotCloseOverlay(event)" class="register-text">
+                Please accept the privacy policy
+                </div>
+            </div>
+        </div>`;
+}
+
+
+/**
+ * This function generates HTML for mobile view if pravacy policy is not accept
+ */
+function privacyPolicyCheckboxMobile() {
+    return /*html*/ `
+        Please accept the privacy policy`;
+}
