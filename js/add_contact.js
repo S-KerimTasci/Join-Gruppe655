@@ -294,7 +294,6 @@ function hideEditDeletOverlay() {
 }
 
 function editContactOverlayTemplate(i){
- // let pattern = '^(\w+\s\w+)$'
   let form = document.getElementById("contactsFooterOverlay").innerHTML =`
   <form id="addContactForm" class="inputArea" onsubmit="addContactViaEditOverlay(${i});return false">
                         <input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
