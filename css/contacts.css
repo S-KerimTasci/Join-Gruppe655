@@ -146,15 +146,6 @@ input {
 
 
 .createContactOverlay {
-    /* margin-left: 5vw;
-    margin-right: 5vw;
-    position: fixed;
-    top: 80px;
-    bottom: 76px;
-    background-color: white;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;*/
-
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -166,6 +157,7 @@ input {
     border-bottom-right-radius: 30px;
     transition: bottom 0.4s ease-in-out;
     height: calc(100% - 156px);
+    z-index: 1200;
 
 }
 
