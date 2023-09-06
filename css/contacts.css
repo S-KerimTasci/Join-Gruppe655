@@ -69,7 +69,6 @@ input {
     width: 90px;
 }
 
-
 .backArrow {
     position: absolute;
     right: 3px;
@@ -144,7 +143,6 @@ input {
     height: 47px;
 }
 
-
 .createContactOverlay {
     position: fixed;
     bottom: -100%;
@@ -160,28 +158,22 @@ input {
     z-index: 1200;
 }
 
-
 .createContactOverlay.show {
     bottom: 76px;
-    /* 
-    top: 80px;
-    */
+    /*     top: 80px;*/
 }
 
 .createContactOverlay.hide {
     bottom: -100%
-        /* Zurück zur Startposition unten */
 }
 
 .contactsHeaderOverlay {
     background-color: #2A3647;
     color: white;
     padding: 3vh 2vw 3vh 2vw;
-    /*padding: 66px 24px 66px 24px;*/
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-bottom: -50px;
-    /*height: 260px;*/
     position: relative;
 }
 
@@ -308,7 +300,6 @@ input {
 }
 
 /* Chat GPT */
-
 .dd-none {
     display: none;
 }
@@ -413,8 +404,6 @@ input {
     gap: 8px;
     border: none;
     background-color: transparent;
-
-
 }
 
 @media (max-width: 750px) {
@@ -507,7 +496,7 @@ input {
     }
 
     .rightDiv {
-        display: block;
+        display: contents;
         width: 60%;
         background-color: #f6f7f8;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 4px 0px;
@@ -523,11 +512,9 @@ input {
     }
 
     .createContactOverlay {
-        /* Bisherige Stile für größere Bildschirmbreiten */
         bottom: auto;
         top: calc((100vh - 592px)/2);
         right: -1212px;
-        /* Verstecke das Overlay am Anfang rechts */
         left: unset;
         padding: 0;
         transition: right 0.4s ease-in-out;
@@ -537,43 +524,23 @@ input {
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
         height: 592px;
-        width: 1212px;
+        width: 90%;
+        max-width: 1212px;
     }
 
     .createContactOverlay.show {
-        right: calc((100vw - 1212px)/2);
+        right: calc((100% - 90%)/2);
         top: calc((100vh - 592px)/2);
     }
 
     .createContactOverlay.hide {
         right: -1212px;
-        /* Verstecke das Overlay nach rechts */
         transition: right 0.4s ease-in-out;
     }
-
-
-    /*
-    .createContactOverlay {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 592px;
-        width: 1212px;
-        left: calc((100vw - 1212px)/2);
-        padding: 0;
-        border-radius: 30px;
-    }
-
-    .createContactOverlay.show {
-        top: calc((100vh - 592px)/2);
-    }
-
-*/
 
     .overlayLogo {
         display: unset;
     }
-
 
     .contactsHeaderOverlay {
         background-color: #2A3647;
@@ -582,7 +549,6 @@ input {
         border-top-left-radius: 30px;
         margin-bottom: 0;
         height: 100%;
-        width: 467px;
         display: flex;
         flex-direction: column;
         align-items: baseline;
@@ -591,7 +557,7 @@ input {
 
     .contactsFooterOverlay {
         margin-top: 90px;
-        padding-right: 70px;
+        padding-right: 30px;
     }
 
     .close {
@@ -639,5 +605,4 @@ input {
     .editDeletDiv {
         display: unset;
     }
-
 }
