@@ -114,6 +114,11 @@ header {
 .footerElement {
     display: flex;
     flex-direction: column;
+    border-radius: 16px;
+}
+
+.footerElement:hover{
+    background-color: #091931;
 }
 
 .footerDesktop {
@@ -123,6 +128,7 @@ header {
     height: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
+    align-items: center;
 }
 
 .footerElementDesktop {
@@ -130,6 +136,14 @@ header {
     display: flex;
     align-items: center;
     gap: 16px;
+    width: 200px;
+    padding-left: 44px;
+    height: 46px;
+}
+
+.footerElementDesktop:hover{
+    cursor: pointer;
+    background-color: #091931;
 }
 
 .footerDesktopMiddle {
@@ -169,6 +183,7 @@ header {
         flex-direction: column;
         background-color: #2A3647;
         color: white;
+        
 
         position: inherit;
         /* neu */
@@ -188,6 +203,7 @@ header {
         display: flex;
         flex-direction: column;
         display: none;
+        border-radius: 16px;
     }
 
 }
