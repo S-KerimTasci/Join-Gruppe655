@@ -1,7 +1,9 @@
 const colors = ['#FF7A00', '#FF5EB3', '#6E52FF', '#9327FF', '#00BEE8', '#1FD7C1', '#FF745E', '#FFA35E', '#FC71FF', '#FFC701', '#0038FF', '#C3FF2B', '#FFE62B', '#FF4646', '#FFBB2B'];
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const contactsContainer = document.getElementById('contactsContainer');
+
 let contactJSONBE = [];
+
 let contactJSON1 = {
   "email": "",
   "initials": "",
@@ -11,82 +13,19 @@ let contactJSON1 = {
 }
 
 
-
-
+/**
+ * This function loads the contacts from the backend into the local contact JSON
+ * 
+ */
 async function loadContacts() {
   contactJSONBE = await loadJSON(KEY_for_JSON_CONTACS);
 }
 
-async function addContactViaEditOverlay(i){
-  createButton.disabled = true
-  getContactsValuesEditOVerlay(i);
-  contactJSONBE.splice(i, 1);
-  contactJSONBE.push(contactJSON1);
-  await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
-  closeOvelayAfterNewContact()
-  createButton.disabled = false
 
-
-}
-
-async function addContact() {
-  createButton.disabled = true
-  loadContacts()
-  getContactsValues();
-  contactJSONBE.push(contactJSON1);
-  await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
-  closeOvelayAfterNewContact()
-  createButton.disabled = false
-}
-
-function closeOvelayAfterNewContact() {
-  displayNewContact()
-  contactsContainer.innerHTML = ''
-  createContactList()
-  closeAddContactOverlay()
-}
-
-function displayNewContact(){
-  let display= contactJSONBE.length - 1;
-  showContactInfo(display)
-}
-
-function getContactsValuesEditOVerlay(i){
-  let name = document.getElementById('inputName').value
-  let mail = document.getElementById('inputMail').value
-  let phone = document.getElementById('inputTel').value
-  let bgColor = contactJSONBE[i].bgColor
-  let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-
-  contactJSON1.email = mail
-  contactJSON1.initials = initial
-  contactJSON1.name = name
-  contactJSON1.bgColor = bgColor
-  contactJSON1.phone = phone
-
-}
-
-function getContactsValues() {
-  let name = document.getElementById('inputName').value
-  let mail = document.getElementById('inputMail').value
-  let phone = document.getElementById('inputTel').value
-  let bgColor = setColor()
-  let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-
-  contactJSON1.email = mail
-  contactJSON1.initials = initial
-  contactJSON1.name = name
-  contactJSON1.bgColor = bgColor
-  contactJSON1.phone = phone
-}
-
-
-function setColor() {
-  let i = contactJSONBE.length;
-  let color = colors[i % colors.length];
-  return color
-}
-
+/**
+ * This funtion renders the contactlist and fills it with the loaded contacts
+ * 
+ */
 async function createContactList() {
   await loadContacts();
   const contacts = contactJSONBE
@@ -102,7 +41,7 @@ async function createContactList() {
                 <hr class="letter-line">
                 <div class="contacts-list">
                     ${filteredContacts.map((contact, index) => {
-        const contactIndex = contacts.indexOf(contact); // Finde den Index des Kontakts im contacts-Array
+        const contactIndex = contacts.indexOf(contact);
         return `
                             <div class="contact" onclick="showContactInfo(${contactIndex})">
                                 <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
@@ -115,22 +54,141 @@ async function createContactList() {
       }).join('')}
                 </div>
             `;
-
       contactsContainer.innerHTML += html;
     }
   }
 }
 
 
+/**
+ * This funtion adds new contacts to the contacts JSON 
+ * 
+ */
+async function addContact() {
+  createButton.disabled = true
+  loadContacts()
+  getContactsValues();
+  contactJSONBE.push(contactJSON1);
+  await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
+  closeOvelayAfterNewContact()
+  createButton.disabled = false
+}
+
+
+/**
+ * This function renders the contactlist with new contacts, closes the overlay and displays the new contact
+ * 
+ */
+function closeOvelayAfterNewContact() {
+  displayNewContact()
+  contactsContainer.innerHTML = ''
+  createContactList()
+  closeAddContactOverlay()
+}
+
+
+/**
+ * This function displays the newly added contact 
+ * 
+ */
+function displayNewContact(){
+  let display= contactJSONBE.length - 1;
+  showContactInfo(display)
+}
+
+
+/**
+ * This funtion adds the newly edited contact to the contacts JSON and renders teh contactlist
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ */
+async function addContactViaEditOverlay(i){
+  createButton.disabled = true
+  getContactsValuesEditOVerlay(i);
+  contactJSONBE.splice(i, 1);
+  contactJSONBE.push(contactJSON1);
+  await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
+  closeOvelayAfterNewContact()
+  createButton.disabled = false
+}
+
+
+/**
+ * This function gets the values from the overlay inputfields that are needed for editing a contact 
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ */
+function getContactsValuesEditOVerlay(i){
+  let name = document.getElementById('inputName').value
+  let mail = document.getElementById('inputMail').value
+  let phone = document.getElementById('inputTel').value
+  let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+  let bgColor = contactJSONBE[i].bgColor  
+
+  contactJSON1.email = mail
+  contactJSON1.initials = initial
+  contactJSON1.name = name
+  contactJSON1.bgColor = bgColor
+  contactJSON1.phone = phone
+}
+
+
+/**
+ * This function gets the values from the overlay inputfields that are needed for adding a contact 
+ * 
+ */
+function getContactsValues() {
+  let name = document.getElementById('inputName').value
+  let mail = document.getElementById('inputMail').value
+  let phone = document.getElementById('inputTel').value
+  let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
+  let bgColor = setColor()
+
+  contactJSON1.email = mail
+  contactJSON1.initials = initial
+  contactJSON1.name = name
+  contactJSON1.bgColor = bgColor
+  contactJSON1.phone = phone
+}
+
+
+/**
+ * This funtion gives every new contact a color
+ * 
+ * @returns the color of the newly added contact 
+ */
+function setColor() {
+  let i = contactJSONBE.length;
+  let color = colors[i % colors.length];
+  return color
+}
+
+
+/**
+ * This function sets the responsive css for the contacts page 
+ * 
+ */
 function hideContactInfo() {
   document.getElementById('leftDiv').classList.remove('dd-none')
   document.getElementById('rightDiv').classList.add('dd-none')
   document.getElementById('rightDiv').classList.remove('rightDivRes')
 }
+
+
+/**
+ * This function sets the desctop view css fot the contacts page
+ * 
+ */
 function hideContactInfoDektop() {
   document.getElementById('ContactsInfoContainer').classList.add('dd-none')
 }
 
+
+/**
+ * This funtion displays the selected contact from the contactlist next to it
+ * 
+ * @param {number} i - index of the selected contact in the contacts JSON 
+ */
 function showContactInfo(i) {
   document.getElementById('ContactsInfoContainer').classList.remove('dd-none')
 
@@ -141,10 +199,15 @@ function showContactInfo(i) {
   }
 
   setContactInfo(i)
-
   setEditDeleteDivDesktop(i)
 }
 
+
+/**
+ * This funtion gets the values that are needes to display a selected conatct next to the conatctlist 
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ */
 function setContactInfo(i){
   let circle = document.getElementById('contactsCircle');
   let name = document.getElementById('contactsName');
@@ -158,6 +221,11 @@ function setContactInfo(i){
   phone.innerHTML = contactJSONBE[i].phone;
 }
 
+
+/**
+ * This function resets the HTML in the area where the selected contacts are displayed
+ * 
+ */
 function resetContactInfo(){
   let circle = document.getElementById('contactsCircle');
   let name = document.getElementById('contactsName');
@@ -171,6 +239,12 @@ function resetContactInfo(){
   phone.innerHTML = '';
 }
 
+
+/**
+ * This function assigns the contact that is going to be edited/deleted to the edit and delte buttons 
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ */
 function setEditDeleteDivDesktop(i) {
   document.getElementById('editDelteContactDektop').innerHTML = `
   <span onclick="editContact(${i})"><img src="../assets/img/edit_subtask.svg">Edit </span>
@@ -184,12 +258,22 @@ function setEditDeleteDivDesktop(i) {
 }
 
 
+/**
+ * This function edits a selected contact 
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ */
 function editContact(i){
   openAddContactOverlay()
   setEditContactOVerlay(i)
 }
 
 
+/**
+ * This function sets the edit contact interface and fills the inputfileds and initialscircle with the infotmation of the contact that is gooing to be edited
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ */
 function setEditContactOVerlay(i){
   editContactOverlayTemplate(i)
 
@@ -202,8 +286,7 @@ function setEditContactOVerlay(i){
   let inputTel = document.getElementById('inputTel')
  
   let overlayButtonDiv = document.getElementById('overlayButtonDiv')
-  
- 
+   
   overlayHeader.innerHTML = 'Edit Contact';
   overlayHeaderText.classList.add('dd-none')
   overlayCircle.innerHTML = contactJSONBE[i].initials;
@@ -221,6 +304,11 @@ function setEditContactOVerlay(i){
      src="../assets/img/check.svg"></button>`
 }
 
+
+/**
+ * This function sets the add contact interface
+ * 
+ */
 function setAddContactOVerlay(){
   addContactOverlayTemplate()
 
@@ -252,6 +340,12 @@ function setAddContactOVerlay(){
       src="../assets/img/check.svg"></button>`
 }
 
+
+/**
+ * This function deletes a contact from the contact JSON and renders the contactlist without the deleted contact 
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ */
 async function deleteContact(i) {
   contactJSONBE.splice(i, 1)
   await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
@@ -266,6 +360,10 @@ async function deleteContact(i) {
 }
 
 
+/**
+ * This function opens the add contact overlay
+ * 
+ */
 function openAddContactOverlay() {
   document.getElementById('body').classList.add('noScroll');
   document.getElementById('addContactMenu').classList.add('dd-none');
@@ -274,25 +372,46 @@ function openAddContactOverlay() {
   setAddContactOVerlay()
 }
 
+
+/**
+ * This function closes the add contact overlay 
+ * 
+ */
 function closeAddContactOverlay() {
   document.getElementById('body').classList.remove('noScroll');
   document.getElementById("addContactForm").reset();
   document.getElementById('addContactMenu').classList.remove('dd-none');
-  document.getElementById('createContactOverlay').classList.remove('show'); // Entferne show-Klasse
-  document.getElementById('createContactOverlay').classList.add('hide'); // Füge hide-Klasse hinzu
+  document.getElementById('createContactOverlay').classList.remove('show');
+  document.getElementById('createContactOverlay').classList.add('hide'); 
 }
 
 
+/**
+ * This function shows the edit and delete buttons in responsive view
+ * 
+ */
 function showEditDeletOverlay() {
   document.getElementById('editDeletOverlay').classList.add('show')
   document.getElementById('editDeletOverlay').classList.remove('hide')
 }
 
+
+/**
+ * This function hides the edit and delete buttons in responsive view
+ * 
+ */
 function hideEditDeletOverlay() {
   document.getElementById('editDeletOverlay').classList.add('hide')
   document.getElementById('editDeletOverlay').classList.remove('show')
 }
 
+
+/**
+ * This functions returns the HTML template for the edit contact overlay
+ * 
+ * @param {number} i - index of the edited contact in the contacts JSON
+ * @returns  HTML template for the edit contact overlay
+ */
 function editContactOverlayTemplate(i){
   let form = document.getElementById("contactsFooterOverlay").innerHTML =`
   <form id="addContactForm" class="inputArea" onsubmit="addContactViaEditOverlay(${i});return false">
@@ -313,6 +432,12 @@ function editContactOverlayTemplate(i){
   return form;
 }
 
+
+/**
+ * This functions returns the HTML template for the add contact overlay
+ * 
+ * @returns the HTML template for the add contact overlay
+ */
 function addContactOverlayTemplate(){
   let form = document.getElementById("contactsFooterOverlay").innerHTML =`
   <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
