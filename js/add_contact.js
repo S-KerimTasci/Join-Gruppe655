@@ -56,7 +56,7 @@ function getContactsValuesEditOVerlay(i){
   let mail = document.getElementById('inputMail').value
   let phone = document.getElementById('inputTel').value
   let bgColor = contactJSONBE[i].bgColor
-  let initial = contactJSONBE[i].initials
+  let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
 
   contactJSON1.email = mail
   contactJSON1.initials = initial
