@@ -5,7 +5,6 @@ font-face {
     src: url('../assets/fonts/Inter-Bold.woff') format('woff');
 }
 
-
 body {
     font-family: 'Inter';
 }
@@ -18,7 +17,11 @@ input {
     height: 6vh;
 }
 
-.textcap{
+.noScroll{
+    overflow: hidden;
+}
+
+.textcap {
     text-transform: capitalize;
 }
 
@@ -161,7 +164,7 @@ input {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     transition: bottom 0.4s ease-in-out;
-    height: calc(100% - 160px);
+    height: calc(100% - 156px);
 
 }
 
@@ -175,17 +178,18 @@ input {
 
 .createContactOverlay.hide {
     bottom: -100%
-    /* Zurück zur Startposition unten */
+        /* Zurück zur Startposition unten */
 }
 
 .contactsHeaderOverlay {
     background-color: #2A3647;
     color: white;
-    padding: 66px 24px 66px 24px;
+    padding: 3vh 2vw 3vh 2vw;
+    /*padding: 66px 24px 66px 24px;*/
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     margin-bottom: -50px;
-    height: 260px;
+    /*height: 260px;*/
     position: relative;
 }
 
@@ -204,7 +208,7 @@ input {
 .createContactProfile {
     display: flex;
     justify-content: center;
-    background-color: none;
+    background-color: white;
 }
 
 .contactsFooterOverlay {
@@ -385,17 +389,18 @@ input {
 }
 
 .editDeletDiv {
-    display: none; 
+    display: none;
 }
 
-.editDeletOverlay.show{
+.editDeletOverlay.show {
     right: 10px;
 }
-.editDeletOverlay.hide{
+
+.editDeletOverlay.hide {
     right: -100%;
 }
 
-.editDeletOverlay{
+.editDeletOverlay {
     height: 100px;
     width: 116px;
     background-color: white;
@@ -416,8 +421,48 @@ input {
     gap: 8px;
     border: none;
     background-color: transparent;
-    
 
+
+}
+
+@media (max-width: 750px) {
+    .createContactOverlay{
+        background: rgba(0, 0, 0, 0.089);
+        border-radius: 0;
+    }
+    .contactsHeaderOverlay {
+        background-color: #2A3647;
+        padding: 7vh 5vw 5vh 7vw;;
+        /*padding: 3vh 2vw 3vh 2vw;*/
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        margin-bottom: -40px;
+        height: 180px;
+        position: relative;
+    }
+
+    .overlayHeaderText {
+        margin-bottom: 0;
+    }
+
+    .blueline {
+        width: 85px;
+        height: 3px;
+    }
+
+    .circleoverlay {
+        height: 90px;
+        width: 90px;
+    }
+
+    .contactsFooterOverlay{
+        height: calc(100vh - 390px);
+    }
+
+    input {
+        width: 80vw;
+        height: 5vh;
+    }
 }
 
 @media (min-width: 750px) {

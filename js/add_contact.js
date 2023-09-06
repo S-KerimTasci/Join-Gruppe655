@@ -267,6 +267,7 @@ async function deleteContact(i) {
 
 
 function openAddContactOverlay() {
+  document.getElementById('body').classList.add('noScroll');
   document.getElementById('addContactMenu').classList.add('dd-none');
   document.getElementById('createContactOverlay').classList.remove('hide'); // Entferne hide-Klasse
   document.getElementById('createContactOverlay').classList.add('show'); // Füge show-Klasse hinzu
@@ -274,6 +275,7 @@ function openAddContactOverlay() {
 }
 
 function closeAddContactOverlay() {
+  document.getElementById('body').classList.remove('noScroll');
   document.getElementById("addContactForm").reset();
   document.getElementById('addContactMenu').classList.remove('dd-none');
   document.getElementById('createContactOverlay').classList.remove('show'); // Entferne show-Klasse
