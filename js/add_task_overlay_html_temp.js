@@ -2,7 +2,7 @@ function htmlAddTaskOverlay() {
     document.getElementById('idAddTaskOverlay').innerHTML = /*html*/`
     <section id="idBgAddTaskOverlay" class="backgroundTaskOverlay" onclick="closeOverlay('idAddTaskOverlay')">
         
-            <form id="idAddTaskForm" onsubmit="storeNewTask(); return false" class="addTaskOvGeneralSettings" onclick="innerClick(event)">
+            <form id="idAddTaskForm" onsubmit="storeNewTask(); return false" class="addTaskOvGeneralSettings" onclick="innerClick(event)" autocomplete="off">
 
                 <h1 id="idHeadlineAddTask" class="headlineAddTaskOv">Add Task</h1>
                 <div id="idContentContainerAddTaskOv" class="contentContainerAddTaskOv">
@@ -52,12 +52,12 @@ function htmlAddTaskOverlay() {
                     </div>
                     <div id="idInputAssignedToContainerAddTaskOv" class="mt-3 d-flex flex-column">
                         <label for="idInputAssignedToAddTaskOv">Assigned To</label>
-                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames(); renderTaskMember()">
+                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames()"> <!-- ; renderTaskMember() -->
                             <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow"
                                 placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                         </div>
-                        <div id="idSelectedUserAddTaskOv"><!-- hier kommen die User rein, die ausgewählt wurden --></div>
-                        <div id="idChkSelectMultUserOuterConOv" class="chkSelectMultUserOuterConOv">
+                        <div id="idSelectedUserAddTaskOv" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
+                        <div id="idChkSelectMultUserOuterConOv" class=""> <!-- chkSelectMultUserOuterConOv -->
                             <div id="idCheckboxesSelectMultUserOv" class="checkboxesSelectMultUserOv">
                                 <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
                             </div>
@@ -111,7 +111,7 @@ function userOvHTML(memberName, memberColor, memberinitials, i) {
         </div>
         <span id="idAssingedToName${i}">${memberName}</span>
         <div class="chkContainerAssingdTo">
-            <input id=idAssingedToChk${i} type="checkbox" class="check_box chkHeight" >
+            <input id=idAssingedToChk${i} type="checkbox" class="check_box chkHeight">
             <label for=idAssingedToChk${i}></label>
         </div>
     </div>`

@@ -1,16 +1,12 @@
 
 
-function renderEditTask(taskNr) {
+async function renderEditTask(taskNr) {
     activTaskNumber = taskNr;
-    openAddtaskOverlay();
+    await openAddtaskOverlay();
     document.getElementById('idHeadlineAddTask').innerText = "Edit Task";
     addDataEditTaskOverlay(taskNr);
-    
 }
-function renderTaskMember() {
-    //debugger;
-    document.getElementById('idHeadlineAddTask').innerText === "Edit Task" ? setChkForTaskMember(taskJson[activTaskNumber].member) : ''; 
-}
+
 
 /**
  * this function calls different function for adding values from task JSON to html
@@ -29,17 +25,22 @@ function addDataEditTaskOverlay(taskNr) {
  * @param {object} activeTask - contains active task
  */
 function editTaskLoadValues(activeTask) {
+    
     document.getElementById('idInputTitleAddTaskOv').value = activeTask.headline;
     document.getElementById('idInputDescriptionAddTaskOv').value = activeTask.description;
     let prio = activeTask.urgency;
+    task2.urgency = prio;
     document.getElementById('id' + prio + 'ContainerAddTaskOv').classList.add(prio)
     document.getElementById('id' + prio + 'IMGAddTaskOv').src = `../assets/img/prio_${prio}_white.svg`
     document.getElementById('idInputDueDateAddTaskOv').value = new Date(activeTask.dueDate).toISOString().split('T')[0];
     document.getElementById('idSelectCategoryAddTaskOv').selectedIndex = selectCategory(activeTask.taskType);
     getSubtasks(activeTask);
     addSubtask();
-    //setChkForTaskMember(activeTask.member);
+    document.getElementById('idHeadlineAddTask').innerText === "Edit Task" ? setChkForTaskMember(taskJson[activTaskNumber].member) : '';
+    document.getElementById("idSelectedUserAddTaskOv").innerHTML = taskOverlayMemberDiskContainer();
+    document.getElementById("idSubmitButtonAddTaskOv").innerText = 'Edit Task';
 }
+
 
 function getSubtasks(activeTask) {
     subtaskObj = [];
@@ -56,18 +57,12 @@ function selectCategory(cat) {
 }
 
 function setChkForTaskMember(taskMember) {
-     //showUserNames();
-     //debugger;
     for (let i = 0; i < taskMember.length; i++) {
         const contactIndex = contactJSON.findIndex(contact => contact.name === taskMember[i]);
-        console.log(contactIndex);
         let chkChecked = document.getElementById('idAssingedToChk' + contactIndex);
         if (contactIndex != -1) {
             chkChecked.checked = true;
+            task2.member.push(taskMember[i]);
         }
     }
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-
-});

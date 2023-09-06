@@ -1,6 +1,6 @@
 let expanded = false;
 let subtaskPlus = true;
-let currentPrio ='';
+//let currentPrio = '';
 let subtaskObj = [];
 let activTaskNumber = '';
 let task2 = {
@@ -19,28 +19,28 @@ let task2 = {
 
 function resetTask2() { // ich denke ich kann die deklaration uf let = {} beschränken
     task2 = {
-        "taskId": "", 
-        "taskType": "", 
-        "dueDate": "", 
-        "status": "", 
-        "headline": "", 
-        "description": "", 
-        "doneSubTasks": "", 
-        "subTaskTotal": "", 
+        "taskId": "",
+        "taskType": "",
+        "dueDate": "",
+        "status": "",
+        "headline": "",
+        "description": "",
+        "doneSubTasks": "",
+        "subTaskTotal": "",
         "subTaskText": [],
         "member": [],
         "urgency": ""
-    } 
+    }
 }
 
 
 /* functions for highlight the priority button start */
 function highlight(prio) {
-    if (currentPrio == prio) {
+    if (task2.urgency == prio) { 
         removeHighlight()
     } else {
         removeHighlight()
-        currentPrio = prio;
+        task2.urgency = prio; 
         document.getElementById('id' + prio + 'ContainerAddTaskOv').classList.add(prio)
         document.getElementById('id' + prio + 'IMGAddTaskOv').src = `../assets/img/prio_${prio}_white.svg`
     }
@@ -53,21 +53,28 @@ function removeHighlight() {
         document.getElementById('id' + element + 'ContainerAddTaskOv').classList.remove(element)
         document.getElementById('id' + element + 'IMGAddTaskOv').src = `../assets/img/prio_${element}.svg`
     });
-    currentPrio = '';
+    task2.urgency = ''; 
 }
 /* functions for highlight the priority button end */
 
 
 // hier muss noch eine Funktion rein, die die memberplaketten unter den assinged to container lädt.
 function showUserNames() {
-    let checkboxes = document.getElementById("idChkSelectMultUserOuterConOv");
     if (!expanded) {
-        checkboxes.style.display = "block";
+        toggleDivUsrDropVsMemberDisk();
         expanded = true;
     } else {
-        checkboxes.style.display = "none";
+        toggleDivUsrDropVsMemberDisk();
+        document.getElementById("idSelectedUserAddTaskOv").innerHTML = taskOverlayMemberDiskContainer();
         expanded = false;
     }
+}
+
+function toggleDivUsrDropVsMemberDisk() {
+    let checkboxes = document.getElementById("idChkSelectMultUserOuterConOv");
+    let memberDisks = document.getElementById("idSelectedUserAddTaskOv");
+    memberDisks.classList.toggle('d-none');
+    checkboxes.classList.toggle('d-none');
 }
 
 
@@ -87,7 +94,6 @@ function switchIons(count) {
 
 //Code changed by Alex ~~~~~ start
 function addSubtask() {
-    
     let subtask = document.getElementById('idSubtaskAddTaskOv');
     subtask.value !== '' ? subtaskObj.push(subtask.value) : '';
     document.getElementById('idRenderedSubtaskAddTaskOv').innerHTML = '';
@@ -119,24 +125,27 @@ function editSubtaskText(count) {
 
 
 async function storeNewTask() {
+    const taskBtn = document.getElementById('idSubmitButtonAddTaskOv').innerText;
     taskJson = await loadJSON(KEY_for_JSON_TASKS);
     getValuesForTaskArr();
-    taskJson.push(task2);
-    setItem(KEY_for_JSON_TASKS, taskJson);
-    subtaskObj = [];
     closeOverlay('idAddTaskOverlay');
+    if (taskBtn === 'Edit Task') {
+        taskJson[activTaskNumber] = task2;  
+        renderOverlayTask(activTaskNumber);
+    } else {
+        taskJson.push(task2);
+        subtaskObj = [];   
+    }
+    setItem(KEY_for_JSON_TASKS, taskJson); 
 }
 
 
 function getValuesForTaskArr() {
     task2.taskId = calcTaskId();
-    task2.status = "toDo";
-    task2.urgency = currentPrio;
+    task2.status = taskJson[activTaskNumber] ? taskJson[activTaskNumber].status : 'toDo';
+    task2.urgency = task2.urgency === '' ? task2.urgency = 'low' : task2.urgency;
     getValuesFromForm();
     getSubtaskFromForm();
-    console.log(task2);
-    //debugger;
-    //getMembersFromForm();
 }
 
 
@@ -167,27 +176,13 @@ async function loadContacts() {
 }
 
 
-
-
-/* function getMembersFromForm() {
-    task2.member = [];
-    let myArr = document.querySelectorAll('chkContainerAssingdTo');
-    for (let i = 0; i < myArr.length; i++) {
-    let CHKBOXARR = document.getElementsByClassName('idAssingedToChk' + i);
-    
-        if (CHKBOXARR.checked == true) {
-            task2.member.push(document.getElementById("idAssingedTName" + i).innerText); 
-        }
-    }      
-}
- */
-
 function calcTaskId() {
     for (let i = 0; i < taskJson.length; i++) {
         taskJson[i].taskId = i + 1;
     }
     return taskJson.length + 1;
 }
+
 
 function clearAddTaskForm() {
     document.getElementById('idRenderedSubtaskAddTaskOv').innerHTML = '';
@@ -196,21 +191,54 @@ function clearAddTaskForm() {
 }
 
 
-function openAddtaskOverlay() {
+async function openAddtaskOverlay() {
     resetTask2();
     htmlAddTaskOverlay();
-    loadContacts();
+    await loadContacts();
+    document.getElementById('idChkSelectMultUserOuterConOv').classList.add('d-none');
 }
+
 
 function toggleChkBox(chkNr) {
     let chkChecked = document.getElementById('idAssingedToChk' + chkNr);
     if (chkChecked.checked) {
-        chkChecked.checked = false
+        chkChecked.checked = false;
         task2.member = task2.member.filter(item => item !== document.getElementById('idAssingedToName' + chkNr).innerText);
     } else {
-        chkChecked.checked = true
+        chkChecked.checked = true;
         task2.member.push(document.getElementById('idAssingedToName' + chkNr).innerText);
+        task2.member = [...new Set(task2.member)];
     }
-     console.log(task2.member);
-    
+}
+
+/**
+ * this function returns the complete HTML code for all members of this task
+ * 
+ * @returns - HTML Code for all member of task
+ */
+function taskOverlayMemberDiskContainer() {
+    let memberHTML = '';
+    for (let i = 0; i < task2.member.length; i++) {
+        const contactMember = contactJSON.find(contact => contact.name === task2.member[i]);
+        if (contactMember) {
+            const memberColor = contactMember.bgColor.slice(1);
+            memberHTML += taskOverlayMemberDiskHTML(memberColor, contactMember.initials, i);
+        }
+    }
+    return memberHTML
+}
+
+/**
+ * this function returns the HTML code for a single member of this task
+ * 
+ * @param {string} memberColor - background color for disk of member
+ * @param {string} memberinitials - intitials of member
+ * @param {number} i - count of loop
+ * @returns - HTML for single member of this task
+ */
+function taskOverlayMemberDiskHTML(memberColor, memberinitials, i) {
+    return /*html*/ `
+    <div id="idTaskMemberSubContainerOV${i}" class="singleTaskMemberSubContainerOV px-1">
+        <div id="idTaskMemberInitialsOv${i}" class="memberDiskOv memberBgColor${memberColor}">${memberinitials}</div>
+    </div>`
 }
