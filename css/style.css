@@ -71,6 +71,10 @@ textarea:focus-within {
     align-items: center;
 }
 
+button:hover{
+    background: #29ABE2;
+}
+
 
 
 .memberBgColorFF7A00{background-color: #FF7A00;}

@@ -196,6 +196,7 @@ async function openAddtaskOverlay() {
     htmlAddTaskOverlay();
     await loadContacts();
     document.getElementById('idChkSelectMultUserOuterConOv').classList.add('d-none');
+    document.getElementById('idInputDueDateAddTaskOv').min = new Date().toISOString().split('T')[0];
 }
 
 

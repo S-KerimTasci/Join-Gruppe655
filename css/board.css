@@ -69,6 +69,7 @@ body {
 .BoardHead1 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 /* search container start */
@@ -108,7 +109,11 @@ body {
     width: 1px;
     background-color: #D1D1D1;
 }
-
+.hideSmallBtnH1 {
+    background: #2A3647;
+    border-radius: 10px;
+    height: 40px;
+}
 .hideSmallBtnH2 {
     display: none;
 }
@@ -179,10 +184,14 @@ body {
 
     .hideSmallBtnH2 {
         display: block;
+        background: #2A3647;
+        border-radius: 10px;
     }
 
     .hideSmallBtnH1 {
         display: none;
+        background: #2A3647;
+        border-radius: 10px;
     }
 }
 

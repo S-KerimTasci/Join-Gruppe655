@@ -93,9 +93,9 @@ function htmlAddTaskOverlay() {
 }
 
 function userOvHTMLButton() {
-    return `
+    return /*html*/`
     <div id="idChkSelectMultUserButtonOv" class="d-flex  ">
-        <button class="flex-fill justify-content-center taskButton" onclick="">
+        <button class="flex-fill justify-content-center taskButton" onclick="openAddContactOverlay()">
             <div>
                 <span>Add new cotact</span>
                 <img src="" alt="">

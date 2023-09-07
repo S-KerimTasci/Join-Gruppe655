@@ -7,7 +7,11 @@
     padding: 16px;
     border-radius: 24px;
     background-color: white;
+    transition: transform 200ms;
+}
 
+.singleTaskContainer:hover{
+  transform: rotate(2deg);
 }
 
 .singlTaskType {
@@ -22,6 +26,7 @@
     font-size: 16px;
     font-weight: 400;
 }
+
 /* css for dropdown for changing status */
 .changeStatus {
     border: 0;
@@ -37,7 +42,6 @@
 .changeStatus:focus {
     color: rgb(51, 129, 219);
     transform: rotate(15deg);
-    /* transition: all 300ms ease-in-out; */
 }
 
 .custom-select::-ms-expand {
