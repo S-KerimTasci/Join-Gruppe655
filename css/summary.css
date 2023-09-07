@@ -85,6 +85,17 @@
     width: 175px;
     /* background-color: #29ABE2 !important; */
 }
+#idPencilImg{
+    width: 40px;
+    height: 40px;
+    background: url("../assets/img/summeryPencil.svg") no-repeat;
+}
+
+#idDoneImg{
+    width: 40px;
+    height: 40px;
+    background: url("../assets/img/summeryDone.svg") no-repeat;
+}
 
 .taskNumbers {
     font-size: 47px;
@@ -98,13 +109,25 @@
     margin: 0;
 }
 
-.containerShadow {
+.contShadowHover {
     box-shadow: 0px 0px 4px 0px #0000001A;
     border-radius: 20px;
     background-color: white;
-    /* background-color: #29ABE2 !important; */
+}
+.contShadowHover:hover {
+    background: #2A3647;
+    color: white;
 }
 
+.taskRestOvWidth:hover #idPencilImg{
+    background: url(../assets/img/summaryPencil.svg) no-repeat ;
+    background-size: cover;
+}
+
+.taskRestOvWidth:hover #idDoneImg{
+    background: url(../assets/img/summaryDonewhiteBg.svg) no-repeat ;
+    background-size: cover;
+}
 
 .showWelcome h2 {
     font-size: 36px;
@@ -135,7 +158,6 @@
 
     .taskRestOvWidth {
         width: 186px;
-
     }
 }
 
@@ -153,15 +175,13 @@
         display: flex !important;
         width: auto;
         position: static;
+        align-items: baseline !important;
+        flex: 1;
     }
 
     .showWelcome h2 {
         font-size: 47px;
-        font-weight: 500;
-    }
-
-    .showWelcome h1 {
-        font-size: 64px;
+        font-weight: 500; 
     }
 
     .summarHeader {
@@ -205,6 +225,12 @@
         font-size: 27px;
     }
 
+    .showWelcome {
+        justify-content: start;
+    }
+    .showWelcome h1 {
+        font-size: 64px;
+    }
     .taskOverviewSize {
         width: 560px;
         height: 561px;
@@ -260,7 +286,6 @@
 
     .taskRestOvWidth img {
         height: 69px;
-
     }
 
 
