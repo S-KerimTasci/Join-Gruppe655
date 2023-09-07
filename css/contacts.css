@@ -194,7 +194,7 @@ input {
 
 .contactAddedOVerlay.hide {
     bottom: -100%;
-    right: -300px;
+    right: -3000px;
 }
 
 .contactsHeaderOverlay {
@@ -571,18 +571,18 @@ input {
     }
 
     .contactAddedOVerlay{
-        right: -300px;
+        right: -3000px;
         transition: right 0.4s ease-in-out;
 
     }
-    
+
     .contactAddedOVerlay.show {
         right: calc((100% - 326px)/2);
         bottom: 200px;
     }
-    
+
     .contactAddedOVerlay.hide {
-        right: -300px;
+        right: -3000px;
         bottom: 200px;
         transition: right 0.4s ease-in-out;
     }

@@ -401,6 +401,14 @@ function showContactAddedOverlay(){
 function hideContactAddedOverlay(){
   document.getElementById('contactAddedOVerlay').classList.add('hide')
   document.getElementById('contactAddedOVerlay').classList.remove('show')
+  //document.getElementById('contactAddedOVerlay').classList.remove('hide')
+}
+
+/**
+ * This function resets the contact succesfully created overlay CSS
+ */
+function resetContactAddedOverlay(){
+  document.getElementById('contactAddedOVerlay').classList.remove('hide')
 }
 
 
@@ -415,6 +423,11 @@ function showAndHideContactAddedOverlay(){
   setTimeout(function () {
     hideContactAddedOverlay(); // Verstecke das Overlay nach 2 Sekunden
   }, 2000);
+  //document.getElementById('contactAddedOVerlay').classList.remove('hide')
+  
+  /*setTimeout(function () {
+    resetContactAddedOverlay()
+  }, 500);*/
 }
 
 /**
