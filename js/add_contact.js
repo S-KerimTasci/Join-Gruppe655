@@ -84,6 +84,7 @@ function closeOvelayAfterNewContact() {
   contactsContainer.innerHTML = ''
   createContactList()
   closeAddContactOverlay()
+  showAndHideContactAddedOverlay()
 }
 
 
@@ -385,6 +386,36 @@ function closeAddContactOverlay() {
   document.getElementById('createContactOverlay').classList.add('hide'); 
 }
 
+
+/**
+ * This function shows the contact succesfully created overlay
+ */
+function showContactAddedOverlay(){
+  document.getElementById('contactAddedOVerlay').classList.remove('hide')
+  document.getElementById('contactAddedOVerlay').classList.add('show')
+}
+
+/**
+ * This function hides the contact succesfully created overlay
+ */
+function hideContactAddedOverlay(){
+  document.getElementById('contactAddedOVerlay').classList.add('hide')
+  document.getElementById('contactAddedOVerlay').classList.remove('show')
+}
+
+
+/**
+ * This function shows and hides the contact succesfully created overlay after 2 seconds
+ * 
+ */
+function showAndHideContactAddedOverlay(){
+  setTimeout(function () {
+    showContactAddedOverlay()
+  }, 300);
+  setTimeout(function () {
+    hideContactAddedOverlay(); // Verstecke das Overlay nach 2 Sekunden
+  }, 2000);
+}
 
 /**
  * This function shows the edit and delete buttons in responsive view

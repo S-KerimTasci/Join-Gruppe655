@@ -167,6 +167,36 @@ input {
     bottom: -100%
 }
 
+.contactAddedOVerlay{
+    color: white;
+    background-color: #2A3647;
+    width: 326px;
+    height: 74px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    border: none;
+    border-radius: 20px;
+    bottom: -100%;
+    right: -300px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: bottom 0.4s ease-in-out;
+    z-index: 1200;
+}
+
+.contactAddedOVerlay.show {
+    bottom: 200px;
+    right: calc((100% - 326px)/2);
+}
+
+.contactAddedOVerlay.hide {
+    bottom: -100%;
+    right: -300px;
+}
+
 .contactsHeaderOverlay {
     background-color: #2A3647;
     color: white;
@@ -406,6 +436,8 @@ input {
     background-color: transparent;
 }
 
+
+
 @media (max-width: 750px) {
     .createContactOverlay{
         background: rgba(0, 0, 0, 0.089);
@@ -538,6 +570,23 @@ input {
         transition: right 0.4s ease-in-out;
     }
 
+    .contactAddedOVerlay{
+        right: -300px;
+        transition: right 0.4s ease-in-out;
+
+    }
+    
+    .contactAddedOVerlay.show {
+        right: calc((100% - 326px)/2);
+        bottom: 200px;
+    }
+    
+    .contactAddedOVerlay.hide {
+        right: -300px;
+        bottom: 200px;
+        transition: right 0.4s ease-in-out;
+    }
+
     .overlayLogo {
         display: unset;
     }
@@ -604,5 +653,6 @@ input {
 
     .editDeletDiv {
         display: unset;
+        cursor: pointer;
     }
 }
