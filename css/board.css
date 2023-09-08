@@ -50,6 +50,7 @@ body {
     flex: 1;
     padding: 5px;
 }
+
 .taskContainer::-webkit-scrollbar {
     height: 10px;
 }
@@ -109,11 +110,18 @@ body {
     width: 1px;
     background-color: #D1D1D1;
 }
+
 .hideSmallBtnH1 {
     background: #2A3647;
     border-radius: 10px;
     height: 40px;
+    width: 40px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 .hideSmallBtnH2 {
     display: none;
 }
@@ -183,9 +191,14 @@ body {
     }
 
     .hideSmallBtnH2 {
-        display: block;
         background: #2A3647;
         border-radius: 10px;
+        height: 40px;
+        width: 40px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .hideSmallBtnH1 {
@@ -260,6 +273,7 @@ body {
     .boardGeneralSettings {
         padding: 0 64px;
     }
+
     .boardHeading {
         font-size: 61px;
     }
@@ -274,7 +288,7 @@ body {
         align-items: center;
         margin-top: 0;
         padding: 0 8px 0 8px;
-       
+
     }
 
     .contentBoard h3 {

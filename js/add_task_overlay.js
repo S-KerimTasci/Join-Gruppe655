@@ -59,13 +59,13 @@ function removeHighlight() {
 
 
 // hier muss noch eine Funktion rein, die die memberplaketten unter den assinged to container lädt.
-function showUserNames() {
+function showUserNames(desk) {
     if (!expanded) {
         toggleDivUsrDropVsMemberDisk();
         expanded = true;
     } else {
         toggleDivUsrDropVsMemberDisk();
-        document.getElementById("idSelectedUserAddTaskOv").innerHTML = taskOverlayMemberDiskContainer();
+        document.getElementById('idSelectedUserAddTask' + desk + 'Ov').innerHTML = taskOverlayMemberDiskContainer();
         expanded = false;
     }
 }
@@ -166,13 +166,13 @@ function getSubtaskFromForm() {
     }
 }
 
-async function loadContacts() {
-    document.getElementById('idCheckboxesSelectMultUserOv').innerHTML = '';
+async function loadContacts(desk) {
+    document.getElementById('idCheckboxesSelectMultUser' + desk + 'Ov').innerHTML = '';
     contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
     for (let i = 0; i < contactJSON.length; i++) {
-        document.getElementById('idCheckboxesSelectMultUserOv').innerHTML += userOvHTML(contactJSON[i].name, contactJSON[i].bgColor.slice(1), contactJSON[i].initials, i)
+        document.getElementById('idCheckboxesSelectMultUser' + desk + 'Ov').innerHTML += userOvHTML(contactJSON[i].name, contactJSON[i].bgColor.slice(1), contactJSON[i].initials, i)
     }
-    document.getElementById('idChkSelectMultUserOuterConOv').innerHTML += userOvHTMLButton();
+    document.getElementById('idChkSelectMultUserOuterCon' + desk + 'Ov').innerHTML += userOvHTMLButton();
 }
 
 
@@ -194,7 +194,8 @@ function clearAddTaskForm() {
 async function openAddtaskOverlay() {
     resetTask2();
     htmlAddTaskOverlay();
-    await loadContacts();
+    let desk = document.getElementById('idInputAssignedToContainerDesktopAddTaskOv').classList.contains('d-none') ? '' : 'Desk';
+    await loadContacts(desk);
     document.getElementById('idChkSelectMultUserOuterConOv').classList.add('d-none');
     document.getElementById('idInputDueDateAddTaskOv').min = new Date().toISOString().split('T')[0];
 }

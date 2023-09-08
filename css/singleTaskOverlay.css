@@ -117,6 +117,9 @@
     padding: 6px 16px;
     gap: 16px;
 }
+.singleTaskSubTaskSubContainerOV:hover {
+    background-color: #5e626975;
+}
 
 .check_box {
     display:none;

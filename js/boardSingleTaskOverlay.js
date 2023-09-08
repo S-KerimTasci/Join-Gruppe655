@@ -24,7 +24,7 @@ function singleTaskOvHtmlTemp(taskNr) {
             <div id="idBgInnerContainerTaskOverlay" class="bgInnerContainerTaskOverlay taskOvText">
                 <div id="idTopAreaOv" class="topAreaOv d-flex justify-content-between">
                     <div id="idTaskTypeOv" class="singlTaskType"> </div>
-                    <div id="idTaskCloseOv" role="button" onclick="closeOverlay('idTaskOverlay')">
+                    <div id="idTaskCloseOv" class="customButton" role="button" onclick="closeOverlay('idTaskOverlay')">
                         <img src="../assets/img/taskOverlayClose.svg" alt="">
                     </div>
                 </div>
@@ -55,12 +55,12 @@ function singleTaskOvHtmlTemp(taskNr) {
                 </div>
                 <div id="idBottomAreaOv" class="d-flex justify-content-end">
                     <div id="idBottomAreaContainerOv" class="d-flex align-item-center">
-                        <div id="idDeleteContainerOv" class="bottomAreaSubContainer" role="button" onclick="deleteTask(${taskNr})">
+                        <div id="idDeleteContainerOv" class="bottomAreaSubContainer customButton" role="button" onclick="deleteTask(${taskNr})">
                             <img src="../assets/img/taskOverlayTrash.svg" alt="waste">
                             <span>Delete</span>
                         </div>
                         <div id="idBottomAreaContainerSeparatorOv" class="bottomAreaContainerSeparatorOv"></div> 
-                        <div id="idEditContainer"  class="bottomAreaSubContainer">
+                        <div id="idEditContainer"  class="bottomAreaSubContainer customButton"  role="button">
                             <img src="../assets/img/taskOverlayEdit.svg" alt="edit" onclick="renderEditTask(${taskNr})">
                             <span>Edit</span>
                         </div>
@@ -203,7 +203,7 @@ function taskOverlaySubTaskContainer(TASKS, activeTaskNr) {
  */
 function taskOverlaySubTaskHTML(taskLabel, taskChecked, activeTaskNr, i) {
     return /*html*/ `
-    <div id="idSingleSubTaskContainerOv${i}"  class="singleTaskSubTaskSubContainerOV"  onchange="checkUncheckSubtask(${activeTaskNr})">
+    <div id="idSingleSubTaskContainerOv${i}"  class="singleTaskSubTaskSubContainerOV" role="button" onchange="checkUncheckSubtask(${activeTaskNr})">
         <input id="idSingleSubTaskChkboxOv${i}" type="checkbox" class="check_box" ${taskChecked}>
         <label id="idSingleSubTaskLabelOv${i}" for="idSingleSubTaskChkboxOv${i}">${taskLabel}</label>
     </div>`
