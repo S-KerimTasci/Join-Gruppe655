@@ -481,33 +481,6 @@ input {
     }
 }
 
-/*
-@media (max-width: 1250px) and (min-width: 750px)
-    .createContactOverlay.show {
-        right: calc((100% - 740px)/2);
-    }
-
-    .createContactOverlay {
-        padding: 0;
-        width: 740px;
-    }
-
-    .circleoverlay {
-        height: 90px;
-        width: 90px;
-    }
-
-    .contactsFooterOverlay {
-        padding-right: 0;
-        width: 330px;
-    }
-
-    input {
-        width: 298px;
-    }
-}
-*/
-
 @media (min-width: 750px) {
     input {
         width: 422px;
@@ -731,5 +704,12 @@ input {
         font-size: 35px;
         line-height: 45px;
         margin-bottom: 4px;
+    }
+    
+}
+
+@media (min-width: 1350px){
+    .createContactOverlay.show {
+        right: calc((100% - 1212px)/2);
     }
 }
