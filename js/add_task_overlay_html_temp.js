@@ -1,7 +1,7 @@
 function htmlAddTaskOverlay() {
     document.getElementById('idAddTaskOverlay').innerHTML = /*html*/`
     <section id="idBgAddTaskOverlay" class="backgroundTaskOverlay" onclick="closeOverlay('idAddTaskOverlay')">
-        <form id="idAddTaskForm" onsubmit="storeNewTask(); return false" class="addTaskOvGeneralSettings" onclick="innerClick(event)" autocomplete="off">
+        <form id="idAddTaskForm" onsubmit="storeNewTask(true); return false" class="addTaskOvGeneralSettings" onclick="innerClick(event)" autocomplete="off">
             <h1 id="idHeadlineAddTask" class="headlineAddTaskOv">Add Task</h1>
             <div id="idContentContainerAddTaskOv" class="contentContainerAddTaskOv">
                 <div id="idContentDeskLeftContainerAddTaskOv" class="ContentDeskContainerAddTaskOv">
@@ -17,13 +17,13 @@ function htmlAddTaskOverlay() {
                             placeholder="Enter a Description" required></textarea>
                         <span class="requiredInfo">This field is required</span>
                     </div>
-                    <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 d-flex flex-column">
+                    <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column"> <!-- assingToDesk -->
                         <label for="idInputAssignedToAddTaskDeskOv">Assigned To</label>
-                        <div id="idSelectMultUserDeskOv" class="selectMultUserOv" onclick="showUserNames('Desk')"> <!-- ; renderTaskMember() -->
+                        <div id="idSelectMultUserDeskOv" class="selectMultUserOv" onclick="showUserNames('DeskOv')"> <!-- ; renderTaskMember() -->
                             <input type="search" id="idInputAssignedToAddTaskDeskOv" class="selectContainerOv selectArrow"
                                 placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                         </div>
-                        <div id="idSelectedUserAddTaskDeskOv" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
+                        <div id="idSelectedUserAddTaskDeskOv" class="d-flex"><!-- hier kommen die User rein, die ausgewählt wurden --></div>
                         <div id="idChkSelectMultUserOuterConDeskOv" class=""> <!-- chkSelectMultUserOuterConOv -->
                             <div id="idCheckboxesSelectMultUserDeskOv" class="checkboxesSelectMultUserOv">
                                 <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
@@ -69,7 +69,7 @@ function htmlAddTaskOverlay() {
                     </div>
                     <div id="idInputAssignedToContainerAddTaskOv" class="assingToMob mt-3 d-flex flex-column">
                         <label for="idInputAssignedToAddTaskOv">Assigned To</label>
-                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames('')"> <!-- ; renderTaskMember() -->
+                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames('Ov')"> <!-- ; renderTaskMember() -->
                             <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow"
                                 placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                         </div>
@@ -101,7 +101,7 @@ function htmlAddTaskOverlay() {
                     </div>
                 </div>
             </div>
-            <div id="idSubmitContainerAddTaskOv" onsubmit="storeNewTask()"
+            <div id="idSubmitContainerAddTaskOv" onsubmit="storeNewTask(true)"
                 class="submitContainerAddTaskOv d-flex justify-content-end align-items-center">
                 <button id="idSubmitButtonAddTaskOv" type="onsubmit" class="taskButton">Create Task <img
                         src="../assets/img/check.svg"></button>

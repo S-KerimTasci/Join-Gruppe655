@@ -42,7 +42,7 @@
 
 </head>
 
-<body onload="init()">
+<body onload="init(); loadContatsToAssinged(false)">
     <div id="idBackgroundContainer">
         <div id="idHeaderBody">
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
@@ -63,15 +63,15 @@
                                     placeholder="Enter a Description" required></textarea>
                                 <span class="requiredInfo">This field is required</span>
                             </div>
-                            <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 d-flex flex-column">
+                            <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column">
                                 <label for="idInputAssignedToAddTaskDeskOv">Assigned To</label>
-                                <div id="idSelectMultUserDeskOv" class="selectMultUserOv" onclick="showUserNames('Desk')"> <!-- ; renderTaskMember() -->
+                                <div id="idSelectMultUserDesk" class="selectMultUserOv" onclick="showUserNames('Desk')"> 
                                     <input type="search" id="idInputAssignedToAddTaskDeskOv" class="selectContainerOv selectArrow"
                                         placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                                 </div>
-                                <div id="idSelectedUserAddTaskDeskOv" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
-                                <div id="idChkSelectMultUserOuterConDeskOv" class=""> <!-- chkSelectMultUserOuterConOv -->
-                                    <div id="idCheckboxesSelectMultUserDeskOv" class="checkboxesSelectMultUserOv">
+                                <div id="idSelectedUserAddTaskDesk" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
+                                <div id="idChkSelectMultUserOuterConDesk" class=""> <!-- chkSelectMultUserOuterConOv -->
+                                    <div id="idCheckboxesSelectMultUserDesk" class="checkboxesSelectMultUserOv">
                                         <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
                                     </div>
                                 </div>
@@ -119,9 +119,9 @@
                                     <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow"
                                         placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                                 </div>
-                                <div id="idSelectedUserAddTaskOv" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
-                                <div id="idChkSelectMultUserOuterConOv" class=""> <!-- chkSelectMultUserOuterConOv -->
-                                    <div id="idCheckboxesSelectMultUserOv" class="checkboxesSelectMultUserOv">
+                                <div id="idSelectedUserAddTask" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
+                                <div id="idChkSelectMultUserOuterCon" class=""> <!-- chkSelectMultUserOuterConOv -->
+                                    <div id="idCheckboxesSelectMultUser" class="checkboxesSelectMultUserOv">
                                         <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
                                     </div>
                                 </div>
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="idSubmitContainerAddTaskOv" onsubmit="storeNewTask()"
+                    <div id="idSubmitContainerAddTaskOv" onsubmit="storeNewTask(false)"
                         class="submitContainerAddTaskOv d-flex justify-content-end align-items-center">
                         <button id="idSubmitButtonAddTaskOv" type="onsubmit" class="taskButton">Create Task <img
                                 src="../assets/img/check.svg"></button>

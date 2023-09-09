@@ -23,7 +23,7 @@
         overflow-y: auto;
     }
     .assingToDesk{
-        display: block;
+        display: flex;
     }
     .assingToMob{
         display: none !important;

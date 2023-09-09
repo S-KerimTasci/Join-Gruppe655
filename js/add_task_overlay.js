@@ -36,11 +36,11 @@ function resetTask2() { // ich denke ich kann die deklaration uf let = {} beschr
 
 /* functions for highlight the priority button start */
 function highlight(prio) {
-    if (task2.urgency == prio) { 
+    if (task2.urgency == prio) {
         removeHighlight()
     } else {
         removeHighlight()
-        task2.urgency = prio; 
+        task2.urgency = prio;
         document.getElementById('id' + prio + 'ContainerAddTaskOv').classList.add(prio)
         document.getElementById('id' + prio + 'IMGAddTaskOv').src = `../assets/img/prio_${prio}_white.svg`
     }
@@ -53,27 +53,28 @@ function removeHighlight() {
         document.getElementById('id' + element + 'ContainerAddTaskOv').classList.remove(element)
         document.getElementById('id' + element + 'IMGAddTaskOv').src = `../assets/img/prio_${element}.svg`
     });
-    task2.urgency = ''; 
+    task2.urgency = '';
 }
 /* functions for highlight the priority button end */
 
 
 // hier muss noch eine Funktion rein, die die memberplaketten unter den assinged to container lädt.
 function showUserNames(desk) {
-   //debugger;
+    //debugger;
     if (!expanded) {
         toggleDivUsrDropVsMemberDisk(desk);
         expanded = true;
     } else {
+        //debugger;
         toggleDivUsrDropVsMemberDisk(desk);
-        document.getElementById('idSelectedUserAddTask' + desk + 'Ov').innerHTML = taskOverlayMemberDiskContainer();
+        document.getElementById('idSelectedUserAddTask' + desk).innerHTML = taskOverlayMemberDiskContainer();
         expanded = false;
     }
 }
 
 function toggleDivUsrDropVsMemberDisk(desk) {
-    let checkboxes = document.getElementById('idChkSelectMultUserOuterCon' + desk + 'Ov');
-    let memberDisks = document.getElementById('idSelectedUserAddTask' + desk + 'Ov');
+    let checkboxes = document.getElementById('idChkSelectMultUserOuterCon' + desk);
+    let memberDisks = document.getElementById('idSelectedUserAddTask' + desk);
     memberDisks.classList.toggle('d-none');
     checkboxes.classList.toggle('d-none');
 }
@@ -125,21 +126,28 @@ function editSubtaskText(count) {
 //Code added by Alex ~~~~~ start
 
 
-async function storeNewTask() {
+async function storeNewTask(overlay) {
     const taskBtn = document.getElementById('idSubmitButtonAddTaskOv').innerText;
     taskJson = await loadJSON(KEY_for_JSON_TASKS);
     getValuesForTaskArr();
-    closeOverlay('idAddTaskOverlay');
+    
     if (taskBtn === 'Edit Task') {
-        taskJson[activTaskNumber] = task2;  
+        taskJson[activTaskNumber] = task2;
         renderOverlayTask(activTaskNumber);
     } else {
         taskJson.push(task2);
-        subtaskObj = [];   
+        subtaskObj = [];
     }
-    setItem(KEY_for_JSON_TASKS, taskJson); 
+    setItem(KEY_for_JSON_TASKS, taskJson);
+    overlay ? closeOverlay('idAddTaskOverlay') : openBoardPage();
 }
 
+function openBoardPage() {
+    //hier noch die bestätigung rein
+    window.location.href = "../html/board.html";
+    // das funzt nich  --> document.getElementById('idTaskId' + task2.taskId).scrollIntoView();
+    
+}
 
 function getValuesForTaskArr() {
     task2.taskId = calcTaskId();
@@ -168,12 +176,13 @@ function getSubtaskFromForm() {
 }
 
 async function loadContacts(desk) {
-    document.getElementById('idCheckboxesSelectMultUser' + desk + 'Ov').innerHTML = '';
+    document.getElementById('idCheckboxesSelectMultUser' + desk).innerHTML = '';
     contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
+    //debugger;
     for (let i = 0; i < contactJSON.length; i++) {
-        document.getElementById('idCheckboxesSelectMultUser' + desk + 'Ov').innerHTML += userOvHTML(contactJSON[i].name, contactJSON[i].bgColor.slice(1), contactJSON[i].initials, i)
+        document.getElementById('idCheckboxesSelectMultUser' + desk).innerHTML += userOvHTML(contactJSON[i].name, contactJSON[i].bgColor.slice(1), contactJSON[i].initials, i)
     }
-    document.getElementById('idChkSelectMultUserOuterCon' + desk + 'Ov').innerHTML += userOvHTMLButton();
+    document.getElementById('idChkSelectMultUserOuterCon' + desk).innerHTML += userOvHTMLButton();
 }
 
 
@@ -195,9 +204,22 @@ function clearAddTaskForm() {
 async function openAddtaskOverlay() {
     resetTask2();
     htmlAddTaskOverlay();
-    let desk = document.getElementById('idInputAssignedToContainerDesktopAddTaskOv').classList.contains('d-none') ? '' : 'Desk';
+    //debugger;
+    await loadContatsToAssinged(true);
+}
+
+async function loadContatsToAssinged(overlay) {
+    let element = document.getElementById('idInputAssignedToContainerDesktopAddTaskOv');
+    let computedStyles = window.getComputedStyle(element).display;
+    console.log(computedStyles);
+    let desk = '';
+    if (overlay) {
+        desk = computedStyles === 'flex' ? 'DeskOv' : 'Ov'; 
+    } else {
+        desk = computedStyles === 'flex' ? 'Desk' : ''; 
+    }
     await loadContacts(desk);
-    document.getElementById('idChkSelectMultUserOuterConOv').classList.add('d-none');
+    document.getElementById('idChkSelectMultUserOuterCon' + desk).classList.add('d-none');
     document.getElementById('idInputDueDateAddTaskOv').min = new Date().toISOString().split('T')[0];
 }
 
