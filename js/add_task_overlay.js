@@ -60,19 +60,20 @@ function removeHighlight() {
 
 // hier muss noch eine Funktion rein, die die memberplaketten unter den assinged to container lädt.
 function showUserNames(desk) {
+   //debugger;
     if (!expanded) {
-        toggleDivUsrDropVsMemberDisk();
+        toggleDivUsrDropVsMemberDisk(desk);
         expanded = true;
     } else {
-        toggleDivUsrDropVsMemberDisk();
+        toggleDivUsrDropVsMemberDisk(desk);
         document.getElementById('idSelectedUserAddTask' + desk + 'Ov').innerHTML = taskOverlayMemberDiskContainer();
         expanded = false;
     }
 }
 
-function toggleDivUsrDropVsMemberDisk() {
-    let checkboxes = document.getElementById("idChkSelectMultUserOuterConOv");
-    let memberDisks = document.getElementById("idSelectedUserAddTaskOv");
+function toggleDivUsrDropVsMemberDisk(desk) {
+    let checkboxes = document.getElementById('idChkSelectMultUserOuterCon' + desk + 'Ov');
+    let memberDisks = document.getElementById('idSelectedUserAddTask' + desk + 'Ov');
     memberDisks.classList.toggle('d-none');
     checkboxes.classList.toggle('d-none');
 }
@@ -244,3 +245,4 @@ function taskOverlayMemberDiskHTML(memberColor, memberinitials, i) {
         <div id="idTaskMemberInitialsOv${i}" class="memberDiskOv memberBgColor${memberColor}">${memberinitials}</div>
     </div>`
 }
+

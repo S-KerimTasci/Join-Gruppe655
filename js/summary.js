@@ -101,7 +101,7 @@ function upcommingDeadline() {
             youngestDate = taskDate;
         }
     }
-    document.getElementById('idTaksUrgentDate').innerText = buildDateFormat(youngestDate);
+    document.getElementById('idTaksUrgentDate').innerHTML = `<strong>${buildDateFormat(youngestDate)}</strong>`;
 }
 
 /**

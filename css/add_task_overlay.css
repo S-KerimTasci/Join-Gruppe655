@@ -34,6 +34,12 @@ body {
     overflow-y: auto;
     padding: 0 8px;
 }
+.assingToDesk{
+    display: none;
+}
+.ContentDeskmiddleContainerAddTaskOv{
+    display: none;
+}
 
 .inputTitleAddTaskOv {
     padding: 10px 21px 10px 21px;
@@ -262,3 +268,4 @@ body {
     height: 88px;
     padding: 16px;
 }
+
