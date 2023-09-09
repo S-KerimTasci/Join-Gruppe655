@@ -8,7 +8,7 @@ font-face {
 body {
     font-family: 'Inter';
     height: 100vh;
-    overflow: hidden;
+    
 }
 
 input {
@@ -19,7 +19,8 @@ input {
     height: 6vh;
 }
 
-.noScroll{
+.H100vhOFhoidden{
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -32,7 +33,7 @@ input {
 }
 
 .contactsCart {
-    margin: 5vw 5vw 0 5vw;
+    margin: 5vh 5vw 0 5vw;
 }
 
 .contactsHeader {
@@ -339,8 +340,8 @@ input {
 .contacts-container {
     background-color: #ffffff;
     padding: 20px;
-    padding-bottom: 80px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: calc(100vh - 140px);
 }
 
 .contact-letter {
@@ -539,6 +540,7 @@ input {
     .contacts-container {
         padding-bottom: 0px;
         height: calc(100vh - 192px);
+        overflow-x: hidden;
     }
 
     .addContactMenu {
@@ -656,5 +658,78 @@ input {
     .editDeletDiv {
         display: unset;
         cursor: pointer;
+    }
+
+    .contact{
+        padding: 5px 0 5px 0px
+    }
+}
+
+@media (max-width: 950px){
+    input{
+        width: 40vw;
+    }
+
+    .buttonDiv{
+        padding: 0;
+    }
+    .leftDiv{
+        min-width: 260px;
+    }
+
+    .addButtonDiv {
+        padding: 5px;
+    }
+
+    .contacts-container{
+        padding: 5px;
+        height: calc(100vh - 163px);
+    }
+
+    .contact-letter{
+        padding-left: 17px;
+    }
+
+
+    .contactsCart {
+        margin: 5vh 0 0 1vw;
+    }
+    .contactsHeaderDektop{
+        flex-direction: column;
+        align-items: baseline;
+        gap: 12px;
+    }
+
+    .verticalLine{
+        display: none;
+    }
+
+    .contactsHeaderh1 {
+        font-size: 35px;
+        line-height: 45px;
+    }
+
+    .contactsHeaderspan {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .contactInfo{
+        margin-top: 20px;
+    }
+    .name{
+        gap: 22px;
+    }
+
+    .circleBig {
+        width: 60px;
+        height: 60px;
+        font-size: 23px;
+    }
+
+    .contactsName {
+        font-size: 35px;
+        line-height: 45px;
+        margin-bottom: 4px;
     }
 }
