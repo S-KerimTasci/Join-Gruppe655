@@ -634,7 +634,7 @@ input {
     }
 
     .contact{
-        padding: 5px 0 5px 0px
+        padding: 5px 0 5px 20px
     }
 }
 
@@ -660,9 +660,12 @@ input {
     }
 
     .contact-letter{
-        padding-left: 17px;
+        padding-left: 22px;
     }
 
+    .contact{
+        padding: 5px 0 5px 6px
+    }
 
     .contactsCart {
         margin: 5vh 0 0 1vw;
