@@ -24,6 +24,10 @@ input {
     overflow: hidden;
 }
 
+.JCspacebetween{
+    justify-content: space-between !important
+}
+
 .textcap {
     text-transform: capitalize;
 }
@@ -244,7 +248,7 @@ input {
 }
 
 .buttonDiv {
-    width: 80vw;
+    width: 40vw;
     display: flex;
     justify-content: center;
     padding: 16px;
@@ -293,6 +297,7 @@ input {
 }
 
 .cancelButton {
+    
     width: 126px;
     height: 56px;
     border: 1px solid #2A3647;
@@ -438,8 +443,6 @@ input {
     border: none;
     background-color: transparent;
 }
-
-
 
 @media (max-width: 750px) {
     .createContactOverlay{
@@ -714,5 +717,15 @@ input {
 @media (min-width: 1350px){
     .createContactOverlay.show {
         right: calc((100% - 1212px)/2);
+    }
+}
+
+@media (max-width: 500px){
+    input{
+        width: 60vw;
+    }
+
+    .buttonDiv{
+        width: 60vw;
     }
 }

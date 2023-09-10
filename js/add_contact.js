@@ -223,8 +223,7 @@ function setContactInfo(i){
     phone.innerHTML = 'Please edit phone number'
   } else {
     phone.innerHTML = contactJSONBE[i].phone;
-  }
-  
+  }  
 }
 
 
@@ -302,12 +301,8 @@ function setEditContactOVerlay(i){
   inputMail.value = contactJSONBE[i].email;
   inputTel.value = contactJSONBE[i].phone;
  
-  overlayButtonDiv.innerHTML = `
-     <button type="reset" onclick="deleteContact(${i})" id="cancelButton" class="cancelButton">Delete <img
-     src="../assets/img/cancel_contactOverlay.svg"></button>
- 
-     <button id="createButton" class="createButton"><span>Save</span> <img
-     src="../assets/img/check.svg"></button>`
+  overlayButtonDiv.innerHTML = overlayEditButtonDiv(i)
+  document.getElementById('overlayButtonDiv').classList.add('JCspacebetween')
 }
 
 
@@ -338,12 +333,7 @@ function setAddContactOVerlay(){
   inputMail.value = '';
   inputTel.value = '';
  
-  overlayButtonDiv.innerHTML = `
-      <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
-      src="../assets/img/cancel_contactOverlay.svg"></button>
-
-      <button id="createButton" class="createButton"><span>Create contact</span> <img
-      src="../assets/img/check.svg"></button>`
+  overlayButtonDiv.innerHTML = overlayAddButtonDivTemplate()
 }
 
 
@@ -505,4 +495,23 @@ function addContactOverlayTemplate(){
   src="../assets/img/cancel_contactOverlay.svg">
   `;
   return form;
+}
+
+function overlayAddButtonDivTemplate(){
+  return `
+  <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
+  src="../assets/img/cancel_contactOverlay.svg"></button>
+
+  <button id="createButton" class="createButton"><span>Create contact</span> <img
+  src="../assets/img/check.svg"></button>`
+}
+
+function overlayEditButtonDiv(i){
+  return  `
+  <button style="display: flex;" type="reset" onclick="deleteContact(${i})" id="cancelButton" class="cancelButton">Delete <img
+  src="../assets/img/cancel_contactOverlay.svg"></button>
+
+  <button id="createButton" class="createButton"><span>Save</span> <img
+  src="../assets/img/check.svg"></button>`
+
 }
