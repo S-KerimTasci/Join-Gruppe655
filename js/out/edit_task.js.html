@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: summary.js</title>
+    <title>JSDoc: Source: edit_task.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: summary.js</h1>
+    <h1 class="page-title">Source: edit_task.js</h1>
 
     
 
@@ -26,125 +26,73 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//shows welcome screen
-document.addEventListener("DOMContentLoaded", function () {
-    const welcomeMessage = document.getElementById("idWelcome");
-    if (window.innerWidth &lt;= 960) {
-        welcomeMessage.classList.remove('d-none');
-        welcomeMessage.classList.add('welcome');
-        setTimeout(() => {
-            welcomeMessage.classList.add('d-none');
-            welcomeMessage.classList.remove('welcome');
-        }, 2000);
-    }
-});
+            <pre class="prettyprint source linenums"><code>
 
-/**
- * This function returns the greeting phrase
- * 
- * 
- * @returns - greeting which fits to the daytime
- */
-function greetingText() {
-    let daytime = new Date().getHours();
-    if (daytime >= 5 &amp;&amp; daytime &lt; 12) {
-        return "Good Morning!";
-    } else if (daytime >= 12 &amp;&amp; daytime &lt; 19) {
-        return "Good Afternoon!";
-    } else {
-        return "Good Evening!";
-    }
-}
-
-function activeUser(params) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    let activeUserName = currentUser ? currentUser.name : '';   
-    return activeUserName;
-} 
-
-
-
-/**
- * this function adds the greeting texed provided by the call of greetingText() to the HTML Code
- */
-function addGreetingPhrase() {
-    document.getElementById('idWelcomeMessage').innerText = greetingText();
-    document.getElementById('idWelcomeUserName').innerText = activeUser(); 
+async function renderEditTask(taskNr) {
+    activTaskNumber = taskNr;
+    await openAddtaskOverlay();
+    document.getElementById('idHeadlineAddTask').innerText = "Edit Task";
+    addDataEditTaskOverlay(taskNr);
 }
 
 
 /**
- * This function returns from an object(array) a count of all emements which contains a specific value
+ * this function calls different function for adding values from task JSON to html
  * 
- * 
- * @param {string} srcValue - lookup value
- * @param {string} compValue - variable where the value for comparison is stored in array
- * @param {string} chkArr - array which should checked
- * @returns count
+ * @param {number} taskNumber - number of clicked task
  */
-function countTasks(srcValue, compValue, chkArr) {
-    let count = 0;
-    for (let i = 0; i &lt; chkArr.length; i++) {
-        if (srcValue == chkArr[i][compValue]) {
-            count++;
-        }
-    }
-    return count
+function addDataEditTaskOverlay(taskNr) {
+    let activeTask = taskJson[taskNr]; //
+    editTaskLoadValues(activeTask); //
+
 }
 
 /**
- * This function calls function for adding counts and upcommingDeadline to summary it adds also the greeting formula too.
+ * This function adds the Headline of task to the html element
  * 
+ * @param {object} activeTask - contains active task
  */
-async function addValuesToSummary() {
-    addGreetingPhrase();  
-    taskJson = await loadJSON(KEY_for_JSON_TASKS);
-    addNumToSummary(); 
-    upcommingDeadline();  
+function editTaskLoadValues(activeTask) {
     
+    document.getElementById('idInputTitleAddTaskOv').value = activeTask.headline;
+    document.getElementById('idInputDescriptionAddTaskOv').value = activeTask.description;
+    let prio = activeTask.urgency;
+    task2.urgency = prio;
+    document.getElementById('id' + prio + 'ContainerAddTaskOv').classList.add(prio)
+    document.getElementById('id' + prio + 'IMGAddTaskOv').src = `../assets/img/prio_${prio}_white.svg`
+    document.getElementById('idInputDueDateAddTaskOv').value = new Date(activeTask.dueDate).toISOString().split('T')[0];
+    document.getElementById('idSelectCategoryAddTaskOv').selectedIndex = selectCategory(activeTask.taskType);
+    getSubtasks(activeTask);
+    addSubtask();
+    document.getElementById('idHeadlineAddTask').innerText === "Edit Task" ? setChkForTaskMember(taskJson[activTaskNumber].member) : '';
+    document.getElementById("idSelectedUserAddTaskOv").innerHTML = taskOverlayMemberDiskContainer();
+    document.getElementById("idSubmitButtonAddTaskOv").innerText = 'Edit Task';
 }
 
-/**
- * this function adds the counts of each tasktype to summary
- * 
- */
-function addNumToSummary() {
-    document.getElementById('idCountAllTasks').innerText = taskJson.length;
-    document.getElementById('idCountTasksInProgress').innerText = countTasks('inProgress', 'status', taskJson);
-    document.getElementById('idCounttaskAwaitingFeedback').innerText = countTasks('awaitFeedback', 'status', taskJson);
-    document.getElementById('idTaskUrgent').innerText = countTasks('urgent', 'urgency', taskJson);
-    document.getElementById('idTaskToDd').innerText = countTasks('toDo', 'status', taskJson);
-    document.getElementById('idTaskDone').innerText = countTasks('done', 'status', taskJson);
+
+function getSubtasks(activeTask) {
+    subtaskObj = [];
+    activeTask.subTaskText.forEach(subtask => {
+        subtaskObj.push(subtask.label);
+    });
 }
 
-/**
- * This function looks for the youngest date and calls function buildDateFormat which returns the correkt Format for idTaksUrgentDate 
- * 
- */
-function upcommingDeadline() {
-    let youngestDate = new Date(taskJson[0].dueDate);
-    for (let i = 1; i &lt; taskJson.length; i++) {
-        let taskDate = new Date(taskJson[i].dueDate);
-        if (taskDate &lt; youngestDate) {
-            youngestDate = taskDate;
+function selectCategory(cat) {
+    let selectElement = document.getElementById("idSelectCategoryAddTaskOv");
+    for (let i = 0; i &lt; selectElement.options.length; i++) {
+        if(selectElement.options[i].value === cat) return i;
+    }
+}
+
+function setChkForTaskMember(taskMember) {
+    for (let i = 0; i &lt; taskMember.length; i++) {
+        const contactIndex = contactJSON.findIndex(contact => contact.name === taskMember[i]);
+        let chkChecked = document.getElementById('idAssingedToChk' + contactIndex);
+        if (contactIndex != -1) {
+            chkChecked.checked = true;
+            task2.member.push(taskMember[i]);
         }
     }
-    document.getElementById('idTaksUrgentDate').innerHTML = `&lt;strong>${buildDateFormat(youngestDate)}&lt;/strong>`;
-}
-
-/**
- * This function returns the date in Format Full month name, day and full year.
- * 
- * 
- * @param {date} youngestDate 
- * @returns formated date
- */
-function buildDateFormat(youngestDate) {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let monthName = months[youngestDate.getMonth()];
-    let day = youngestDate.getDate();
-    let year = youngestDate.getFullYear();
-    return monthName + " " + day + ", " + year;
 }</code></pre>
         </article>
     </section>

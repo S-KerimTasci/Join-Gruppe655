@@ -4,7 +4,25 @@ let subtaskPlus = true;
 let subtaskObj = [];
 let activTaskNumber = '';
 let task2 = {
-    "taskId": "", // task id - should be a ongoing number
+ /*    "taskId": "", 
+    "taskType": "", 
+    "dueDate": "", 
+    "status": "", 
+    "headline": "", 
+    "description": "", 
+    "doneSubTasks": "", 
+    "subTaskTotal": "", 
+    "subTaskText": [],
+    "member": [],
+    "urgency": "" */
+};
+
+/**
+ * THis function resets the task object
+ */
+function resetTask2() {
+    task2 = {
+        "taskId": "", // task id - should be a ongoing number
     "taskType": "", //type of task
     "dueDate": "", //date of task /* 21.Sep.23 */
     "status": "", //status of task /*toDo inProgress awaitFeedback done*/
@@ -15,26 +33,12 @@ let task2 = {
     "subTaskText": [],//needs a push
     "member": [],//needs a push
     "urgency": ""
-};
-
-function resetTask2() { // ich denke ich kann die deklaration uf let = {} beschränken
-    task2 = {
-        "taskId": "",
-        "taskType": "",
-        "dueDate": "",
-        "status": "",
-        "headline": "",
-        "description": "",
-        "doneSubTasks": "",
-        "subTaskTotal": "",
-        "subTaskText": [],
-        "member": [],
-        "urgency": ""
     }
 }
 
-
-/* functions for highlight the priority button start */
+/**
+ *This functions for highlight the priority button start
+ */ 
 function highlight(prio) {
     if (task2.urgency == prio) {
         removeHighlight()
@@ -46,7 +50,9 @@ function highlight(prio) {
     }
 }
 
-
+/**
+ * Thsi function remove the color of all priority elements
+ */
 function removeHighlight() {
     const PRIO = ['low', 'medium', 'urgent']
     PRIO.forEach(element => {
@@ -55,23 +61,28 @@ function removeHighlight() {
     });
     task2.urgency = '';
 }
-/* functions for highlight the priority button end */
 
-
-// hier muss noch eine Funktion rein, die die memberplaketten unter den assinged to container lädt.
+/**
+ * This function is for showing the contactlist
+ * 
+ * @param {string} desk for identifying the correct assingedTo element
+ */
 function showUserNames(desk) {
-    //debugger;
     if (!expanded) {
         toggleDivUsrDropVsMemberDisk(desk);
         expanded = true;
     } else {
-        //debugger;
         toggleDivUsrDropVsMemberDisk(desk);
         document.getElementById('idSelectedUserAddTask' + desk).innerHTML = taskOverlayMemberDiskContainer();
         expanded = false;
     }
 }
 
+/**
+ * this function is for showing selected members as disc below toe correct assingedTo element
+ * 
+ * @param {string} desk - for identifying the correct assingedTo element
+ */
 function toggleDivUsrDropVsMemberDisk(desk) {
     let checkboxes = document.getElementById('idChkSelectMultUserOuterCon' + desk);
     let memberDisks = document.getElementById('idSelectedUserAddTask' + desk);
@@ -79,7 +90,11 @@ function toggleDivUsrDropVsMemberDisk(desk) {
     checkboxes.classList.toggle('d-none');
 }
 
-
+/**
+ * This function is for swap of icons
+ * 
+ * @param {number} count - for unique identifier
+ */
 function switchIons(count) {
     if (count !== 2 || subtaskPlus === true) {
         document.getElementById('idSubtaskPlus').classList.add("d-none");
@@ -94,7 +109,9 @@ function switchIons(count) {
     }
 }
 
-//Code changed by Alex ~~~~~ start
+/**
+ * This function adds a new subtask
+ */
 function addSubtask() {
     let subtask = document.getElementById('idSubtaskAddTaskOv');
     subtask.value !== '' ? subtaskObj.push(subtask.value) : '';
@@ -105,13 +122,21 @@ function addSubtask() {
     }
 }
 
-
+/**
+ * This function delets the selected subtask
+ * 
+ * @param {object} subtaskObjElement 
+ */
 function deleteSubtask(subtaskObjElement) {
     subtaskObj.splice(subtaskObjElement, 1);
     addSubtask();
 }
-//Code changed by Alex ~~~~~ end
 
+/**
+ * This function is for the edditing of the subtask
+ * 
+ * @param {number} count 
+ */
 function editSubtask(count) {
     const subtaskText = document.getElementById("idSubTaskText" + count).innerText;
     document.getElementById("idSubTaskTextEditContainer" + count).classList.toggle("subTaskTextEdit");
@@ -119,18 +144,25 @@ function editSubtask(count) {
     document.getElementById("idSubTaskTextEdit" + count).value = subtaskText;
 }
 
+/**
+ * This function saves the subtask into the subtask array and call the subTask function
+ * 
+ * @param {number} count - for unique identifier
+ */
 function editSubtaskText(count) {
     subtaskObj[count] = document.getElementById('idSubTaskTextEdit' + count).value;
     addSubtask();
 }
-//Code added by Alex ~~~~~ start
 
-
+/**
+ * this function stores the new or edited task in backend
+ * 
+ * @param {boolean} overlay - true or false to get the information if it was called from overlay or from add_task page
+ */
 async function storeNewTask(overlay) {
     const taskBtn = document.getElementById('idSubmitButtonAddTaskOv').innerText;
     taskJson = await loadJSON(KEY_for_JSON_TASKS);
     getValuesForTaskArr();
-    
     if (taskBtn === 'Edit Task') {
         taskJson[activTaskNumber] = task2;
         renderOverlayTask(activTaskNumber);
@@ -142,13 +174,16 @@ async function storeNewTask(overlay) {
     overlay ? closeOverlay('idAddTaskOverlay') : openBoardPage();
 }
 
+/**
+ * This function redirects to the "board.html" page. 
+ */
 function openBoardPage() {
-    //hier noch die bestätigung rein
     window.location.href = "../html/board.html";
-    // das funzt nich  --> document.getElementById('idTaskId' + task2.taskId).scrollIntoView();
-    
 }
 
+/**
+ * This function is the main function for storing data from the form into the task object. it calls all other functions for this purpose.
+ */
 function getValuesForTaskArr() {
     task2.taskId = calcTaskId();
     task2.status = taskJson[activTaskNumber] ? taskJson[activTaskNumber].status : 'toDo';
@@ -157,7 +192,9 @@ function getValuesForTaskArr() {
     getSubtaskFromForm();
 }
 
-
+/**
+ * this funktion saves data from the form directly into the task object
+ */
 function getValuesFromForm() {
     task2.taskType = document.getElementById('idSelectCategoryAddTaskOv').value;
     task2.headline = document.getElementById('idInputTitleAddTaskOv').value;
@@ -165,6 +202,9 @@ function getValuesFromForm() {
     task2.dueDate = new Date(document.getElementById('idInputDueDateAddTaskOv').value).getTime();
 }
 
+/**
+ * This function takes pushes new subtasks to the task object
+ */
 function getSubtaskFromForm() {
     task2.subTaskTotal = subtaskObj.length;
     task2.doneSubTasks = 0;
@@ -175,17 +215,25 @@ function getSubtaskFromForm() {
     }
 }
 
+/**
+ * This function loads the contacts from backend into the correct assingedTo element
+ * 
+ * @param {string} desk - to assing the correct element
+ */
 async function loadContacts(desk) {
     document.getElementById('idCheckboxesSelectMultUser' + desk).innerHTML = '';
     contactJSON = await loadJSON(KEY_for_JSON_CONTACS);
-    //debugger;
     for (let i = 0; i < contactJSON.length; i++) {
         document.getElementById('idCheckboxesSelectMultUser' + desk).innerHTML += userOvHTML(contactJSON[i].name, contactJSON[i].bgColor.slice(1), contactJSON[i].initials, i)
     }
     document.getElementById('idChkSelectMultUserOuterCon' + desk).innerHTML += userOvHTMLButton();
 }
 
-
+/**
+ * This function recaluclates all task ids and retrun a task id for the new added task
+ * 
+ * @returns 
+ */
 function calcTaskId() {
     for (let i = 0; i < taskJson.length; i++) {
         taskJson[i].taskId = i + 1;
@@ -193,7 +241,9 @@ function calcTaskId() {
     return taskJson.length + 1;
 }
 
-
+/**
+ * This function closes the add task overlay
+ */
 function clearAddTaskForm() {
     document.getElementById('idRenderedSubtaskAddTaskOv').innerHTML = '';
     subtaskObj = [];
@@ -207,7 +257,6 @@ async function openAddtaskOverlay() {
     resetTask2();
     htmlAddTaskOverlay();
     await loadContatsToAssinged(true);
-    document.getElementById('idInputDueDateAddTaskOv').min = new Date().toISOString().split('T')[0];
 }
 
 /**
@@ -226,6 +275,7 @@ async function loadContatsToAssinged(overlay) {
     }
     await loadContacts(desk);
     document.getElementById('idChkSelectMultUserOuterCon' + desk).classList.add('d-none');
+    document.getElementById('idInputDueDateAddTaskOv').min = new Date().toISOString().split('T')[0];
 }
 
 /**
@@ -279,7 +329,6 @@ function taskOverlayMemberDiskHTML(memberColor, memberinitials, i) {
 
 /**
  * THis function opens the contact page
- * 
  */
 function callAddContact() {
         window.location.href = "../html/contacts.html";   
