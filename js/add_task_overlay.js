@@ -200,18 +200,24 @@ function clearAddTaskForm() {
     removeHighlight();
 }
 
-
+/**
+ * This function opens the add task overlay
+ */
 async function openAddtaskOverlay() {
     resetTask2();
     htmlAddTaskOverlay();
-    //debugger;
     await loadContatsToAssinged(true);
+    document.getElementById('idInputDueDateAddTaskOv').min = new Date().toISOString().split('T')[0];
 }
 
+/**
+ * This function assing the correct AssingTo Element
+ * 
+ * @param {number} overlay 
+ */
 async function loadContatsToAssinged(overlay) {
     let element = document.getElementById('idInputAssignedToContainerDesktopAddTaskOv');
     let computedStyles = window.getComputedStyle(element).display;
-    console.log(computedStyles);
     let desk = '';
     if (overlay) {
         desk = computedStyles === 'flex' ? 'DeskOv' : 'Ov'; 
@@ -220,10 +226,13 @@ async function loadContatsToAssinged(overlay) {
     }
     await loadContacts(desk);
     document.getElementById('idChkSelectMultUserOuterCon' + desk).classList.add('d-none');
-    document.getElementById('idInputDueDateAddTaskOv').min = new Date().toISOString().split('T')[0];
 }
 
-
+/**
+ * This function sets the checked attribute for the assigned to checkboxes
+ * 
+ * @param {number} chkNr - id of checkbox
+ */
 function toggleChkBox(chkNr) {
     let chkChecked = document.getElementById('idAssingedToChk' + chkNr);
     if (chkChecked.checked) {
@@ -268,3 +277,10 @@ function taskOverlayMemberDiskHTML(memberColor, memberinitials, i) {
     </div>`
 }
 
+/**
+ * THis function opens the contact page
+ * 
+ */
+function callAddContact() {
+        window.location.href = "../html/contacts.html";   
+}

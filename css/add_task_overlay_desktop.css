@@ -11,6 +11,10 @@
         gap: 48px;
         overflow-y: hidden;
     }
+    .contentContainerAddTask{
+        gap: 48px;
+        width: 100%;
+    }
     .ContentDeskmiddleContainerAddTaskOv{
         height: 424px;
         width: 1px;
@@ -31,5 +35,17 @@
     .flip{
         display: flex;
         flex-direction: column-reverse;
+    }
+}
+
+@media (min-width: 1070px) {
+    .addTaskOvGeneralSettings{
+        align-items: center;
+    }
+    .headlineAddTaskOv{
+width: 991px;
+    }
+    .submitContainerAddTaskOv{
+        width: 991px;
     }
 }

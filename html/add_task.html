@@ -7,38 +7,32 @@
     <title>Add Task</title>
     <link rel="icon" type="image/x-icon" href="../assets/favicon/favicon.ico" />
 
-     <!-- Bootstrap Files -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-     crossorigin="anonymous"></script>
+    <!-- Bootstrap Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 
-<!-- CSS -->
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/fonts.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/headerFooter.css">
+    <link rel="stylesheet" href="../css/singleTask.css">
+    <link rel="stylesheet" href="../css/singleTaskOverlay.css">
+    <link rel="stylesheet" href="../css/add_task.css">
+    <link rel="stylesheet" href="../css/add_task_overlay.css">
+    <link rel="stylesheet" href="../css/add_task_dektop.css">
 
-<!-- <link rel="stylesheet" href="../css/summary.css"> -->
-<!-- <link rel="stylesheet" href="../css/board.css">  -->
-<link rel="stylesheet" href="../css/headerFooter.css">
-<link rel="stylesheet" href="../css/singleTask.css">
-<link rel="stylesheet" href="../css/singleTaskOverlay.css">
-<link rel="stylesheet" href="../css/add_task.css">
-<link rel="stylesheet" href="../css/add_task_overlay.css">
-<link rel="stylesheet" href="../css/add_task_overlay_desktop.css">
-
-     <!-- JS -->
-     <script src="../js/script.js"></script>
-     <script src="../js/headFootTemplate.js" defer></script>
-     <script src="../js/board.js" defer></script>
-     <script src="../js/boardSingleTask.js" defer></script>
-     <script src="../js/boardSingleTaskOverlay.js" defer></script> 
-     <script src="../js/add_task_overlay.js" defer ></script>
-     <script src="../js/add_task_overlay_html_temp.js" defer ></script>
-     <script src="../js/edit_task.js" defer></script>
-     <!-- for add contact -->
-    <!--  <script src="../js/add_contact.js"></script>
-     <script src="../js/checkScreenContacts.js"></script> -->
+    <!-- JS -->
+    <script src="../js/script.js"></script>
+    <script src="../js/headFootTemplate.js" defer></script>
+    <script src="../js/board.js" defer></script>
+    <script src="../js/boardSingleTask.js" defer></script>
+    <script src="../js/boardSingleTaskOverlay.js" defer></script>
+    <script src="../js/add_task_overlay.js" defer></script>
+    <script src="../js/add_task_overlay_html_temp.js" defer></script>
+    <script src="../js/edit_task.js" defer></script>
 
 </head>
 
@@ -46,8 +40,9 @@
     <div id="idBackgroundContainer">
         <div id="idHeaderBody">
             <header w3-include-html="../assets/templates/headerTemplate.html"></header>
-            <section id="idBgAddTaskOverlay" class="bgAddTask" >
-                <form id="idAddTaskForm" onsubmit="storeNewTask(); return false" class="addTaskGeneralSettings" onclick="innerClick(event)" autocomplete="off">
+            <section id="idBgAddTaskOverlay" class="bgAddTask">
+                <form id="idAddTaskForm" onsubmit="storeNewTask(); return false" class="addTaskGeneralSettings"
+                    onclick="innerClick(event)" autocomplete="off">
                     <h1 id="idHeadlineAddTask" class="headlineAddTaskOv">Add Task</h1>
                     <div id="idContentContainerAddTaskOv" class="contentContainerAddTask">
                         <div id="idContentDeskLeftContainerAddTaskOv" class="ContentDeskContainerAddTask">
@@ -55,21 +50,23 @@
                                 <label for="idInputTitleAddTaskOv">Title</label>
                                 <input id="idInputTitleAddTaskOv" maxlength="48" class="inputTitleAddTaskOv" type="text"
                                     placeholder="Enter a title" required>
-                                <span class="requiredInfo">This field is required</span>
+                                <div class="readWarningTexbox"><span id="idSpanTitle" class="requiredInfo d-none">This field is required</span></div>
                             </div>
                             <div id="idInputDescriptionContainerAddTaskOv" class="mt-1 d-flex flex-column">
                                 <label for="idInputDescriptionAddTaskOv">Description</label>
-                                <textarea id="idInputDescriptionAddTaskOv" class="inputDescriptionAddTaskOv" name="inputDescription"
-                                    placeholder="Enter a Description" required></textarea>
-                                <span class="requiredInfo">This field is required</span>
+                                <textarea id="idInputDescriptionAddTaskOv" class="inputDescriptionAddTaskOv"
+                                    name="inputDescription" placeholder="Enter a Description" required></textarea>
+                                <div class="readWarningTexbox"><span id="idSpanDesr" class="requiredInfo d-none">This field is required</span></div>
                             </div>
                             <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column">
                                 <label for="idInputAssignedToAddTaskDeskOv">Assigned To</label>
-                                <div id="idSelectMultUserDesk" class="selectMultUserOv" onclick="showUserNames('Desk')"> 
-                                    <input type="search" id="idInputAssignedToAddTaskDeskOv" class="selectContainerOv selectArrow"
-                                        placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
+                                <div id="idSelectMultUserDesk" class="selectMultUserOv" onclick="showUserNames('Desk')">
+                                    <input type="search" id="idInputAssignedToAddTaskDeskOv"
+                                        class="selectContainerOv selectArrow" placeholder="Select contacts to assign"
+                                        onkeypress="return event.keyCode != 13;">
                                 </div>
-                                <div id="idSelectedUserAddTaskDesk" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
+                                <div id="idSelectedUserAddTaskDesk" class="d-flex">
+                                    <!-- hier kommen die User rein, die ausgewählt wurden --></div>
                                 <div id="idChkSelectMultUserOuterConDesk" class=""> <!-- chkSelectMultUserOuterConOv -->
                                     <div id="idCheckboxesSelectMultUserDesk" class="checkboxesSelectMultUserOv">
                                         <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
@@ -78,21 +75,24 @@
                             </div>
                         </div>
                         <div id="idContentDeskmiddleContainerAddTaskOv" class="ContentDeskmiddleContainerAddTask"></div>
-                        <div  id="idContentDeskRightContainerAddTaskOv" class="ContentDeskContainerAddTask">
+                        <div id="idContentDeskRightContainerAddTaskOv" class="ContentDeskContainerAddTask">
                             <div id="idContentDeskRightContainerFlipConAddTaskOv" class="flip">
                                 <div id="idPriorityContainerAddTaskOv" class="mt-1 d-flex flex-column">
                                     <span for="idPriorityAddTaskOv">Prio</span>
                                     <div id="idPriorityAddTaskOv"
                                         class="d-flex flex-row justify-content-between priorityButtonContainerAddTaskOv">
-                                        <div id="idurgentContainerAddTaskOv" onclick="highlight('urgent')" class="prioContainerAddTaskOv">
+                                        <div id="idurgentContainerAddTaskOv" onclick="highlight('urgent')"
+                                            class="prioContainerAddTaskOv">
                                             <span for="idUrgentIMGAddTaskOv">Urgent</span>
                                             <img id="idurgentIMGAddTaskOv" src="../assets/img/prio_urgent.svg" class="">
                                         </div>
-                                        <div id="idmediumContainerAddTaskOv" onclick="highlight('medium')" class="prioContainerAddTaskOv">
+                                        <div id="idmediumContainerAddTaskOv" onclick="highlight('medium')"
+                                            class="prioContainerAddTaskOv">
                                             <span for="idMediumIMGAddTaskOv">Medium</span>
                                             <img id="idmediumIMGAddTaskOv" src="../assets/img/prio_medium.svg" class="">
                                         </div>
-                                        <div id="idlowContainerAddTaskOv" onclick="highlight('low')" class="prioContainerAddTaskOv">
+                                        <div id="idlowContainerAddTaskOv" onclick="highlight('low')"
+                                            class="prioContainerAddTaskOv">
                                             <span for="idLowIMGAddTaskOv">Low</span>
                                             <img id="idlowIMGAddTaskOv" src="../assets/img/prio_low.svg" class="">
                                         </div>
@@ -100,26 +100,31 @@
                                 </div>
                                 <div id="idDueDateContainerAddTaskOv" class="d-flex flex-column">
                                     <label for="idInputDueDateAddTaskOv">Due Date</label>
-                                    <input id="idInputDueDateAddTaskOv" class="inputDueDateAddTaskOv" type="date" value="" min="2023-08-31"
-                                        required>
-                                    <span class="requiredInfo">This field is required</span>
+                                    <input id="idInputDueDateAddTaskOv" class="inputDueDateAddTaskOv" type="date"
+                                        value="" min="2023-08-31" required>
+                                    <div class="readWarningTexbox"><span id="idSpanDueDate" class="requiredInfo d-none">This field is required</span></div>
                                 </div>
                             </div>
                             <div id="idInputCategoryContainerAddTaskOv" class="mt-1 d-flex flex-column">
                                 <label for="idSelectCategoryAddTaskOv">Category</label>
-                                <select id="idSelectCategoryAddTaskOv" class="selectContainerOv selectArrow" name="category" required>
+                                <select id="idSelectCategoryAddTaskOv" class="selectContainerOv selectArrow"
+                                    name="category" required>
                                     <option value="" disabled selected hidden>Select task category</option>
                                     <option value="Technical Task">Technical Task</option>
                                     <option value="User Story">User Story</option>
                                 </select>
+                                <div class="readWarningTexbox"><span id="idSpanSelectCat" class="requiredInfo d-none">This field is required</span></div>
                             </div>
                             <div id="idInputAssignedToContainerAddTaskOv" class="assingToMob mt-3 d-flex flex-column">
                                 <label for="idInputAssignedToAddTaskOv">Assigned To</label>
-                                <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames('')"> <!-- ; renderTaskMember() -->
-                                    <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow"
-                                        placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
+                                <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames('')">
+                                    <!-- ; renderTaskMember() -->
+                                    <input type="search" id="idInputAssignedToAddTaskOv"
+                                        class="selectContainerOv selectArrow" placeholder="Select contacts to assign"
+                                        onkeypress="return event.keyCode != 13;">
                                 </div>
-                                <div id="idSelectedUserAddTask" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
+                                <div id="idSelectedUserAddTask" class="d-flex">hier
+                                    dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
                                 <div id="idChkSelectMultUserOuterCon" class=""> <!-- chkSelectMultUserOuterConOv -->
                                     <div id="idCheckboxesSelectMultUser" class="checkboxesSelectMultUserOv">
                                         <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
@@ -128,16 +133,20 @@
                             </div>
                             <div id="idSubtaskContainerAddTaskOv" class="mt-3">
                                 <label for="idSubtaskAddTaskOv">Subtask</label>
-                                <div id="idSubtaskSubContainerAddTaskOv" onfocus="switchIons(1)" onblur="switchIons(1)" 
+                                <div id="idSubtaskSubContainerAddTaskOv" onfocus="switchIons(1)" onblur="switchIons(1)"
                                     class="d-flex flex-row justify-content-between align-items-center subtaskSubContainerAddTaskOv">
-                                    <input id="idSubtaskAddTaskOv" onfocus="switchIons(1)" 
-                                        class="subtaskAddTaskOv" type="text" placeholder="Add new subtask" onkeypress="return event.keyCode != 13;">
+                                    <input id="idSubtaskAddTaskOv" onfocus="switchIons(1)" class="subtaskAddTaskOv"
+                                        type="text" placeholder="Add new subtask"
+                                        onkeypress="return event.keyCode != 13;">
                                     <div id="idSwitchIcons">
-                                        <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(2)"> <!-- onclick="switchIons(4)" -->
-                                        <div id="idSubtaskIconContainer" class="d-flex flex-row d-none">
-                                            <img src="../assets/img/taskOverlayClose.svg" alt="" onclick="switchIons(4)">
+                                        <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(2)">
+                                        <!-- onclick="switchIons(4)" -->
+                                        <div id="idSubtaskIconContainer" class="subtaskIconContainer d-none">
+                                            <img src="../assets/img/taskOverlayClose.svg" alt=""
+                                                onclick="switchIons(4)">
                                             <div id="idSubTaskDivider" class="subTaskDivider"></div>
-                                            <img src="../assets/img/checkBlack.svg" alt="" onclick="addSubtask(); switchIons(4)">
+                                            <img src="../assets/img/checkBlack.svg" alt=""
+                                                onclick="addSubtask(); switchIons(4)">
                                         </div>
                                     </div>
                                 </div>
@@ -152,7 +161,7 @@
                         <button id="idSubmitButtonAddTaskOv" type="onsubmit" class="taskButton">Create Task <img
                                 src="../assets/img/check.svg"></button>
                     </div>
-                </form>    
+                </form>
             </section>
         </div>
         <footer w3-include-html="../assets/templates/footer.html"></footer>

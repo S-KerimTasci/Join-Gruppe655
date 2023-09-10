@@ -60,8 +60,8 @@ function singleTaskOvHtmlTemp(taskNr) {
                             <span>Delete</span>
                         </div>
                         <div id="idBottomAreaContainerSeparatorOv" class="bottomAreaContainerSeparatorOv"></div> 
-                        <div id="idEditContainer"  class="bottomAreaSubContainer customButton"  role="button">
-                            <img src="../assets/img/taskOverlayEdit.svg" alt="edit" onclick="renderEditTask(${taskNr})">
+                        <div id="idEditContainer"  class="bottomAreaSubContainer customButton"  role="button"  onclick="renderEditTask(${taskNr})">
+                            <img src="../assets/img/taskOverlayEdit.svg" alt="edit">
                             <span>Edit</span>
                         </div>
                     </div>

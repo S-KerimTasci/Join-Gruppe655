@@ -2,20 +2,23 @@ function htmlAddTaskOverlay() {
     document.getElementById('idAddTaskOverlay').innerHTML = /*html*/`
     <section id="idBgAddTaskOverlay" class="backgroundTaskOverlay" onclick="closeOverlay('idAddTaskOverlay')">
         <form id="idAddTaskForm" onsubmit="storeNewTask(true); return false" class="addTaskOvGeneralSettings" onclick="innerClick(event)" autocomplete="off">
-            <h1 id="idHeadlineAddTask" class="headlineAddTaskOv">Add Task</h1>
+            <div class="d-flex justify-content-between align-items-center headlineAddTaskOv"> 
+                <h1 id="idHeadlineAddTask" class="">Add Task</h1>
+                <img onclick="closeOverlay('idAddTaskOverlay')" class="closeResponsive" src="../assets/img/cancel_contactOverlay.svg">
+            </div>
             <div id="idContentContainerAddTaskOv" class="contentContainerAddTaskOv">
                 <div id="idContentDeskLeftContainerAddTaskOv" class="ContentDeskContainerAddTaskOv">
                     <div id="idInputTitleContainerAddTaskOv" class="d-flex flex-column">
                         <label for="idInputTitleAddTaskOv">Title</label>
                         <input id="idInputTitleAddTaskOv" maxlength="48" class="inputTitleAddTaskOv" type="text"
                             placeholder="Enter a title" required>
-                        <span class="requiredInfo">This field is required</span>
+                        <div class="readWarningTexbox"><span id="idSpanTitle" class="requiredInfo d-none">This field is required</span></div>
                     </div>
                     <div id="idInputDescriptionContainerAddTaskOv" class="mt-1 d-flex flex-column">
                         <label for="idInputDescriptionAddTaskOv">Description</label>
                         <textarea id="idInputDescriptionAddTaskOv" class="inputDescriptionAddTaskOv" name="inputDescription"
                             placeholder="Enter a Description" required></textarea>
-                        <span class="requiredInfo">This field is required</span>
+                        <div class="readWarningTexbox"><span id="idSpanDesr" class="requiredInfo d-none">This field is required</span></div>
                     </div>
                     <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column"> <!-- assingToDesk -->
                         <label for="idInputAssignedToAddTaskDeskOv">Assigned To</label>
@@ -56,7 +59,7 @@ function htmlAddTaskOverlay() {
                             <label for="idInputDueDateAddTaskOv">Due Date</label>
                             <input id="idInputDueDateAddTaskOv" class="inputDueDateAddTaskOv" type="date" value="" min="2023-08-31"
                                 required>
-                            <span class="requiredInfo">This field is required</span>
+                            <div class="readWarningTexbox"><span id="idSpanDueDate" class="requiredInfo d-none">This field is required</span></div>
                         </div>
                     </div>
                     <div id="idInputCategoryContainerAddTaskOv" class="mt-1 d-flex flex-column">
@@ -66,6 +69,7 @@ function htmlAddTaskOverlay() {
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
                         </select>
+                        <div class="readWarningTexbox"><span id="idSpanSelectCat" class="requiredInfo d-none">This field is required</span></div>
                     </div>
                     <div id="idInputAssignedToContainerAddTaskOv" class="assingToMob mt-3 d-flex flex-column">
                         <label for="idInputAssignedToAddTaskOv">Assigned To</label>
@@ -88,7 +92,7 @@ function htmlAddTaskOverlay() {
                                 class="subtaskAddTaskOv" type="text" placeholder="Add new subtask" onkeypress="return event.keyCode != 13;">
                             <div id="idSwitchIcons">
                                 <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(2)"> <!-- onclick="switchIons(4)" -->
-                                <div id="idSubtaskIconContainer" class="d-flex flex-row d-none">
+                                <div id="idSubtaskIconContainer" class="subtaskIconContainer d-none">
                                     <img src="../assets/img/taskOverlayClose.svg" alt="" onclick="switchIons(4)">
                                     <div id="idSubTaskDivider" class="subTaskDivider"></div>
                                     <img src="../assets/img/checkBlack.svg" alt="" onclick="addSubtask(); switchIons(4)">
@@ -114,7 +118,7 @@ function htmlAddTaskOverlay() {
 function userOvHTMLButton() {
     return /*html*/`
     <div id="idChkSelectMultUserButtonOv" class="d-flex  ">
-        <button class="flex-fill justify-content-center taskButton" onclick="openAddContactOverlay()">
+        <button class="flex-fill justify-content-center taskButton" onclick="callAddContact()">
             <div>
                 <span>Add new cotact</span>
                 <img src="" alt="">
