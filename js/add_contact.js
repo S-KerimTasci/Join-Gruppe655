@@ -246,20 +246,14 @@ function resetContactInfo(){
 
 
 /**
- * This function assigns the contact that is going to be edited/deleted to the edit and delte buttons 
+ * This function assigns the contact that is going to be edited/deleted to the edit and delted buttons 
  * 
  * @param {number} i - index of the edited contact in the contacts JSON
  */
 function setEditDeleteDivDesktop(i) {
-  document.getElementById('editDelteContactDektop').innerHTML = `
-  <span onclick="editContact(${i})"><img src="../assets/img/edit_subtask.svg">Edit </span>
-  <span onclick="deleteContact(${i})"><img src="../assets/img/delete_subtask.svg">Delete</span>
-  `
+  document.getElementById('editDelteContactDektop').innerHTML = editDelteContactDektop(i)
 
-  document.getElementById('editDeletOverlay').innerHTML = `
-  <button onclick="editContact(${i})" class="editDeletOverlayButton"><img src="../assets/img/edit_subtask.svg"> Edit</button>
-  <button onclick="deleteContact(${i})" class="editDeletOverlayButton"><img src="../assets/img/delete_subtask.svg">Delete</button>
-  `
+  document.getElementById('editDeletOverlay').innerHTML = editDeletOverlay(i)
 }
 
 
@@ -361,10 +355,9 @@ async function deleteContact(i) {
  * 
  */
 function openAddContactOverlay() {
-  //document.getElementById('body').classList.add('noScroll');
   document.getElementById('addContactMenu').classList.add('dd-none');
-  document.getElementById('createContactOverlay').classList.remove('hide'); // Entferne hide-Klasse
-  document.getElementById('createContactOverlay').classList.add('show'); // Füge show-Klasse hinzu
+  document.getElementById('createContactOverlay').classList.remove('hide');
+  document.getElementById('createContactOverlay').classList.add('show');
   setAddContactOVerlay()
 }
 
@@ -374,7 +367,6 @@ function openAddContactOverlay() {
  * 
  */
 function closeAddContactOverlay() {
- // document.getElementById('body').classList.remove('noScroll');
   document.getElementById("addContactForm").reset();
   document.getElementById('addContactMenu').classList.remove('dd-none');
   document.getElementById('createContactOverlay').classList.remove('show');
@@ -384,6 +376,7 @@ function closeAddContactOverlay() {
 
 /**
  * This function shows the contact succesfully created overlay
+ * 
  */
 function showContactAddedOverlay(){
   document.getElementById('contactAddedOVerlay').classList.remove('hide')
@@ -392,15 +385,16 @@ function showContactAddedOverlay(){
 
 /**
  * This function hides the contact succesfully created overlay
+ * 
  */
 function hideContactAddedOverlay(){
   document.getElementById('contactAddedOVerlay').classList.add('hide')
   document.getElementById('contactAddedOVerlay').classList.remove('show')
-  //document.getElementById('contactAddedOVerlay').classList.remove('hide')
 }
 
 /**
  * This function resets the contact succesfully created overlay CSS
+ * 
  */
 function resetContactAddedOverlay(){
   document.getElementById('contactAddedOVerlay').classList.remove('hide')
@@ -416,13 +410,8 @@ function showAndHideContactAddedOverlay(){
     showContactAddedOverlay()
   }, 300);
   setTimeout(function () {
-    hideContactAddedOverlay(); // Verstecke das Overlay nach 2 Sekunden
+    hideContactAddedOverlay();
   }, 2000);
-  //document.getElementById('contactAddedOVerlay').classList.remove('hide')
-  
-  /*setTimeout(function () {
-    resetContactAddedOverlay()
-  }, 500);*/
 }
 
 /**
@@ -442,76 +431,4 @@ function showEditDeletOverlay() {
 function hideEditDeletOverlay() {
   document.getElementById('editDeletOverlay').classList.add('hide')
   document.getElementById('editDeletOverlay').classList.remove('show')
-}
-
-
-/**
- * This functions returns the HTML template for the edit contact overlay
- * 
- * @param {number} i - index of the edited contact in the contacts JSON
- * @returns  HTML template for the edit contact overlay
- */
-function editContactOverlayTemplate(i){
-  let form = document.getElementById("contactsFooterOverlay").innerHTML =`
-  <form id="addContactForm" class="inputArea" onsubmit="addContactViaEditOverlay(${i});return false">
-                        <input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
-                        <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
-                        <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
-                        <div id="overlayButtonDiv" class="buttonDiv">
-                            <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
-                                    src="../assets/img/cancel_contactOverlay.svg"></button>
-                            <button id="createButton" class="createButton"><span>Create contact</span> <img
-                                    src="../assets/img/check.svg"></button>
-                        </div>
-                    </form>
-
-                    <img onclick="closeAddContactOverlay()" class="closeResponsive"
-                        src="../assets/img/cancel_contactOverlay.svg">
-  `;
-  return form;
-}
-
-
-/**
- * This functions returns the HTML template for the add contact overlay
- * 
- * @returns the HTML template for the add contact overlay
- */
-function addContactOverlayTemplate(){
-  let form = document.getElementById("contactsFooterOverlay").innerHTML =`
-  <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
-  <input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
-  <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
-  <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
-  <div id="overlayButtonDiv" class="buttonDiv">
-      <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
-              src="../assets/img/cancel_contactOverlay.svg"></button>
-      <button id="createButton" class="createButton"><span>Create contact</span> <img
-              src="../assets/img/check.svg"></button>
-  </div>
-</form>
-
-<img onclick="closeAddContactOverlay()" class="closeResponsive"
-  src="../assets/img/cancel_contactOverlay.svg">
-  `;
-  return form;
-}
-
-function overlayAddButtonDivTemplate(){
-  return `
-  <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
-  src="../assets/img/cancel_contactOverlay.svg"></button>
-
-  <button id="createButton" class="createButton"><span>Create contact</span> <img
-  src="../assets/img/check.svg"></button>`
-}
-
-function overlayEditButtonDiv(i){
-  return  `
-  <button style="display: flex;" type="reset" onclick="deleteContact(${i})" id="cancelButton" class="cancelButton">Delete <img
-  src="../assets/img/cancel_contactOverlay.svg"></button>
-
-  <button id="createButton" class="createButton"><span>Save</span> <img
-  src="../assets/img/check.svg"></button>`
-
 }
