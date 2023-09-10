@@ -105,7 +105,7 @@ function clearContainer() {
  * @param {object} task - contains the complete task (HTML)
  */
 function changeStatus(task) {
-    taskToMove = +task.id.replace("idChangeStatus", "") - 1;
+    taskToMove = +task.id.replace("idChangeStatus", "");
     moveTo(task.value);
 }
 
