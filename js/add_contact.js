@@ -219,7 +219,12 @@ function setContactInfo(i){
   circle.style.backgroundColor = contactJSONBE[i].bgColor;
   name.innerHTML = contactJSONBE[i].name;
   mail.innerHTML = contactJSONBE[i].email;
-  phone.innerHTML = contactJSONBE[i].phone;
+  if (contactJSONBE[i].phone == undefined) {
+    phone.innerHTML = 'Please edit phone number'
+  } else {
+    phone.innerHTML = contactJSONBE[i].phone;
+  }
+  
 }
 
 
