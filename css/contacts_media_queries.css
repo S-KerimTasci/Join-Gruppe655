@@ -1,4 +1,3 @@
-
 @media (max-width: 750px) {
     .createContactOverlay{
         background: rgba(0, 0, 0, 0.089);
@@ -7,7 +6,6 @@
     .contactsHeaderOverlay {
         background-color: #2A3647;
         padding: 7vh 5vw 5vh 7vw;;
-        /*padding: 3vh 2vw 3vh 2vw;*/
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
         margin-bottom: -40px;
