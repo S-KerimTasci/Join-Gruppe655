@@ -28,34 +28,22 @@ async function loadContacts() {
  */
 async function createContactList() {
   await loadContacts();
-  const contacts = contactJSONBE
+  const contacts = contactJSONBE;
 
   for (const letter of alphabet) {
-    const filteredContacts = contacts
-      .filter(contact => contact.name.toLowerCase().startsWith(letter))
-      .sort((a, b) => a.name.localeCompare(b.name));
+      const filteredContacts = contacts
+          .filter(contact => contact.name.toLowerCase().startsWith(letter))
+          .sort((a, b) => a.name.localeCompare(b.name));
 
-    if (filteredContacts.length > 0) {
-      const html = `
-                <div class="contact-letter">${letter.toUpperCase()}</div>
-                <hr class="letter-line">
-                <div class="contacts-list">
-                    ${filteredContacts.map((contact, index) => {
-        const contactIndex = contacts.indexOf(contact);
-        return `
-                            <div class="contact" onclick="showContactInfo(${contactIndex})">
-                                <div class="circle" style="background-color: ${contact.bgColor};">${contact.initials}</div>
-                                <div class="nameDiv">
-                                    <span class="textcap">${contact.name}</span>
-                                    <span class="colorLink"> ${contact.email}</span>
-                                </div>
-                            </div>
-                        `;
-      }).join('')}
-                </div>
-            `;
-      contactsContainer.innerHTML += html;
-    }
+      if (filteredContacts.length > 0) {
+          const contactHTML = filteredContacts.map((contact, index) => {
+              const contactIndex = contacts.indexOf(contact);
+              return generateContactHTML(contact, contactIndex);
+          }).join('');
+
+          const html = generateLetterSection(letter, contactHTML);
+          contactsContainer.innerHTML += html;
+      }
   }
 }
 
@@ -317,7 +305,6 @@ function setAddContactOVerlay(){
  
   let overlayButtonDiv = document.getElementById('overlayButtonDiv')
   
- 
   overlayHeader.innerHTML = 'Add contact';
   overlayHeaderText.classList.remove('dd-none')
   overlayCircle.style.backgroundColor = '#d1d1d1';
@@ -391,6 +378,7 @@ function hideContactAddedOverlay(){
   document.getElementById('contactAddedOVerlay').classList.add('hide')
   document.getElementById('contactAddedOVerlay').classList.remove('show')
 }
+
 
 /**
  * This function resets the contact succesfully created overlay CSS
