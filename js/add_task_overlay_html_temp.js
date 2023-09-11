@@ -20,16 +20,15 @@ function htmlAddTaskOverlay() {
                             placeholder="Enter a Description" required></textarea>
                         <div class="readWarningTexbox"><span id="idSpanDesr" class="requiredInfo d-none">This field is required</span></div>
                     </div>
-                    <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column"> <!-- assingToDesk -->
+                    <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column"> 
                         <label for="idInputAssignedToAddTaskDeskOv">Assigned To</label>
-                        <div id="idSelectMultUserDeskOv" class="selectMultUserOv" onclick="showUserNames('DeskOv')"> <!-- ; renderTaskMember() -->
+                        <div id="idSelectMultUserDeskOv" class="selectMultUserOv" onclick="showUserNames('DeskOv')"> 
                             <input type="search" id="idInputAssignedToAddTaskDeskOv" class="selectContainerOv selectArrow"
                                 placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                         </div>
-                        <div id="idSelectedUserAddTaskDeskOv" class="d-flex"><!-- hier kommen die User rein, die ausgewählt wurden --></div>
-                        <div id="idChkSelectMultUserOuterConDeskOv" class=""> <!-- chkSelectMultUserOuterConOv -->
+                        <div id="idSelectedUserAddTaskDeskOv" class="d-flex"></div>
+                        <div id="idChkSelectMultUserOuterConDeskOv" class=""> 
                             <div id="idCheckboxesSelectMultUserDeskOv" class="checkboxesSelectMultUserOv">
-                                <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
                             </div>
                         </div>
                     </div>
@@ -73,14 +72,13 @@ function htmlAddTaskOverlay() {
                     </div>
                     <div id="idInputAssignedToContainerAddTaskOv" class="assingToMob mt-3 d-flex flex-column">
                         <label for="idInputAssignedToAddTaskOv">Assigned To</label>
-                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames('Ov')"> <!-- ; renderTaskMember() -->
+                        <div id="idSelectMultUserOv" class="selectMultUserOv" onclick="showUserNames('Ov')"> 
                             <input type="search" id="idInputAssignedToAddTaskOv" class="selectContainerOv selectArrow"
                                 placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                         </div>
-                        <div id="idSelectedUserAddTaskOv" class="d-flex">hier dann<!-- hier kommen die User rein, die ausgewählt wurden --></div>
-                        <div id="idChkSelectMultUserOuterConOv" class=""> <!-- chkSelectMultUserOuterConOv -->
+                        <div id="idSelectedUserAddTaskOv" class="d-flex"></div>
+                        <div id="idChkSelectMultUserOuterConOv" class=""> 
                             <div id="idCheckboxesSelectMultUserOv" class="checkboxesSelectMultUserOv">
-                                <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
                             </div>
                         </div>
                     </div>
@@ -91,7 +89,7 @@ function htmlAddTaskOverlay() {
                             <input id="idSubtaskAddTaskOv" onfocus="switchIons(1)" 
                                 class="subtaskAddTaskOv" type="text" placeholder="Add new subtask" onkeypress="return event.keyCode != 13;">
                             <div id="idSwitchIcons">
-                                <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(2)"> <!-- onclick="switchIons(4)" -->
+                                <img id="idSubtaskPlus" src="../assets/img/plus.svg" onclick="switchIons(2)">
                                 <div id="idSubtaskIconContainer" class="subtaskIconContainer d-none">
                                     <img src="../assets/img/taskOverlayClose.svg" alt="" onclick="switchIons(4)">
                                     <div id="idSubTaskDivider" class="subTaskDivider"></div>
@@ -127,6 +125,7 @@ function userOvHTMLButton() {
     </div>`
 }
 
+
 function userOvHTML(memberName, memberColor, memberinitials, i) {
     return `
     <div class="d-flex justify-content-between align-items-center" onclick="toggleChkBox(${i})">
@@ -139,6 +138,7 @@ function userOvHTML(memberName, memberColor, memberinitials, i) {
         </div>
     </div>`
 }
+
 
 function subtaskHTML(count) {
     return /*html*/`

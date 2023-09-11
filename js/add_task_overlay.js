@@ -272,6 +272,7 @@ async function loadContatsToAssinged(overlay) {
         desk = computedStyles === 'flex' ? 'DeskOv' : 'Ov'; 
     } else {
         desk = computedStyles === 'flex' ? 'Desk' : ''; 
+        resetTask2();
     }
     await loadContacts(desk);
     document.getElementById('idChkSelectMultUserOuterCon' + desk).classList.add('d-none');

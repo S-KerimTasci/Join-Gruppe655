@@ -109,22 +109,23 @@ function changeStatus(task) {
     moveTo(task.value);
 }
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~
-// search function start
-//~~~~~~~~~~~~~~~~~~~~~~~~~
+/**
+ * Tih is the search and render function for the tasks. It call the search function and renders the result
+ */
 function searchTask() {
     let search = document.getElementById('idBoardSearch').value;
     search = search.toLowerCase();
     search !== '' ? searchFunction(search) : renderTasks();
-    /* if (search === '') {renderTasks();} 
-    else { searchFunction(search);} */
 }
 
+/**
+ * This function stores all tasks which matches the search value in a seperate objekt
+ * 
+ * @param {string} search - value to search
+ */
 function searchFunction(search) {
-    //blockAddNewCardsForSearch = true;
     clearContainer();
     searchTaskObj = [];
-    //document.getElementById('fourtyBucket').innerHTML = '';
     let searchIndex = 0;
     for (let i = 0; i < taskJson.length; i++) {
         if (taskJson[i].headline.toLowerCase().includes(search)) {
@@ -134,7 +135,3 @@ function searchFunction(search) {
     }
     renderAllContainer(searchTaskObj);
 }
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~
-// search function end
-//~~~~~~~~~~~~~~~~~~~~~~~~~
