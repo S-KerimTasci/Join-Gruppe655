@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: summary.js</title>
+    <title>JSDoc: Source: add_contacts_templates.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: summary.js</h1>
+    <h1 class="page-title">Source: add_contacts_templates.js</h1>
 
     
 
@@ -26,126 +26,115 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//shows welcome screen
-document.addEventListener("DOMContentLoaded", function () {
-    const welcomeMessage = document.getElementById("idWelcome");
-    if (window.innerWidth &lt;= 960) {
-        welcomeMessage.classList.remove('d-none');
-        welcomeMessage.classList.add('welcome');
-        setTimeout(() => {
-            welcomeMessage.classList.add('d-none');
-            welcomeMessage.classList.remove('welcome');
-        }, 2000);
-    }
-});
-
-/**
- * This function returns the greeting phrase
+            <pre class="prettyprint source linenums"><code>/**
+ * This functions returns the HTML template for the edit contact overlay
  * 
- * 
- * @returns - greeting which fits to the daytime
+ * @param {number} i - index of the edited contact in the contacts JSON
+ * @returns  HTML template for the edit contact overlay
  */
-function greetingText() {
-    let daytime = new Date().getHours();
-    if (daytime >= 5 &amp;&amp; daytime &lt; 12) {
-        return "Good Morning!";
-    } else if (daytime >= 12 &amp;&amp; daytime &lt; 19) {
-        return "Good Afternoon!";
-    } else {
-        return "Good Evening!";
-    }
-}
+function editContactOverlayTemplate(i){
+    let form = document.getElementById("contactsFooterOverlay").innerHTML =`
+    &lt;form id="addContactForm" class="inputArea" onsubmit="addContactViaEditOverlay(${i});return false">
+                          &lt;input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
+                          &lt;input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
+                          &lt;input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
+                          &lt;div id="overlayButtonDiv" class="buttonDiv">
+                              &lt;button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel &lt;img
+                                      src="../assets/img/cancel_contactOverlay.svg">&lt;/button>
+                              &lt;button id="createButton" class="createButton">&lt;span>Create contact&lt;/span> &lt;img
+                                      src="../assets/img/check.svg">&lt;/button>
+                          &lt;/div>
+                      &lt;/form>
+  
+                      &lt;img onclick="closeAddContactOverlay()" class="closeResponsive"
+                          src="../assets/img/cancel_contactOverlay.svg">
+    `;
+    return form;
+  }
+  
+  
+  /**
+   * This functions returns the HTML template for the add contact overlay
+   * 
+   * @returns the HTML template for the add contact overlay
+   */
+  function addContactOverlayTemplate(){
+    let form = document.getElementById("contactsFooterOverlay").innerHTML =`
+    &lt;form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
+    &lt;input id="inputName" class="inputName" type="text" placeholder="Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
+    &lt;input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
+    &lt;input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required>
+    &lt;div id="overlayButtonDiv" class="buttonDiv">
+        &lt;button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel &lt;img
+                src="../assets/img/cancel_contactOverlay.svg">&lt;/button>
+        &lt;button id="createButton" class="createButton">&lt;span>Create contact&lt;/span> &lt;img
+                src="../assets/img/check.svg">&lt;/button>
+    &lt;/div>
+  &lt;/form>
+  
+  &lt;img onclick="closeAddContactOverlay()" class="closeResponsive"
+    src="../assets/img/cancel_contactOverlay.svg">
+    `;
+    return form;
+  }
+  
+  
+  /**
+   * This functions returns the HTML template for the buttons of the add contact overlay
+   * 
+   * @returns the HTML template for the buttons of the add contact overlay
+   */
+  function overlayAddButtonDivTemplate(){
+    return `
+    &lt;button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel &lt;img
+    src="../assets/img/cancel_contactOverlay.svg">&lt;/button>
+  
+    &lt;button id="createButton" class="createButton">&lt;span>Create contact&lt;/span> &lt;img
+    src="../assets/img/check.svg">&lt;/button>`
+  }
+  
+  
+  /**
+   * This functions returns the HTML template for the buttons of the edit contact overlay
+   * 
+   * @returns the HTML template for the buttons of the edit contact overlay
+   */
+  function overlayEditButtonDiv(i){
+    return  `
+    &lt;button style="display: flex;" type="reset" onclick="deleteContact(${i})" id="cancelButton" class="cancelButton">Delete &lt;img
+    src="../assets/img/cancel_contactOverlay.svg">&lt;/button>
+  
+    &lt;button id="createButton" class="createButton">&lt;span>Save&lt;/span> &lt;img
+    src="../assets/img/check.svg">&lt;/button>`
+  }
 
-function activeUser(params) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    let activeUserName = currentUser ? currentUser.name : '';   
-    return activeUserName;
-} 
+
+  /**
+   * This function return the HTML template for the edit and delte buttons in desktop view
+   * 
+   * @param {number} i - index of the edited contact in the contacts JSON
+   * @returns the HTML template for the edit and delte buttons in desktop view
+   */
+  function editDelteContactDektop(i){
+    return `
+    &lt;span onclick="editContact(${i})">&lt;img src="../assets/img/edit_subtask.svg">Edit &lt;/span>
+    &lt;span onclick="deleteContact(${i})">&lt;img src="../assets/img/delete_subtask.svg">Delete&lt;/span>
+    `
+  }
 
 
-
-/**
- * this function adds the greeting texed provided by the call of greetingText() to the HTML Code
- */
-function addGreetingPhrase() {
-    document.getElementById('idWelcomeMessage').innerText = greetingText();
-    document.getElementById('idWelcomeUserName').innerText = activeUser(); 
-}
-
-
-/**
- * This function returns from an object(array) a count of all emements which contains a specific value
- * 
- * 
- * @param {string} srcValue - lookup value
- * @param {string} compValue - variable where the value for comparison is stored in array
- * @param {string} chkArr - array which should checked
- * @returns count
- */
-function countTasks(srcValue, compValue, chkArr) {
-    let count = 0;
-    for (let i = 0; i &lt; chkArr.length; i++) {
-        if (srcValue == chkArr[i][compValue]) {
-            count++;
-        }
-    }
-    return count
-}
-
-/**
- * This function calls function for adding counts and upcommingDeadline to summary it adds also the greeting formula too.
- * 
- */
-async function addValuesToSummary() {
-    addGreetingPhrase();  
-    taskJson = await loadJSON(KEY_for_JSON_TASKS);
-    addNumToSummary(); 
-    upcommingDeadline();  
-    
-}
-
-/**
- * this function adds the counts of each tasktype to summary
- * 
- */
-function addNumToSummary() {
-    document.getElementById('idCountAllTasks').innerText = taskJson.length;
-    document.getElementById('idCountTasksInProgress').innerText = countTasks('inProgress', 'status', taskJson);
-    document.getElementById('idCounttaskAwaitingFeedback').innerText = countTasks('awaitFeedback', 'status', taskJson);
-    document.getElementById('idTaskUrgent').innerText = countTasks('urgent', 'urgency', taskJson);
-    document.getElementById('idTaskToDd').innerText = countTasks('toDo', 'status', taskJson);
-    document.getElementById('idTaskDone').innerText = countTasks('done', 'status', taskJson);
-}
-
-/**
- * This function looks for the youngest date and calls function buildDateFormat which returns the correkt Format for idTaksUrgentDate 
- * 
- */
-function upcommingDeadline() {
-    let youngestDate = new Date(taskJson[0].dueDate);
-    for (let i = 1; i &lt; taskJson.length; i++) {
-        let taskDate = new Date(taskJson[i].dueDate);
-        if (taskDate &lt; youngestDate) {
-            youngestDate = taskDate;
-        }
-    }
-    document.getElementById('idTaksUrgentDate').innerHTML = `&lt;strong>${buildDateFormat(youngestDate)}&lt;/strong>`;
-}
-
-/**
- * This function returns the date in Format Full month name, day and full year.
- * 
- * 
- * @param {date} youngestDate 
- * @returns formated date
- */
-function buildDateFormat(youngestDate) {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    let monthName = months[youngestDate.getMonth()];
-    let day = youngestDate.getDate();
-    let year = youngestDate.getFullYear();
-    return monthName + " " + day + ", " + year;
-}</code></pre>
+    /**
+   * This function return the HTML template for the edit and delte buttons in mobile view
+   * 
+   * @param {number} i - index of the edited contact in the contacts JSON
+   * @returns the HTML template for the edit and delte buttons in mobile view
+   */
+  function editDeletOverlay(i){
+    return`
+    &lt;button onclick="editContact(${i})" class="editDeletOverlayButton">&lt;img src="../assets/img/edit_subtask.svg"> Edit&lt;/button>
+    &lt;button onclick="deleteContact(${i})" class="editDeletOverlayButton">&lt;img src="../assets/img/delete_subtask.svg">Delete&lt;/button>
+    `
+  }</code></pre>
         </article>
     </section>
 
