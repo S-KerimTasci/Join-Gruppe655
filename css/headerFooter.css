@@ -39,6 +39,10 @@ header {
     display: none;
 }
 
+.help-link {
+    display: inline;
+}
+
 .iconHelp {
     display: none;
 }
@@ -46,10 +50,16 @@ header {
  width: 21px;
 }
 
+
+
 @media (min-width: 750px) {
     .toolName {
         display: block;
         font-size: 20px;
+    }
+
+    .help-link {
+        display: none;
     }
 
     .headImg {
@@ -72,6 +82,8 @@ header {
         height: 56px;
     }
 }
+
+
 
 #popupBar{
     position: absolute;
@@ -101,6 +113,7 @@ header {
 #popupBar a:hover {
     color: #29abe2;
 }
+
 
 /* Header end*/
 
