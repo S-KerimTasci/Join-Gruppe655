@@ -3,19 +3,7 @@ let subtaskPlus = true;
 //let currentPrio = '';
 let subtaskObj = [];
 let activTaskNumber = '';
-let task2 = {
- /*    "taskId": "", 
-    "taskType": "", 
-    "dueDate": "", 
-    "status": "", 
-    "headline": "", 
-    "description": "", 
-    "doneSubTasks": "", 
-    "subTaskTotal": "", 
-    "subTaskText": [],
-    "member": [],
-    "urgency": "" */
-};
+let task2 = {};
 
 /**
  * THis function resets the task object
@@ -23,22 +11,22 @@ let task2 = {
 function resetTask2() {
     task2 = {
         "taskId": "", // task id - should be a ongoing number
-    "taskType": "", //type of task
-    "dueDate": "", //date of task /* 21.Sep.23 */
-    "status": "", //status of task /*toDo inProgress awaitFeedback done*/
-    "headline": "", //title of task
-    "description": "", //decription of task
-    "doneSubTasks": "", // count of tasks which checked
-    "subTaskTotal": "", // count of all tasks
-    "subTaskText": [],//needs a push
-    "member": [],//needs a push
-    "urgency": ""
+        "taskType": "", //type of task
+        "dueDate": "", //date of task /* 21.Sep.23 */
+        "status": "", //status of task /*toDo inProgress awaitFeedback done*/
+        "headline": "", //title of task
+        "description": "", //decription of task
+        "doneSubTasks": "", // count of tasks which checked
+        "subTaskTotal": "", // count of all tasks
+        "subTaskText": [],//needs a push
+        "member": [],//needs a push
+        "urgency": ""
     }
 }
 
 /**
  *This functions for highlight the priority button start
- */ 
+ */
 function highlight(prio) {
     if (task2.urgency == prio) {
         removeHighlight()
@@ -257,6 +245,14 @@ async function openAddtaskOverlay() {
     resetTask2();
     htmlAddTaskOverlay();
     await loadContatsToAssinged(true);
+    document.getElementById("idBgAddTaskOverlay").classList.toggle('bgAddTaskOvSlide');
+}
+
+/**
+ * this function closes the add task overlay
+ */
+function closeAddTaskOv() {
+    document.getElementById("idBgAddTaskOverlay").classList.toggle('bgAddTaskOvSlide');
 }
 
 /**
@@ -269,9 +265,9 @@ async function loadContatsToAssinged(overlay) {
     let computedStyles = window.getComputedStyle(element).display;
     let desk = '';
     if (overlay) {
-        desk = computedStyles === 'flex' ? 'DeskOv' : 'Ov'; 
+        desk = computedStyles === 'flex' ? 'DeskOv' : 'Ov';
     } else {
-        desk = computedStyles === 'flex' ? 'Desk' : ''; 
+        desk = computedStyles === 'flex' ? 'Desk' : '';
         resetTask2();
     }
     await loadContacts(desk);
@@ -287,13 +283,24 @@ async function loadContatsToAssinged(overlay) {
 function toggleChkBox(chkNr) {
     let chkChecked = document.getElementById('idAssingedToChk' + chkNr);
     if (chkChecked.checked) {
-        chkChecked.checked = false;
+        chkChecked.checked = false;toggleselectedAssignTo(chkNr);
         task2.member = task2.member.filter(item => item !== document.getElementById('idAssingedToName' + chkNr).innerText);
     } else {
         chkChecked.checked = true;
+        toggleselectedAssignTo(chkNr);
         task2.member.push(document.getElementById('idAssingedToName' + chkNr).innerText);
         task2.member = [...new Set(task2.member)];
     }
+}
+
+/**
+ * THis function sets and removs the background color of seleted assingTo member
+ * 
+ * @param {number} chkNr - for identifying of correct Checkbox
+ */
+function toggleselectedAssignTo(chkNr) {
+    document.getElementById('idAssingedToCon' + chkNr).classList.toggle('AssingedToChecked');
+    document.getElementById('idAssingedToChk' + chkNr).classList.toggle('check_box_checked');
 }
 
 /**
@@ -332,5 +339,6 @@ function taskOverlayMemberDiskHTML(memberColor, memberinitials, i) {
  * THis function opens the contact page
  */
 function callAddContact() {
-        window.location.href = "../html/contacts.html";   
+    window.location.href = "../html/contacts.html";
 }
+

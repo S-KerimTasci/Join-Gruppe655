@@ -62,9 +62,9 @@
                         <div id="idBoardHead2" class="BoardHead2">
                             <div id="idSearchContainer" class="myBoardHead2 d-flex justify-content-between">
                                 <input id="idBoardSearch" type="search" placeholder="Find Task" class="boardSearch"
-                                    onsearch="searchTask()" onkeyup="searchTask()">
+                                    onsearch="searchTask('idBoardSearch')" onkeyup="searchTask('idBoardSearch')">
                                 <div class="searchDivider"></div>
-                                <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="searchTask()">
+                                <img src="../assets/img/boardSearch.svg" alt="magnifyingGlass" onclick="searchTask('idBoardSearch')">
                             </div>
                             <button class="hideSmallBtnH2">
                                 <img class=" " role="button" src="../assets/img/BoardAddTaskTop.svg"

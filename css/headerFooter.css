@@ -26,6 +26,9 @@ header {
     color: rgb(41, 171, 226);
     text-decoration: none;
 }
+.headCircle:hover{
+ background-color: #e2e5e2;
+}
 
 .headImg {
     height: 39px;
@@ -38,6 +41,9 @@ header {
 
 .iconHelp {
     display: none;
+}
+.headHelpImg:hover{
+ width: 21px;
 }
 
 @media (min-width: 750px) {
@@ -56,14 +62,13 @@ header {
 
     .headerContainer {
         height: 96px;
-        padding: 20px 40px 20px 116px
+        padding: 20px 40px 20px 43px
     }
 
     .headerRightContainer {
         display: flex;
         align-items: center;
         gap: 16px;
-        /* width: 104px; */
         height: 56px;
     }
 }

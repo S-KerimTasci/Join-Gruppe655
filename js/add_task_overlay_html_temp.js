@@ -1,10 +1,10 @@
 function htmlAddTaskOverlay() {
     document.getElementById('idAddTaskOverlay').innerHTML = /*html*/`
-    <section id="idBgAddTaskOverlay" class="backgroundTaskOverlay" onclick="closeOverlay('idAddTaskOverlay')">
+    <section id="idBgAddTaskOverlay" class="backgroundAddTaskOverlay" onclick="closeAddTaskOv('idBgAddTaskOverlay')">
         <form id="idAddTaskForm" onsubmit="storeNewTask(true); return false" class="addTaskOvGeneralSettings" onclick="innerClick(event)" autocomplete="off">
             <div class="d-flex justify-content-between align-items-center headlineAddTaskOv"> 
                 <h1 id="idHeadlineAddTask" class="">Add Task</h1>
-                <img onclick="closeOverlay('idAddTaskOverlay')" class="closeResponsive" src="../assets/img/cancel_contactOverlay.svg">
+                <img onclick="closeAddTaskOv('idBgAddTaskOverlay')" class="closeResponsive" src="../assets/img/cancel_contactOverlay.svg">
             </div>
             <div id="idContentContainerAddTaskOv" class="contentContainerAddTaskOv">
                 <div id="idContentDeskLeftContainerAddTaskOv" class="ContentDeskContainerAddTaskOv">
@@ -23,7 +23,7 @@ function htmlAddTaskOverlay() {
                     <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column"> 
                         <label for="idInputAssignedToAddTaskDeskOv">Assigned To</label>
                         <div id="idSelectMultUserDeskOv" class="selectMultUserOv" onclick="showUserNames('DeskOv')"> 
-                            <input type="search" id="idInputAssignedToAddTaskDeskOv" class="selectContainerOv selectArrow"
+                            <input type="text" id="idInputAssignedToAddTaskDeskOv" class="selectContainerOv selectArrow"
                                 placeholder="Select contacts to assign" onkeypress="return event.keyCode != 13;">
                         </div>
                         <div id="idSelectedUserAddTaskDeskOv" class="d-flex"></div>
@@ -128,10 +128,10 @@ function userOvHTMLButton() {
 
 function userOvHTML(memberName, memberColor, memberinitials, i) {
     return `
-    <div class="d-flex justify-content-between align-items-center" onclick="toggleChkBox(${i})">
+    <div id="idAssingedToCon${i}" class="assingedToMembers hoverAssingedTo" onclick="toggleChkBox(${i})">
         <div id="idAssingedToInitialsOv${i}" class="memberDiskOv memberBgColor${memberColor}">${memberinitials}
         </div>
-        <span id="idAssingedToName${i}">${memberName}</span>
+        <span id="idAssingedToName${i}" class="assignToName">${memberName}</span>
         <div class="chkContainerAssingdTo">
             <input id=idAssingedToChk${i} type="checkbox" class="check_box chkHeight">
             <label for=idAssingedToChk${i}></label>

@@ -84,7 +84,6 @@ async function moveTo(newStatus) {
     taskJson[taskToMove].status = newStatus;
     afterSetItemServerAnswer = await setItem(KEY_for_JSON_TASKS, taskJson);
     taskJson = await loadJSON(KEY_for_JSON_TASKS);
-    //searchTask(); // Hier ist das Problem, dass ich im Suchzustand die Karten nicht verschieben kann, weil sich deren Kartennummer ändert
     renderTasks();
 }
 
@@ -135,3 +134,9 @@ function searchFunction(search) {
     }
     renderAllContainer(searchTaskObj);
 }
+
+function openNav() {
+    document.getElementById("idBgAddTaskOverlay").style.width = "100%";
+  }
+  
+  
