@@ -50,13 +50,15 @@
                                 <label for="idInputTitleAddTaskOv">Title</label>
                                 <input id="idInputTitleAddTaskOv" maxlength="48" class="inputTitleAddTaskOv" type="text"
                                     placeholder="Enter a title" required>
-                                <div class="readWarningTexbox"><span id="idSpanTitle" class="requiredInfo d-none">This field is required</span></div>
+                                <div class="readWarningTexbox"><span id="idSpanTitle" class="requiredInfo d-none">This
+                                        field is required</span></div>
                             </div>
                             <div id="idInputDescriptionContainerAddTaskOv" class="mt-1 d-flex flex-column">
                                 <label for="idInputDescriptionAddTaskOv">Description</label>
                                 <textarea id="idInputDescriptionAddTaskOv" class="inputDescriptionAddTaskOv"
                                     name="inputDescription" placeholder="Enter a Description" required></textarea>
-                                <div class="readWarningTexbox"><span id="idSpanDesr" class="requiredInfo d-none">This field is required</span></div>
+                                <div class="readWarningTexbox"><span id="idSpanDesr" class="requiredInfo d-none">This
+                                        field is required</span></div>
                             </div>
                             <div id="idInputAssignedToContainerDesktopAddTaskOv" class="assingToDesk mt-3 flex-column">
                                 <label for="idInputAssignedToAddTaskDeskOv">Assigned To</label>
@@ -66,7 +68,8 @@
                                         onkeypress="return event.keyCode != 13;">
                                 </div>
                                 <div id="idSelectedUserAddTaskDesk" class="d-flex">
-                                    <!-- hier kommen die User rein, die ausgewählt wurden --></div>
+                                    <!-- hier kommen die User rein, die ausgewählt wurden -->
+                                </div>
                                 <div id="idChkSelectMultUserOuterConDesk" class=""> <!-- chkSelectMultUserOuterConOv -->
                                     <div id="idCheckboxesSelectMultUserDesk" class="checkboxesSelectMultUserOv">
                                         <!-- hier kommt die Funktion rein, die die Namen aus contactJSON ausliest -->
@@ -102,7 +105,8 @@
                                     <label for="idInputDueDateAddTaskOv">Due Date</label>
                                     <input id="idInputDueDateAddTaskOv" class="inputDueDateAddTaskOv" type="date"
                                         value="" min="2023-08-31" required>
-                                    <div class="readWarningTexbox"><span id="idSpanDueDate" class="requiredInfo d-none">This field is required</span></div>
+                                    <div class="readWarningTexbox"><span id="idSpanDueDate"
+                                            class="requiredInfo d-none">This field is required</span></div>
                                 </div>
                             </div>
                             <div id="idInputCategoryContainerAddTaskOv" class="mt-1 d-flex flex-column">
@@ -113,7 +117,8 @@
                                     <option value="Technical Task">Technical Task</option>
                                     <option value="User Story">User Story</option>
                                 </select>
-                                <div class="readWarningTexbox"><span id="idSpanSelectCat" class="requiredInfo d-none">This field is required</span></div>
+                                <div class="readWarningTexbox"><span id="idSpanSelectCat"
+                                        class="requiredInfo d-none">This field is required</span></div>
                             </div>
                             <div id="idInputAssignedToContainerAddTaskOv" class="assingToMob mt-3 d-flex flex-column">
                                 <label for="idInputAssignedToAddTaskOv">Assigned To</label>
@@ -163,6 +168,9 @@
                     </div>
                 </form>
             </section>
+            <div id="idAddTaskPopupPage" class="addTaskPopup">
+                <span>Task successfully created!</span>
+            </div>
         </div>
         <footer w3-include-html="../assets/templates/footer.html"></footer>
     </div>

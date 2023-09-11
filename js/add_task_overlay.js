@@ -159,14 +159,36 @@ async function storeNewTask(overlay) {
         subtaskObj = [];
     }
     setItem(KEY_for_JSON_TASKS, taskJson);
-    overlay ? closeOverlay('idAddTaskOverlay') : openBoardPage();
+    overlay ? (closeOverlay('idAddTaskOverlay'), showPopup('idAddTaskPopupOv')) : openBoardPage('idAddTaskPopupPage');
+}
+
+/**
+ * This function shows a popup
+ * 
+ * @param {string} element - elementid
+ */
+function showPopup(element) {
+    document.getElementById(element).style.display = 'flex';
+    setTimeout(function () { hidePopup(element); }, 1000);
+}
+
+/**
+ * This function hides the popup
+ * 
+ * @param {string} element - elementid 
+ */
+function hidePopup(element) {
+    document.getElementById(element).style.display = 'none';
 }
 
 /**
  * This function redirects to the "board.html" page. 
+ * 
+ * @param {string} element - elementid 
  */
-function openBoardPage() {
-    window.location.href = "../html/board.html";
+function openBoardPage(element) {
+    document.getElementById(element).style.display = 'flex';
+    setTimeout(function () { window.location.href = "../html/board.html"; }, 1000);
 }
 
 /**
@@ -283,7 +305,7 @@ async function loadContatsToAssinged(overlay) {
 function toggleChkBox(chkNr) {
     let chkChecked = document.getElementById('idAssingedToChk' + chkNr);
     if (chkChecked.checked) {
-        chkChecked.checked = false;toggleselectedAssignTo(chkNr);
+        chkChecked.checked = false; toggleselectedAssignTo(chkNr);
         task2.member = task2.member.filter(item => item !== document.getElementById('idAssingedToName' + chkNr).innerText);
     } else {
         chkChecked.checked = true;
@@ -342,3 +364,29 @@ function callAddContact() {
     window.location.href = "../html/contacts.html";
 }
 
+/**
+ * this eventlistenet shold check if the button was clicked, but is still not working
+ */
+/* document.body.addEventListener('click', function (event) {
+    console.log('Event-Listener wurde aufgerufen');
+    console.log('Event-Target:', event.target);
+    if (event.target && event.target.id === 'idSubmitButtonAddTaskOv') {
+      console.log('Button wurde geklickt');
+      emptyRequiredShow('idInputTitleAddTaskOv', 'idSpanTitle');
+      emptyRequiredShow('idInputDescriptionAddTaskOv', 'idSpanDesr');
+      emptyRequiredShow('idInputDueDateAddTaskOv', 'idSpanDueDate');
+      emptyRequiredShow('idSelectCategoryAddTaskOv', 'idSpanSelectCat');
+    }
+  });
+ */
+/**
+ * This function schows all fields which are required but empty
+ * 
+ * @param {string} InpElemId - element to check
+ * @param {string} spanElemId - element to change
+ */
+/* function emptyRequiredShow(InpElemId, spanElemId) {
+    if (document.getElementById(InpElemId).value == '') {
+        document.getElementById(spanElemId).classList.remove('d-none');
+    }
+} */

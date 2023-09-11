@@ -105,7 +105,7 @@ function htmlAddTaskOverlay() {
             </div>
             <div id="idSubmitContainerAddTaskOv" onsubmit="storeNewTask(true)"
                 class="submitContainerAddTaskOv d-flex justify-content-end align-items-center">
-                <button id="idSubmitButtonAddTaskOv" type="onsubmit" class="taskButton">Create Task <img
+                <button id="idSubmitButtonAddTaskOv" type="submit" class="taskButton">Create Task <img
                         src="../assets/img/check.svg"></button>
             </div>
         </form>    
@@ -161,3 +161,9 @@ function subtaskHTML(count) {
         </div>
     </li>`
 }
+
+/* function addTaskpopupHTML() {
+    return `<div id="idAddTaskPopup" class="addTaskPopup">
+        <p>Task successfully created!</p>
+        </div>`
+} */
