@@ -165,7 +165,7 @@ function hideContactInfo() {
 
 
 /**
- * This function sets the desctop view css fot the contacts page
+ * This function sets the desktop view css for the contacts page
  * 
  */
 function hideContactInfoDektop() {
@@ -174,7 +174,7 @@ function hideContactInfoDektop() {
 
 
 /**
- * This funtion displays the selected contact from the contactlist next to it
+ * This function displays the selected contact from the contactlist next to it
  * 
  * @param {number} i - index of the selected contact in the contacts JSON 
  */
