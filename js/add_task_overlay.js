@@ -4,6 +4,7 @@ let subtaskPlus = true;
 let subtaskObj = [];
 let activTaskNumber = '';
 let task2 = {};
+let taskStatus = 'toDo';
 
 /**
  * THis function resets the task object
@@ -196,7 +197,7 @@ function openBoardPage(element) {
  */
 function getValuesForTaskArr() {
     task2.taskId = calcTaskId();
-    task2.status = taskJson[activTaskNumber] ? taskJson[activTaskNumber].status : 'toDo';
+    task2.status = taskJson[activTaskNumber] ? taskJson[activTaskNumber].status : taskStatus;
     task2.urgency = task2.urgency === '' ? task2.urgency = 'low' : task2.urgency;
     getValuesFromForm();
     getSubtaskFromForm();
@@ -263,9 +264,10 @@ function clearAddTaskForm() {
 /**
  * This function opens the add task overlay
  */
-async function openAddtaskOverlay() {
+async function openAddtaskOverlay(taskStat) {
     resetTask2();
     htmlAddTaskOverlay();
+    taskStatus = taskStat;
     await loadContatsToAssinged(true);
     document.getElementById("idBgAddTaskOverlay").classList.toggle('bgAddTaskOvSlide');
 }
