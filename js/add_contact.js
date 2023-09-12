@@ -362,30 +362,12 @@ function closeAddContactOverlay() {
 
 
 /**
- * This function shows the contact succesfully created overlay
+ * This function shows and hides the contact succesfully created overlay
  * 
  */
-function showContactAddedOverlay(){
-  document.getElementById('contactAddedOVerlay').classList.remove('hide')
-  document.getElementById('contactAddedOVerlay').classList.add('show')
-}
-
-/**
- * This function hides the contact succesfully created overlay
- * 
- */
-function hideContactAddedOverlay(){
-  document.getElementById('contactAddedOVerlay').classList.add('hide')
-  document.getElementById('contactAddedOVerlay').classList.remove('show')
-}
-
-
-/**
- * This function resets the contact succesfully created overlay CSS
- * 
- */
-function resetContactAddedOverlay(){
-  document.getElementById('contactAddedOVerlay').classList.remove('hide')
+function showHideContactAddedOverlay(x,y){
+  document.getElementById('contactAddedOVerlay').classList.add(x)
+  document.getElementById('contactAddedOVerlay').classList.remove(y)
 }
 
 
@@ -395,28 +377,18 @@ function resetContactAddedOverlay(){
  */
 function showAndHideContactAddedOverlay(){
   setTimeout(function () {
-    showContactAddedOverlay()
+    showHideContactAddedOverlay('show','hide')
   }, 300);
   setTimeout(function () {
-    hideContactAddedOverlay();
+    showHideContactAddedOverlay('hide','show')
   }, 2000);
 }
 
 /**
- * This function shows the edit and delete buttons in responsive view
+ * This function shows and hides the edit contact overlay
  * 
  */
-function showEditDeletOverlay() {
-  document.getElementById('editDeletOverlay').classList.add('show')
-  document.getElementById('editDeletOverlay').classList.remove('hide')
-}
-
-
-/**
- * This function hides the edit and delete buttons in responsive view
- * 
- */
-function hideEditDeletOverlay() {
-  document.getElementById('editDeletOverlay').classList.add('hide')
-  document.getElementById('editDeletOverlay').classList.remove('show')
+function showHideEditDeletOverlay(x,y){
+  document.getElementById('editDeletOverlay').classList.add(x)
+  document.getElementById('editDeletOverlay').classList.remove(y)
 }

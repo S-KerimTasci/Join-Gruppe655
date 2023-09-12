@@ -48,7 +48,7 @@
                 <img onclick="openAddContactOverlay()" id="addContactMenu" class="addContactMenu"
                     src="../assets/img/person_add_contacts.svg">
 
-                <div onclick="hideEditDeletOverlay()" id="rightDiv" class="rightDiv dd-none">
+                <div onclick="showHideEditDeletOverlay('hide','show')" id="rightDiv" class="rightDiv dd-none">
                     <div class="contactsCart">
                         <div class="contactsHeaderDektop">
                             <span class="contactsHeaderh1">Contacts</span>
@@ -57,7 +57,7 @@
                                 <div><span class="contactsHeaderspan">Better with a team</span></div>
                             </div>
                             <img class="backArrow" src="../assets/img/sign-up-arrow-left.svg"
-                                onclick="hideContactInfo(); innerClick(event)">
+                                onclick="hideContactInfo()">
                         </div>
 
                         <div id="ContactsInfoContainer" class="dd-none">
@@ -80,7 +80,7 @@
                                 <a id="contactsPhone" class="aPhone colorLink" href="tel: +49 1111 1111 1111">+49 1111 1111
                                     1111</a>
                             </div>
-                            <img onclick="showEditDeletOverlay(); innerClick(event)" class="contactsMenu" src="../assets/img/menu_contact_options.svg">
+                            <img onclick="showHideEditDeletOverlay('show','hide'); innerClick(event)" class="contactsMenu" src="../assets/img/menu_contact_options.svg">
 
                             <div id="editDeletOverlay" class="editDeletOverlay">
                                 <button onclick="editContact(i)" class="editDeletOverlayButton"><img src="../assets/img/edit_subtask.svg"> Edit</button>
