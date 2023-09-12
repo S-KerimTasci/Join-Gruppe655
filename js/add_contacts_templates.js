@@ -48,7 +48,7 @@ function editContactOverlayTemplate(i) {
     <form id="addContactForm" class="inputArea" onsubmit="addContactViaEditOverlay(${i});return false">
                           <input id="inputName" class="inputName" type="text" placeholder="Surname Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
                           <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
-                          <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required pattern="^\\+?[0-9]{7,}$" title="At least seven digits with a optional leading + ">
+                          <input id="inputTel" class="inputTel" type="number" placeholder="Phone" required pattern="^\\+?[0-9]{7,}$" title="At least seven digits with a optional leading + ">
                           <div id="overlayButtonDiv" class="buttonDiv">
                               <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
                                       src="../assets/img/cancel_contactOverlay.svg"></button>
@@ -74,7 +74,7 @@ function addContactOverlayTemplate() {
     <form id="addContactForm" class="inputArea" onsubmit="addContact();return false">
     <input id="inputName" class="inputName" type="text" placeholder="Surname Name" required pattern="^(\\w+\\s\\w+)$" title="Surname Name">
     <input id="inputMail" class="inputMail" type="email" placeholder="Email" required>
-    <input id="inputTel" class="inputTel" type="tel" placeholder="Phone" required pattern="^\\+?[0-9]{7,}$" title="At least seven digits with a optional leading + ">
+    <input id="inputTel" class="inputTel" type="number" placeholder="Phone" required pattern="^\\+?[0-9]{7,}$" title="At least seven digits with a optional leading + ">
     <div id="overlayButtonDiv" class="buttonDiv">
         <button type="reset" onclick="closeAddContactOverlay()" id="cancelButton" class="cancelButton">Cancel <img
                 src="../assets/img/cancel_contactOverlay.svg"></button>
