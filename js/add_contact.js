@@ -361,33 +361,23 @@ function closeAddContactOverlay() {
 
 
 /**
- * This function shows and hides the contact succesfully created overlay
- * 
- */
-function showHideContactAddedOverlay(x, y) {
-  document.getElementById('contactAddedOVerlay').classList.add(x);
-  document.getElementById('contactAddedOVerlay').classList.remove(y);
-}
-
-
-/**
  * This function shows and hides the contact succesfully created overlay after 2 seconds
  * 
  */
 function showAndHideContactAddedOverlay() {
   setTimeout(function () {
-    showHideContactAddedOverlay('show', 'hide')
+    showHideOverlay('show', 'hide', 'contactAddedOVerlay')
   }, 300);
   setTimeout(function () {
-    showHideContactAddedOverlay('hide', 'show')
+    showHideOverlay('hide', 'show', 'contactAddedOVerlay')
   }, 2000);
 }
 
 /**
- * This function shows and hides the edit contact overlay
+ * This function shows and hides the overlays
  * 
  */
-function showHideEditDeletOverlay(x, y) {
-  document.getElementById('editDeletOverlay').classList.add(x);
-  document.getElementById('editDeletOverlay').classList.remove(y);
+function showHideOverlay(x, y, z) {
+  document.getElementById(z).classList.add(x);
+  document.getElementById(z).classList.remove(y);
 }
