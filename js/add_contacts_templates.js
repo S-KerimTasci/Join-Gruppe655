@@ -16,7 +16,7 @@ function generateContactHTML(contact, contactIndex) {
             </div>
         </div>
     `;
-  }
+}
 
 
 /**
@@ -152,28 +152,37 @@ function editDeletOverlay(i) {
  * 
  *This funtion gets the needed HTML elements for displaying and reseting a conatct next to the contactlist and returns them 
  */
- function getContactElements() {
+function getContactElements() {
     return {
-      circle: document.getElementById('contactsCircle'),
-      name: document.getElementById('contactsName'),
-      mail: document.getElementById('contactsMail'),
-      phone: document.getElementById('contactsPhone')
+        circle: document.getElementById('contactsCircle'),
+        name: document.getElementById('contactsName'),
+        mail: document.getElementById('contactsMail'),
+        phone: document.getElementById('contactsPhone')
     };
-  }
+}
 
 
-  /**
-  * This funtion gets the needed HTML elements for the add & edit contact overlays and returns them 
-  * 
-  */
+/**
+* This funtion gets the needed HTML elements for the add & edit contact overlays and returns them 
+* 
+*/
 function getAddEditContactElements() {
     return {
-      overlayHeader: document.getElementById('overlayHeader'),
-      overlayHeaderText: document.getElementById('overlayHeaderText'),
-      overlayCircle: document.getElementById('overlayCircle'),
-      inputName: document.getElementById('inputName'),
-      inputMail: document.getElementById('inputMail'),
-      inputTel: document.getElementById('inputTel'),
-      overlayButtonDiv: document.getElementById('overlayButtonDiv')
+        overlayHeader: document.getElementById('overlayHeader'),
+        overlayHeaderText: document.getElementById('overlayHeaderText'),
+        overlayCircle: document.getElementById('overlayCircle'),
+        inputName: document.getElementById('inputName'),
+        inputMail: document.getElementById('inputMail'),
+        inputTel: document.getElementById('inputTel'),
+        overlayButtonDiv: document.getElementById('overlayButtonDiv')
     };
-  }
+}
+
+function setContactValues() {
+    return {
+        name: document.getElementById('inputName').value,
+        mail: document.getElementById('inputMail').value,
+        phone: document.getElementById('inputTel').value,
+        initial: name.split(' ').map(word => word.charAt(0).toUpperCase()).join(''),
+    }
+}

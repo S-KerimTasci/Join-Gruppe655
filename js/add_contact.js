@@ -93,7 +93,7 @@ function displayNewContact() {
  */
 async function addContactViaEditOverlay(i) {
   createButton.disabled = true;
-  getContactsValuesEditOVerlay(i);
+  getContactsValues(i)
   contactJSONBE.splice(i, 1);
   contactJSONBE.push(contactJSON1);
   await setItem(KEY_for_JSON_CONTACS, contactJSONBE);
@@ -103,40 +103,25 @@ async function addContactViaEditOverlay(i) {
 
 
 /**
- * This function gets the values from the overlay inputfields that are needed for editing a contact 
+ * This function gets the values from the overlay inputfields that are needed for adding & editing a contact 
  * 
- * @param {number} i - index of the edited contact in the contacts JSON
  */
-function getContactsValuesEditOVerlay(i) {
+function getContactsValues(i) {
   let name = document.getElementById('inputName').value;
   let mail = document.getElementById('inputMail').value;
   let phone = document.getElementById('inputTel').value;
   let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-  let bgColor = contactJSONBE[i].bgColor;
+  if (i) {
+    let bgColor = contactJSONBE[i].bgColor;
+    contactJSON1.bgColor = bgColor;
+   } else {
+    let bgColor = setColor()
+    contactJSON1.bgColor = bgColor;
+   }
 
   contactJSON1.email = mail;
   contactJSON1.initials = initial;
   contactJSON1.name = name;
-  contactJSON1.bgColor = bgColor;
-  contactJSON1.phone = phone;
-}
-
-
-/**
- * This function gets the values from the overlay inputfields that are needed for adding a contact 
- * 
- */
-function getContactsValues() {
-  let name = document.getElementById('inputName').value;
-  let mail = document.getElementById('inputMail').value;
-  let phone = document.getElementById('inputTel').value;
-  let initial = name.split(' ').map(word => word.charAt(0).toUpperCase()).join('');
-  let bgColor = setColor()
-
-  contactJSON1.email = mail;
-  contactJSON1.initials = initial;
-  contactJSON1.name = name;
-  contactJSON1.bgColor = bgColor;
   contactJSON1.phone = phone;
 }
 
