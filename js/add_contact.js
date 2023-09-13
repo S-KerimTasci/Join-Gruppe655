@@ -154,22 +154,22 @@ function setColor() {
 
 
 /**
- * This function sets the responsive css for the contacts page 
- * 
- */
-function hideContactInfo() {
-  document.getElementById('leftDiv').classList.remove('dd-none');
-  document.getElementById('rightDiv').classList.add('dd-none');
-  document.getElementById('rightDiv').classList.remove('rightDivRes');
-}
-
-
-/**
  * This function sets the desktop view css for the contacts page
  * 
  */
 function hideContactInfoDektop() {
   document.getElementById('ContactsInfoContainer').classList.add('dd-none');
+}
+
+
+/**
+ * This function sets the responsive css for the contacts page 
+ * 
+ */
+function showHideContactInfo(a,b,c,d,e,f) {
+  document.getElementById(a).classList[c](e);
+  document.getElementById(b).classList[d](e);
+  document.getElementById(b).classList[c](f);
 }
 
 
@@ -182,9 +182,7 @@ function showContactInfo(i) {
   document.getElementById('ContactsInfoContainer').classList.remove('dd-none');
 
   if (window.innerWidth < 750) {
-    document.getElementById('leftDiv').classList.add('dd-none');
-    document.getElementById('rightDiv').classList.remove('dd-none');
-    document.getElementById('rightDiv').classList.add('rightDivRes');
+    showHideContactInfo('leftDiv','rightDiv','add','remove','dd-none','rightDivRes')
   }
 
   setContactInfo(i);
@@ -198,19 +196,17 @@ function showContactInfo(i) {
  * @param {number} i - index of the edited contact in the contacts JSON
  */
 function setContactInfo(i) {
-  let circle = document.getElementById('contactsCircle');
-  let name = document.getElementById('contactsName');
-  let mail = document.getElementById('contactsMail');
-  let phone = document.getElementById('contactsPhone');
+  const contactElements = getContactElements();
 
-  circle.innerHTML = contactJSONBE[i].initials;
-  circle.style.backgroundColor = contactJSONBE[i].bgColor;
-  name.innerHTML = contactJSONBE[i].name;
-  mail.innerHTML = contactJSONBE[i].email;
+  contactElements.circle.innerHTML = contactJSONBE[i].initials;
+  contactElements.circle.style.backgroundColor = contactJSONBE[i].bgColor;
+  contactElements.name.innerHTML = contactJSONBE[i].name;
+  contactElements.mail.innerHTML = contactJSONBE[i].email;
+  
   if (contactJSONBE[i].phone == undefined) {
-    phone.innerHTML = 'Please edit phone number';
+    contactElements.phone.innerHTML = 'Please edit phone number';
   } else {
-    phone.innerHTML = contactJSONBE[i].phone;
+    contactElements.phone.innerHTML = contactJSONBE[i].phone;
   }
 }
 
@@ -220,16 +216,13 @@ function setContactInfo(i) {
  * 
  */
 function resetContactInfo() {
-  let circle = document.getElementById('contactsCircle');
-  let name = document.getElementById('contactsName');
-  let mail = document.getElementById('contactsMail');
-  let phone = document.getElementById('contactsPhone');
+  const contactElements = getContactElements();
 
-  circle.innerHTML = '';
-  circle.style.backgroundColor = 'transparent';
-  name.innerHTML = '';
-  mail.innerHTML = '';
-  phone.innerHTML = '';
+  contactElements.circle.innerHTML = '';
+  contactElements.circle.style.backgroundColor = 'transparent';
+  contactElements.name.innerHTML = '';
+  contactElements.mail.innerHTML = '';
+  contactElements.phone.innerHTML = '';
 }
 
 
@@ -301,21 +294,6 @@ function setAddContactOVerlay() {
   overlayButtonDiv.innerHTML = overlayAddButtonDivTemplate();
 }
 
-/**
-  * This funtion get the needed HTML elements for the add & edit contact overlays and returns them 
-  * 
-  */
-function getAddEditContactElements() {
-  return {
-    overlayHeader: document.getElementById('overlayHeader'),
-    overlayHeaderText: document.getElementById('overlayHeaderText'),
-    overlayCircle: document.getElementById('overlayCircle'),
-    inputName: document.getElementById('inputName'),
-    inputMail: document.getElementById('inputMail'),
-    inputTel: document.getElementById('inputTel'),
-    overlayButtonDiv: document.getElementById('overlayButtonDiv')
-  };
-}
 
 /**
  * This function deletes a contact from the contact JSON and renders the contactlist without the deleted contact 
@@ -331,7 +309,7 @@ async function deleteContact(i) {
   createContactList();
 
   if (window.innerWidth < 750) {
-    hideContactInfo();
+    showHideContactInfo('leftDiv','rightDiv','remove','add','dd-none','rightDivRes')
   }
 }
 

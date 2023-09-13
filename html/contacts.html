@@ -58,7 +58,7 @@
                                 <div><span class="contactsHeaderspan">Better with a team</span></div>
                             </div>
                             <img class="backArrow" src="../assets/img/sign-up-arrow-left.svg"
-                                onclick="hideContactInfo()">
+                                onclick="showHideContactInfo('leftDiv','rightDiv','remove','add','dd-none','rightDivRes')">
                         </div>
 
                         <div id="ContactsInfoContainer" class="dd-none">
@@ -81,7 +81,7 @@
                                 <a id="contactsPhone" class="aPhone colorLink" href="tel: +49 1111 1111 1111">+49 1111 1111
                                     1111</a>
                             </div>
-                            <img onclick="showHideOverlay('hide','show', 'editDeletOverlay'); innerClick(event)" class="contactsMenu" src="../assets/img/menu_contact_options.svg">
+                            <img onclick="showHideOverlay('show','hide', 'editDeletOverlay'); innerClick(event)" class="contactsMenu" src="../assets/img/menu_contact_options.svg">
 
                             <div id="editDeletOverlay" class="editDeletOverlay">
                                 <button onclick="editContact(i)" class="editDeletOverlayButton"><img src="../assets/img/edit_subtask.svg"> Edit</button>
