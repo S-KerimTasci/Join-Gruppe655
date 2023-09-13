@@ -177,12 +177,3 @@ function getAddEditContactElements() {
         overlayButtonDiv: document.getElementById('overlayButtonDiv')
     };
 }
-
-function setContactValues() {
-    return {
-        name: document.getElementById('inputName').value,
-        mail: document.getElementById('inputMail').value,
-        phone: document.getElementById('inputTel').value,
-        initial: name.split(' ').map(word => word.charAt(0).toUpperCase()).join(''),
-    }
-}
