@@ -166,7 +166,7 @@ function hideContactInfoDektop() {
  * This function sets the responsive css for the contacts page 
  * 
  */
-function showHideContactInfo(a,b,c,d,e,f) {
+function showHideContactInfo(a, b, c, d, e, f) {
   document.getElementById(a).classList[c](e);
   document.getElementById(b).classList[d](e);
   document.getElementById(b).classList[c](f);
@@ -182,7 +182,7 @@ function showContactInfo(i) {
   document.getElementById('ContactsInfoContainer').classList.remove('dd-none');
 
   if (window.innerWidth < 750) {
-    showHideContactInfo('leftDiv','rightDiv','add','remove','dd-none','rightDivRes')
+    showHideContactInfo('leftDiv', 'rightDiv', 'add', 'remove', 'dd-none', 'rightDivRes')
   }
 
   setContactInfo(i);
@@ -202,7 +202,7 @@ function setContactInfo(i) {
   contactElements.circle.style.backgroundColor = contactJSONBE[i].bgColor;
   contactElements.name.innerHTML = contactJSONBE[i].name;
   contactElements.mail.innerHTML = contactJSONBE[i].email;
-  
+
   if (contactJSONBE[i].phone == undefined) {
     contactElements.phone.innerHTML = 'Please edit phone number';
   } else {
@@ -309,8 +309,19 @@ async function deleteContact(i) {
   createContactList();
 
   if (window.innerWidth < 750) {
-    showHideContactInfo('leftDiv','rightDiv','remove','add','dd-none','rightDivRes')
+    showHideContactInfo('leftDiv', 'rightDiv', 'remove', 'add', 'dd-none', 'rightDivRes')
   }
+}
+
+
+/**
+ * This function sets the CSS for the opening and closing the add and edit contact overlay
+ * 
+ */
+function setOverlayCSS(a, b, c, d, e, f, g) {
+  document.getElementById(a).classList[c](e);
+  document.getElementById(b).classList[d](f);
+  document.getElementById(b).classList[c](g);
 }
 
 
@@ -319,9 +330,7 @@ async function deleteContact(i) {
  * 
  */
 function openAddContactOverlay() {
-  document.getElementById('addContactMenu').classList.add('dd-none');
-  document.getElementById('createContactOverlay').classList.remove('hide');
-  document.getElementById('createContactOverlay').classList.add('show');
+  setOverlayCSS('addContactMenu', 'createContactOverlay', 'add', 'remove', 'dd-none', 'hide', 'show')
   setAddContactOVerlay();
 }
 
@@ -332,9 +341,7 @@ function openAddContactOverlay() {
  */
 function closeAddContactOverlay() {
   document.getElementById("addContactForm").reset();
-  document.getElementById('addContactMenu').classList.remove('dd-none');
-  document.getElementById('createContactOverlay').classList.remove('show');
-  document.getElementById('createContactOverlay').classList.add('hide');
+  setOverlayCSS('addContactMenu', 'createContactOverlay', 'remove', 'add', 'dd-none', 'hide', 'show')
 }
 
 
