@@ -307,6 +307,7 @@ async function deleteContact(i) {
   document.getElementById('contactsContainer').innerHTML = '';
   resetContactInfo();
   createContactList();
+  closeAddContactOverlay()
 
   if (window.innerWidth < 750) {
     showHideContactInfo('leftDiv', 'rightDiv', 'remove', 'add', 'dd-none', 'rightDivRes')
